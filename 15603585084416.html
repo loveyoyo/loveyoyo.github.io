@@ -366,7 +366,7 @@ private void setScreenMode(Context context, int mode) {
 </code></pre>
 
 <ul>
-<li>设置当前页面的屏幕亮度，但是并不会影响系统的屏幕亮度，也就是说设置了当前页面的屏幕亮度，系统的屏幕亮度还是先前的数值，需要申请权限android.permission.CHANGE_CONFIGURATION，否则不会执行调节屏幕亮度；</li>
+<li>设置当前页面的屏幕亮度，但是并不会影响系统的屏幕亮度，也就是说设置了当前页面的屏幕亮度，系统的屏幕亮度还是先前的数值，需要申请权限android.permission.CHANGE_CONFIGURATION，否则不会执行调节屏幕亮度；需要注意的是参数context的类型必须是Activity，不能是Context；用这种方法设置界面的亮度，会使亮度自动调节功能失效，离开该页面，亮度自动调节会继续生效；</li>
 </ul>
 
 <pre class="line-numbers"><code class="language-java">////清单文件中申请权限；
@@ -402,6 +402,81 @@ private void setSystemBrightness(Context context,int brightness){
     android.provider.Settings.System.putInt(contentResolver,Settings.System.SCREEN_BRIGHTNESS,brightness);
     contentResolver.notifyChange(uri,null);
 }                
+</code></pre>
+
+<ul>
+<li>设置屏幕常亮，有三种方法如下；<br/>
+(1).在需要常亮的页面，设置跟布局或者页面中的某个控件的属性android:keepScreenOn=&quot;true&quot;，就可以实现了；<br/>
+(2).在需要常亮的页面，添加以下代码就实现了；<br/></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+</code></pre>
+
+<p>(3).需要先在清单文件中添加以下权限：</p>
+
+<pre class="line-numbers"><code class="language-java">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
+</code></pre>
+
+<p>然后在需要常亮的页面，添加常亮的方法：</p>
+
+<pre class="line-numbers"><code class="language-java">private void setScreenOn() {
+    PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+    PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, &quot;kang&quot;);
+    wakeLock.acquire();
+    }
+</code></pre>
+
+<ul>
+<li>设置屏幕熄屏，两种方法如下：<br/>
+(1).和设置屏幕常亮时的第三种方法对应，使用wakeLock.release()方法，但是这样操作之后，屏幕只是取消了常亮设置，还会在你原先设置的系统屏幕无操作的熄屏时间之后才会熄屏；而且这种方法需要在使用了wakeLock.acquire()方法之后才能调用；<br/>
+(2).需要添加设置管理器；<br/>
+首先是需要的一个类如AminCustomReceiver继承自DeviceAdminReceiver，DeviceAdminReceiver是一个BroadcastReceiver；在清单文件中配置AminCustomReceiver，代码如下：</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">&lt;receiver android:name=&quot;.hardware.AdminCustomReceiver&quot;
+    android:permission=&quot;android.permission.BIND_DEVICE_ADMIN&quot;&gt;
+    &lt;meta-data android:name=&quot;android.app.device_admin&quot;
+        android:resource=&quot;@xml/device_admin&quot;
+    /&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.app.action.DEVICE_ADMIN_ENABLED&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<p>然后，在res文件夹下建立xml文件夹，在xml文件夹下创建一个在清单文件中用到的device_admin.xml文件，其中代码如下：</p>
+
+<pre class="line-numbers"><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;device-admin xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;uses-policies&gt;
+        &lt;force-lock/&gt;
+    &lt;/uses-policies&gt;
+&lt;/device-admin&gt;
+</code></pre>
+
+<p>最后，才AdminCustomReceiver代码中添加方法：</p>
+
+<pre class="line-numbers"><code class="language-java">private void setScreenOff() {
+    DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+    ComponentName componentName = new ComponentName(this, AdminReceiver.class);
+    boolean isAdmin = devicePolicyManager.isAdminActive(componentName);
+    Log.e(&quot;===MockingJay===&quot;, &quot;isAdmin:&quot; + isAdmin);
+    if (!isAdmin) {
+        //打开DevicePolicyManager管理器，授权页面
+        Intent intent = new Intent();
+        //授权页面Action --&gt;  DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN
+            intent.setAction(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+        //设置DEVICE_ADMIN，告诉系统申请管理者权限的Component/DeviceAdminReceiver
+        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName);
+        //设置 提示语--可不添加
+        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, &quot;DevicePolicyManager涉及的管理权限,一次性激活!&quot;);
+        startActivityForResult(intent, 100);
+    } else {
+        //已经添加到设置管理器了;
+    }
+    devicePolicyManager.lockNow();
+}
 </code></pre>
 
 <h2 id="toc_3">(3).控制手机音量</h2>

@@ -270,7 +270,37 @@
 
 <ul>
 <li>startActivity（）方法最终调用的是startActivityForResult()方法，只是startActivity()的实现是startActivityForResult()方法内部的请求码requestCode固定为-1，所以如果使用startActivityForResult()方法时，请求码写成了-1，那么就相当于调用了startActivity()方法，onActivityResult()方法不会被回调；</li>
+<li>设置启动页：<br/>
+我们一般会设置启动页的style的android:windowBackground的属性来设置启动页的背景图片，如果不需要在启动页设置除了背景图片以外的控件，那么甚至可以不需要在启动页SplashActivity页面中使用setContentView(R.layout.activity_splash)方法，就直接在onCreate()方法中进行页面跳转或者数据处理；</li>
 </ul>
+
+<pre class="line-numbers"><code class="language-java">&lt;!--启动页style--&gt;
+&lt;style name=&quot;AppSplashTheme&quot; parent=&quot;AppTheme&quot;&gt;
+    &lt;item name=&quot;android:windowBackground&quot;&gt;@mipmap/ic_launcher&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;!-- 启动页面 --&gt;
+&lt;activity
+    android:name=&quot;.SplashActivity&quot;
+    android:screenOrientation=&quot;portrait&quot;
+    android:theme=&quot;@style/AppSplashTheme&quot;
+    &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+
+//SplashActivity页面；
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    //进行相应的业务逻辑操作；    
+}
+</code></pre>
+
+<p>不过，一般我们都会设置启动页的背景图占据全屏幕。就需要style文件中添加一个属性android:windowFullscreen，设置为true；<br/>
+还有，带有底部导航栏的手机，需要一个属性android:windowDrawsSystemBarBackgrounds，设置为true，不过该属性的使用需要最低兼容版本为API 21，也就是5.0；</p>
 
 
 </div>
