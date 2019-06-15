@@ -141,6 +141,8 @@
         <li><label>随想</label></li>
 
           
+            <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
+          
             <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
           
             <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
@@ -248,6 +250,8 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
+                          <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
+                        
                           <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
                         
                           <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
@@ -268,234 +272,17 @@
 
 	
 		<div class="markdown-body">
-		<h1>res文件夹中的资源</h1>
+		<h1>Permissions权限</h1>
 
-		<h2 id="toc_0">res文件夹下的目录</h2>
+		<h2 id="toc_0">权限级别</h2>
+
+<p>权限有三种保护级别会影响第三方应用程序：正常、签名、危险权限；</p>
 
 <ul>
-<li>/anim</li>
-<li>/animator</li>
-<li>/drawable</li>
-<li>/drawable-ldpi</li>
-<li>/drawable-mdpi</li>
-<li>/drawable-hdpi</li>
-<li>/drawable-xhdpi</li>
-<li>/drawable-xxhdpi</li>
-<li>/drawable-xxxhdpi</li>
-<li>/mipmap-mdpi</li>
-<li>/mipmap-hdpi</li>
-<li>/mipmap-xhdpi</li>
-<li>/mipmap-xxhdpi</li>
-<li>/mipmap-xxxhdpi</li>
-<li>/layout</li>
-<li>/color</li>
-<li>/values/colors</li>
-<li>/values/strings</li>
-<li>/values/styles</li>
-<li>/values/arrays</li>
-<li>/values/dimens</li>
+<li><font color=red>正常权限</font>：普通权限涵盖应用程序需要访问应用程序沙箱外部数据或资源的区域，但用户隐私或其他应用操作的风险很小。如果应用程序在其清单中声明它需要的正常权限，系统会自动将这些权限授予你的应用，系统不会提示用户授予正常权限，用户也无法撤销这些权限；</li>
+<li><font color=red>签名权限</font>：系统会在安装时授予这些应用程序权限，但仅限于尝试使用权限的应用程序使用与定义权限的应用程序相同的证书进行签名时；</li>
+<li><font color=red>危险权限</font>：危险权限涵盖应用程序需要涉及用户私人信息的数据或资源的区域，或者可能会影响用户存储的数据或其他应用程序的操作。如果应用声明它需要的危险权限，则用户必须明确授予该应用的权限。在用户批准该权限之前，你的应用无法提供依赖该权限的功能；</li>
 </ul>
-
-<h2 id="toc_1">具体资源使用</h2>
-
-<h4 id="toc_2">string字符串</h4>
-
-<p>字符串引用资源时，可以使用R.string（字符串）、R.array（字符串数组）、R.plurals（复数）类；<br/>
-引用资源使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">//字符串;
-&lt;resources&gt;
-    &lt;string name=&quot;hello&quot;&gt;Hello!&lt;/string&gt;
-&lt;/resources&gt;
-//字符串数组;
-&lt;resources&gt;
-    &lt;string-array name=&quot;planets_array&quot;&gt;
-        &lt;item&gt;Mercury&lt;/item&gt;
-        &lt;item&gt;Venus&lt;/item&gt;
-        &lt;item&gt;Earth&lt;/item&gt;
-        &lt;item&gt;Mars&lt;/item&gt;
-    &lt;/string-array&gt;
-&lt;/resources&gt;
-//复数;
-&lt;resources&gt;
-    &lt;plurals
-        name=&quot;plural_name&quot;&gt;
-        &lt;item
-            quantity=[&quot;zero&quot; | &quot;one&quot; | &quot;two&quot; | &quot;few&quot; | &quot;many&quot; | &quot;other&quot;]
-            &gt;text_string&lt;/item&gt;
-    &lt;/plurals&gt;
-&lt;/resources&gt;
-</code></pre>
-
-<p>字符串可以使用占用符，格式如%1\(d; %后面是占位符的位置，可能一个字符串中会有好几个占位符，从1开始，以此往后叠加，第一个出现的是%1\)d,那么第二个就是%2\(d；占位符位置数字之后是\),\(后面是填充数据的类型，填充数据类型有三种：d（表示整数型）、f（表示浮点型）、s（表示字符串）；其中使用f（浮点型）时，如在%1\).2f中,.2代表了小数点后面保留两位小数，那么%1$.3f就代表了小数点后保留三位小数；<br/>
-占用符使用方法如下：</p>
-
-<pre class="line-numbers"><code class="language-text">//资源文件中res/values/strings;
-&lt;string name=&quot;textView_placeHolder&quot;&gt;书名:%1$s,作者:%2$s,编号:%3$d,价格:%4$.2f&lt;/string&gt;
-
-//java代码中;
-String rawString = getResources().getString(R.string.textView_placeHolder);
-String afterString = String.format(rawString,&quot;无人生还&quot;,&quot;阿加莎·克里斯蒂&quot;,1234,108.2f);
-mTextViewActivityTv5.setText(afterString);
-</code></pre>
-
-<h4 id="toc_3">动画资源</h4>
-
-<p>属性动画引用res/animator,从R.animator类中访问，不过也可以引用R.anim类；<br/>
-补间动画引用res/anim，从R.anim类中访问；<br/>
-帧动画引用res/drawable,从R.drawable类中访问；</p>
-
-<h4 id="toc_4">颜色状态列表</h4>
-
-<p>引用res/color，从R.color类中访问；定义基于View状态更改的颜色资源。<br/>
-在这里生成的drawable类型的xml文件，根标签是&lt;selector&gt;，但是这里面的&lt;item&gt;中的drawable引用只能是使用十六进制颜色值或者使用@color引用res/values/colors中的颜色资源；如果&lt;item&gt;中的drawable引用的是图片或者其他的@drawable类型的资源，那么需要把这个xml文件放在res/drawable下，而不是res/color下面；</p>
-
-<h4 id="toc_5">Drawable</h4>
-
-<p>引用res/drawable，从R.drawable类中访问；<br/>
-Drawable的类型如下：<br/>
-(1).<font color=red>BitmapDrawable</font>:<br/>
-(2).<font color=red>NinePatchDrawable</font>:<br/>
-(3).<font color=red>LayerDrawable</font>:<br/>
-(4).<font color=red>StateListDrawable</font>:<br/>
-(5).<font color=red>LevelListDrawable</font>:<br/>
-(6).<font color=red>TransitionDrawable</font>:<br/>
-(7).<font color=red>ClipDrawable</font>:<br/>
-(8).<font color=red>ScaleDrawable</font>:<br/>
-(9).<font color=red>GradientDrawable</font>:<br/>
-(10).<font color=red>AnimationDrawable</font>:</p>
-
-<h4 id="toc_6">layout布局</h4>
-
-<p>引用res/layout，从R.layout类中访问；</p>
-
-<h4 id="toc_7">menu菜单</h4>
-
-<p>引用res/menu，从R.menu类中访问；</p>
-
-<h4 id="toc_8">style风格</h4>
-
-<p>引用res/values/styles.xml，从R.style类中访问；</p>
-
-<h4 id="toc_9">font字体</h4>
-
-<p>引用res/font，从R.font类中访问；</p>
-
-<h4 id="toc_10">布尔值</h4>
-
-<p>引用res/values/bools.xml,带有布尔值的XML资源；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-    &lt;bool name=&quot;screen_small&quot;&gt;true&lt;/bool&gt;
-    &lt;bool name=&quot;adjust_view_bounds&quot;&gt;true&lt;/bool&gt;
-&lt;/resources&gt;
-
-boolean isRight = getResources().getBoolean(R.boolean.screen_small);
-</code></pre>
-
-<h4 id="toc_11">颜色</h4>
-
-<p>引用res/values/colors.xml,从R.color类中访问；带有颜色值（十六进制颜色）的xml资源；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-   &lt;color name=&quot;opaque_red&quot;&gt;#f00&lt;/color&gt;
-   &lt;color name=&quot;translucent_red&quot;&gt;#80ff0000&lt;/color&gt;
-&lt;/resources&gt;
-
-int color = getResources().getColor(R.color.opaque_red);
-</code></pre>
-
-<h4 id="toc_12">尺寸</h4>
-
-<p>引用res/values/dimens.xml，从R.dimen类中访问，带有维度值（带有度量单位）的xml资源；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-    &lt;dimen name=&quot;textview_height&quot;&gt;25dp&lt;/dimen&gt;
-    &lt;dimen name=&quot;textview_width&quot;&gt;150dp&lt;/dimen&gt;
-    &lt;dimen name=&quot;ball_radius&quot;&gt;30dp&lt;/dimen&gt;
-    &lt;dimen name=&quot;font_size&quot;&gt;16sp&lt;/dimen&gt;
-&lt;/resources&gt;
-
-float fontSize = getResources().getDimension(R.dimen.font_size);
-</code></pre>
-
-<h4 id="toc_13">id</h4>
-
-<p>引用res/values/ids.xml，从R.id类中访问，为应用程序资源和组件提供唯一标识符；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-    &lt;item type=&quot;id&quot; name=&quot;button_ok&quot; /&gt;
-    &lt;item type=&quot;id&quot; name=&quot;dialog_exit&quot; /&gt;
-&lt;/resources&gt;
-
-&lt;Button android:id=&quot;@id/button_ok&quot;
-    style=&quot;@style/button_style&quot; /&gt;
-</code></pre>
-
-<h4 id="toc_14">整数</h4>
-
-<p>引用res/values/integers.xml，从R.integer类中访问,包含整数值的XML资源；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-    &lt;integer name=&quot;max_speed&quot;&gt;75&lt;/integer&gt;
-    &lt;integer name=&quot;min_speed&quot;&gt;5&lt;/integer&gt;
-&lt;/resources&gt;
-
-int maxSpeed = getResources().getInteger(R.integer.max_speed);
-</code></pre>
-
-<h4 id="toc_15">整数数组</h4>
-
-<p>引用res/values/integers.xml，从R.array类中访问,提供整数数组的XML资源；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-    &lt;integer-array name=&quot;bits&quot;&gt;
-        &lt;item&gt;4&lt;/item&gt;
-        &lt;item&gt;8&lt;/item&gt;
-        &lt;item&gt;16&lt;/item&gt;
-        &lt;item&gt;32&lt;/item&gt;
-    &lt;/integer-array&gt;
-&lt;/resources&gt;
-
-int[] bits = getResources().getIntArray(R.array.bits);
-</code></pre>
-
-<h4 id="toc_16">键入数组</h4>
-
-<p>引用res/values/arrays.xml，从R.array类中访问,提供TypedArray（可用于drawable数组）的XML资源；<br/>
-使用方法：</p>
-
-<pre class="line-numbers"><code class="language-text">&lt;resources&gt;
-    &lt;array name=&quot;icons&quot;&gt;
-        &lt;item&gt;@drawable/home&lt;/item&gt;
-        &lt;item&gt;@drawable/settings&lt;/item&gt;
-        &lt;item&gt;@drawable/logout&lt;/item&gt;
-    &lt;/array&gt;
-    &lt;array name=&quot;colors&quot;&gt;
-        &lt;item&gt;#FFFF0000&lt;/item&gt;
-        &lt;item&gt;#FF00FF00&lt;/item&gt;
-        &lt;item&gt;#FF0000FF&lt;/item&gt;
-    &lt;/array&gt;
-&lt;/resources&gt;
-
-Resources res = getResources();
-TypedArray icons = res.obtainTypedArray(R.array.icons);
-Drawable drawable = icons.getDrawable(0);
-TypedArray colors = res.obtainTypedArray(R.array.colors);
-int color = colors.getColor(0,0);
-</code></pre>
-
-<h2 id="toc_17">注意事项</h2>
-
-<p>(1).<font color=red>&lt;selector&gt;标签</font>：<br/>
-当&lt;selector&gt;作为drawable资源时，放在res/drawable目录下，并且其中的&lt;item&gt;指定android：drawable属性时，资源只能使用@drawable；<br/>
-当&lt;selector&gt;作为color资源时，放在res/color目录下，并且其中的&lt;item&gt;指定android：color属性时，资源只能是十六进制的颜色值或者使用@color；</p>
 
 
 		</div>
