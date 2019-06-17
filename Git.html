@@ -295,13 +295,53 @@
 		<h2 id="toc_0">常见命令行</h2>
 
 <ul>
-<li><font color=red>git status -s</font>:状态码</li>
+<li><font color=red>init</font>:初始化</li>
 </ul>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: center">状态码</th>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git init</td>
+<td style="text-align: center">初始化本地git项目</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>status</font>:状态码</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git status</td>
+<td style="text-align: center">查看缓存与当前工作目录的状态</td>
+</tr>
+<tr>
+<td style="text-align: center">git status -s</td>
+<td style="text-align: center">查看缓存与当前工作目录的状态，简短输出结果</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">-s返回的状态码</th>
 <th style="text-align: center">解释</th>
 </tr>
 </thead>
@@ -345,6 +385,80 @@
 </tr>
 </tbody>
 </table>
+
+<ul>
+<li><font color=red>add</font>:添加文件</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git add Xxx</td>
+<td style="text-align: center">添加某个或多个文件</td>
+</tr>
+<tr>
+<td style="text-align: center">git add .</td>
+<td style="text-align: center">添加目录下的所有未被管理的文件</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>diff:显示已写入缓存与已修改但尚未写入缓存的改动的区别</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git diff</td>
+<td style="text-align: center">尚未缓存的改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --cached</td>
+<td style="text-align: center">查看已缓存的改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff -- HEAD</td>
+<td style="text-align: center">查看已缓存的与未缓存的所有改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --stat</td>
+<td style="text-align: center">显示摘要而非整个diff</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>commit</font>:记录缓存内容的快照</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<p>git commit -m &quot;描述内容&quot;</p>
 
 
 		</div>
