@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Kang
+  Git - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -54,6 +54,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Git</label></li>
+
+          
+            <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>四大组件</label></li>
 
           
@@ -70,6 +78,8 @@
         <li class="divider"></li>
         <li><label>Android组件</label></li>
 
+          
+            <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
           
             <li><a title="ScrollView和HorizontalView" href="15601389773513.html">ScrollView和HorizontalView</a></li>
           
@@ -174,6 +184,12 @@
                         
 
                     
+                      <li class="side-title"><span>Git</span></li>
+                        
+                          <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
+                        
+
+                    
                       <li class="side-title"><span>四大组件</span></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
@@ -187,6 +203,8 @@
 
                     
                       <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
                         
                           <li><a title="ScrollView和HorizontalView" href="15601389773513.html">ScrollView和HorizontalView</a></li>
                         
@@ -272,103 +290,64 @@
 
 	
 		<div class="markdown-body">
-		<h1>for</h1>
+		<h1>Git常见用法</h1>
 
-		<h2 id="toc_0">二级标题</h2>
-
-<h3 id="toc_1">三级标题</h3>
-
-<h4 id="toc_2">四级标题</h4>
-
-<h5 id="toc_3">五级标题</h5>
-
-<h6 id="toc_4">六级标题</h6>
-
-<p><strong>这是加粗文本</strong><br/>
-<strong>这是加粗文本</strong><br/>
-<em>这是斜体文本</em><br/>
-<u>这是下划线文本</u><br/>
-这行文本会换行</p>
+		<h2 id="toc_0">常见命令行</h2>
 
 <ul>
-<li>这是第一行无序列表<br/></li>
-<li>这是第二行无序列表</li>
-<li><p>这是第三行无序列表<br/>
-终止了无序列表</p></li>
+<li><font color=red>git status -s</font>:状态码</li>
 </ul>
 
-<ol>
-<li>这是第一行有序列表</li>
-<li>这是第二行有序列表</li>
-<li><p>这是有序列表</p></li>
-</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">状态码</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
 
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 未做任务</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 已做任务</li>
-</ul>
-
-<blockquote>
-<p>这是区块</p>
-</blockquote>
-<addr>
-<p>function fancyAlert(arg) {<br/>
-  if(arg) {<br/>
-    $.facebox({div:&#39;#foo&#39;})<br/>
-  }<br/>
-} <br/>
-<code>code</code></p>
-
-<pre class="line-numbers"><code class="language-function">  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-
-}
-</code></pre>
-
-<p>`function fancyAlert(arg) {<br/>
-  if(arg) {<br/>
-    $.facebox({div:&#39;#foo&#39;})<br/>
-  }</p>
-
-<p>}`</p>
-
-<pre class="line-numbers"><code class="language-function">  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-
-}
-</code></pre>
+<tbody>
+<tr>
+<td style="text-align: center">A</td>
+<td style="text-align: center">本地新增的文件，服务器上没有</td>
+</tr>
+<tr>
+<td style="text-align: center">C</td>
+<td style="text-align: center">文件的一个拷贝</td>
+</tr>
+<tr>
+<td style="text-align: center">D</td>
+<td style="text-align: center">本地的删除，服务器上还在</td>
+</tr>
+<tr>
+<td style="text-align: center">M</td>
+<td style="text-align: center">文件的内容或者mode被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">R</td>
+<td style="text-align: center">文件名被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">T</td>
+<td style="text-align: center">文件的类型被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">U</td>
+<td style="text-align: center">文件没有被合并（需要合并后才能进行提交）</td>
+</tr>
+<tr>
+<td style="text-align: center">X</td>
+<td style="text-align: center">未知状态（可能是遇到了git的bug）</td>
+</tr>
+<tr>
+<td style="text-align: center">？</td>
+<td style="text-align: center">未被git进行管理，可以使用git add Xxx添加进git然后能够被git管理</td>
+</tr>
+</tbody>
+</table>
 
 
 		</div>
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
 	
 
   
