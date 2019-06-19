@@ -123,7 +123,7 @@
         <li><label>Android其他</label></li>
 
           
-            <li><a title="" href="15603582307379.html"></a></li>
+            <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
           
             <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
           
@@ -244,7 +244,7 @@
                     
                       <li class="side-title"><span>Android其他</span></li>
                         
-                          <li><a title="" href="15603582307379.html"></a></li>
+                          <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
                         
                           <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
                         
@@ -292,15 +292,9 @@
 
 <ul>
 <li><font color=red>text</font>：文本内容,在java代码中设置为<font color=red>setText()</font>;</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">android:text=&quot;这是文本&quot;
-mTextView.setText(&quot;这是文本&quot;)
-</code></pre>
-
-<ul>
 <li><font color=red>textSize</font>:文本字体大小，在java代码中设置为setTextSize();</li>
 <li><font color=red>textColor</font>:文本颜色，在java代码中设置为setTextColor();</li>
+<li><font color=red>textStyle</font>:字体风格，在java代码中设置为setTextStyle();</li>
 <li><font color=red>gravity</font>:文字在一行中的位置，在java代码中设置为setGravity();</li>
 <li><font color=red>hint</font>:提示文本内容，在java代码中设置为setHint();</li>
 <li><font color=red>textColorHint</font>:提示文本颜色，在java代码中设置为setTextColorHint();</li>
@@ -322,6 +316,191 @@ mTextView.setText(&quot;这是文本&quot;)
 </ul>
 
 <h2 id="toc_1">TextView的常见用法：</h2>
+
+<ul>
+<li><font color=red>text</font>：设置文本；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">android:text=&quot;xxx&quot;
+mTextView.setText(&quot;xxx&quot;)
+</code></pre>
+
+<ul>
+<li><font color=red>textSize</font>：设置文本字体大小，单位可以是sp、dp、px，默认大小是15px。sp单位会随着设置的系统的字体大小而改变，但是dp单位不会随着系统的字体大小改变，项目中很少会用px作为TextView的单位，不过最终sp和dp都是转换为px单位的；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">android:textSize=&quot;20sp&quot;
+android:textSize=&quot;20dp&quot;
+android:textSize=&quot;20px&quot;
+mTextView.setTextSize(float size)
+mTextView.setTextSize(int unit,float size)
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">//其实，setTextSize(float size)方法是调用了setTextSize(TypedValue.COMPLEX_UNIT_SP,float size)这个方法；
+//源码如下；
+public void setTextSize(float size) {
+    setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+}
+
+public void setTextSize(int unit, float size) {
+    if (!isAutoSizeEnabled()) {
+        setTextSizeInternal(unit, size, true /* shouldRequestLayout */);
+    }
+}
+
+private void setTextSizeInternal(int unit, float size, boolean shouldRequestLayout) {
+    Context c = getContext();
+    Resources r;
+    if (c == null) {
+        r = Resources.getSystem();
+    } else {
+        r = c.getResources();
+    }
+    setRawTextSize(TypedValue.applyDimension(unit, size, r.getDisplayMetrics()),shouldRequestLayout);
+}
+
+private void setRawTextSize(float size, boolean shouldRequestLayout) {
+    if (size != mTextPaint.getTextSize()) {
+        mTextPaint.setTextSize(size);
+        if (shouldRequestLayout &amp;&amp; mLayout != null) {
+            // Do not auto-size right after setting the text size.
+            mNeedsAutoSizeText = false;
+            nullLayouts();
+            requestLayout();
+            invalidate();
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li><font color=red>typeStyle</font>：字体风格</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">属性</th>
+<th style="text-align: center">代码</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">normal</td>
+<td style="text-align: center">android:textStyle=&quot;normal&quot;<br/>mTextView.setTypeface(Typeface.xxx,Typeface.NORMAL)</td>
+<td style="text-align: center">正常</td>
+</tr>
+<tr>
+<td style="text-align: center">bold</td>
+<td style="text-align: center">android:textStyle=&quot;&quot;<br/>mTextView.setTypeface(Typeface.xxx,Typeface.BOLD)</td>
+<td style="text-align: center">粗体</td>
+</tr>
+<tr>
+<td style="text-align: center">italic</td>
+<td style="text-align: center">android:textStyle=&quot;&quot;<br/>mTextView.setTypeface(Typeface.xxx,Typeface.ITALIC)</td>
+<td style="text-align: center">斜体</td>
+</tr>
+<tr>
+<td style="text-align: center">bold|italic</td>
+<td style="text-align: center">android:textStyle=&quot;bold|italic&quot;<br/>mTextView.setTypeface(Typeface.xxx,Typeface.BOLD_ITALIC)</td>
+<td style="text-align: center">粗体同时也是斜体textStyle</td>
+</tr>
+</tbody>
+</table>
+
+<p>没有专门的一个方法来设置textStyle,需要在setTypeface（）方法中设置第二个参数来设置；</p>
+
+<ul>
+<li><font color=red>typeface字体类型</font>：系统自带了四种类型的字体：normal、serif、sans和monospace，默认为normal字体；</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">属性</th>
+<th style="text-align: center">代码</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">normal</td>
+<td style="text-align: center">android:typeface=&quot;normal&quot;<br/>mTextView.setTypeface(Typeface.DEFAULT)<br/>mTextView.setTypeface(Typeface.DEFAULT,Typeface.xxx)</td>
+<td style="text-align: center">普通字体</td>
+</tr>
+<tr>
+<td style="text-align: center">monospace</td>
+<td style="text-align: center">android:typeface=&quot;monospace&quot;<br/>mTextView.setTypeface(Typeface.MONOSPACE)<br/>mTextView.setTypeface(Typeface.MONOSPACE,Typeface.xxx)</td>
+<td style="text-align: center">等宽字体</td>
+</tr>
+<tr>
+<td style="text-align: center">sans</td>
+<td style="text-align: center">android:typeface=&quot;sans&quot;<br/>mTextView.setTypeface(Typeface.SANS_SERIF)<br/>mTextView.setTypeface(Typeface.SANS_SERIF,Typeface.xxx)</td>
+<td style="text-align: center">非衬线字体</td>
+</tr>
+<tr>
+<td style="text-align: center">serif</td>
+<td style="text-align: center">android:typeface=&quot;serif&quot;<br/>mTextView.setTypeface(Typeface.SERIF)<br/>mTextView.setTypeface(Typeface.SERIF,Typeface.xxx)</td>
+<td style="text-align: center">衬线字体</td>
+</tr>
+</tbody>
+</table>
+
+<p>Typeface类中的常量：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">类型</th>
+<th style="text-align: center">常量</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">int</td>
+<td style="text-align: center">Typeface.NORMAL<br/>Typeface.BOLD<br/>Typeface.ITALIC<br/>Typeface.BOLD_ITALIC</td>
+<td style="text-align: center">textStyle的属性值</td>
+</tr>
+<tr>
+<td style="text-align: center">Typeface</td>
+<td style="text-align: center">Typeface.DEFAULT<br/>Typeface.DEFAULT_BOLD<br/>Typeface.MONOSPACE<br/>Typeface.SANS_SERIF<br/>Typeface.SERIF</td>
+<td style="text-align: center">typeface的属性值</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="line-numbers"><code class="language-java">//这两行代码所设置的是一样的效果；
+mTextViewFontActivityTv8.setTypeface(Typeface.DEFAULT_BOLD, Typeface.NORMAL);
+mTextViewFontActivityTv9.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+</code></pre>
+
+<p>除了系统的这四种字体，我们还可以<font color=red>使用第三方的字体</font>：<br/>
+(1).在res下的文件夹assets（如果没有就新建文件夹assets）下，新建一个文件夹如fonts，将需要的.ttf字体资源放在fonts文件夹下；</p>
+
+<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
+AssetManager assetManager = getAssets();
+Typeface typeface = Typeface.createFromAsset(assetManager, &quot;fonts/11.ttf&quot;);
+mTextView.setTypeface(typeface);
+</code></pre>
+
+<p>(2).在res下的文件夹assets（如果没有就新建文件夹assets）下，也可以直接把.ttf字体资源放在assets文件夹下；</p>
+
+<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
+AssetManager assetManager = getAssets();
+Typeface typeface2 = Typeface.createFromAsset(assetManager,&quot;11.ttf&quot;);
+mTextView.setTypeface(typeface2);
+</code></pre>
+
+<p>(3).在res下的文件夹font（如果没有就新建文件夹font）下，把.ttf字体文件放在这里，调用的使用使用属性android:fontFamily=&quot;@font/xxx&quot;。注意，这里的字体资源文件名字需要开头为字母；</p>
+
+<pre class="line-numbers"><code class="language-java">//字体资源文件为a55.ttf；
+android:fontFamily=&quot;@font/a55&quot;
+</code></pre>
 
 <ul>
 <li><p><font color=red>文本中的链接</font>：比如文本中的手机号码、网址、邮箱的链接的点击跳转；<br/>
