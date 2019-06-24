@@ -47,7 +47,7 @@
         <li><label>Android功能</label></li>
 
           
-            <li><a title="常用工具类或方法" href="15609277381914.html">常用工具类或方法</a></li>
+            <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
           
             <li><a title="拍照和读取本地相册" href="15603979455589.html">拍照和读取本地相册</a></li>
           
@@ -153,6 +153,8 @@
         <li><label>随想</label></li>
 
           
+            <li><a title="青黄" href="15609363144124.html">青黄</a></li>
+          
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
             <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
@@ -160,6 +162,14 @@
             <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
           
             <li><a title="for" href="15583472660662.html">for</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>陌上归</label></li>
+
+          
+            <li><a title="大纲" href="15613407387642.html">大纲</a></li>
           
 
       
@@ -180,7 +190,7 @@
                     
                       <li class="side-title"><span>Android功能</span></li>
                         
-                          <li><a title="常用工具类或方法" href="15609277381914.html">常用工具类或方法</a></li>
+                          <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
                         
                           <li><a title="拍照和读取本地相册" href="15603979455589.html">拍照和读取本地相册</a></li>
                         
@@ -272,6 +282,8 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
+                          <li><a title="青黄" href="15609363144124.html">青黄</a></li>
+                        
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
                           <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
@@ -279,6 +291,12 @@
                           <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
                         
                           <li><a title="for" href="15583472660662.html">for</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>陌上归</span></li>
+                        
+                          <li><a title="大纲" href="15613407387642.html">大纲</a></li>
                         
 
                     
@@ -415,7 +433,7 @@
 </table>
 
 <ul>
-<li>diff:显示已写入缓存与已修改但尚未写入缓存的改动的区别</li>
+<li><font color=red>diff</font>:显示已写入缓存与已修改但尚未写入缓存的改动的区别</li>
 </ul>
 
 <table>
@@ -443,6 +461,10 @@
 <td style="text-align: center">git diff --stat</td>
 <td style="text-align: center">显示摘要而非整个diff</td>
 </tr>
+<tr>
+<td style="text-align: center">git diff --staged</td>
+<td style="text-align: center">同git diff --cached</td>
+</tr>
 </tbody>
 </table>
 
@@ -454,15 +476,71 @@
 <thead>
 <tr>
 <th style="text-align: center">命令行</th>
-<th style="text-align: center">解释</th>
+<th>解释</th>
 </tr>
 </thead>
 
 <tbody>
+<tr>
+<td style="text-align: center">git commit -m &quot;描述内容&quot;</td>
+<td>在add之后，将修改的文件添加到暂存区</td>
+</tr>
+<tr>
+<td style="text-align: center">git commit -a -m &quot;描述内容&quot;</td>
+<td>不需要add，直接在这个命令行执行add操作，并将修改的文件添加到暂存区</td>
+</tr>
 </tbody>
 </table>
 
-<p>git commit -m &quot;描述内容&quot;</p>
+<ul>
+<li><font color=red>reset</font>：取消</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git reset HEAD -- xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容</td>
+</tr>
+</tbody>
+</table>
+
+<p>&emsp;&emsp;实际的操作是将该文件在“索引”中的校验和重置为最近一次提交中的值，git add 会计算一个文件的校验和，将它添加到“索引”中，而 git reset HEAD -- xxx 将它改写回原先的，从而取消缓存操作。</p>
+
+<ul>
+<li><font color=red>rm</font>：删除</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git rm --cached xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，同git reset HEAD -- xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git rm -f xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，并且从磁盘中删除该文件</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>log</font>：日志</li>
+</ul>
 
 
 		</div>
