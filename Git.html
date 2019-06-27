@@ -515,6 +515,8 @@
 <tr>
 <th style="text-align: center">命令行</th>
 <th>解释</th>
+<<<<<<< HEAD
+=======
 </tr>
 </thead>
 
@@ -526,6 +528,39 @@
 </tbody>
 </table>
 
+<p>&emsp;&emsp;实际的操作是将该文件在“索引”中的校验和重置为最近一次提交中的值，git add 会计算一个文件的校验和，将它添加到“索引”中，而 git reset HEAD -- xxx 将它改写回原先的，从而取消缓存操作。</p>
+
+<ul>
+<li><font color=red>rm</font>：删除</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+>>>>>>> a568cbfa90c05ee9cf117c31966f75116ea6b0d6
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<<<<<<< HEAD
+<td style="text-align: center">git reset HEAD -- xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容</td>
+=======
+<td style="text-align: center">git rm --cached xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，同git reset HEAD -- xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git rm -f xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，并且从磁盘中删除该文件</td>
+>>>>>>> a568cbfa90c05ee9cf117c31966f75116ea6b0d6
+</tr>
+</tbody>
+</table>
+
+<<<<<<< HEAD
 <p>&emsp;&emsp;实际的操作是将该文件在“索引”中的校验和重置为最近一次提交中的值，git add 会计算一个文件的校验和，将它添加到“索引”中，而 git reset HEAD -- xxx 将它改写回原先的，从而取消缓存操作。</p>
 
 <ul>
@@ -779,6 +814,11 @@ git push origin -d test
 </tr>
 </tbody>
 </table>
+=======
+<ul>
+<li><font color=red>log</font>：日志</li>
+</ul>
+>>>>>>> a568cbfa90c05ee9cf117c31966f75116ea6b0d6
 
 
 		</div>

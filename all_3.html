@@ -326,9 +326,70 @@
 
 	
 		<div class="markdown-body">
+<<<<<<< HEAD
 		<h1>RecyclerView</h1>
+=======
+		<h1>ListView</h1>
 
-		
+		<h2 id="toc_0">ListView的常用属性</h2>
+
+<ul>
+<li><font color=red>transcriptMode</font>:该属性设置当数据发生变化时，ListView是否会滚动到ListView的底部；可取值：disable、normal、alwaysScroll，默认值是disable;<br/>
+&emsp;&emsp;disable就是禁用，不会在数据发生变化之后进行ListView的滚动；normal指如果当前最后一个Item在ListView的显示范围之内，ListView在发生了数据变化之后会滚动到底部，否则不会滚动到底部；alwaysScroll指ListView在发生数据变化之后会强制滚动到底部；<br/>
+&emsp;&emsp;setTranscriptMode(int mode):方法可取值ListView.TRANSCRIPT_MODE_DISABLED、ListView.TRANSCRIPT_MODE_NORMAL、ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL；<br/>
+&emsp;&emsp;如果，我们是在数据List的底部添加数据，那么滚动到ListView底部会正好看到我们添加的数据，但是如果我们在List的顶部添加数据，滚动到ListView底部就不是我们的预期了，所以要根据业务来设置该属性；</li>
+<li><font color=red>listSelector</font>:设置当Item被点击时的背景颜色；</li>
+<li><font color=red>divider</font>:设置分割线，可以是颜色也可以是Drawable，ListView有默认的分割线，但是如果设置了这个属性，那么必须设置dividerHeight这个属性，否则会不显示分割线；</li>
+<li><font color=red>dividerHeight</font>:设置分割线的高度；</li>
+<li><font color=red>stackFromBottom</font>:设置数据显示List的顶部数据还是底部数据；为true则会直接滚动到ListView的底部；</li>
+<li><font color=red>scrollbars</font>:设置是否显示滚动条，可取值vertical、horizontal、none；<br/>
+&emsp;&emsp;对ListView来说，它只能垂直滚动，将scrollbars设置成horizontal或者none效果都是一样的，也就是不会出现滚动条。所以如果不希望ListView显示滚动条，就将scrollbars设置成none。此外，如果scrollbars设置成none，那么其他的滚动条相关的配置都不会有效果。</li>
+</ul>
+
+<h2 id="toc_1">ListView常用的场景</h2>
+
+<ul>
+<li>(1).<font color=red>设置自定义的快速滚动条</font>:在application的theme中添加以下两行代码：<br/></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">&lt;item name=&quot;android:fastScrollThumbDrawable&quot;&gt;@mipmap/icon_scrollbar&lt;/item&gt;//设置自定义的滚动条图片；
+&lt;item name=&quot;android:fastScrollTrackDrawable&quot;&gt;@null&lt;/item&gt;//设置滚动条轨迹；
+</code></pre>
+
+<p>在ListView的xml文件中设置以下属性：<br/></p>
+
+<pre class="line-numbers"><code class="language-java">android:scrollbars=&quot;none&quot;//取消先前默认的滚动条；
+android:fastScrollEnabled=&quot;true&quot;//设置是否启用快速滚动条；
+android:fastScrollAlwaysVisible=&quot;true&quot;//设置快速滚动条是否一直显示；
+</code></pre>
+<br/>
+<p><font color=red>项目地址</font>：<a href="https://github.com/loveyoyo/SimpleDemo/blob/master/app/src/main/java/com/kang/demo/widget/ListViewActivity.java">https://github.com/loveyoyo/SimpleDemo/blob/master/app/src/main/java/com/kang/demo/widget/ListViewActivity.java</a></p>
+
+<ul>
+<li>(2).<font color=red>记录ListView先前滚动的位置</font><br/>
+&emsp;&emsp;实现原理：记录下ListView在页面内可视区域的位置，然后存储到SharedPreferences中，然后在再次进入页面时读取位置，滑动到先前的位置；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">//记录位置;
+@Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(&quot;===MockingJay===&quot;, &quot;onPause.....&quot;);
+        ListView listView = findViewById(R.id.listViewActivity_lv1);
+        int pos = listView.getFirstVisiblePosition();
+        SPUtil.putInt(this, &quot;sp_position&quot;, pos);
+    }
+//获取位置并滑动到该位置,进行延迟操作，否则可能不会实现效果;    
+final int position = SPUtil.getInt(this, &quot;sp_position&quot;, 0);
+mListViewActivityLv1.postDelayed(new Runnable() {
+    @Override
+    public void run() {
+        mListViewActivityLv1.setSelection(position);
+        }
+}, 300 + 50);    
+</code></pre>
+>>>>>>> a568cbfa90c05ee9cf117c31966f75116ea6b0d6
+
 
 		</div>
 	
