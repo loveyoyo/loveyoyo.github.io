@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Android其他 - Kang
+  网络请求相关 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -326,87 +326,59 @@
 
 	
 		<div class="markdown-body">
-		<h1>assets资源</h1>
+		<h1>网络相关</h1>
 
-		<h2 id="toc_0">字体资源</h2>
+		<h2 id="toc_0">判断当前系统是否设置了代理</h2>
 
-<ul>
-<li>系统自带了四种类型的字体：normal、serif、sans和monospace，默认为normal字体；可以直接在xml文件中设置，如android:typeface=&quot;normal&quot;；</li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">字体类型</th>
-<th style="text-align: center">代码设置</th>
-<th style="text-align: center">解释</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">normal</td>
-<td style="text-align: center">android:typeface=&quot;normal&quot; mTextView.setTypeface(Typeface.DEFAULT)</td>
-<td style="text-align: center">默认字体，常规字体类型</td>
-</tr>
-<tr>
-<td style="text-align: center">serif</td>
-<td style="text-align: center">android:typeface=&quot;serif&quot; mTextView.setTypeface(Typeface.SERIF)</td>
-<td style="text-align: center"></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>在res下的文件夹assets（如果没有就新建文件夹assets）下，新建一个文件夹如fonts，将需要的.ttf字体资源放在fonts文件夹下；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
-AssetManager assetManager = getAssets();
-Typeface typeface = Typeface.createFromAsset(assetManager, &quot;fonts/11.ttf&quot;);
-mTextView.setTypeface(typeface);
+<pre class="line-numbers"><code class="language-java">private boolean isProxy() {
+    String proxyAddress = &quot;&quot;;
+    int proxyPort = 0;
+    if (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.ICE_CREAM_SANDWICH) {            proxyAddress = System.getProperty(&quot;http.proxyHost&quot;);
+        String proxyPortString = System.getProperty(&quot;http.proxyPort&quot;);
+        proxyPort = Integer.parseInt((proxyPortString != null ? proxyPortString : &quot;-1&quot;));
+    } else {
+        proxyAddress = android.net.Proxy.getHost(this);
+        proxyPort = android.net.Proxy.getPort(this);
+    }        
+    if (!TextUtils.isEmpty(proxyAddress) &amp;&amp; proxyPort != -1) {
+        return true;
+    }        
+    return false;
+}
 </code></pre>
 
-<ul>
-<li>在res下的文件夹assets（如果没有就新建文件夹assets）下，也可以直接把.ttf字体资源放在assets文件夹下；</li>
-</ul>
+<h2 id="toc_1">使用OkHttp设置简单的不允许抓包</h2>
 
-<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
-AssetManager assetManager = getAssets();
-Typeface typeface2 = Typeface.createFromAsset(assetManager,&quot;11.ttf&quot;);
-mTextView.setTypeface(typeface2);
+<p>&emsp;&emsp;抓包工具，本质上就是利用中间人攻击的方式，通过这个中间人获取到通信的数据。<br/>
+&emsp;&emsp;而利用这些工具抓包的前提，都是在设备上，设置代理，通常我们直接在 WiFi 连接页面，设置代理即可。<br/>
+&emsp;&emsp;而对于一些常用的网络库，其实是提供了我们设置的代理的接口，我们只需要将其设置成无代理的模式，它就不会去应用系统默认的代理了。<br/>
+&emsp;&emsp;拿比较常用的 OkHttp 来举例，在初始化的时候，就可以通过proxy() 方法，为 OkHttp 设置一个代理。设置为<font color=red>proxy(Proxy.NO_PROXY)</font>,就是不使用代理的模式，它就不会从系统中，读取代理信息，进行网络请求。而是会忽略掉它，直接发送网络请求。以这样的方式，就可以阻止第三方使用 Fiddler 或 Charles 进行抓包。<br/>
+&emsp;&emsp;代码如下：</p>
+
+<pre class="line-numbers"><code class="language-java">OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .proxy(Proxy.NO_PROXY)
+            .build();
+Request request = new Request.Builder()
+        .url(&quot;https://wanandroid.com/wxarticle/chapters/json &quot;)                
+        .build();
+Call call = okHttpClient.newCall(request);
+call.enqueue(new Callback() {
+    @Override
+    public void onFailure(Call call, IOException e) {
+        Log.e(&quot;===MockingJay===&quot;, &quot;getNoHttpData    onFailure...&quot;);
+    }
+
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        Log.e(&quot;===MockingJay===&quot;, &quot;getNoHttpData    onResponse...&quot;);
+        String str = response.body().string();
+        Log.e(&quot;===MockingJay===&quot;, &quot;getNoHttpData    str:&quot; + str);
+    }
+});
 </code></pre>
-
-<ul>
-<li>在res下的文件夹font（如果没有就新建文件夹font）下，把.ttf字体文件放在这里，调用的使用使用属性android:fontFamily=&quot;@font/xxx&quot;。注意，这里的字体资源文件名字需要开头为字母；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为a55.ttf；
-android:fontFamily=&quot;@font/a55&quot;
-</code></pre>
-
-<h2 id="toc_1">网页资源</h2>
 
 
 		</div>
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
 	
 
   

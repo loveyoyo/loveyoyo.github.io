@@ -44,6 +44,14 @@
       <li><a href="index.html">Home</a></li>
       
         <li class="divider"></li>
+        <li><label>网络请求相关</label></li>
+
+          
+            <li><a title="网络相关" href="15616048657421.html">网络相关</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>Android功能</label></li>
 
           
@@ -186,6 +194,12 @@
                 <div class="sidebar">
                 <nav>
                   <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>网络请求相关</span></li>
+                        
+                          <li><a title="网络相关" href="15616048657421.html">网络相关</a></li>
+                        
 
                     
                       <li class="side-title"><span>Android功能</span></li>
@@ -535,8 +549,232 @@
 </table>
 
 <ul>
+<li><font color=red>branch和checkout</font>：分支</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git branch</td>
+<td>列出你在本地的分支，你所在的分支的行首会有个星号作标记</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch xxx（分支名字）</td>
+<td>创建新分支，分支名字就是xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -a</td>
+<td>查看本地和远程的分支，远程分支以remotes/开头</td>
+</tr>
+<tr>
+<td style="text-align: center">git checkout xxx(分支名字)</td>
+<td>切换到分支xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git checkout -b xxx(分支名字)</td>
+<td>创建新分支，并切换到新分支</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -d xxx(分支名字)</td>
+<td>删除分支(需要当前分支不是要被删除的分支，就是需要先切换到其他分支上去)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>merge</font>：合并</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git merge xxx(分支名字)</td>
+<td>将xxx分支合并到当前分支中</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
 <li><font color=red>log</font>：日志</li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git log</td>
+<td>显示一个分支中提交的更改记录</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --oneline</td>
+<td>查看历史记录的简洁版本</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --graph</td>
+<td>查看历史中什么时候出现了分支、合并（可以与--oneline一起用）</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --decorate</td>
+<td>查看tag标签</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>tag</font>：标签
+&emsp;&emsp;如果你达到了一个重要的阶段，并希望永远记住那个特别的提交快照，可以使用git tag给它打上标签。该tag命令基本上会给该特殊提交打上永久的书签，从而使你在将来能够用它与其他提交比较。通常，你会在发布一个新版本或者交付一些东西的时候打个标签。</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git tag</td>
+<td>查看所有的tag标签</td>
+</tr>
+<tr>
+<td style="text-align: center">git tag -a xxx</td>
+<td>创建一个带注解的标签</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>fetch/pull</font>：从远端服务器更新数据</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git fetch</td>
+<td>从远端服务器下载新的分支和数据（就是与远程仓库同步）</td>
+</tr>
+<tr>
+<td style="text-align: center">git pull</td>
+<td>从远端服务器提取新数据（相当于git fetch之后git merge）</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>push</font>：推送数据到远程仓库</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git push [alias] xxx</td>
+<td>将本地分支xxx推送到远端仓库默认分支上</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] xxx:xxx</td>
+<td>将本地分支xxx推送到远端仓库并新建远端分支xxx（需要远端仓库分支和本地分支同名）</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] -d xxx</td>
+<td>删除远端仓库的xxx分支</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] : xxx</td>
+<td>推送一个空分支到远端仓库指定分支，也就相当于删除远端仓库xxx分支</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="line-numbers"><code class="language-java">git push origin master
+//删除远端仓库分支；
+git push origin : test
+//删除远端仓库分支；
+git push origin -d test
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git push xxx yyy</td>
+<td>将本地的yyy分支推送到xxx远端上的yyy分支</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>remote</font>：操作远端仓库</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git remote</td>
+<td>查看远端别名</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote -v</td>
+<td>查看远端别名以及实际链接地址</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote add [alias] [url]</td>
+<td>将url地址和以alias的别名添加为本地的远端仓库（就是将本地仓库与远端仓库建立连接）</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote rm [alias]</td>
+<td>删除远端仓库</td>
+</tr>
+</tbody>
+</table>
 
 
 </div>

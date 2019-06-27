@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Android其他 - Kang
+  Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -326,87 +326,16 @@
 
 	
 		<div class="markdown-body">
-		<h1>assets资源</h1>
+		<h1>序</h1>
 
-		<h2 id="toc_0">字体资源</h2>
+		<blockquote>
+<p>凡事不开始 永远不会成功</p>
+</blockquote>
 
-<ul>
-<li>系统自带了四种类型的字体：normal、serif、sans和monospace，默认为normal字体；可以直接在xml文件中设置，如android:typeface=&quot;normal&quot;；</li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">字体类型</th>
-<th style="text-align: center">代码设置</th>
-<th style="text-align: center">解释</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">normal</td>
-<td style="text-align: center">android:typeface=&quot;normal&quot; mTextView.setTypeface(Typeface.DEFAULT)</td>
-<td style="text-align: center">默认字体，常规字体类型</td>
-</tr>
-<tr>
-<td style="text-align: center">serif</td>
-<td style="text-align: center">android:typeface=&quot;serif&quot; mTextView.setTypeface(Typeface.SERIF)</td>
-<td style="text-align: center"></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>在res下的文件夹assets（如果没有就新建文件夹assets）下，新建一个文件夹如fonts，将需要的.ttf字体资源放在fonts文件夹下；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
-AssetManager assetManager = getAssets();
-Typeface typeface = Typeface.createFromAsset(assetManager, &quot;fonts/11.ttf&quot;);
-mTextView.setTypeface(typeface);
-</code></pre>
-
-<ul>
-<li>在res下的文件夹assets（如果没有就新建文件夹assets）下，也可以直接把.ttf字体资源放在assets文件夹下；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
-AssetManager assetManager = getAssets();
-Typeface typeface2 = Typeface.createFromAsset(assetManager,&quot;11.ttf&quot;);
-mTextView.setTypeface(typeface2);
-</code></pre>
-
-<ul>
-<li>在res下的文件夹font（如果没有就新建文件夹font）下，把.ttf字体文件放在这里，调用的使用使用属性android:fontFamily=&quot;@font/xxx&quot;。注意，这里的字体资源文件名字需要开头为字母；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为a55.ttf；
-android:fontFamily=&quot;@font/a55&quot;
-</code></pre>
-
-<h2 id="toc_1">网页资源</h2>
+<p>那么，我们就开始吧！</p>
 
 
 		</div>
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
 	
 
   
