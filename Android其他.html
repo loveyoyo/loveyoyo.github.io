@@ -133,6 +133,8 @@
         <li><label>Android其他</label></li>
 
           
+            <li><a title="反编译" href="15626395593984.html">反编译</a></li>
+          
             <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
           
             <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
@@ -153,6 +155,18 @@
         <li><label>React-Native</label></li>
 
           
+            <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
+          
+            <li><a title="组件的生命周期" href="15621446974979.html">组件的生命周期</a></li>
+          
+            <li><a title="TextInput组件" href="15621338635960.html">TextInput组件</a></li>
+          
+            <li><a title="遇到的问题" href="15620469922995.html">遇到的问题</a></li>
+          
+            <li><a title="组件" href="15617091937336.html">组件</a></li>
+          
+            <li><a title="React-Native零碎" href="15616187358724.html">React-Native零碎</a></li>
+          
             <li><a title="react-navigation" href="15584071613702.html">react-navigation</a></li>
           
 
@@ -160,6 +174,8 @@
         <li class="divider"></li>
         <li><label>随想</label></li>
 
+          
+            <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
           
             <li><a title="青黄" href="15609363144124.html">青黄</a></li>
           
@@ -272,6 +288,8 @@
                     
                       <li class="side-title"><span>Android其他</span></li>
                         
+                          <li><a title="反编译" href="15626395593984.html">反编译</a></li>
+                        
                           <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
                         
                           <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
@@ -290,11 +308,25 @@
                     
                       <li class="side-title"><span>React-Native</span></li>
                         
+                          <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
+                        
+                          <li><a title="组件的生命周期" href="15621446974979.html">组件的生命周期</a></li>
+                        
+                          <li><a title="TextInput组件" href="15621338635960.html">TextInput组件</a></li>
+                        
+                          <li><a title="遇到的问题" href="15620469922995.html">遇到的问题</a></li>
+                        
+                          <li><a title="组件" href="15617091937336.html">组件</a></li>
+                        
+                          <li><a title="React-Native零碎" href="15616187358724.html">React-Native零碎</a></li>
+                        
                           <li><a title="react-navigation" href="15584071613702.html">react-navigation</a></li>
                         
 
                     
                       <li class="side-title"><span>随想</span></li>
+                        
+                          <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
                         
                           <li><a title="青黄" href="15609363144124.html">青黄</a></li>
                         
@@ -326,69 +358,35 @@
 
 	
 		<div class="markdown-body">
-		<h1>assets资源</h1>
+		<h1>反编译</h1>
 
-		<h2 id="toc_0">字体资源</h2>
+		<h2 id="toc_0">使用jadx进行反编译</h2>
 
-<ul>
-<li>系统自带了四种类型的字体：normal、serif、sans和monospace，默认为normal字体；可以直接在xml文件中设置，如android:typeface=&quot;normal&quot;；</li>
-</ul>
+<p>下载好jadx项目到本地；<br/>
+把.apk文件改为.zip文件；<br/>
+解压.zip文件获取classes.dex文件；<br/>
+将classes.dex文件放到jadx目录下；<br/>
+然后在终端中对应的路径下执行一下操作：<br/>
+//切换到放置classes.dex的路径下；<br/>
+cd build/jadx<br/>
+//反编译，并且使用gui打开；<br/>
+bin/jadx-gui classes.dex<br/>
+或者执行下面这条命令：<br/>
+//反编译并将反编译后的数据放入out文件夹下；<br/>
+bin/jadx -d out classes.dex</p>
 
-<table>
-<thead>
-<tr>
-<th style="text-align: center">字体类型</th>
-<th style="text-align: center">代码设置</th>
-<th style="text-align: center">解释</th>
-</tr>
-</thead>
+<p>使用了代码混淆以后，即使反编译过来，代码中还是用a、b、c等代替了一些变量和方法；<br/>
+如果使用了加固软件对安装包加固，我反编译了使用了乐固加固的安装包，只能看到com.tencent文件夹下的两个文件夹:StubShell和bugly.legu，需要在进行破壳反编译。</p>
 
-<tbody>
-<tr>
-<td style="text-align: center">normal</td>
-<td style="text-align: center">android:typeface=&quot;normal&quot; mTextView.setTypeface(Typeface.DEFAULT)</td>
-<td style="text-align: center">默认字体，常规字体类型</td>
-</tr>
-<tr>
-<td style="text-align: center">serif</td>
-<td style="text-align: center">android:typeface=&quot;serif&quot; mTextView.setTypeface(Typeface.SERIF)</td>
-<td style="text-align: center"></td>
-</tr>
-</tbody>
-</table>
+<h2 id="toc_1">防止抓包</h2>
 
-<ul>
-<li>在res下的文件夹assets（如果没有就新建文件夹assets）下，新建一个文件夹如fonts，将需要的.ttf字体资源放在fonts文件夹下；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
-AssetManager assetManager = getAssets();
-Typeface typeface = Typeface.createFromAsset(assetManager, &quot;fonts/11.ttf&quot;);
-mTextView.setTypeface(typeface);
-</code></pre>
-
-<ul>
-<li>在res下的文件夹assets（如果没有就新建文件夹assets）下，也可以直接把.ttf字体资源放在assets文件夹下；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为11.ttf；
-AssetManager assetManager = getAssets();
-Typeface typeface2 = Typeface.createFromAsset(assetManager,&quot;11.ttf&quot;);
-mTextView.setTypeface(typeface2);
-</code></pre>
-
-<ul>
-<li>在res下的文件夹font（如果没有就新建文件夹font）下，把.ttf字体文件放在这里，调用的使用使用属性android:fontFamily=&quot;@font/xxx&quot;。注意，这里的字体资源文件名字需要开头为字母；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//字体资源文件为a55.ttf；
-android:fontFamily=&quot;@font/a55&quot;
-</code></pre>
-
-<h2 id="toc_1">网页资源</h2>
+<p>在网络请求相关的文章中，我有写如何判断当前手机是否挂了代理以及如何防止被抓包；</p>
 
 
 		</div>
+	
+
+ 
 	
 
  

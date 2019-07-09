@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Permissions权限 - Kang
+  组件的生命周期 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -354,17 +354,44 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Permissions权限</h1>
+<h1>组件的生命周期</h1>
 
-<h2 id="toc_0">权限级别</h2>
+<h2 id="toc_0">constructor：构造函数</h2>
 
-<p>权限有三种保护级别会影响第三方应用程序：正常、签名、危险权限；</p>
+<p>它的第一个语句必须是super（props）。<br/>
+构造函数将在React Native组件被加载前最先调用，并且仅调用一次。这个生命周期函数最大的作用，就是在这里定义状态机变量。</p>
 
-<ul>
-<li><font color=red>正常权限</font>：普通权限涵盖应用程序需要访问应用程序沙箱外部数据或资源的区域，但用户隐私或其他应用操作的风险很小。如果应用程序在其清单中声明它需要的正常权限，系统会自动将这些权限授予你的应用，系统不会提示用户授予正常权限，用户也无法撤销这些权限；</li>
-<li><font color=red>签名权限</font>：系统会在安装时授予这些应用程序权限，但仅限于尝试使用权限的应用程序使用与定义权限的应用程序相同的证书进行签名时；</li>
-<li><font color=red>危险权限</font>：危险权限涵盖应用程序需要涉及用户私人信息的数据或资源的区域，或者可能会影响用户存储的数据或其他应用程序的操作。如果应用声明它需要的危险权限，则用户必须明确授予该应用的权限。在用户批准该权限之前，你的应用无法提供依赖该权限的功能；</li>
-</ul>
+<h2 id="toc_1">componentWillMount：</h2>
+
+<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染（render函数被React Native框架调用执行）前被执行，当它执行完后，render函数会马上被React Native框架调用执行。如果在这个函数里调用setState函数改变了某些状态机变量的值，React Native框架不会执行渲染操作，而是等待这个函数执行完成后再执行初始渲染。React Native组件的子组件也有componentWillMount函数，并且会在父组件的componentWillMount函数之后被调用。<br/>
+如果开发者需要从本地存储中读取数据用于显示，那么在这个函数里进行读取是一个很好的时机。</p>
+
+<h1 id="toc_2">componentDidMount：</h1>
+
+<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染执行完成后会马上被调用。在React Native组件生命周期的这个时间点之后，开发者可以通过子组件的引用来访问、操作任何子组件。React Native组件的子组件也有componentDidMount函数，并且会在父组件的componentDidMount函数之前被调用。<br/>
+如果React Native应用需要在程序启动显示初始界面后从网络侧获取数据，那么把从网络侧获取数据的代码放在这个函数里是一个不错的选择。</p>
+
+<h1 id="toc_3">componentWillReceiveProps：</h1>
+
+<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的props时，这个函数将被调用。这个函数接受一个object参数，object里是新的props。<br/>
+当React Native初次被渲染时，componentWillReceiveProps函数并不会被触发。<br/>
+如果新的props会导致界面重新渲染，这个函数将在渲染前被执行。在这个函数中，老的props可以通过this.props访问，新的props在传入的object中。如果在这个函数中通过调用this.setState函数改变某些状态机变量的值，React Native框架不会执行对这些状态机变量改变的渲染，而是等componentWillReceiveProps函数执行完成后一起渲染。</p>
+
+<h2 id="toc_4">shouldComponentUpdate：</h2>
+
+<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的state或者props时，这个函数将被调用。它接受两个object参数，其中第一个是新的props，第二个是新的state。这个函数需要返回一个布尔值，告诉React Native框架针对这次改变，React Native是否需要重新渲染本组件。</p>
+
+<h2 id="toc_5">componentWillUpdate：</h2>
+
+<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件前会调用这个函数。开发者可以在这个函数中为即将发生的重新渲染做一些准备工作，但开发者不能在这个函数中通过this.setState再次改变状态机变量的值。如果需要改变，则在componentWillReceiveProps函数中进行改变。</p>
+
+<h2 id="toc_6">componentDidUpdate：</h2>
+
+<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件完成后调用这个函数。传入的两个参数是渲染前的props和state。</p>
+
+<h2 id="toc_7">componentWillUnmount：</h2>
+
+<p>在React Native组件被卸载前，这个函数将被执行。</p>
 
 
 </div>
@@ -376,15 +403,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15598792154683.html"  title="Previous Post: Activity">&laquo; Activity</a>
+	        <a href="15622306484069.html"  title="Previous Post: ScrollView组件">&laquo; ScrollView组件</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15597050707116.html" 
-	        title="Next Post: res文件夹中的资源">res文件夹中的资源 &raquo;</a>
+	        <a href="15621338635960.html" 
+	        title="Next Post: TextInput组件">TextInput组件 &raquo;</a>
 	    
 	</div>
   </div>
@@ -397,7 +424,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15597992631758.html';
+		var currentURL = '15621446974979.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

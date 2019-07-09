@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Permissions权限 - Kang
+  React-Native零碎 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -354,17 +354,106 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Permissions权限</h1>
-
-<h2 id="toc_0">权限级别</h2>
-
-<p>权限有三种保护级别会影响第三方应用程序：正常、签名、危险权限；</p>
+<h1>React-Native零碎</h1>
 
 <ul>
-<li><font color=red>正常权限</font>：普通权限涵盖应用程序需要访问应用程序沙箱外部数据或资源的区域，但用户隐私或其他应用操作的风险很小。如果应用程序在其清单中声明它需要的正常权限，系统会自动将这些权限授予你的应用，系统不会提示用户授予正常权限，用户也无法撤销这些权限；</li>
-<li><font color=red>签名权限</font>：系统会在安装时授予这些应用程序权限，但仅限于尝试使用权限的应用程序使用与定义权限的应用程序相同的证书进行签名时；</li>
-<li><font color=red>危险权限</font>：危险权限涵盖应用程序需要涉及用户私人信息的数据或资源的区域，或者可能会影响用户存储的数据或其他应用程序的操作。如果应用声明它需要的危险权限，则用户必须明确授予该应用的权限。在用户批准该权限之前，你的应用无法提供依赖该权限的功能；</li>
+<li><font color=red>BackAndroid</font>已经被废弃，改用BackHandler。不过，退出app的方法没变，依旧是exitApp()；</li>
 </ul>
+
+<pre class="line-numbers"><code class="language-java">BackHandler.exitApp();
+</code></pre>
+
+<p>使用BackHandler监听事件:addEventListener()</p>
+
+<pre class="line-numbers"><code class="language-java">//在constructor(props) {}中写；
+BackHandler.addEventListener(&#39;hardwareBackPress&#39;,this.backHandler);
+
+//具体执行的方法；
+backHandler(){
+    console.log(&#39;按下了物理返回键...&#39;); 
+}
+
+//在componentWillUnmount()方法中移除监听；
+componentWillUnmount() {
+    removeEventListener(&#39;hardwareBackPress&#39;, this.backHandler);
+}
+</code></pre>
+
+<ul>
+<li><font color=red>Alert</font>：弹窗提示。</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">getAlert() {
+    Alert.alert(&#39;弹出框标题提示语&#39;,
+        &#39;弹出框正文提示语&#39;,
+        [{ text: &#39;我知道了&#39;, onPress: this.optionSelected }]
+    );
+}
+在onPress调用时使用this.getAlert()就可以了；
+</code></pre>
+
+<ul>
+<li>StyleSheet中的样式</li>
+</ul>
+
+<p>(1).position:absolute/relative</p>
+
+<pre class="line-numbers"><code class="language-text">//绝对定位；与之相关的键有top、bottom、left、right；表示与父组件的距离；
+position:&#39;absolute&#39;
+//相对定位；不可以使用bottom、right；top和left键的默认值为0；表示与当前同级组件的距离；
+position:&#39;relative&#39;
+</code></pre>
+
+<p>(2).宽高:width、maxWidth、minWidth、height、maxHeight、minHeight;</p>
+
+<p>(3).flexDirection:决定子组件排列规则；<br/>
+flexDirection:row、row-reverse、column、column-reverse；</p>
+
+<p>(4).justifyContent（水平对齐）:flex-start、flex-end、center、space-between、space-around；</p>
+
+<p>(5).alignItems（上下对齐）:flex-start（顶部对齐）、flex-end（底部对齐）、center（中部对齐）、stretch（拉长对齐）；</p>
+
+<p>(6).flex:键的类型是数值，默认值为0，可以取值-1、0或者任意正数值。当它的值为非零时，在父组件的弹性方向（flexDirection键定义的方向），组件将自动缩放以适应父组件剩下的空白空间。如果父组件的弹性方向是列，则组件的height键即使有值也会失效。如果父组件的弹性方向是行，则组件的width键即使有值也会失效；</p>
+
+<p>(7).alignSelf:auto、flex-start、flex-end、center、stretch，其用途是让组件忽略它的父组件样式中alignItems键的取值，而对该组件使用alignSelf键对应的规则；</p>
+
+<p>(8).边框宽度：borderWidth、borderTopWidth、borderRightWidth、borderBottomWidth、borderLeftWidth；</p>
+
+<p>(9).填充宽度：padding、paddingHorizontal、paddingVertical、paddingBottom、paddingLeft、paddingRight、paddingTop；</p>
+
+<p>(10).空隙宽度：margin、marginHorizontal、marginVertical、marginBottom、marginLeft、marginRight、marginTop；</p>
+
+<p>(11).zIndex:如果两个组件的显示位置发生重叠或者部分重叠时，zIndex值大的那个组件将会覆盖住另一个组件。如果两者的zIndex值相等，在JSX代码中后渲染的组件将会覆盖住先渲染的组件；</p>
+
+<p>(12).backgroundColor：指定组件的背景，默认的背景颜色是一种非常浅的灰色；只有Text与TextInput组件会继承其父组件的背景颜色，这意味着其他组件都需要设置自己的背景颜色；</p>
+
+<p>(13).opacity:定义View组件的透明度，取值为0-1。当为0时，表示组件完全透明；当为1时，表示组件完全不透明。</p>
+
+<p>(14).borderStyle：设置边框的风格，取值为solid、dotted、dashed；默认为solid。</p>
+
+<p>(15).圆角边框：borderRaidus、borderTopLeftRadius、borderTopRightRadius、borderBottomLeftRadius、borderBottomRightRadius；使用定义圆角时设置borderRadius为宽高的一半，那么就会是圆形；</p>
+
+<p>(16).shadowColor:阴影颜色；</p>
+
+<p>(17).shadowOffset:阴影位移值；</p>
+
+<p>(18).shadowOpacity:阴影透明度；</p>
+
+<p>(19).shadowRadius：阴影圆角率；</p>
+
+<p>(20).overflow：取值有两个，visible和hidden。它定义了当view组件中的子组件宽高超出view组件宽高时的行为。默认是hidden，即隐藏超出部分。这个键只对ios平台有效，在android平台上即使被设为visible，显示的特性也仍然是hidden。</p>
+
+<p>(21).backfaceVisibility：取值有两个visible和hidden。</p>
+
+<p>(22).elevation：android平台特有的样式。它是数值类型的样式键，通过在组件周围渲染阴影，让用户产生一种组件浮现在手机屏幕上的视觉效果。</p>
+
+<p>(23).removeClippedSubviews:布尔类型的属性。它是一个特殊的与性能优化相关的属性，通常在ScrollView组件或者ListView组件中使用。当组件有很多子组件不在屏幕显示范围内时，将这个属性设为true允许释放这些不在显示范围内的子组件以优化性能。要让此属性生效，组件与子组件的样式键overflow都应当设置为hidden（默认值）。</p>
+
+<p>(24).renderToHardwareTextureAndroid与needsOffscreen是android平台独有的两个布尔类型的属性，它们的设置与动画效果有关。</p>
+
+<p>(25).shouldRasterizeIOS</p>
+
+<p>(26).在React Native框架中，数据是沿着组件树从上到下单向流动的。拥有数据的React Native组件并不一定负责显示该数据，它经常把自己拥有的数据（存储在它的状态机变量中）作为一个子组件的属性传递给子组件，由子组件来显示它。</p>
 
 
 </div>
@@ -376,15 +465,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15598792154683.html"  title="Previous Post: Activity">&laquo; Activity</a>
+	        <a href="15617091937336.html"  title="Previous Post: 组件">&laquo; 组件</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15597050707116.html" 
-	        title="Next Post: res文件夹中的资源">res文件夹中的资源 &raquo;</a>
+	        <a href="15616048657421.html" 
+	        title="Next Post: 网络相关">网络相关 &raquo;</a>
 	    
 	</div>
   </div>
@@ -397,7 +486,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15597992631758.html';
+		var currentURL = '15616187358724.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

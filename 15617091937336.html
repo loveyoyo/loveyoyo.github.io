@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Permissions权限 - Kang
+  组件 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -354,17 +354,68 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>Permissions权限</h1>
+<h1>组件</h1>
 
-<h2 id="toc_0">权限级别</h2>
+<h2 id="toc_0">View:</h2>
 
-<p>权限有三种保护级别会影响第三方应用程序：正常、签名、危险权限；</p>
+<p>View组件是React Native最基本的组件，绝大部分其他组件都继承了View组件的属性，包括支持View组件的样式设置、回调函数及其他属性。</p>
+
+<h2 id="toc_1">Image组件:</h2>
+
+<p>React Native默认支持JPG与PNG格式。React Native在ios平台还支持GIF格式与WebP格式，但android平台默认不支持这两种格式。在android/app/build.gradle文件中，添加以下第三方库设置android平台支持这两种格式：</p>
+
+<pre class="line-numbers"><code class="language-java">//需要GIF动画支持请添加本行语句;
+implementation &#39;com.facebook.fresco:animated-gif:2.0.0&#39;
+//需要WebP格式支持请添加本行语句;
+implementation &#39;com.facebook.fresco:webpsupport:2.0.0&#39;
+//需要WebP动画支持请添加本行语句;
+implementation &#39;com.facebook.fresco:animated-webp:2.0.0&#39;
+</code></pre>
+
+<h2 id="toc_2">可触摸组件类型:</h2>
+
+<p>&emsp;&emsp;可触摸组件有TouchableNativeFeedback、TouchableWithoutFeedback、TouchableHighlight、TouchableOpacity四种。<br/>
+&emsp;&emsp;TouchableNativeFeedback是android操作系统的专用组件。<br/>
+&emsp;&emsp;TouchableWithoutFeedback组件在用户触摸时，没有反馈任何视觉效果。<br/>
+&emsp;&emsp;TouchableOpacity与TouchableHighlight两个组件在用户触摸时都反馈了视觉效果，优先使用TouchableOpacity组件。<br/>
+可触摸组件只能有一个子组件。如果需要将多个组件设置为可触摸效果，则需要将它们放在一个View中，然后让这个View成为可触摸组件的子组件。<br/>
+&emsp;&emsp;当一个组件成为TouchableOpacity组件的子组件后，这个组件被触摸时会变成半透明的组件。</p>
+
+<pre class="line-numbers"><code class="language-java">&lt;TouchableOpacity onPress={this.onPressButton} activeOpacity={0.5} &gt;
+    &lt;View style={styles.button} /&gt;
+&lt;/TouchableOpacity&gt;
+</code></pre>
+
+<p>activeOpacity定义了透明度的值，取值为从0到1，0表示完全透明，1表示一点也不透明。它的默认值是0.2.<br/>
+&emsp;&emsp;当一个组件成为TouchableHightlight组件的子组件后，这个组件被触摸时会产生一种变暗的效果。</p>
+
+<h2 id="toc_3">Text组件：</h2>
+
+<p>Text内部的元素不再使用flexbox布局，而是采用文本布局。不要将Text组件视为一个支持flexbox样式的盒子模型，不要按照盒子模型对其设置flexbox键值。想要通过flexbox设置让它居中显示是不可能的。常见的做法是，使用一个组件作为Text组件的容器，然后对这个组件设置flexbox样式，从而达到我们希望的效果。</p>
+
+<h4 id="toc_4">样式：</h4>
 
 <ul>
-<li><font color=red>正常权限</font>：普通权限涵盖应用程序需要访问应用程序沙箱外部数据或资源的区域，但用户隐私或其他应用操作的风险很小。如果应用程序在其清单中声明它需要的正常权限，系统会自动将这些权限授予你的应用，系统不会提示用户授予正常权限，用户也无法撤销这些权限；</li>
-<li><font color=red>签名权限</font>：系统会在安装时授予这些应用程序权限，但仅限于尝试使用权限的应用程序使用与定义权限的应用程序相同的证书进行签名时；</li>
-<li><font color=red>危险权限</font>：危险权限涵盖应用程序需要涉及用户私人信息的数据或资源的区域，或者可能会影响用户存储的数据或其他应用程序的操作。如果应用声明它需要的危险权限，则用户必须明确授予该应用的权限。在用户批准该权限之前，你的应用无法提供依赖该权限的功能；</li>
+<li><font color=red>fontFamily</font>：指定Text组件以何种字体显示。取值有：sans-serif、serif、monospace、sans-serif-light、sans-serif-thin、sans-serif-condensed、sans-serif-medium。</li>
+<li><font color=red>fontStyle</font>：指定字体的风格。取值有：normal、italic，分别代表正常的字体和斜体字体。</li>
+<li><font color=red>fontSize</font>：指定Text组件显示文字的大小。</li>
+<li><font color=red>fontWeight</font>：指定Text组件的文字的粗细。取值有：normal、bold、100、200、300、400、500、600、700、800、900.normal表示正常字体，bold表示粗体。其后的数字序列代表从最细100到最粗900的字体粗细程度。</li>
+<li><font color=red>textAlign</font>：指定字符串排列顺序。取值有：auto、left、right、center、justify。justify值只在ios平台有效，在android平台等价于left。</li>
+<li><font color=red>textDecorationLine</font>：取值有：none、underline、line-through、underline line-through，分别对应没有装饰线、下划线装饰、装饰线贯穿装饰、下划线贯穿装饰。</li>
+<li><font color=red>lineHeight</font>：指定每一行的高度。</li>
+<li><font color=red>textShadowOffse</font>：要实现阴影效果，需要设定三个样式键：textShadowOffse、textShadowRadius、textShadowColor；</li>
+<li><font color=red>textShadowRadius</font>：</li>
+<li><font color=red>textShadowColor</font>：</li>
+<li><font color=red>ellipsizeMode</font>：指定当Text组件无法全部显示需要显示的字符串时如何用省略号进行修饰。取值有：head、middle、tail、clip。默认值是clip。ellipsizeMode属性需要与numberOfLine属性配合使用。</li>
+<li><font color=red>numberOfLines</font>：指定Text组件中的字符串可以显示为多少行。如果不设置，那么将按照字符串的长度显示，无行数限制直到显示完为止。当有限制时，按ellipsizeMode属性来决定如何显示。</li>
+<li><font color=red>onPress</font>：是回调函数类型的属性，当字符串组件被按下时，相应的回调函数将被执行。</li>
+<li><font color=red>onLongPress</font>：是回调函数类型的属性，当字符串组件被长按时，相应的回调函数将被执行。</li>
+<li><font color=red>Selectable</font>：取值为：true、false，默认值是false，当为true时，表示字符串组件中的文字可以被选择并被复制到手机系统的剪贴板中。</li>
 </ul>
+
+<h4 id="toc_5">Text组件的嵌套：</h4>
+
+<p>&emsp;&emsp;在嵌套的Text组件中，子Text组件将继承它的父Text组件的样式。当使用嵌套的Text组件时，子Text组件不能覆盖从父Text组件继承而来的样式，只能增加父Text组件没有指定的样式。如果试图在代码中覆盖从父Text组件继承而来的样式，覆盖将不会生效，并且在开发模式下会弹出警告。</p>
 
 
 </div>
@@ -376,15 +427,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15598792154683.html"  title="Previous Post: Activity">&laquo; Activity</a>
+	        <a href="15620469922995.html"  title="Previous Post: 遇到的问题">&laquo; 遇到的问题</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15597050707116.html" 
-	        title="Next Post: res文件夹中的资源">res文件夹中的资源 &raquo;</a>
+	        <a href="15616187358724.html" 
+	        title="Next Post: React-Native零碎">React-Native零碎 &raquo;</a>
 	    
 	</div>
   </div>
@@ -397,7 +448,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15597992631758.html';
+		var currentURL = '15617091937336.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
