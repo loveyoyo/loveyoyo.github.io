@@ -133,6 +133,8 @@
         <li><label>Android其他</label></li>
 
           
+            <li><a title="画图" href="15627251763320.html">画图</a></li>
+          
             <li><a title="反编译" href="15626395593984.html">反编译</a></li>
           
             <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
@@ -288,6 +290,8 @@
                     
                       <li class="side-title"><span>Android其他</span></li>
                         
+                          <li><a title="画图" href="15627251763320.html">画图</a></li>
+                        
                           <li><a title="反编译" href="15626395593984.html">反编译</a></li>
                         
                           <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
@@ -358,18 +362,36 @@
 
 	
 		<div class="markdown-body">
-		<h1>ProgressBar</h1>
+		<h1>Style和Theme</h1>
 
-		<h2 id="toc_0">ProgressBar的常用属性和方法</h2>
+		<h2 id="toc_0">Style和Theme的作用</h2>
 
 <ul>
-<li><font color=red>style</font>:设置进度条的样式，可取值有如下：?android:attr/progressBarStyle、?android:attr/progressBarStyleSmall、?android:attr/progressBarStyleSmallInverse、?android:attr/progressBarStyleSmallTitle、?android:attr/progressBarStyleLarge、?android:attr/progressBarStyleLargeInverse、?android:attr/progressBarStyleHorizontal、?android:attr/progressBarStyleInverse；</li>
-<li><font color=red>progress</font>:初始时的进度；</li>
-<li><font color=red>max</font>:最大进度；</li>
-<li><p><font color=red>secondaryProgress</font>:二级进度；</p></li>
-<li><p>setProgress(int progress,boolean animate):设置进度；</p></li>
-<li><p>incrementProgressBy(int diff):设置进度条增减；</p></li>
-<li><p>incrementSecondaryProgressBy(int diff):设置二级进度条增减；</p></li>
+<li>style是一个包含一种或者多种格式化属性的集合，可以当作一个属性在UI元素使用，从而使该元素拥有这些属性。例如，可以定义一个style设置字体颜色、大小，然后在TextView中使用这个style，那么该TextView就会被设置成该style所定义的字体颜色和大小；</li>
+<li>theme同样是一个包含一种或者多种格式化属性的集合，和style不同的是，它只能作用于整个activity，而不是activity中的一个UI元素；</li>
+</ul>
+
+<h2 id="toc_1">Style和Theme的定义</h2>
+
+<ul>
+<li>在res/values目录下建立一个名叫sytle.xml的文件。</li>
+<li>对每一个style，给&lt;style&gt;element增加一个全局唯一的名字，也可以选择增加一个父类属性。父类属性标识了当前style继承该父类style。</li>
+<li>在&lt;style&gt;元素内部，申明一个或者多个&lt;item&gt;标签，每一个<item>定义一个属性的值。</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-text">&lt;style name=&quot;textview_style&quot;&gt;
+    &lt;item name=&quot;android:layout_height&quot;&gt;48dp&lt;/item&gt;
+    &lt;item name=&quot;android:layout_width&quot;&gt;41dp&lt;/item&gt;
+    &lt;item name=&quot;android:background&quot;&gt;#30000000&lt;/item&gt;
+    &lt;item name=&quot;android:gravity&quot;&gt;center&lt;/item&gt;
+    &lt;item name=&quot;android:textColor&quot;&gt;#FFFFFF&lt;/item&gt;
+    &lt;item name=&quot;android:textSize&quot;&gt;30dp&lt;/item&gt;
+    &lt;item name=&quot;android:textStyle&quot;&gt;bold&lt;/item&gt;
+&lt;/style&gt;
+</code></pre>
+
+<ul>
+<li>theme的定义方法和style完全一样，但是使用theme必须在AndroidManifest.xml文件中的&lt;application&gt;或者&lt;activity&gt;中定义。想让整个程序都使用这个主题，写在&lt;application android:theme=&quot;&quot;&gt;中；想让程序中的某个Activity使用，写在&lt;activity android:theme=&quot;&quot;&gt;中；</li>
 </ul>
 
 
