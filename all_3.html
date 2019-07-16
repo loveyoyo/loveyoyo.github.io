@@ -52,6 +52,44 @@
 
       
         <li class="divider"></li>
+        <li><label>第三方库</label></li>
+
+          
+            <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+          
+            <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+          
+            <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+          
+            <li><a title="支付" href="15632684444086.html">支付</a></li>
+          
+            <li><a title="推送" href="15632684365504.html">推送</a></li>
+          
+            <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+          
+            <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+          
+            <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+          
+            <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+          
+            <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+          
+            <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+          
+            <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+          
+            <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+          
+            <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+          
+            <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+          
+            <li><a title="OkHttp" href="15632682616090.html">OkHttp</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>Android功能</label></li>
 
           
@@ -220,6 +258,42 @@
                         
 
                     
+                      <li class="side-title"><span>第三方库</span></li>
+                        
+                          <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+                        
+                          <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+                        
+                          <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+                        
+                          <li><a title="支付" href="15632684444086.html">支付</a></li>
+                        
+                          <li><a title="推送" href="15632684365504.html">推送</a></li>
+                        
+                          <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+                        
+                          <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+                        
+                          <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+                        
+                          <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+                        
+                          <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+                        
+                          <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+                        
+                          <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+                        
+                          <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+                        
+                          <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+                        
+                          <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+                        
+                          <li><a title="OkHttp" href="15632682616090.html">OkHttp</a></li>
+                        
+
+                    
                       <li class="side-title"><span>Android功能</span></li>
                         
                           <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
@@ -362,37 +436,459 @@
 
 	
 		<div class="markdown-body">
-		<h1>Style和Theme</h1>
+		<h1>Git常见用法</h1>
 
-		<h2 id="toc_0">Style和Theme的作用</h2>
-
-<ul>
-<li>style是一个包含一种或者多种格式化属性的集合，可以当作一个属性在UI元素使用，从而使该元素拥有这些属性。例如，可以定义一个style设置字体颜色、大小，然后在TextView中使用这个style，那么该TextView就会被设置成该style所定义的字体颜色和大小；</li>
-<li>theme同样是一个包含一种或者多种格式化属性的集合，和style不同的是，它只能作用于整个activity，而不是activity中的一个UI元素；</li>
-</ul>
-
-<h2 id="toc_1">Style和Theme的定义</h2>
+		<h2 id="toc_0">常见命令行</h2>
 
 <ul>
-<li>在res/values目录下建立一个名叫sytle.xml的文件。</li>
-<li>对每一个style，给&lt;style&gt;element增加一个全局唯一的名字，也可以选择增加一个父类属性。父类属性标识了当前style继承该父类style。</li>
-<li>在&lt;style&gt;元素内部，申明一个或者多个&lt;item&gt;标签，每一个<item>定义一个属性的值。</li>
+<li><font color=red>init</font>:初始化</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-text">&lt;style name=&quot;textview_style&quot;&gt;
-    &lt;item name=&quot;android:layout_height&quot;&gt;48dp&lt;/item&gt;
-    &lt;item name=&quot;android:layout_width&quot;&gt;41dp&lt;/item&gt;
-    &lt;item name=&quot;android:background&quot;&gt;#30000000&lt;/item&gt;
-    &lt;item name=&quot;android:gravity&quot;&gt;center&lt;/item&gt;
-    &lt;item name=&quot;android:textColor&quot;&gt;#FFFFFF&lt;/item&gt;
-    &lt;item name=&quot;android:textSize&quot;&gt;30dp&lt;/item&gt;
-    &lt;item name=&quot;android:textStyle&quot;&gt;bold&lt;/item&gt;
-&lt;/style&gt;
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git init</td>
+<td style="text-align: center">初始化本地git项目</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>status</font>:状态码</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git status</td>
+<td style="text-align: center">查看缓存与当前工作目录的状态</td>
+</tr>
+<tr>
+<td style="text-align: center">git status -s</td>
+<td style="text-align: center">查看缓存与当前工作目录的状态，简短输出结果</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">-s返回的状态码</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">A</td>
+<td style="text-align: center">本地新增的文件，服务器上没有</td>
+</tr>
+<tr>
+<td style="text-align: center">C</td>
+<td style="text-align: center">文件的一个拷贝</td>
+</tr>
+<tr>
+<td style="text-align: center">D</td>
+<td style="text-align: center">本地的删除，服务器上还在</td>
+</tr>
+<tr>
+<td style="text-align: center">M</td>
+<td style="text-align: center">文件的内容或者mode被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">R</td>
+<td style="text-align: center">文件名被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">T</td>
+<td style="text-align: center">文件的类型被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">U</td>
+<td style="text-align: center">文件没有被合并（需要合并后才能进行提交）</td>
+</tr>
+<tr>
+<td style="text-align: center">X</td>
+<td style="text-align: center">未知状态（可能是遇到了git的bug）</td>
+</tr>
+<tr>
+<td style="text-align: center">？</td>
+<td style="text-align: center">未被git进行管理，可以使用git add Xxx添加进git然后能够被git管理</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>add</font>:添加文件</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git add Xxx</td>
+<td style="text-align: center">添加某个或多个文件</td>
+</tr>
+<tr>
+<td style="text-align: center">git add .</td>
+<td style="text-align: center">添加目录下的所有未被管理的文件</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>diff</font>:显示已写入缓存与已修改但尚未写入缓存的改动的区别</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git diff</td>
+<td style="text-align: center">尚未缓存的改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --cached</td>
+<td style="text-align: center">查看已缓存的改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff -- HEAD</td>
+<td style="text-align: center">查看已缓存的与未缓存的所有改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --stat</td>
+<td style="text-align: center">显示摘要而非整个diff</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --staged</td>
+<td style="text-align: center">同git diff --cached</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>commit</font>:记录缓存内容的快照</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git commit -m &quot;描述内容&quot;</td>
+<td>在add之后，将修改的文件添加到暂存区</td>
+</tr>
+<tr>
+<td style="text-align: center">git commit -a -m &quot;描述内容&quot;</td>
+<td>不需要add，直接在这个命令行执行add操作，并将修改的文件添加到暂存区</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>reset</font>：取消</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git reset HEAD -- xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容</td>
+</tr>
+</tbody>
+</table>
+
+<p>&emsp;&emsp;实际的操作是将该文件在“索引”中的校验和重置为最近一次提交中的值，git add 会计算一个文件的校验和，将它添加到“索引”中，而 git reset HEAD -- xxx 将它改写回原先的，从而取消缓存操作。</p>
+
+<ul>
+<li><font color=red>rm</font>：删除</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git rm --cached xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，同git reset HEAD -- xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git rm -f xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，并且从磁盘中删除该文件</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>branch和checkout</font>：分支</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git branch</td>
+<td>列出你在本地的分支，你所在的分支的行首会有个星号作标记</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch xxx（分支名字）</td>
+<td>创建新分支，分支名字就是xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -a</td>
+<td>查看本地和远程的分支，远程分支以remotes/开头</td>
+</tr>
+<tr>
+<td style="text-align: center">git checkout xxx(分支名字)</td>
+<td>切换到分支xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git checkout -b xxx(分支名字)</td>
+<td>创建新分支，并切换到新分支</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -d xxx(分支名字)</td>
+<td>删除分支(需要当前分支不是要被删除的分支，就是需要先切换到其他分支上去)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>merge</font>：合并</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git merge xxx(分支名字)</td>
+<td>将xxx分支合并到当前分支中</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>log</font>：日志</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git log</td>
+<td>显示一个分支中提交的更改记录</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --oneline</td>
+<td>查看历史记录的简洁版本</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --graph</td>
+<td>查看历史中什么时候出现了分支、合并（可以与--oneline一起用）</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --decorate</td>
+<td>查看tag标签</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>tag</font>：标签
+&emsp;&emsp;如果你达到了一个重要的阶段，并希望永远记住那个特别的提交快照，可以使用git tag给它打上标签。该tag命令基本上会给该特殊提交打上永久的书签，从而使你在将来能够用它与其他提交比较。通常，你会在发布一个新版本或者交付一些东西的时候打个标签。</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git tag</td>
+<td>查看所有的tag标签</td>
+</tr>
+<tr>
+<td style="text-align: center">git tag -a xxx</td>
+<td>创建一个带注解的标签</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>fetch/pull</font>：从远端服务器更新数据</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git fetch</td>
+<td>从远端服务器下载新的分支和数据（就是与远程仓库同步）</td>
+</tr>
+<tr>
+<td style="text-align: center">git pull</td>
+<td>从远端服务器提取新数据（相当于git fetch之后git merge）</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>push</font>：推送数据到远程仓库</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git push [alias] xxx</td>
+<td>将本地分支xxx推送到远端仓库默认分支上</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] xxx:xxx</td>
+<td>将本地分支xxx推送到远端仓库并新建远端分支xxx（需要远端仓库分支和本地分支同名）</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] -d xxx</td>
+<td>删除远端仓库的xxx分支</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] : xxx</td>
+<td>推送一个空分支到远端仓库指定分支，也就相当于删除远端仓库xxx分支</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="line-numbers"><code class="language-java">git push origin master
+//删除远端仓库分支；
+git push origin : test
+//删除远端仓库分支；
+git push origin -d test
 </code></pre>
 
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git push xxx yyy</td>
+<td>将本地的yyy分支推送到xxx远端上的yyy分支</td>
+</tr>
+</tbody>
+</table>
+
 <ul>
-<li>theme的定义方法和style完全一样，但是使用theme必须在AndroidManifest.xml文件中的&lt;application&gt;或者&lt;activity&gt;中定义。想让整个程序都使用这个主题，写在&lt;application android:theme=&quot;&quot;&gt;中；想让程序中的某个Activity使用，写在&lt;activity android:theme=&quot;&quot;&gt;中；</li>
+<li><font color=red>remote</font>：操作远端仓库</li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git remote</td>
+<td>查看远端别名</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote -v</td>
+<td>查看远端别名以及实际链接地址</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote add [alias] [url]</td>
+<td>将url地址和以alias的别名添加为本地的远端仓库（就是将本地仓库与远端仓库建立连接）</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote rm [alias]</td>
+<td>删除远端仓库</td>
+</tr>
+</tbody>
+</table>
 
 
 		</div>

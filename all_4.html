@@ -52,6 +52,44 @@
 
       
         <li class="divider"></li>
+        <li><label>第三方库</label></li>
+
+          
+            <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+          
+            <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+          
+            <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+          
+            <li><a title="支付" href="15632684444086.html">支付</a></li>
+          
+            <li><a title="推送" href="15632684365504.html">推送</a></li>
+          
+            <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+          
+            <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+          
+            <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+          
+            <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+          
+            <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+          
+            <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+          
+            <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+          
+            <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+          
+            <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+          
+            <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+          
+            <li><a title="OkHttp" href="15632682616090.html">OkHttp</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>Android功能</label></li>
 
           
@@ -220,6 +258,42 @@
                         
 
                     
+                      <li class="side-title"><span>第三方库</span></li>
+                        
+                          <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+                        
+                          <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+                        
+                          <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+                        
+                          <li><a title="支付" href="15632684444086.html">支付</a></li>
+                        
+                          <li><a title="推送" href="15632684365504.html">推送</a></li>
+                        
+                          <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+                        
+                          <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+                        
+                          <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+                        
+                          <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+                        
+                          <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+                        
+                          <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+                        
+                          <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+                        
+                          <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+                        
+                          <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+                        
+                          <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+                        
+                          <li><a title="OkHttp" href="15632682616090.html">OkHttp</a></li>
+                        
+
+                    
                       <li class="side-title"><span>Android功能</span></li>
                         
                           <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
@@ -362,65 +436,43 @@
 
 	
 		<div class="markdown-body">
-		<h1>ListView</h1>
+		<h1>Activity</h1>
 
-		<h2 id="toc_0">ListView的常用属性</h2>
-
-<ul>
-<li><font color=red>transcriptMode</font>:该属性设置当数据发生变化时，ListView是否会滚动到ListView的底部；可取值：disable、normal、alwaysScroll，默认值是disable;<br/>
-&emsp;&emsp;disable就是禁用，不会在数据发生变化之后进行ListView的滚动；normal指如果当前最后一个Item在ListView的显示范围之内，ListView在发生了数据变化之后会滚动到底部，否则不会滚动到底部；alwaysScroll指ListView在发生数据变化之后会强制滚动到底部；<br/>
-&emsp;&emsp;setTranscriptMode(int mode):方法可取值ListView.TRANSCRIPT_MODE_DISABLED、ListView.TRANSCRIPT_MODE_NORMAL、ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL；<br/>
-&emsp;&emsp;如果，我们是在数据List的底部添加数据，那么滚动到ListView底部会正好看到我们添加的数据，但是如果我们在List的顶部添加数据，滚动到ListView底部就不是我们的预期了，所以要根据业务来设置该属性；</li>
-<li><font color=red>listSelector</font>:设置当Item被点击时的背景颜色；</li>
-<li><font color=red>divider</font>:设置分割线，可以是颜色也可以是Drawable，ListView有默认的分割线，但是如果设置了这个属性，那么必须设置dividerHeight这个属性，否则会不显示分割线；</li>
-<li><font color=red>dividerHeight</font>:设置分割线的高度；</li>
-<li><font color=red>stackFromBottom</font>:设置数据显示List的顶部数据还是底部数据；为true则会直接滚动到ListView的底部；</li>
-<li><font color=red>scrollbars</font>:设置是否显示滚动条，可取值vertical、horizontal、none；<br/>
-&emsp;&emsp;对ListView来说，它只能垂直滚动，将scrollbars设置成horizontal或者none效果都是一样的，也就是不会出现滚动条。所以如果不希望ListView显示滚动条，就将scrollbars设置成none。此外，如果scrollbars设置成none，那么其他的滚动条相关的配置都不会有效果。</li>
-</ul>
-
-<h2 id="toc_1">ListView常用的场景</h2>
+		<h2 id="toc_0">注意事项</h2>
 
 <ul>
-<li>(1).<font color=red>设置自定义的快速滚动条</font>:在application的theme中添加以下两行代码：<br/></li>
+<li>startActivity（）方法最终调用的是startActivityForResult()方法，只是startActivity()的实现是startActivityForResult()方法内部的请求码requestCode固定为-1，所以如果使用startActivityForResult()方法时，请求码写成了-1，那么就相当于调用了startActivity()方法，onActivityResult()方法不会被回调；</li>
+<li>设置启动页：<br/>
+我们一般会设置启动页的style的android:windowBackground的属性来设置启动页的背景图片，如果不需要在启动页设置除了背景图片以外的控件，那么甚至可以不需要在启动页SplashActivity页面中使用setContentView(R.layout.activity_splash)方法，就直接在onCreate()方法中进行页面跳转或者数据处理；</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">&lt;item name=&quot;android:fastScrollThumbDrawable&quot;&gt;@mipmap/icon_scrollbar&lt;/item&gt;//设置自定义的滚动条图片；
-&lt;item name=&quot;android:fastScrollTrackDrawable&quot;&gt;@null&lt;/item&gt;//设置滚动条轨迹；
-</code></pre>
+<pre class="line-numbers"><code class="language-java">&lt;!--启动页style--&gt;
+&lt;style name=&quot;AppSplashTheme&quot; parent=&quot;AppTheme&quot;&gt;
+    &lt;item name=&quot;android:windowBackground&quot;&gt;@mipmap/ic_launcher&lt;/item&gt;
+&lt;/style&gt;
 
-<p>在ListView的xml文件中设置以下属性：<br/></p>
+&lt;!-- 启动页面 --&gt;
+&lt;activity
+    android:name=&quot;.SplashActivity&quot;
+    android:screenOrientation=&quot;portrait&quot;
+    android:theme=&quot;@style/AppSplashTheme&quot;
+    &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
 
-<pre class="line-numbers"><code class="language-java">android:scrollbars=&quot;none&quot;//取消先前默认的滚动条；
-android:fastScrollEnabled=&quot;true&quot;//设置是否启用快速滚动条；
-android:fastScrollAlwaysVisible=&quot;true&quot;//设置快速滚动条是否一直显示；
-</code></pre>
-<br/>
-<p><font color=red>项目地址</font>：<a href="https://github.com/loveyoyo/SimpleDemo/blob/master/app/src/main/java/com/kang/demo/widget/ListViewActivity.java">https://github.com/loveyoyo/SimpleDemo/blob/master/app/src/main/java/com/kang/demo/widget/ListViewActivity.java</a></p>
-
-<ul>
-<li>(2).<font color=red>记录ListView先前滚动的位置</font><br/>
-&emsp;&emsp;实现原理：记录下ListView在页面内可视区域的位置，然后存储到SharedPreferences中，然后在再次进入页面时读取位置，滑动到先前的位置；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//记录位置;
+//SplashActivity页面；
 @Override
-    protected void onPause() {
-        super.onPause();
-        Log.e(&quot;===MockingJay===&quot;, &quot;onPause.....&quot;);
-        ListView listView = findViewById(R.id.listViewActivity_lv1);
-        int pos = listView.getFirstVisiblePosition();
-        SPUtil.putInt(this, &quot;sp_position&quot;, pos);
-    }
-//获取位置并滑动到该位置,进行延迟操作，否则可能不会实现效果;    
-final int position = SPUtil.getInt(this, &quot;sp_position&quot;, 0);
-mListViewActivityLv1.postDelayed(new Runnable() {
-    @Override
-    public void run() {
-        mListViewActivityLv1.setSelection(position);
-        }
-}, 300 + 50);    
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    //进行相应的业务逻辑操作；    
+}
 </code></pre>
+
+<p>不过，一般我们都会设置启动页的背景图占据全屏幕。就需要style文件中添加一个属性android:windowFullscreen，设置为true；<br/>
+还有，带有底部导航栏的手机，需要一个属性android:windowDrawsSystemBarBackgrounds，设置为true，不过该属性的使用需要最低兼容版本为API 21，也就是5.0；</p>
 
 
 		</div>

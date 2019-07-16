@@ -52,6 +52,44 @@
 
       
         <li class="divider"></li>
+        <li><label>第三方库</label></li>
+
+          
+            <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+          
+            <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+          
+            <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+          
+            <li><a title="支付" href="15632684444086.html">支付</a></li>
+          
+            <li><a title="推送" href="15632684365504.html">推送</a></li>
+          
+            <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+          
+            <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+          
+            <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+          
+            <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+          
+            <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+          
+            <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+          
+            <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+          
+            <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+          
+            <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+          
+            <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+          
+            <li><a title="OkHttp" href="15632682616090.html">OkHttp</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>Android功能</label></li>
 
           
@@ -220,6 +258,42 @@
                         
 
                     
+                      <li class="side-title"><span>第三方库</span></li>
+                        
+                          <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+                        
+                          <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+                        
+                          <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+                        
+                          <li><a title="支付" href="15632684444086.html">支付</a></li>
+                        
+                          <li><a title="推送" href="15632684365504.html">推送</a></li>
+                        
+                          <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+                        
+                          <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+                        
+                          <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+                        
+                          <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+                        
+                          <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+                        
+                          <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+                        
+                          <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+                        
+                          <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+                        
+                          <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+                        
+                          <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+                        
+                          <li><a title="OkHttp" href="15632682616090.html">OkHttp</a></li>
+                        
+
+                    
                       <li class="side-title"><span>Android功能</span></li>
                         
                           <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
@@ -362,9 +436,45 @@
 
 	
 		<div class="markdown-body">
-		<h1>Service</h1>
+		<h1>组件的生命周期</h1>
 
-		
+		<h2 id="toc_0">constructor：构造函数</h2>
+
+<p>它的第一个语句必须是super（props）。<br/>
+构造函数将在React Native组件被加载前最先调用，并且仅调用一次。这个生命周期函数最大的作用，就是在这里定义状态机变量。</p>
+
+<h2 id="toc_1">componentWillMount：</h2>
+
+<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染（render函数被React Native框架调用执行）前被执行，当它执行完后，render函数会马上被React Native框架调用执行。如果在这个函数里调用setState函数改变了某些状态机变量的值，React Native框架不会执行渲染操作，而是等待这个函数执行完成后再执行初始渲染。React Native组件的子组件也有componentWillMount函数，并且会在父组件的componentWillMount函数之后被调用。<br/>
+如果开发者需要从本地存储中读取数据用于显示，那么在这个函数里进行读取是一个很好的时机。</p>
+
+<h1 id="toc_2">componentDidMount：</h1>
+
+<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染执行完成后会马上被调用。在React Native组件生命周期的这个时间点之后，开发者可以通过子组件的引用来访问、操作任何子组件。React Native组件的子组件也有componentDidMount函数，并且会在父组件的componentDidMount函数之前被调用。<br/>
+如果React Native应用需要在程序启动显示初始界面后从网络侧获取数据，那么把从网络侧获取数据的代码放在这个函数里是一个不错的选择。</p>
+
+<h1 id="toc_3">componentWillReceiveProps：</h1>
+
+<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的props时，这个函数将被调用。这个函数接受一个object参数，object里是新的props。<br/>
+当React Native初次被渲染时，componentWillReceiveProps函数并不会被触发。<br/>
+如果新的props会导致界面重新渲染，这个函数将在渲染前被执行。在这个函数中，老的props可以通过this.props访问，新的props在传入的object中。如果在这个函数中通过调用this.setState函数改变某些状态机变量的值，React Native框架不会执行对这些状态机变量改变的渲染，而是等componentWillReceiveProps函数执行完成后一起渲染。</p>
+
+<h2 id="toc_4">shouldComponentUpdate：</h2>
+
+<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的state或者props时，这个函数将被调用。它接受两个object参数，其中第一个是新的props，第二个是新的state。这个函数需要返回一个布尔值，告诉React Native框架针对这次改变，React Native是否需要重新渲染本组件。</p>
+
+<h2 id="toc_5">componentWillUpdate：</h2>
+
+<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件前会调用这个函数。开发者可以在这个函数中为即将发生的重新渲染做一些准备工作，但开发者不能在这个函数中通过this.setState再次改变状态机变量的值。如果需要改变，则在componentWillReceiveProps函数中进行改变。</p>
+
+<h2 id="toc_6">componentDidUpdate：</h2>
+
+<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件完成后调用这个函数。传入的两个参数是渲染前的props和state。</p>
+
+<h2 id="toc_7">componentWillUnmount：</h2>
+
+<p>在React Native组件被卸载前，这个函数将被执行。</p>
+
 
 		</div>
 	
