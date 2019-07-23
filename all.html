@@ -125,6 +125,8 @@
         <li><label>Android其他</label></li>
 
           
+            <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
+          
             <li><a title="画图" href="15627251763320.html">画图</a></li>
           
             <li><a title="反编译" href="15626395593984.html">反编译</a></li>
@@ -338,6 +340,8 @@
                     
                       <li class="side-title"><span>Android其他</span></li>
                         
+                          <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
+                        
                           <li><a title="画图" href="15627251763320.html">画图</a></li>
                         
                           <li><a title="反编译" href="15626395593984.html">反编译</a></li>
@@ -466,17 +470,31 @@
 
 	
 		<div class="markdown-body">
-		<h1>个人看的节目清单</h1>
+		<h1>内存泄漏</h1>
 
-		<h2 id="toc_0">纪录片</h2>
+		<ul>
+<li><font color=red>静态对象</font>:<br/>
+&emsp;&emsp;当一个static静态对像被调用时，这个对象的生命周期和整个app的生命周期一样长。如果，我们使用的参数Context是Activity或者Service的上下文，那么当Activity被销毁的时候，我们的静态对象仍然持有着Activity的Context，就会导致Activity对象无法被释放回收，就导致了内存泄漏；</li>
+</ul>
 
-<p>1.<font color=red>不好说特想听</font>:<br/>
-&emsp;&emsp;与父母关于自己职业的交流；<br/>
-2.<font color=red>海昏遗梦</font>:<br/>
-&emsp;&emsp;海昏侯墓穴纪录片;<br/>
-3.<font color=red>与陌生人说话</font>:<br/>
-4.<font color=red>我的时代和我</font>:<br/>
-&emsp;&emsp;每期访谈一个人物；</p>
+<pre class="line-numbers"><code class="language-java">public class TestManager{
+    private static TestManager sTestManager;
+    //会造成内存泄漏的方法;
+    public static TestManager getInstance(Context context) {
+        if (sTestManager == null) {
+            sTestManager = new TestManager(context);
+        }
+        return sTestManager;
+    }
+    //不会造成内存泄漏的方法；
+    public static TestManager getInstanceSafe(Context context) {
+        if (sTestManager == null) {
+            sTestManager = new TestManager(context.getApplicationContext());                                               
+        }
+        return sTestManager;
+    } 
+}
+</code></pre>
 
 
 		</div>
