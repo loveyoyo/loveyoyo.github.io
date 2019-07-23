@@ -225,6 +225,12 @@
         <li><label>随想</label></li>
 
           
+            <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
+          
+            <li><a title="偎" href="15637966637605.html">偎</a></li>
+          
+            <li><a title="微" href="15637963868446.html">微</a></li>
+          
             <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
           
             <li><a title="青黄" href="15609363144124.html">青黄</a></li>
@@ -422,6 +428,12 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
+                          <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
+                        
+                          <li><a title="偎" href="15637966637605.html">偎</a></li>
+                        
+                          <li><a title="微" href="15637963868446.html">微</a></li>
+                        
                           <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
                         
                           <li><a title="青黄" href="15609363144124.html">青黄</a></li>
@@ -454,60 +466,55 @@
 
 	
 		<div class="markdown-body">
-		<h1>常用工具类和方法</h1>
+		<h1>网络相关</h1>
 
-		<h2 id="toc_0">单位换算</h2>
+		<h2 id="toc_0">判断当前系统是否设置了代理</h2>
 
-<p>(1).sp转换为px：</p>
-
-<pre class="line-numbers"><code class="language-java">public static float sp2px(Context context, float spValue) {
-    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-    return  spValue * fontScale;
-}
-
-public static int sp2px(Context context, float spValue) {
-    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-    return  (int)(spValue * fontScale + 0.5);
-}
-</code></pre>
-
-<p>(2).px转换为sp：</p>
-
-<pre class="line-numbers"><code class="language-java">public static int px2sp(Context context, float pxValue) {
-    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-    return (int) (pxValue / fontScale + 0.5f);
-}
-
-public static float px2sp(Context context, float pxValue) {
-    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-    return pxValue / fontScale;
+<pre class="line-numbers"><code class="language-java">private boolean isProxy() {
+    String proxyAddress = &quot;&quot;;
+    int proxyPort = 0;
+    if (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.ICE_CREAM_SANDWICH) {            proxyAddress = System.getProperty(&quot;http.proxyHost&quot;);
+        String proxyPortString = System.getProperty(&quot;http.proxyPort&quot;);
+        proxyPort = Integer.parseInt((proxyPortString != null ? proxyPortString : &quot;-1&quot;));
+    } else {
+        proxyAddress = android.net.Proxy.getHost(this);
+        proxyPort = android.net.Proxy.getPort(this);
+    }        
+    if (!TextUtils.isEmpty(proxyAddress) &amp;&amp; proxyPort != -1) {
+        return true;
+    }        
+    return false;
 }
 </code></pre>
 
-<p>(3).dp转换为px：</p>
+<h2 id="toc_1">使用OkHttp设置简单的不允许抓包</h2>
 
-<pre class="line-numbers"><code class="language-java">public static int dp2px(Context context, float dpValue) {
-    float scale = context.getResources().getDisplayMetrics().density;
-    return (int) (dpValue * scale + 0.5f);
-}
+<p>&emsp;&emsp;抓包工具，本质上就是利用中间人攻击的方式，通过这个中间人获取到通信的数据。<br/>
+&emsp;&emsp;而利用这些工具抓包的前提，都是在设备上，设置代理，通常我们直接在 WiFi 连接页面，设置代理即可。<br/>
+&emsp;&emsp;而对于一些常用的网络库，其实是提供了我们设置的代理的接口，我们只需要将其设置成无代理的模式，它就不会去应用系统默认的代理了。<br/>
+&emsp;&emsp;拿比较常用的 OkHttp 来举例，在初始化的时候，就可以通过proxy() 方法，为 OkHttp 设置一个代理。设置为<font color=red>proxy(Proxy.NO_PROXY)</font>,就是不使用代理的模式，它就不会从系统中，读取代理信息，进行网络请求。而是会忽略掉它，直接发送网络请求。以这样的方式，就可以阻止第三方使用 Fiddler 或 Charles 进行抓包。<br/>
+&emsp;&emsp;代码如下：</p>
 
-public static float dp2px(Context context, float dpValue) {
-    float scale = context.getResources().getDisplayMetrics().density;
-    return dpValue * scale;
-}
-</code></pre>
+<pre class="line-numbers"><code class="language-java">OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .proxy(Proxy.NO_PROXY)
+            .build();
+Request request = new Request.Builder()
+        .url(&quot;https://wanandroid.com/wxarticle/chapters/json &quot;)                
+        .build();
+Call call = okHttpClient.newCall(request);
+call.enqueue(new Callback() {
+    @Override
+    public void onFailure(Call call, IOException e) {
+        Log.e(&quot;===MockingJay===&quot;, &quot;getNoHttpData    onFailure...&quot;);
+    }
 
-<p>(4).px转换为dp：</p>
-
-<pre class="line-numbers"><code class="language-java">public static int px2dp(Context context, float pxValue) {
-    float scale = context.getResources().getDisplayMetrics().density;
-    return (int) (pxValue / scale + 0.5f);
-}
-    
-public static float px2dp(Context context, float pxValue) {
-    float scale = context.getResources().getDisplayMetrics().density;
-    return pxValue / scale;
-}
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        Log.e(&quot;===MockingJay===&quot;, &quot;getNoHttpData    onResponse...&quot;);
+        String str = response.body().string();
+        Log.e(&quot;===MockingJay===&quot;, &quot;getNoHttpData    str:&quot; + str);
+    }
+});
 </code></pre>
 
 

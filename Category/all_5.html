@@ -225,6 +225,12 @@
         <li><label>随想</label></li>
 
           
+            <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
+          
+            <li><a title="偎" href="15637966637605.html">偎</a></li>
+          
+            <li><a title="微" href="15637963868446.html">微</a></li>
+          
             <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
           
             <li><a title="青黄" href="15609363144124.html">青黄</a></li>
@@ -422,6 +428,12 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
+                          <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
+                        
+                          <li><a title="偎" href="15637966637605.html">偎</a></li>
+                        
+                          <li><a title="微" href="15637963868446.html">微</a></li>
+                        
                           <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
                         
                           <li><a title="青黄" href="15609363144124.html">青黄</a></li>
@@ -454,20 +466,674 @@
 
 	
 		<div class="markdown-body">
-		<h1>BaseAdapter</h1>
+		<h1>动画</h1>
 
-		<h2 id="toc_0">BaseAdapter中的绘制</h2>
+		<h2 id="toc_0">动画类型</h2>
+
+<p>&emsp;&emsp;在Android动画中，共有两种类型的动画：View Animation(视图动画)和Property Animation(属性动画)。其中，View Animation包括Tween Animation(补间动画)和Frame Animation(逐帧动画)；Property Animation包括ValueAnimator和ObjectAnimator.</p>
 
 <ul>
-<li><font color=red>getCount()</font>:</li>
-<li><font color=red>getView()</font>:</li>
-<li><font color=red>getItem()</font>:</li>
-<li><font color=red>getItemId()</font>:</li>
+<li><font color=red>View Animation</font>（视图动画、Tween动画、补间动画）:在最早的版本中就已经提供了，只能被用来设置View的动画，用到的xml文件放在res/anim目录下，访问时使用R.anim.xxx。也可以放在res/drawable文件夹下，访问时使用R.drawable.xxx。<font color=blue>补间动画创建的是Animation</font>；</li>
+<li><font color=red>Drawable Animation</font>（Frame动画、帧动画）:用来一个一个地显示Drawable的resources，就像放幻灯片一样，其实可以划分到视图动画的类别，用到的图片资源放在res/drawable目录下，<font color=blue>帧动画创建的是AnimationDrawable</font>；</li>
+<li><font color=red>Property Animation</font>（属性动画）:只对Android 3.0以上版本才有效，这种动画可以设置给任何Object，包括那些还没有渲染到屏幕上的对象。这种动画是可扩展的，可以让你自定义任何类型和属性的动画，用到的xml文件放在res/animator目录下，<font color=blue>属性动画创建的是Animator</font>；</li>
 </ul>
 
+<h2 id="toc_1">1.View Animation(视图动画、补间动画)</h2>
+
+<h3 id="toc_2">具体用到的类</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">java类名</th>
+<th style="text-align: center">xml关键字</th>
+<th style="text-align: center">描述信息</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">AlphaAnimation</td>
+<td style="text-align: center">&lt;alpha&gt;</td>
+<td style="text-align: center">渐变透明度动画效果</td>
+</tr>
+<tr>
+<td style="text-align: center">RotateAnimation</td>
+<td style="text-align: center">&lt;rotate&gt;</td>
+<td style="text-align: center">画面旋转动画效果</td>
+</tr>
+<tr>
+<td style="text-align: center">ScaleAnimation</td>
+<td style="text-align: center">&lt;scale&gt;</td>
+<td style="text-align: center">尺寸伸缩动画效果</td>
+</tr>
+<tr>
+<td style="text-align: center">TranslateAnimation</td>
+<td style="text-align: center">&lt;translate&gt;</td>
+<td style="text-align: center">移动动画效果</td>
+</tr>
+</tbody>
+</table>
+
+<p>Animation抽象类是所有视图动画的基类，所以基类会提供一些通用的动画属性方法，如下所示：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">java方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:detachWallpaper</td>
+<td style="text-align: center">setDetachWallpaper(boolean)</td>
+<td style="text-align: center">是否在壁纸上运行</td>
+</tr>
+<tr>
+<td style="text-align: center">android:duration</td>
+<td style="text-align: center">setDuration(long)</td>
+<td style="text-align: center">动画持续时间，毫秒为单位</td>
+</tr>
+<tr>
+<td style="text-align: center">android:fillAfter</td>
+<td style="text-align: center">setFillAfter(boolean)</td>
+<td style="text-align: center">控件动画结束时是否保持动画最后的状态</td>
+</tr>
+<tr>
+<td style="text-align: center">android:fillBefore</td>
+<td style="text-align: center">setFillBefore(boolean)</td>
+<td style="text-align: center">控件动画结束时是否还原到开始动画前的状态</td>
+</tr>
+<tr>
+<td style="text-align: center">android:fillEnabled</td>
+<td style="text-align: center">setFillEnabled(boolean)</td>
+<td style="text-align: center">与android:fillBefore效果相同</td>
+</tr>
+<tr>
+<td style="text-align: center">android:interpolator</td>
+<td style="text-align: center">setInterpolator(Interpolator)</td>
+<td style="text-align: center">设置插值器（指定的动画效果，如回弹等）</td>
+</tr>
+<tr>
+<td style="text-align: center">android:repeatCount</td>
+<td style="text-align: center">setRepeatCount(int)</td>
+<td style="text-align: center">重复次数</td>
+</tr>
+<tr>
+<td style="text-align: center">android:repeatMode</td>
+<td style="text-align: center">setRepeatMode(int)</td>
+<td style="text-align: center">重复类型有两个值，reverse表示倒序回放，restart表示从头播放</td>
+</tr>
+<tr>
+<td style="text-align: center">android:startOffset</td>
+<td style="text-align: center">setStartOffset(long)</td>
+<td style="text-align: center">调用start函数之后等待开始运行的时间，单位为毫秒</td>
+</tr>
+<tr>
+<td style="text-align: center">android:zAdjustment</td>
+<td style="text-align: center">setZAdjustment(int)</td>
+<td style="text-align: center">表示被设置动画的内容运行在Z轴上的位置（top</td>
+</tr>
+</tbody>
+</table>
+
+<p>以上属性，每种视图动画都具备这些属性，接下来是每种视图动画的特有属性：<br/>
+(1).Alpha特有属性：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">java方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:fromAlpha</td>
+<td style="text-align: center">AlphaAnimation(float fromAlpha,...)</td>
+<td style="text-align: center">动画开始的透明度（0.0-1.0，0.0是全透明，1.0是不透明）</td>
+</tr>
+<tr>
+<td style="text-align: center">android:toAlpha</td>
+<td style="text-align: center">AlphaAnimation(...,float toAlpha)</td>
+<td style="text-align: center">动画结束的透明度，同上</td>
+</tr>
+</tbody>
+</table>
+
+<p>(2).Rotate特有属性：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">java方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:fromDegrees</td>
+<td style="text-align: center">RotateAnimation(float fromDegrees,...)</td>
+<td style="text-align: center">旋转开始角度，正代表顺时针度数，负代表逆时针度数</td>
+</tr>
+<tr>
+<td style="text-align: center">android:toDegrees</td>
+<td style="text-align: center">RotateAnimation(...,float toDegrees,...)</td>
+<td style="text-align: center">旋转结束角度，正代表顺时针度数，负代表逆时针度数</td>
+</tr>
+<tr>
+<td style="text-align: center">android:pivotX</td>
+<td style="text-align: center">RotateAnimation(...,float pivotX,...)</td>
+<td style="text-align: center">缩放起点X坐标（数值、百分数、百分数p，比如50表示当前View左上角坐标家50px为起始点、50%表示以当前View的左上角加上当前View宽高的50%做为初始点、50%p表示以当前View的左上角加上父控件宽高的50%做为初始点）</td>
+</tr>
+<tr>
+<td style="text-align: center">android:pivotY</td>
+<td style="text-align: center">RotateAnimation(...,float pivotY)</td>
+<td style="text-align: center">缩放起点Y坐标，同上</td>
+</tr>
+</tbody>
+</table>
+
+<p>(3).Scale特有属性：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">java方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:fromXScale</td>
+<td style="text-align: center">ScaleAnimation(float fromX,...)</td>
+<td style="text-align: center">初始X轴缩放比例，1.0表示无变化</td>
+</tr>
+<tr>
+<td style="text-align: center">android:toXScale</td>
+<td style="text-align: center">ScaleAnimation(...,float toX,...)</td>
+<td style="text-align: center">结束X轴缩放比例</td>
+</tr>
+<tr>
+<td style="text-align: center">android:fromYScale</td>
+<td style="text-align: center">ScaleAnimation(...,float fromY,...)</td>
+<td style="text-align: center">初始Y轴缩放比例</td>
+</tr>
+<tr>
+<td style="text-align: center">android:toYScale</td>
+<td style="text-align: center">ScaleAnimation(...,float toY,...)</td>
+<td style="text-align: center">结束Y轴缩放比例</td>
+</tr>
+<tr>
+<td style="text-align: center">android:pivotX</td>
+<td style="text-align: center">ScaleAnimation(...,float pivotX,...)</td>
+<td style="text-align: center">缩放起点X轴坐标（数值、百分数、百分数p，譬如50表示以当前View左上角坐标加50px为初始点、50%表示以当前View的左上角加上当前View宽高的50%做为初始点、50%p表示以当前View的左上角加上父控件宽高的50%做为初始点）</td>
+</tr>
+<tr>
+<td style="text-align: center">android:pivotY</td>
+<td style="text-align: center">ScaleAnimation(...,float pivotY)</td>
+<td style="text-align: center">缩放起点Y轴坐标，同上</td>
+</tr>
+</tbody>
+</table>
+
+<p>(4).Translate特有属性：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">java方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:fromXDelta</td>
+<td style="text-align: center">TranslateAnimation(float fromXDelta,...)</td>
+<td style="text-align: center">起始点X轴坐标（数值、百分数、百分数p，譬如50表示以当前View左上角坐标加50px为初始点、50%表示以当前View的左上角加上当前View宽高的50%做为初始点、50%p表示以当前View的左上角加上父控件宽高的50%做为初始点）</td>
+</tr>
+<tr>
+<td style="text-align: center">android:fromYDelta</td>
+<td style="text-align: center">TranslateAnimation(...,float fromYDelta,...)</td>
+<td style="text-align: center">起始点Y轴坐标，同上</td>
+</tr>
+<tr>
+<td style="text-align: center">android:toXDelta</td>
+<td style="text-align: center">TranslateAnimation(...,float toXDelta,...)</td>
+<td style="text-align: center">结束点X轴坐标，同上</td>
+</tr>
+<tr>
+<td style="text-align: center">android:toYDelta</td>
+<td style="text-align: center">TranslateAnimation(...,float toYDelta)</td>
+<td style="text-align: center">结束点Y轴坐标，同上</td>
+</tr>
+</tbody>
+</table>
+
+<p>AnimationSet继承自Animation，是上面四种的组合容器管理类，没有自己特有的属性，它的属性继承自Animation，所以，当我们对&lt;set&gt;标签使用Animation的属性时，会对该标签下的所有子控件都产生影响。</p>
+
+<p>视图动画的举例：</p>
+
+<pre class="line-numbers"><code class="language-text">//动画的xml文件;
+&lt;alpha
+    android:duration=&quot;2000&quot;
+    android:fromAlpha=&quot;1.0&quot;
+    android:toAlpha=&quot;0.1&quot; /&gt;
+</code></pre>
+
+<pre class="line-numbers"><code class="language-text">//开始动画;
+Animation animationAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha_anim);
+mImageView.startAnimation(animationAlpha);
+</code></pre>
+
+<pre class="line-numbers"><code class="language-text">//取消动画;
+mImageView.clearAnimation(animationAlpha);
+</code></pre>
+
+<p>Animation还有如下常用的方法：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">Animation类的方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">reset()</td>
+<td style="text-align: center">重置Animation的初始化</td>
+</tr>
+<tr>
+<td style="text-align: center">cancel()</td>
+<td style="text-align: center">取消Animation动画</td>
+</tr>
+<tr>
+<td style="text-align: center">start()</td>
+<td style="text-align: center">开始Animation动画</td>
+</tr>
+<tr>
+<td style="text-align: center">setAnimationListener(AnimationListener listener)</td>
+<td style="text-align: center">给当前Animation设置动画监听</td>
+</tr>
+<tr>
+<td style="text-align: center">hasStarted()</td>
+<td style="text-align: center">判断当前Animation是否开始</td>
+</tr>
+<tr>
+<td style="text-align: center">hasEnded()</td>
+<td style="text-align: center">判断当前Animation是否结束</td>
+</tr>
+</tbody>
+</table>
+
+<p>视图动画只能给View使用，那么View中和动画相关的常用方法如下：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">View类的常用动画操作方法</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">startAnimation(Animation animation)</td>
+<td style="text-align: center">对当前View开始设置Animation动画</td>
+</tr>
+<tr>
+<td style="text-align: center">clearAnimation()</td>
+<td style="text-align: center">取消对View在执行的Animation动画</td>
+</tr>
+</tbody>
+</table>
+
+<p><font color=red>特别注意事项</font>：视图动画执行之后并未改变View的真实布局属性值，切记这一点。譬如我们在Activity中有一个Button在屏幕上方，我们设置了平移动画移动到屏幕下方然后保持动画最后执行状态呆在屏幕下方，这时如果点击屏幕下方动画执行之后的Button是没有任何反应的，而点击原来屏幕上方没有Button的地方却响应的是点击Button的事件。就是说执行完视图动画后，View依旧是执行动画之前的状态和位置。</p>
+
 <blockquote>
-<p>当系统开始绘制ListView的时候，首先调用getCount()方法。得到它的返回值，即ListView的长度。然后系统调用getView()方法，根据这个长度逐一绘制ListView的每一行。也就是说，如果让getCount()返回1，那么只显示一行。而getCount()和getItemId()则在需要处理和取得Adapter中的数据时调用。在getView()方法中，当convertView为空时，用setTag()方法为每个View绑定一个存放控件的ViewHolder对象。当convertView不为空，重复利用已经创建的view的时候，使用getTag()方法获取绑定的ViewHolder对象，这样就避免了findViewById()对控件的层层查询，而是快速定位到控件。</p>
+<p><font color=red>注意事项</font>：<br/>
+(1).使用&lt;set&gt;做为xml动画文件的跟标签时，设置repeatCount=&quot;infinite&quot;时，是无效的，但是把这个属性放在&lt;set&gt;下面的具体的动画标签中就可以实现了，如放在&lt;alpha&gt;标签中；<br/>
+(2).duration的时间包含了startOffset的时间，比如duration设置为2000，startOffset设置为1000，那么实际动画时间只有duration-startOffset=1000；</p>
 </blockquote>
+
+<h3 id="toc_3">插值器Interpolator</h3>
+
+<ul>
+<li>作用是可以控制动画的变化速率，可以通过 @android:anim 来选择不同的插值器。系统已经实现了许多插值器，如下：</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">java类</th>
+<th style="text-align: center">xml id值</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">AccelerateDecelerateInterpolator</td>
+<td style="text-align: center">@android:anim/accelerate_decelerate_interpolator</td>
+<td style="text-align: center">动画始末速率较慢，中间加速</td>
+</tr>
+<tr>
+<td style="text-align: center">AccelerateInterpolator</td>
+<td style="text-align: center">@android:anim/accelerate_interpolator</td>
+<td style="text-align: center">动画开始速率较慢，之后慢慢加速</td>
+</tr>
+<tr>
+<td style="text-align: center">AnticipateInterpolator</td>
+<td style="text-align: center">@android:anim/anticipate_interpolator</td>
+<td style="text-align: center">开始的时候从后向前甩</td>
+</tr>
+<tr>
+<td style="text-align: center">AnticipateOvershootInterpolator</td>
+<td style="text-align: center">@android:anim/anticipate_overshoot_interpolator</td>
+<td style="text-align: center">类似上面的AnticipateInterpolator</td>
+</tr>
+<tr>
+<td style="text-align: center">BounceInterpolator</td>
+<td style="text-align: center">@android:anim/bounce_interpolator</td>
+<td style="text-align: center">动画结束时弹起</td>
+</tr>
+<tr>
+<td style="text-align: center">CycleInterpolator</td>
+<td style="text-align: center">@android:anim/cycle_interpolator</td>
+<td style="text-align: center">循环播放速率改变为正弦曲线</td>
+</tr>
+<tr>
+<td style="text-align: center">DecelerateInterpolator</td>
+<td style="text-align: center">@android:anim/decelerate_interpolator</td>
+<td style="text-align: center">动画开始块然后慢</td>
+</tr>
+<tr>
+<td style="text-align: center">LinearInterpolator</td>
+<td style="text-align: center">@android:anim/linear_interpolator</td>
+<td style="text-align: center">动画匀速改变</td>
+</tr>
+<tr>
+<td style="text-align: center">OvershootInterpolator</td>
+<td style="text-align: center">@android:anim/overshoot_interpolator</td>
+<td style="text-align: center">向前弹出一定值之后回到原来位置</td>
+</tr>
+<tr>
+<td style="text-align: center">PathInterpolator</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">新增，定义路径坐标后按照路径来跑</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="line-numbers"><code class="language-text">//插值器在xml使用；
+&lt;set android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;&gt;
+    ...
+&lt;/set&gt;
+</code></pre>
+
+<ul>
+<li>自定义插值器：<br/>
+&emsp;&emsp;插值器的自定义分为两种实现方式，xml自定义实现（其实就是对现有的插值器的一些属性修改）或者javav代码实现；
+<font color=red>xml自定义插值器</font>：
+(1).在res/anim目录下创建xxx.xml文件；<br/>
+(2).修改准备自定义跌插值器；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;InterpolatorName xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:attribute_name=&quot;value&quot;
+    /&gt;
+</code></pre>
+
+<p>(3).在视图动画文件中引用该文件即可；<br/>
+修改现有插值器的一些属性，但是有些插值器却不具备修改属性，具体如下：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">插值器</th>
+<th style="text-align: center">备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">&lt;accelerateDecelerateInterpolator&gt;</td>
+<td style="text-align: center">无可自定义的attribute</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;accelerateInterpolator&gt;</td>
+<td style="text-align: center">android:factor 浮点值，加速速率（默认值为1）</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;anticipateInterploator&gt;</td>
+<td style="text-align: center">android:tension 浮点值，起始点后拉的张力数（默认值为2）</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;anticipateOvershootInterpolator&gt;</td>
+<td style="text-align: center">android:tension 浮点值，起始点后拉的张力数（默认值为2）。android:extraTension 浮点值，拉力的倍数（默认值为1.5）。</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;bounceInterpolator&gt;</td>
+<td style="text-align: center">无可自定义的attribute。</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;cycleInterplolator&gt;</td>
+<td style="text-align: center">android:cycles 整形，循环的个数（默认为1）。</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;decelerateInterpolator&gt;</td>
+<td style="text-align: center">android:factor 浮点值，减速的速率（默认为1）。</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;linearInterpolator&gt;</td>
+<td style="text-align: center">无可自定义的attribute。</td>
+</tr>
+<tr>
+<td style="text-align: center">&lt;overshootInterpolator&gt;</td>
+<td style="text-align: center">android:tension 浮点值，超出终点后的张力（默认为2）。</td>
+</tr>
+</tbody>
+</table>
+
+<p><font color=red>java代码实现插值器</font>：java自定义插值器其实算是插值器的升级，也就是说如果我们修改xml属性还不能满足需求，那就可以选择通过java代码来实现；<br/>
+&emsp;&emsp;所有的Interpolator都实现了Interpolator接口，而Interpolator接口又继承自 TimeInterpolator，TimeInterpolator接口定义了一个float getInterpolation(float input);方法，这个方法是由系统调用的，其中的参数input代表动画的时间，在0和1之间，也就是开始和结束之间。<br/>
+&emsp;&emsp;如下是一个动画始末速率较慢、中间加速的AccelerateDecelerateInterpolator插值器：</p>
+
+<pre class="line-numbers"><code class="language-text">public class AccelerateDecelerateInterpolator extends BaseInterpolator
+        implements NativeInterpolatorFactory {
+    ......
+    public float getInterpolation(float input) {
+        return (float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f;
+    }
+    ......
+}
+</code></pre>
+
+<h2 id="toc_4">2.Drawable Animation(帧动画)</h2>
+
+<p>&emsp;&emsp;这种动画的实质是Drawable，所以这种动画的xml定义文件一般放在res/drawable目录下。<br/>
+xml文件中的属性：<br/>
+&lt;animation-list&gt; 必须是根节点，包含一个或者多个&lt;item&gt;元素，属性有：android:oneshot (true代表只执行一次，false循环执行。)<br/>
+&lt;item&gt; 类似一帧的动画资源。<br/>
+&lt;item&gt; animation-list的子项，包含属性如下：android:drawable 一个frame的Drawable资源。<br/>
+android:duration 一个frame显示多长时间。<br/>
+&emsp;&emsp;在给ImageView设置动画资源时，有两种方法，既可以通过android:src实现，也可以通过android:background实现。<br/>
+&emsp;&emsp;实现逐帧动画，需要先拿到ImageView中所设置的动画资源，然后利用AnimationDrawable的start（）方法开始逐帧动画。当通过android:src设置动画资源时，对应的取出方式是mImageView.getDrawable();如果通过Android:background设置动画资源时，对应的取出方式是mImageView.getBackground()；</p>
+
+<pre class="line-numbers"><code class="language-text">//xml动画文件；
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;animation-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:oneshot=&quot;true&quot;
+    &gt;
+    &lt;item android:drawable=&quot;@mipmap/ic_launcher&quot; android:duration=&quot;1000&quot;/&gt;
+    &lt;item android:drawable=&quot;@mipmap/icon_scrollbar&quot; android:duration=&quot;1000&quot;/&gt;
+    &lt;item android:drawable=&quot;@mipmap/ic_launcher_round&quot; android:duration=&quot;1000&quot;/&gt;
+&lt;/animation-list&gt;
+</code></pre>
+
+<pre class="line-numbers"><code class="language-text">//java代码执行；
+mImageView.setBackgroundResource(R.drawable.drawable_anim);
+AnimationDrawable animationDrawable = (AnimationDrawable)mImageView.getBackground();
+animationDrawable.start();
+</code></pre>
+
+<p><font color=red>特别注意</font>：如果AnimationDrawable的start()方法不能在Activity的onCreate方法中调运，因为AnimationDrawable还未完全附着到window上，所以最好的调运时机是onWindowFocusChanged()方法中。</p>
+
+<h2 id="toc_5">3.Property Animation(属性动画)</h2>
+
+<p>属性动画的原理就是修改控件的属性值；<br/>
+属性动画中的几个常用类的之间关系：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">类</th>
+<th style="text-align: center">关系</th>
+<th style="text-align: center">xml关键字</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">Animator</td>
+<td style="text-align: center">extends Object</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: center">AnimatorSet</td>
+<td style="text-align: center">extends Animator</td>
+<td style="text-align: center">&lt;set&gt;放置在res/animator/目录下</td>
+<td style="text-align: center">动画集合</td>
+</tr>
+<tr>
+<td style="text-align: center">ValueAnimator</td>
+<td style="text-align: center">extends Anitator</td>
+<td style="text-align: center">&lt;animator&gt;放置在res/animator/目录下</td>
+<td style="text-align: center">在一个特定的时间里执行一个动画</td>
+</tr>
+<tr>
+<td style="text-align: center">ObjectAnimator</td>
+<td style="text-align: center">extends ValueAnimator</td>
+<td style="text-align: center">&lt;objectAnimator&gt;放置在res/animator/目录下</td>
+<td style="text-align: center">一个对象的一个属性动画</td>
+</tr>
+<tr>
+<td style="text-align: center">TimeAnimator</td>
+<td style="text-align: center">extends ValueAnimator</td>
+<td style="text-align: center">不支持xml</td>
+<td style="text-align: center">时序监听回调工具</td>
+</tr>
+<tr>
+<td style="text-align: center">FakeAnimator</td>
+<td style="text-align: center">@hide</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: center">RenderNodeAnimator</td>
+<td style="text-align: center">@hide</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: center">RevealAnimator</td>
+<td style="text-align: center">@hide</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>&lt;set&gt;标签：</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:ordering</td>
+<td style="text-align: center">控制子动画启动方式时先后有序还是同时进行。sequentially：动画按照先后顺序，together（默认）：动画同时启动；</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>&lt;objectAnimator&gt;标签:</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">xml属性</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">android:propertyName</td>
+<td style="text-align: center">String类型，必须要设置的节点属性，代表要执行动画的属性（通过名字引用），辟如你可以指定了一个View的”alpha” 或者 “backgroundColor” ，这个objectAnimator元素没有对外说明target属性，所以你不能在XML中设置执行这个动画，必须通过调用 loadAnimator()方法加载你的XML动画资源，然后调用setTarget()应用到具备这个属性的目标对象上（譬如TextView）。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:valueFrom</td>
+<td style="text-align: center">float、int或者color类型,动画的起始点，如果没有指定，系统会通过属性的get方法获取，颜色也是6位十六进制的数字表示。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:valueTo</td>
+<td style="text-align: center">float、int或者color类型，必须要设置的节点属性，表明动画结束的点；如果是颜色的话，由6位十六进制的数字表示。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:duration</td>
+<td style="text-align: center">动画的时长，int类型，以毫秒为单位，默认为300毫秒。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:startOffset</td>
+<td style="text-align: center">动画延迟的时间，从调用start方法后开始计算，int型，毫秒为单位。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:repeatCount</td>
+<td style="text-align: center">一个动画的重复次数，int型，”-1“表示无限循环，”1“表示动画在第一次执行完成后重复执行一次，也就是两次，默认为0，不重复执行。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:repeatMode</td>
+<td style="text-align: center">重复模式：int型，当一个动画执行完的时候应该如何处理。该值必须是正数或者是-1，“reverse”会使得按照动画向相反的方向执行，可实现类似钟摆效果。“repeat”会使得动画每次都从头开始循环。</td>
+</tr>
+<tr>
+<td style="text-align: center">android:valueType</td>
+<td style="text-align: center">关键参数，如果该value是一个颜色，那么就不需要指定，因为动画框架会自动的处理颜色值。有intType和floatType（默认）两种：分别说明动画值为int和float型。还有colorType和pathType;</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="toc_6">在代码中使用动画：</h4>
+
+<pre class="line-numbers"><code class="language-text">Animator mAnimator = AnimatorInflater.loadAnimator(this, R.animator.alpha_animator);
+mAnimator.setTarget(mImageView);
+mAnimator.start();
+</code></pre>
 
 
 		</div>
