@@ -47,6 +47,8 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
 
@@ -54,6 +56,8 @@
         <li class="divider"></li>
         <li><label>四大组件</label></li>
 
+          
+            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -68,6 +72,8 @@
         <li class="divider"></li>
         <li><label>Android组件</label></li>
 
+          
+            <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
           
@@ -124,6 +130,8 @@
         <li class="divider"></li>
         <li><label>Android其他</label></li>
 
+          
+            <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
           
             <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
           
@@ -272,11 +280,15 @@
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
                         
+                          <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -289,6 +301,8 @@
 
                     
                       <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
                         
@@ -339,6 +353,8 @@
 
                     
                       <li class="side-title"><span>Android其他</span></li>
+                        
+                          <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
                         
                           <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
                         
@@ -470,106 +486,44 @@
 
 	
 		<div class="markdown-body">
-		<h1>React-Native零碎</h1>
+		<h1>组件的生命周期</h1>
 
-		<ul>
-<li><font color=red>BackAndroid</font>已经被废弃，改用BackHandler。不过，退出app的方法没变，依旧是exitApp()；</li>
-</ul>
+		<h2 id="toc_0">constructor：构造函数</h2>
 
-<pre class="line-numbers"><code class="language-java">BackHandler.exitApp();
-</code></pre>
+<p>它的第一个语句必须是super（props）。<br/>
+构造函数将在React Native组件被加载前最先调用，并且仅调用一次。这个生命周期函数最大的作用，就是在这里定义状态机变量。</p>
 
-<p>使用BackHandler监听事件:addEventListener()</p>
+<h2 id="toc_1">componentWillMount：</h2>
 
-<pre class="line-numbers"><code class="language-java">//在constructor(props) {}中写；
-BackHandler.addEventListener(&#39;hardwareBackPress&#39;,this.backHandler);
+<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染（render函数被React Native框架调用执行）前被执行，当它执行完后，render函数会马上被React Native框架调用执行。如果在这个函数里调用setState函数改变了某些状态机变量的值，React Native框架不会执行渲染操作，而是等待这个函数执行完成后再执行初始渲染。React Native组件的子组件也有componentWillMount函数，并且会在父组件的componentWillMount函数之后被调用。<br/>
+如果开发者需要从本地存储中读取数据用于显示，那么在这个函数里进行读取是一个很好的时机。</p>
 
-//具体执行的方法；
-backHandler(){
-    console.log(&#39;按下了物理返回键...&#39;); 
-}
+<h1 id="toc_2">componentDidMount：</h1>
 
-//在componentWillUnmount()方法中移除监听；
-componentWillUnmount() {
-    removeEventListener(&#39;hardwareBackPress&#39;, this.backHandler);
-}
-</code></pre>
+<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染执行完成后会马上被调用。在React Native组件生命周期的这个时间点之后，开发者可以通过子组件的引用来访问、操作任何子组件。React Native组件的子组件也有componentDidMount函数，并且会在父组件的componentDidMount函数之前被调用。<br/>
+如果React Native应用需要在程序启动显示初始界面后从网络侧获取数据，那么把从网络侧获取数据的代码放在这个函数里是一个不错的选择。</p>
 
-<ul>
-<li><font color=red>Alert</font>：弹窗提示。</li>
-</ul>
+<h1 id="toc_3">componentWillReceiveProps：</h1>
 
-<pre class="line-numbers"><code class="language-java">getAlert() {
-    Alert.alert(&#39;弹出框标题提示语&#39;,
-        &#39;弹出框正文提示语&#39;,
-        [{ text: &#39;我知道了&#39;, onPress: this.optionSelected }]
-    );
-}
-在onPress调用时使用this.getAlert()就可以了；
-</code></pre>
+<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的props时，这个函数将被调用。这个函数接受一个object参数，object里是新的props。<br/>
+当React Native初次被渲染时，componentWillReceiveProps函数并不会被触发。<br/>
+如果新的props会导致界面重新渲染，这个函数将在渲染前被执行。在这个函数中，老的props可以通过this.props访问，新的props在传入的object中。如果在这个函数中通过调用this.setState函数改变某些状态机变量的值，React Native框架不会执行对这些状态机变量改变的渲染，而是等componentWillReceiveProps函数执行完成后一起渲染。</p>
 
-<ul>
-<li>StyleSheet中的样式</li>
-</ul>
+<h2 id="toc_4">shouldComponentUpdate：</h2>
 
-<p>(1).position:absolute/relative</p>
+<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的state或者props时，这个函数将被调用。它接受两个object参数，其中第一个是新的props，第二个是新的state。这个函数需要返回一个布尔值，告诉React Native框架针对这次改变，React Native是否需要重新渲染本组件。</p>
 
-<pre class="line-numbers"><code class="language-text">//绝对定位；与之相关的键有top、bottom、left、right；表示与父组件的距离；
-position:&#39;absolute&#39;
-//相对定位；不可以使用bottom、right；top和left键的默认值为0；表示与当前同级组件的距离；
-position:&#39;relative&#39;
-</code></pre>
+<h2 id="toc_5">componentWillUpdate：</h2>
 
-<p>(2).宽高:width、maxWidth、minWidth、height、maxHeight、minHeight;</p>
+<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件前会调用这个函数。开发者可以在这个函数中为即将发生的重新渲染做一些准备工作，但开发者不能在这个函数中通过this.setState再次改变状态机变量的值。如果需要改变，则在componentWillReceiveProps函数中进行改变。</p>
 
-<p>(3).flexDirection:决定子组件排列规则；<br/>
-flexDirection:row、row-reverse、column、column-reverse；</p>
+<h2 id="toc_6">componentDidUpdate：</h2>
 
-<p>(4).justifyContent（水平对齐）:flex-start、flex-end、center、space-between、space-around；</p>
+<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件完成后调用这个函数。传入的两个参数是渲染前的props和state。</p>
 
-<p>(5).alignItems（上下对齐）:flex-start（顶部对齐）、flex-end（底部对齐）、center（中部对齐）、stretch（拉长对齐）；</p>
+<h2 id="toc_7">componentWillUnmount：</h2>
 
-<p>(6).flex:键的类型是数值，默认值为0，可以取值-1、0或者任意正数值。当它的值为非零时，在父组件的弹性方向（flexDirection键定义的方向），组件将自动缩放以适应父组件剩下的空白空间。如果父组件的弹性方向是列，则组件的height键即使有值也会失效。如果父组件的弹性方向是行，则组件的width键即使有值也会失效；</p>
-
-<p>(7).alignSelf:auto、flex-start、flex-end、center、stretch，其用途是让组件忽略它的父组件样式中alignItems键的取值，而对该组件使用alignSelf键对应的规则；</p>
-
-<p>(8).边框宽度：borderWidth、borderTopWidth、borderRightWidth、borderBottomWidth、borderLeftWidth；</p>
-
-<p>(9).填充宽度：padding、paddingHorizontal、paddingVertical、paddingBottom、paddingLeft、paddingRight、paddingTop；</p>
-
-<p>(10).空隙宽度：margin、marginHorizontal、marginVertical、marginBottom、marginLeft、marginRight、marginTop；</p>
-
-<p>(11).zIndex:如果两个组件的显示位置发生重叠或者部分重叠时，zIndex值大的那个组件将会覆盖住另一个组件。如果两者的zIndex值相等，在JSX代码中后渲染的组件将会覆盖住先渲染的组件；</p>
-
-<p>(12).backgroundColor：指定组件的背景，默认的背景颜色是一种非常浅的灰色；只有Text与TextInput组件会继承其父组件的背景颜色，这意味着其他组件都需要设置自己的背景颜色；</p>
-
-<p>(13).opacity:定义View组件的透明度，取值为0-1。当为0时，表示组件完全透明；当为1时，表示组件完全不透明。</p>
-
-<p>(14).borderStyle：设置边框的风格，取值为solid、dotted、dashed；默认为solid。</p>
-
-<p>(15).圆角边框：borderRaidus、borderTopLeftRadius、borderTopRightRadius、borderBottomLeftRadius、borderBottomRightRadius；使用定义圆角时设置borderRadius为宽高的一半，那么就会是圆形；</p>
-
-<p>(16).shadowColor:阴影颜色；</p>
-
-<p>(17).shadowOffset:阴影位移值；</p>
-
-<p>(18).shadowOpacity:阴影透明度；</p>
-
-<p>(19).shadowRadius：阴影圆角率；</p>
-
-<p>(20).overflow：取值有两个，visible和hidden。它定义了当view组件中的子组件宽高超出view组件宽高时的行为。默认是hidden，即隐藏超出部分。这个键只对ios平台有效，在android平台上即使被设为visible，显示的特性也仍然是hidden。</p>
-
-<p>(21).backfaceVisibility：取值有两个visible和hidden。</p>
-
-<p>(22).elevation：android平台特有的样式。它是数值类型的样式键，通过在组件周围渲染阴影，让用户产生一种组件浮现在手机屏幕上的视觉效果。</p>
-
-<p>(23).removeClippedSubviews:布尔类型的属性。它是一个特殊的与性能优化相关的属性，通常在ScrollView组件或者ListView组件中使用。当组件有很多子组件不在屏幕显示范围内时，将这个属性设为true允许释放这些不在显示范围内的子组件以优化性能。要让此属性生效，组件与子组件的样式键overflow都应当设置为hidden（默认值）。</p>
-
-<p>(24).renderToHardwareTextureAndroid与needsOffscreen是android平台独有的两个布尔类型的属性，它们的设置与动画效果有关。</p>
-
-<p>(25).shouldRasterizeIOS</p>
-
-<p>(26).在React Native框架中，数据是沿着组件树从上到下单向流动的。拥有数据的React Native组件并不一定负责显示该数据，它经常把自己拥有的数据（存储在它的状态机变量中）作为一个子组件的属性传递给子组件，由子组件来显示它。</p>
+<p>在React Native组件被卸载前，这个函数将被执行。</p>
 
 
 		</div>

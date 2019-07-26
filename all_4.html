@@ -47,6 +47,8 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
 
@@ -54,6 +56,8 @@
         <li class="divider"></li>
         <li><label>四大组件</label></li>
 
+          
+            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -68,6 +72,8 @@
         <li class="divider"></li>
         <li><label>Android组件</label></li>
 
+          
+            <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
           
@@ -124,6 +130,8 @@
         <li class="divider"></li>
         <li><label>Android其他</label></li>
 
+          
+            <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
           
             <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
           
@@ -272,11 +280,15 @@
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
                         
+                          <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -289,6 +301,8 @@
 
                     
                       <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
                         
@@ -339,6 +353,8 @@
 
                     
                       <li class="side-title"><span>Android其他</span></li>
+                        
+                          <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
                         
                           <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
                         
@@ -470,226 +486,459 @@
 
 	
 		<div class="markdown-body">
-		<h1>控制系统硬件功能</h1>
+		<h1>Git常见用法</h1>
 
-		<h2 id="toc_0">(1).打开和关闭手电筒</h2>
-
-<h2 id="toc_1">(2).调节屏幕亮度</h2>
-
-<p>本部分代码地址：<a href="https://github.com/loveyoyo/SimpleDemo/blob/master/app/src/main/java/com/kang/demo/hardware/ScreenBrightnessActivity.java">https://github.com/loveyoyo/SimpleDemo/blob/master/app/src/main/java/com/kang/demo/hardware/ScreenBrightnessActivity.java</a></p>
-
-<h4 id="toc_2">屏幕亮度的知识点</h4>
+		<h2 id="toc_0">常见命令行</h2>
 
 <ul>
-<li>Android系统的屏幕亮度取值范围是0-255，数据是int型；</li>
-<li>屏幕亮度的模式有两种，如下：</li>
+<li><font color=red>init</font>:初始化</li>
 </ul>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: center">字段</th>
+<th style="text-align: center">命令行</th>
 <th style="text-align: center">解释</th>
-<th style="text-align: center">值</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td style="text-align: center">Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL</td>
-<td style="text-align: center">手动调节模式</td>
-<td style="text-align: center">0</td>
-</tr>
-<tr>
-<td style="text-align: center">Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC</td>
-<td style="text-align: center">自动调节模式</td>
-<td style="text-align: center">1</td>
+<td style="text-align: center">git init</td>
+<td style="text-align: center">初始化本地git项目</td>
 </tr>
 </tbody>
 </table>
 
-<p><font color=red>设置屏幕亮度的常见方法如下</font>：</p>
-
 <ul>
-<li>获取当前屏幕亮度：获取到的是0-255范围内的值；</li>
+<li><font color=red>status</font>:状态码</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">private int getCurrentScreenBrightness(Context context) {
-    int currentBrightness = 0;
-    ContentResolver contentResolver = context.getContentResolver();
-    try {
-        currentBrightness = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS);
-    } catch (Settings.SettingNotFoundException e) {
-        e.printStackTrace();
-    }
-    return currentBrightness;
-}
-</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git status</td>
+<td style="text-align: center">查看缓存与当前工作目录的状态</td>
+</tr>
+<tr>
+<td style="text-align: center">git status -s</td>
+<td style="text-align: center">查看缓存与当前工作目录的状态，简短输出结果</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">-s返回的状态码</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">A</td>
+<td style="text-align: center">本地新增的文件，服务器上没有</td>
+</tr>
+<tr>
+<td style="text-align: center">C</td>
+<td style="text-align: center">文件的一个拷贝</td>
+</tr>
+<tr>
+<td style="text-align: center">D</td>
+<td style="text-align: center">本地的删除，服务器上还在</td>
+</tr>
+<tr>
+<td style="text-align: center">M</td>
+<td style="text-align: center">文件的内容或者mode被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">R</td>
+<td style="text-align: center">文件名被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">T</td>
+<td style="text-align: center">文件的类型被修改了</td>
+</tr>
+<tr>
+<td style="text-align: center">U</td>
+<td style="text-align: center">文件没有被合并（需要合并后才能进行提交）</td>
+</tr>
+<tr>
+<td style="text-align: center">X</td>
+<td style="text-align: center">未知状态（可能是遇到了git的bug）</td>
+</tr>
+<tr>
+<td style="text-align: center">？</td>
+<td style="text-align: center">未被git进行管理，可以使用git add Xxx添加进git然后能够被git管理</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
-<li>获取当前屏幕亮度模式：返回值是0（手动调节模式）或者1（自动调节模式）；</li>
+<li><font color=red>add</font>:添加文件</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">private int getCurrentScreenBrightnessMode(Context context) {
-    int screenBrightnessMode = 0;
-    ContentResolver contentResolver = context.getContentResolver();
-    try {
-        screenBrightnessMode = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS_MODE);
-    } catch (Settings.SettingNotFoundException e) {
-        e.printStackTrace();
-    }
-    return screenBrightnessMode;
-}
-</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git add Xxx</td>
+<td style="text-align: center">添加某个或多个文件</td>
+</tr>
+<tr>
+<td style="text-align: center">git add .</td>
+<td style="text-align: center">添加目录下的所有未被管理的文件</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
-<li>设置屏幕调节模式：需要先获取android.permission.WRITE_SETTINGS这个权限，然后才能设置屏幕调节模式，否则会报错：was not granted  this permission: android.permission.WRITE_SETTINGS。0-手动调节模式，1-自动调节模式；</li>
+<li><font color=red>diff</font>:显示已写入缓存与已修改但尚未写入缓存的改动的区别</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">//清单文件中申请权限；
-&lt;uses-permission android:name=&quot;android.permission.WRITE_SETTINGS&quot;/&gt;
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th style="text-align: center">解释</th>
+</tr>
+</thead>
 
-//6.0以后需要动态申请系统的权限；
-private void requestPermission(int mode) {
-    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
-        if (!Settings.System.canWrite(this)) {
-            Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS);
-            intent.setData(Uri.parse(&quot;package:&quot; + this.getPackageName()));
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            this.startActivity(intent);
-        } else {
-            //有了权限，具体的操作;
-            setScreenMode(this, mode);
-        }
-    }
-}
-    
-//具体的操作屏幕亮度；
-private void setScreenMode(Context context, int mode) {
-    ContentResolver contentResolver = getContentResolver();
-    Settings.System.putInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS_MODE, mode);
-}
-</code></pre>
+<tbody>
+<tr>
+<td style="text-align: center">git diff</td>
+<td style="text-align: center">尚未缓存的改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --cached</td>
+<td style="text-align: center">查看已缓存的改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff -- HEAD</td>
+<td style="text-align: center">查看已缓存的与未缓存的所有改动</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --stat</td>
+<td style="text-align: center">显示摘要而非整个diff</td>
+</tr>
+<tr>
+<td style="text-align: center">git diff --staged</td>
+<td style="text-align: center">同git diff --cached</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
-<li>设置当前页面的屏幕亮度，但是并不会影响系统的屏幕亮度，也就是说设置了当前页面的屏幕亮度，系统的屏幕亮度还是先前的数值，需要申请权限android.permission.CHANGE_CONFIGURATION，否则不会执行调节屏幕亮度；需要注意的是参数context的类型必须是Activity，不能是Context；用这种方法设置界面的亮度，会使亮度自动调节功能失效，离开该页面，亮度自动调节会继续生效；</li>
+<li><font color=red>commit</font>:记录缓存内容的快照</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">////清单文件中申请权限；
-&lt;uses-permission android:name=&quot;android.permission.CHANGE_CONFIGURATION&quot; /&gt;
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
 
-private void setCurrentBrightness(Activity activity, int brightness) {
-    WindowManager.LayoutParams layoutParams = activity.getWindow().getAttributes();
-    layoutParams.screenBrightness = Float.valueOf(brightness) * (1f / 255f);
-    activity.getWindow().setAttributes(layoutParams);
-}
-</code></pre>
+<tbody>
+<tr>
+<td style="text-align: center">git commit -m &quot;描述内容&quot;</td>
+<td>在add之后，将修改的文件添加到暂存区</td>
+</tr>
+<tr>
+<td style="text-align: center">git commit -a -m &quot;描述内容&quot;</td>
+<td>不需要add，直接在这个命令行执行add操作，并将修改的文件添加到暂存区</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
-<li>设置系统的屏幕亮度，直接影响系统的屏幕亮度。和设置亮度模式一样，需要先获取android.permission.WRITE_SETTINGS这个权限，然后才能设置屏幕调节模式，否则会报错：was not granted  this permission: android.permission.WRITE_SETTINGS。；</li>
+<li><font color=red>reset</font>：取消</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">//还是需要在6.0以上的手机上申请android.permission.WRITE_SETTINGS权限；
-if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {
-    if (!Settings.System.canWrite(this)) {
-        Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS);
-        intent.setData(Uri.parse(&quot;package:&quot; + this.getPackageName()));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startActivity(intent);
-    } else {
-        //有了权限，具体的操作;
-        setSystemBrightness(this,200);
-    }
-}
-//具体设置系统的屏幕亮度；                
-private void setSystemBrightness(Context context,int brightness){
-    ContentResolver contentResolver = context.getContentResolver();
-    Uri uri = android.provider.Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
-    android.provider.Settings.System.putInt(contentResolver,Settings.System.SCREEN_BRIGHTNESS,brightness);
-    contentResolver.notifyChange(uri,null);
-}                
-</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git reset HEAD -- xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容</td>
+</tr>
+</tbody>
+</table>
+
+<p>&emsp;&emsp;实际的操作是将该文件在“索引”中的校验和重置为最近一次提交中的值，git add 会计算一个文件的校验和，将它添加到“索引”中，而 git reset HEAD -- xxx 将它改写回原先的，从而取消缓存操作。</p>
 
 <ul>
-<li>设置屏幕常亮，有三种方法如下；</li>
+<li><font color=red>rm</font>：删除</li>
 </ul>
 
-<p>(1).在需要常亮的页面，设置跟布局或者页面中的某个控件的属性android:keepScreenOn=&quot;true&quot;，就可以实现了，也可以代码动态控制，mView.setKeepScreenOn(boolean isOn)；</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
 
-<p>(2).在需要常亮的页面，添加以下代码就实现了；                </p>
-
-<pre class="line-numbers"><code class="language-java">getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-</code></pre>
-
-<p>(3).需要先在清单文件中添加以下权限：</p>
-
-<pre class="line-numbers"><code class="language-java">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
-</code></pre>
-
-<p>然后在需要常亮的页面，添加常亮的方法：</p>
-
-<pre class="line-numbers"><code class="language-java">private void setScreenOn() {
-    PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-    PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, &quot;kang&quot;);
-    wakeLock.acquire();
-    }
-</code></pre>
+<tbody>
+<tr>
+<td style="text-align: center">git rm --cached xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，同git reset HEAD -- xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git rm -f xxx(带有完整路径的文件)</td>
+<td>取消缓存已缓存的内容，并且从磁盘中删除该文件</td>
+</tr>
+</tbody>
+</table>
 
 <ul>
-<li>设置屏幕熄屏，两种方法如下：<br/>
-(1).和设置屏幕常亮时的第三种方法对应，使用wakeLock.release()方法，但是这样操作之后，屏幕只是取消了常亮设置，还会在你原先设置的系统屏幕无操作的熄屏时间之后才会熄屏；而且这种方法需要在使用了wakeLock.acquire()方法之后才能调用；<br/>
-(2).需要添加设置管理器；<br/>
-首先是需要的一个类如AminCustomReceiver继承自DeviceAdminReceiver，DeviceAdminReceiver是一个BroadcastReceiver；在清单文件中配置AminCustomReceiver，代码如下：</li>
+<li><font color=red>branch和checkout</font>：分支</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">&lt;receiver android:name=&quot;.hardware.AdminCustomReceiver&quot;
-    android:permission=&quot;android.permission.BIND_DEVICE_ADMIN&quot;&gt;
-    &lt;meta-data android:name=&quot;android.app.device_admin&quot;
-        android:resource=&quot;@xml/device_admin&quot;
-    /&gt;
-    &lt;intent-filter&gt;
-        &lt;action android:name=&quot;android.app.action.DEVICE_ADMIN_ENABLED&quot;/&gt;
-    &lt;/intent-filter&gt;
-&lt;/receiver&gt;
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git branch</td>
+<td>列出你在本地的分支，你所在的分支的行首会有个星号作标记</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch xxx（分支名字）</td>
+<td>创建新分支，分支名字就是xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -a</td>
+<td>查看本地和远程的分支，远程分支以remotes/开头</td>
+</tr>
+<tr>
+<td style="text-align: center">git checkout xxx(分支名字)</td>
+<td>切换到分支xxx</td>
+</tr>
+<tr>
+<td style="text-align: center">git checkout -b xxx(分支名字)</td>
+<td>创建新分支，并切换到新分支</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -d xxx(分支名字)</td>
+<td>删除分支(需要当前分支不是要被删除的分支，就是需要先切换到其他分支上去)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>merge</font>：合并</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git merge xxx(分支名字)</td>
+<td>将xxx分支合并到当前分支中</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>log</font>：日志</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git log</td>
+<td>显示一个分支中提交的更改记录</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --oneline</td>
+<td>查看历史记录的简洁版本</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --graph</td>
+<td>查看历史中什么时候出现了分支、合并（可以与--oneline一起用）</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --decorate</td>
+<td>查看tag标签</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>tag</font>：标签
+&emsp;&emsp;如果你达到了一个重要的阶段，并希望永远记住那个特别的提交快照，可以使用git tag给它打上标签。该tag命令基本上会给该特殊提交打上永久的书签，从而使你在将来能够用它与其他提交比较。通常，你会在发布一个新版本或者交付一些东西的时候打个标签。</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git tag</td>
+<td>查看所有的tag标签</td>
+</tr>
+<tr>
+<td style="text-align: center">git tag -a xxx</td>
+<td>创建一个带注解的标签</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>fetch/pull</font>：从远端服务器更新数据</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git fetch</td>
+<td>从远端服务器下载新的分支和数据（就是与远程仓库同步）</td>
+</tr>
+<tr>
+<td style="text-align: center">git pull</td>
+<td>从远端服务器提取新数据（相当于git fetch之后git merge）</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>push</font>：推送数据到远程仓库</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git push [alias] xxx</td>
+<td>将本地分支xxx推送到远端仓库默认分支上</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] xxx:xxx</td>
+<td>将本地分支xxx推送到远端仓库并新建远端分支xxx（需要远端仓库分支和本地分支同名）</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] -d xxx</td>
+<td>删除远端仓库的xxx分支</td>
+</tr>
+<tr>
+<td style="text-align: center">git push [alias] : xxx</td>
+<td>推送一个空分支到远端仓库指定分支，也就相当于删除远端仓库xxx分支</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="line-numbers"><code class="language-java">git push origin master
+//删除远端仓库分支；
+git push origin : test
+//删除远端仓库分支；
+git push origin -d test
 </code></pre>
 
-<p>然后，在res文件夹下建立xml文件夹，在xml文件夹下创建一个在清单文件中用到的device_admin.xml文件，其中代码如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
 
-<pre class="line-numbers"><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;device-admin xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;uses-policies&gt;
-        &lt;force-lock/&gt;
-    &lt;/uses-policies&gt;
-&lt;/device-admin&gt;
-</code></pre>
+<tbody>
+<tr>
+<td style="text-align: center">git push xxx yyy</td>
+<td>将本地的yyy分支推送到xxx远端上的yyy分支</td>
+</tr>
+</tbody>
+</table>
 
-<p>最后，才AdminCustomReceiver代码中添加方法：</p>
+<ul>
+<li><font color=red>remote</font>：操作远端仓库</li>
+</ul>
 
-<pre class="line-numbers"><code class="language-java">private void setScreenOff() {
-    DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-    ComponentName componentName = new ComponentName(this, AdminReceiver.class);
-    boolean isAdmin = devicePolicyManager.isAdminActive(componentName);
-    Log.e(&quot;===MockingJay===&quot;, &quot;isAdmin:&quot; + isAdmin);
-    if (!isAdmin) {
-        //打开DevicePolicyManager管理器，授权页面
-        Intent intent = new Intent();
-        //授权页面Action --&gt;  DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN
-            intent.setAction(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-        //设置DEVICE_ADMIN，告诉系统申请管理者权限的Component/DeviceAdminReceiver
-        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, componentName);
-        //设置 提示语--可不添加
-        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, &quot;DevicePolicyManager涉及的管理权限,一次性激活!&quot;);
-        startActivityForResult(intent, 100);
-    } else {
-        //已经添加到设置管理器了;
-    }
-    devicePolicyManager.lockNow();
-}
-</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
 
-<h2 id="toc_3">(3).控制手机音量</h2>
-
-<h2 id="toc_4">(4).</h2>
+<tbody>
+<tr>
+<td style="text-align: center">git remote</td>
+<td>查看远端别名</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote -v</td>
+<td>查看远端别名以及实际链接地址</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote add [alias] [url]</td>
+<td>将url地址和以alias的别名添加为本地的远端仓库（就是将本地仓库与远端仓库建立连接）</td>
+</tr>
+<tr>
+<td style="text-align: center">git remote rm [alias]</td>
+<td>删除远端仓库</td>
+</tr>
+</tbody>
+</table>
 
 
 		</div>

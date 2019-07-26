@@ -47,6 +47,8 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
 
@@ -54,6 +56,8 @@
         <li class="divider"></li>
         <li><label>四大组件</label></li>
 
+          
+            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -68,6 +72,8 @@
         <li class="divider"></li>
         <li><label>Android组件</label></li>
 
+          
+            <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
           
@@ -124,6 +130,8 @@
         <li class="divider"></li>
         <li><label>Android其他</label></li>
 
+          
+            <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
           
             <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
           
@@ -272,11 +280,15 @@
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
                         
+                          <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -289,6 +301,8 @@
 
                     
                       <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
                         
@@ -339,6 +353,8 @@
 
                     
                       <li class="side-title"><span>Android其他</span></li>
+                        
+                          <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
                         
                           <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
                         
@@ -470,19 +486,31 @@
 
 	
 		<div class="markdown-body">
-		<h1>Button</h1>
+		<h1>ImageView</h1>
 
-		<h2 id="toc_0">Button的常用属性和方法</h2>
+		<h2 id="toc_0">ImageView的常用属性和方法</h2>
 
 <ul>
-<li><font color=red>onClick</font>:设置点击方法；</li>
-<li><font color=red>background</font>:设置背景，一般会设置为自定义的drawable或者背景图；</li>
-<li><font color=red>onClick()</font>:点击事件；</li>
-<li><font color=red>onLongClick()</font>:长按事件，但是在该方法中，返回值必须是true，否则执行完长按事件后，还会执行点击事件。这其中是android的事件处理机制中的消费概念，当事件完成对一个view的操作后，只需要返回true，表示该控件已经被消费了，后面的事件就不会被调用了。</li>
+<li><font color=red>adjustViewBounds</font>:设置为true时保持宽高比；但是如果在xml文件中设置了android:scaleType属性，那么scaleType的优先级更高，adjustViewBounds会失效。但是如果在Java代码中设置setAdjustViewBounds（true），则adjustViewBounds属性会生效；<br/>
+&emsp; &emsp;需要注意以下情况下：<br/>
+(1).当ImageView的layout_width和layout <u>height都是固定值的时候;<br/>
+(2).当ImageView的layout</u> width和layout_ height其中有一个属性固定值的时候;<br/>
+(3).当ImageView的layout_ width和layout_ height都是wrap_content的时候;</li>
+<li><font color=red>cropToPadding</font>:设置为true时图像会被裁减；</li>
+<li><font color=red>maxHeight</font>:设置最大高度；只有当设置了adjustViewBounds=&quot;true&quot;的时候，maxWidth和maxHeight才会起作用；</li>
+<li><font color=red>maxWidth</font>:设置最大宽度；</li>
+<li><font color=red>scaleType</font>:设置图片填充的方式，默认值为fitCenter,可取值有center、centerCrop、centerInside、fitCenter、fitStart、fitEnd、fitXY、matrix；</li>
+<li><font color=red>src</font>:设置显示的图片；</li>
+<li><font color=red>tint</font>:渲染图片为指定颜色；</li>
 </ul>
+
+<h2 id="toc_1">ImageView的常用场景</h2>
 
 
 		</div>
+	
+
+ 
 	
 
  

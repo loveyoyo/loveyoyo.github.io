@@ -47,6 +47,8 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
 
@@ -54,6 +56,8 @@
         <li class="divider"></li>
         <li><label>四大组件</label></li>
 
+          
+            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -68,6 +72,8 @@
         <li class="divider"></li>
         <li><label>Android组件</label></li>
 
+          
+            <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
           
@@ -124,6 +130,8 @@
         <li class="divider"></li>
         <li><label>Android其他</label></li>
 
+          
+            <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
           
             <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
           
@@ -272,11 +280,15 @@
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
                         
+                          <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -289,6 +301,8 @@
 
                     
                       <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
                         
@@ -339,6 +353,8 @@
 
                     
                       <li class="side-title"><span>Android其他</span></li>
+                        
+                          <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
                         
                           <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
                         
@@ -470,10 +486,54 @@
 
 	
 		<div class="markdown-body">
-		<h1>陌上归--序</h1>
+		<h1>Activity</h1>
 
-		<p>有些事，现在不做，就开始不了。<br/>
-啦啦啦啦</p>
+		<h2 id="toc_0">Activity启动模式</h2>
+
+<p>&emsp;&emsp;<strong>启动模式一共四种：standard、singleTop、singleTask、singleInstance，可以在AndroidManifest.xml中通过给<activity>标签指定android:launchMode属性来选择启动模式。</strong></p>
+
+<ul>
+<li><font color=red>standard</font>:是活动默认的启动模式，在不进行显示指定的情况下，所有活动都会自动使用这种启动模式。在standard模式（即默认情况）下，每当启动一个新的活动，它就会在返回栈中入栈，并处于栈顶的位置。对于使用standard模式的活动，系统不会在乎这个活动是否已经在返回栈中存在，每次启动都会创建该活动的一个新的实例。</li>
+<li><font color=red>singleTop</font>:当活动的启动模式指定为singleTop时，在启动活动时，如果发现返回栈的栈顶已经是该活动了，则认为可以直接使用它，不会再创建新的活动实例。</li>
+<li><font color=red>singleTask</font>:当活动的启动模式指定为singleTask，每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例。</li>
+<li><font color=red>singleInstance</font>:指定为singleInstance模式的活动会启用一个新的返回栈来管理这个活动（其实如果singleTask模式指定了不同的taskAffinity，也会启动一个新的返回栈）。假设我们的程序中有一个活动是允许其他程序调用的，那我们要实现其他程序和我们的程序都可以共享这个活动的实例。前三种启动模式肯定是做不到的，因为每个应用程序都会有自己的返回栈，同一个活动在不同的返回栈中入栈时必然是创建了新的实例。而使用singleInstance模式就可以解决这个问题，在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。</li>
+</ul>
+
+<h2 id="toc_1">注意事项</h2>
+
+<ul>
+<li>startActivity（）方法最终调用的是startActivityForResult()方法，只是startActivity()的实现是startActivityForResult()方法内部的请求码requestCode固定为-1，所以如果使用startActivityForResult()方法时，请求码写成了-1，那么就相当于调用了startActivity()方法，onActivityResult()方法不会被回调；</li>
+<li>设置启动页：<br/>
+我们一般会设置启动页的style的android:windowBackground的属性来设置启动页的背景图片，如果不需要在启动页设置除了背景图片以外的控件，那么甚至可以不需要在启动页SplashActivity页面中使用setContentView(R.layout.activity_splash)方法，就直接在onCreate()方法中进行页面跳转或者数据处理；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">&lt;!--启动页style--&gt;
+&lt;style name=&quot;AppSplashTheme&quot; parent=&quot;AppTheme&quot;&gt;
+    &lt;item name=&quot;android:windowBackground&quot;&gt;@mipmap/ic_launcher&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;!-- 启动页面 --&gt;
+&lt;activity
+    android:name=&quot;.SplashActivity&quot;
+    android:screenOrientation=&quot;portrait&quot;
+    android:theme=&quot;@style/AppSplashTheme&quot;
+    &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+
+//SplashActivity页面；
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    //进行相应的业务逻辑操作；    
+}
+</code></pre>
+
+<p>不过，一般我们都会设置启动页的背景图占据全屏幕。就需要style文件中添加一个属性android:windowFullscreen，设置为true；<br/>
+还有，带有底部导航栏的手机，需要一个属性android:windowDrawsSystemBarBackgrounds，设置为true，不过该属性的使用需要最低兼容版本为API 21，也就是5.0；</p>
 
 
 		</div>
