@@ -212,6 +212,18 @@
 
       
         <li class="divider"></li>
+        <li><label>数据结构和算法</label></li>
+
+          
+            <li><a title="链表" href="15644786995373.html">链表</a></li>
+          
+            <li><a title="数组" href="15644690293137.html">数组</a></li>
+          
+            <li><a title="基础" href="15644655646063.html">基础</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>React-Native</label></li>
 
           
@@ -428,6 +440,16 @@
                         
 
                     
+                      <li class="side-title"><span>数据结构和算法</span></li>
+                        
+                          <li><a title="链表" href="15644786995373.html">链表</a></li>
+                        
+                          <li><a title="数组" href="15644690293137.html">数组</a></li>
+                        
+                          <li><a title="基础" href="15644655646063.html">基础</a></li>
+                        
+
+                    
                       <li class="side-title"><span>React-Native</span></li>
                         
                           <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
@@ -486,44 +508,30 @@
 
 	
 		<div class="markdown-body">
-		<h1>组件的生命周期</h1>
+		<h1>反编译</h1>
 
-		<h2 id="toc_0">constructor：构造函数</h2>
+		<h2 id="toc_0">使用jadx进行反编译</h2>
 
-<p>它的第一个语句必须是super（props）。<br/>
-构造函数将在React Native组件被加载前最先调用，并且仅调用一次。这个生命周期函数最大的作用，就是在这里定义状态机变量。</p>
+<p>下载好jadx项目到本地；<br/>
+把.apk文件改为.zip文件；<br/>
+解压.zip文件获取classes.dex文件；<br/>
+将classes.dex文件放到jadx目录下；<br/>
+然后在终端中对应的路径下执行一下操作：<br/>
+//切换到放置classes.dex的路径下；<br/>
+cd build/jadx<br/>
+//反编译，并且使用gui打开；<br/>
+bin/jadx-gui classes.dex<br/>
+或者执行下面这条命令：<br/>
+//反编译并将反编译后的数据放入out文件夹下；<br/>
+bin/jadx -d out classes.dex</p>
 
-<h2 id="toc_1">componentWillMount：</h2>
+<p>&emsp;&emsp;使用了代码混淆以后，即使反编译过来，代码中还是用a、b、c等代替了一些变量和方法；<br/>
+&emsp;&emsp;如果使用了加固软件对安装包加固，我反编译了使用了乐固加固的安装包，只能看到com.tencent文件夹下的两个文件夹:StubShell和bugly.legu，需要在进行破壳反编译。<br/>
+&emsp;&emsp;混淆只是增加了阅读源代码的难度，隐藏了部分代码，而加固相当于阻止了我们查看源代码的一切信息。</p>
 
-<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染（render函数被React Native框架调用执行）前被执行，当它执行完后，render函数会马上被React Native框架调用执行。如果在这个函数里调用setState函数改变了某些状态机变量的值，React Native框架不会执行渲染操作，而是等待这个函数执行完成后再执行初始渲染。React Native组件的子组件也有componentWillMount函数，并且会在父组件的componentWillMount函数之后被调用。<br/>
-如果开发者需要从本地存储中读取数据用于显示，那么在这个函数里进行读取是一个很好的时机。</p>
+<h2 id="toc_1">防止抓包</h2>
 
-<h1 id="toc_2">componentDidMount：</h1>
-
-<p>在React Native组件的生命周期中，这个函数只会被执行一次。它在初始渲染执行完成后会马上被调用。在React Native组件生命周期的这个时间点之后，开发者可以通过子组件的引用来访问、操作任何子组件。React Native组件的子组件也有componentDidMount函数，并且会在父组件的componentDidMount函数之前被调用。<br/>
-如果React Native应用需要在程序启动显示初始界面后从网络侧获取数据，那么把从网络侧获取数据的代码放在这个函数里是一个不错的选择。</p>
-
-<h1 id="toc_3">componentWillReceiveProps：</h1>
-
-<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的props时，这个函数将被调用。这个函数接受一个object参数，object里是新的props。<br/>
-当React Native初次被渲染时，componentWillReceiveProps函数并不会被触发。<br/>
-如果新的props会导致界面重新渲染，这个函数将在渲染前被执行。在这个函数中，老的props可以通过this.props访问，新的props在传入的object中。如果在这个函数中通过调用this.setState函数改变某些状态机变量的值，React Native框架不会执行对这些状态机变量改变的渲染，而是等componentWillReceiveProps函数执行完成后一起渲染。</p>
-
-<h2 id="toc_4">shouldComponentUpdate：</h2>
-
-<p>React Native组件的初始渲染执行完成后，当React Native组件接收到新的state或者props时，这个函数将被调用。它接受两个object参数，其中第一个是新的props，第二个是新的state。这个函数需要返回一个布尔值，告诉React Native框架针对这次改变，React Native是否需要重新渲染本组件。</p>
-
-<h2 id="toc_5">componentWillUpdate：</h2>
-
-<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件前会调用这个函数。开发者可以在这个函数中为即将发生的重新渲染做一些准备工作，但开发者不能在这个函数中通过this.setState再次改变状态机变量的值。如果需要改变，则在componentWillReceiveProps函数中进行改变。</p>
-
-<h2 id="toc_6">componentDidUpdate：</h2>
-
-<p>React Native组件的初始渲染执行完成后，React Native框架在重新渲染React Native组件完成后调用这个函数。传入的两个参数是渲染前的props和state。</p>
-
-<h2 id="toc_7">componentWillUnmount：</h2>
-
-<p>在React Native组件被卸载前，这个函数将被执行。</p>
+<p>在网络请求相关的文章中，我有写如何判断当前手机是否挂了代理以及如何防止被抓包；</p>
 
 
 		</div>

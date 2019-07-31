@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  EditText - Kang
+  基础 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -504,27 +504,46 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>EditText</h1>
-
-<h2 id="toc_0">EditText的常用属性</h2>
+<h1>基础</h1>
 
 <ul>
-<li><font color=red>text</font>：文本内容,在java代码中设置为<font color=red>setText()</font>;</li>
-<li><font color=red>hint</font>：文本提示内容,在java代码中设置为<font color=red>setTextHint()</font>;</li>
-<li><font color=red>textColorHint</font>：文本提示颜色,在java代码中设置为<font color=red>setTextColorHint()</font>;</li>
-<li><font color=red>inputType</font>：限制文本输入内容的类型,在java代码中设置为<font color=red>setInputType()</font>;</li>
-<li><font color=red>digits</font>：限制输入内容,在java代码中设置为<font color=red>setDigits()</font>;</li>
-<li><font color=red>maxLength</font>：限制输入的最长字符数,在java代码中设置为<font color=red>setMaxLength()</font>;</li>
-<li><font color=red>password</font>：输入密码模式,在java代码中设置为<font color=red>setPassword()</font>;</li>
+<li><font color=red>算法</font>:算法是一系列程序指令，用于处理特定的运算和逻辑问题；</li>
+<li><font color=red>数据结构</font>:是数据的组织、管理和存储格式，其使用目的是为了高效地访问和修改数据；</li>
 </ul>
 
-<h2 id="toc_1">EditText的常见用法：</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">数据结构方式</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">线性结构</td>
+<td>是最简单的数据结构，包括数组、链表，以及由它们衍生出来的栈、队列、哈希表；</td>
+</tr>
+<tr>
+<td style="text-align: center">树</td>
+<td>树是相对复杂的数据结构，其中比较有代表性的是二叉树，由它又衍生出二叉堆之类的数据结构；</td>
+</tr>
+<tr>
+<td style="text-align: center">图</td>
+<td>图是更为复杂的数据结构，因为在图中会呈现出多对多的关联关系；</td>
+</tr>
+<tr>
+<td style="text-align: center">其他数据结构</td>
+<td>由基本数据结构变形而来，用于解决某些特定问题，如跳表、哈希链表、位图等；</td>
+</tr>
+</tbody>
+</table>
+
+<p><font color=red>衡量算法好坏的重要标准有两个</font>：时间复杂度和空间复杂度。时间复杂度是执行算法的时间成本，空间复杂度时执行算法的空间成本；也就是运行时间的长短和占用内存空间的大小；</p>
 
 <ul>
-<li><font color=red>软键盘的回车键的监听</font>：使用setOnKeyListener()方法可以监听到软键盘的回车键和删除键；onKeyListener是针对外设键盘的输入进行监听并响应；（只是目前掌握，需要再查资料）</li>
-<li><font color=red>触摸事件</font>：使用setOnTouchListener()或者onTouchEvent()方法；<br/>
-&emsp;&emsp;setOnTouchListener 的onTouch方法优先级比onTouchEvent高，会先触发；若onTouch方法返回false，会接着触发onTouchEvent，反之则不会被调用;<br/>
-&emsp;&emsp;setOnTouchListener中的onTouch方法返回值是true(事件被处理完成)时，则onTouchEvent（Activity的方法）方法将不会执行，例如不会打开系统软键盘；若返回值是false（事件未被完全处理，需要往下传递，需要别的处理方法来处理此事件）时，onTouchEvent方法才会被执行，例如会打开系统软键盘，在AVD模拟器上，经测试发现，如果你触摸长时间没有松开，当你松开触摸时，也不会进行onTouchEvent方法的响应，这里是因为点击触摸和长按触摸会产生两种不同的事件，而长按触摸键会调用ContextMenu类的相关实现方法，具体的可以在长按触摸操作中重写这个类的相关方法以实现想要的长按触摸效果，例如画圆等等。</li>
+<li><font color=red>时间复杂度</font>:是对一个算法运行时间长短的量度，用大O表示，记作T(n)=O(f(n))；常见的时间复杂度按照从低到高的顺序，包括O(1)、O(logn)、O(n)、O(nlogn)、O(n<sup>2</sup>)等；</li>
+<li><font color=red>空间复杂度</font>:是对一个算法在运行过程中临时占用存储空间大小的量度，用大O表示，记作S(n)=O(f(n))；常见的空间复杂度按照从低到高的顺序，包括O(1)、O(n)、O(n<sup>2</sup>)等，其中递归算法的空间复杂度和递归深度成正比。</li>
 </ul>
 
 
@@ -537,15 +556,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15590305484634.html"  title="Previous Post: Button">&laquo; Button</a>
+	        <a href="15644690293137.html"  title="Previous Post: 数组">&laquo; 数组</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15584534943886.html" 
-	        title="Next Post: TextView">TextView &raquo;</a>
+	        <a href="15640232512188.html" 
+	        title="Next Post: Intent机制">Intent机制 &raquo;</a>
 	    
 	</div>
   </div>
@@ -558,7 +577,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15587752872990.html';
+		var currentURL = '15644655646063.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

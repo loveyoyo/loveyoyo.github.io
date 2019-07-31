@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  EditText - Kang
+  数组 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -504,28 +504,38 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>EditText</h1>
-
-<h2 id="toc_0">EditText的常用属性</h2>
+<h1>数组</h1>
 
 <ul>
-<li><font color=red>text</font>：文本内容,在java代码中设置为<font color=red>setText()</font>;</li>
-<li><font color=red>hint</font>：文本提示内容,在java代码中设置为<font color=red>setTextHint()</font>;</li>
-<li><font color=red>textColorHint</font>：文本提示颜色,在java代码中设置为<font color=red>setTextColorHint()</font>;</li>
-<li><font color=red>inputType</font>：限制文本输入内容的类型,在java代码中设置为<font color=red>setInputType()</font>;</li>
-<li><font color=red>digits</font>：限制输入内容,在java代码中设置为<font color=red>setDigits()</font>;</li>
-<li><font color=red>maxLength</font>：限制输入的最长字符数,在java代码中设置为<font color=red>setMaxLength()</font>;</li>
-<li><font color=red>password</font>：输入密码模式,在java代码中设置为<font color=red>setPassword()</font>;</li>
+<li><font color=red>数组</font>:是有限个相同类型的变量所组成的有序集合，数组中的每一个变量被称为元素。数组是最为简单、最为常用的数据结构。
+&emsp;&emsp;数组的一个特点是，在内存中顺序存储，因此可以很好地实现逻辑上的顺序表。</li>
 </ul>
 
-<h2 id="toc_1">EditText的常见用法：</h2>
+<blockquote>
+<p>内存是由一个个连续的内存单元组成的，每一个内存单元都有自己的地址。在这些内存单元中，有些被其他数据占用了，有些是空闲的。</p>
+</blockquote>
+
+<p>&emsp;&emsp;数组中的每一个元素，都存储在小小的内存单元中，并且元素之间紧密排列，既不能打乱元素的存储顺序，也不能跳过某个存储单元进行存储。</p>
+
+<h3 id="toc_0">数组的基本操作</h3>
 
 <ul>
-<li><font color=red>软键盘的回车键的监听</font>：使用setOnKeyListener()方法可以监听到软键盘的回车键和删除键；onKeyListener是针对外设键盘的输入进行监听并响应；（只是目前掌握，需要再查资料）</li>
-<li><font color=red>触摸事件</font>：使用setOnTouchListener()或者onTouchEvent()方法；<br/>
-&emsp;&emsp;setOnTouchListener 的onTouch方法优先级比onTouchEvent高，会先触发；若onTouch方法返回false，会接着触发onTouchEvent，反之则不会被调用;<br/>
-&emsp;&emsp;setOnTouchListener中的onTouch方法返回值是true(事件被处理完成)时，则onTouchEvent（Activity的方法）方法将不会执行，例如不会打开系统软键盘；若返回值是false（事件未被完全处理，需要往下传递，需要别的处理方法来处理此事件）时，onTouchEvent方法才会被执行，例如会打开系统软键盘，在AVD模拟器上，经测试发现，如果你触摸长时间没有松开，当你松开触摸时，也不会进行onTouchEvent方法的响应，这里是因为点击触摸和长按触摸会产生两种不同的事件，而长按触摸键会调用ContextMenu类的相关实现方法，具体的可以在长按触摸操作中重写这个类的相关方法以实现想要的长按触摸效果，例如画圆等等。</li>
+<li><font color=red>读取元素</font>:由于数组在内存中顺序存储，所以只要给出一个数组下标，就可以读取到对应的数组元素。数组的下标必须在数组的长度范围之内，否则会出现数组越界。像这种根据下标读取元素的方式叫作随机读取。</li>
+<li><font color=red>更新元素</font>:要把数组中某一个元素的值替换为一个新值，直接利用数组下标，就可以把新值赋给该元素。</li>
+<li><font color=red>插入元素</font>:插入数组元素的操作存在三种情况：尾部插入、中间插入、超范围插入；数组的实际元素数量有可能小于数组的长度。<br/>
+&emsp;&emsp;尾部插入：是最简单的情况，直接把插入的元素放在数组尾部的空闲位置即可，等同于更新元素的操作；<br/>
+&emsp;&emsp;中间插入：由于数组的每一个元素都有其固定下标，所以不得不先把插入位置及后面的元素向后移动，腾出地方，再把要插入的元素放到对应的数组位置上。<br/>
+&emsp;&emsp;超范围插入：涉及到数组的扩容，就是创建一个新的数组，长度是就数组的两倍，再把旧数组中的元素统统复制过去，就实现了数组的扩容。
+<font color=red>删除元素</font>:数组的删除操作和插入操作的过程相反，如果删除的元素位于数组中间，其后的元素都需要向前挪动一位，如果删除的元素在尾部，直接删除就好了。<br/>
+&emsp;&emsp;<i>如果对数组元素没有顺序要求， 那么直接把最后一个元素复制到要删除的元素的位置，然后再删除最后一个元素。</i><br/>
+### 数组的优势与劣势<br/>
+&emsp;&emsp;数组拥有非常高效的随机访问能力，只要给出下标，就可以用常量时间找到对应元素。有一种高效查找元素的算法叫做二分查找，就是利用了数组的这个优势。<br/>
+&emsp;&emsp;由于数组元素连续紧密地存储在内存中，插入、删除元素都会导致大量元素被迫移动，影响效率。</li>
 </ul>
+
+<blockquote>
+<p>总的来说，数组适合读操作多、写操作少的场景。</p>
+</blockquote>
 
 
 </div>
@@ -537,15 +547,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15590305484634.html"  title="Previous Post: Button">&laquo; Button</a>
+	        <a href="15644786995373.html"  title="Previous Post: 链表">&laquo; 链表</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15584534943886.html" 
-	        title="Next Post: TextView">TextView &raquo;</a>
+	        <a href="15644655646063.html" 
+	        title="Next Post: 基础">基础 &raquo;</a>
 	    
 	</div>
   </div>
@@ -558,7 +568,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15587752872990.html';
+		var currentURL = '15644690293137.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
