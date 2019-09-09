@@ -47,6 +47,10 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="报错问题" href="15680295419393.html">报错问题</a></li>
+          
+            <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
+          
             <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
           
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
@@ -224,6 +228,32 @@
 
       
         <li class="divider"></li>
+        <li><label>网络爬虫</label></li>
+
+          
+            <li><a title="爬虫--基本库的使用" href="15660531164999.html">爬虫--基本库的使用</a></li>
+          
+            <li><a title="爬虫概述" href="15660114926379.html">爬虫概述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>网络安全</label></li>
+
+          
+            <li><a title="基础" href="15650980568729.html">基础</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>计算机基础</label></li>
+
+          
+            <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>React-Native</label></li>
 
           
@@ -291,6 +321,10 @@
 
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
+                        
+                          <li><a title="报错问题" href="15680295419393.html">报错问题</a></li>
+                        
+                          <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
                         
                           <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
                         
@@ -450,6 +484,26 @@
                         
 
                     
+                      <li class="side-title"><span>网络爬虫</span></li>
+                        
+                          <li><a title="爬虫--基本库的使用" href="15660531164999.html">爬虫--基本库的使用</a></li>
+                        
+                          <li><a title="爬虫概述" href="15660114926379.html">爬虫概述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>网络安全</span></li>
+                        
+                          <li><a title="基础" href="15650980568729.html">基础</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>计算机基础</span></li>
+                        
+                          <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+                        
+
+                    
                       <li class="side-title"><span>React-Native</span></li>
                         
                           <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
@@ -508,18 +562,16 @@
 
 	
 		<div class="markdown-body">
-		<h1>ProgressBar</h1>
+		<h1>Permissions权限</h1>
 
-		<h2 id="toc_0">ProgressBar的常用属性和方法</h2>
+		<h2 id="toc_0">权限级别</h2>
+
+<p>权限有三种保护级别会影响第三方应用程序：正常、签名、危险权限；</p>
 
 <ul>
-<li><font color=red>style</font>:设置进度条的样式，可取值有如下：?android:attr/progressBarStyle、?android:attr/progressBarStyleSmall、?android:attr/progressBarStyleSmallInverse、?android:attr/progressBarStyleSmallTitle、?android:attr/progressBarStyleLarge、?android:attr/progressBarStyleLargeInverse、?android:attr/progressBarStyleHorizontal、?android:attr/progressBarStyleInverse；</li>
-<li><font color=red>progress</font>:初始时的进度；</li>
-<li><font color=red>max</font>:最大进度；</li>
-<li><p><font color=red>secondaryProgress</font>:二级进度；</p></li>
-<li><p>setProgress(int progress,boolean animate):设置进度；</p></li>
-<li><p>incrementProgressBy(int diff):设置进度条增减；</p></li>
-<li><p>incrementSecondaryProgressBy(int diff):设置二级进度条增减；</p></li>
+<li><font color=red>正常权限</font>：普通权限涵盖应用程序需要访问应用程序沙箱外部数据或资源的区域，但用户隐私或其他应用操作的风险很小。如果应用程序在其清单中声明它需要的正常权限，系统会自动将这些权限授予你的应用，系统不会提示用户授予正常权限，用户也无法撤销这些权限；</li>
+<li><font color=red>签名权限</font>：系统会在安装时授予这些应用程序权限，但仅限于尝试使用权限的应用程序使用与定义权限的应用程序相同的证书进行签名时；</li>
+<li><font color=red>危险权限</font>：危险权限涵盖应用程序需要涉及用户私人信息的数据或资源的区域，或者可能会影响用户存储的数据或其他应用程序的操作。如果应用声明它需要的危险权限，则用户必须明确授予该应用的权限。在用户批准该权限之前，你的应用无法提供依赖该权限的功能；</li>
 </ul>
 
 
