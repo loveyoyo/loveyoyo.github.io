@@ -47,6 +47,8 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
+          
             <li><a title="报错问题" href="15680295419393.html">报错问题</a></li>
           
             <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
@@ -60,6 +62,8 @@
         <li class="divider"></li>
         <li><label>四大组件</label></li>
 
+          
+            <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
           
             <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
           
@@ -301,6 +305,8 @@
         <li><label>陌上归</label></li>
 
           
+            <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
+          
             <li><a title="大纲" href="15613407387642.html">大纲</a></li>
           
 
@@ -322,6 +328,8 @@
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
                         
+                          <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
+                        
                           <li><a title="报错问题" href="15680295419393.html">报错问题</a></li>
                         
                           <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
@@ -333,6 +341,8 @@
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
                         
                           <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
                         
@@ -546,6 +556,8 @@
                     
                       <li class="side-title"><span>陌上归</span></li>
                         
+                          <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
+                        
                           <li><a title="大纲" href="15613407387642.html">大纲</a></li>
                         
 
@@ -562,28 +574,40 @@
 
 	
 		<div class="markdown-body">
-		<h1>Handler消息机制</h1>
+		<h1>数组</h1>
 
-		<p>&emsp;&emsp;<strong>Handler消息机制主要是Handler、Message、MessageQueue、Looper这四个类配合使用实现的。</strong></p>
-
-<ul>
-<li><font color=red>Message</font>:Message是在线程之间传递的消息，它可以在内部携带少量的信息，用于在不同线程之间交换数据。Message可以使用what字段、arg1字段和arg2字段来携带（int）整型数据，还可以使用obj字段携带一个Object对象。</li>
-<li><font color=red>Handler</font>:主要用于发送和接收到消息进行处理。发送消息一般是使用Handler的sendMessage()等几个方法来发送，而发出去的消息经过一系列的处理后，最终会传递到Handler的handleMessage()方法中。</li>
-<li><font color=red>MessageQueue</font>:MessageQueue是消息队列的意思，它主要是用于存放所有通过Handler发送的消息。这部分消息会一直存在于消息队列中，等待被处理。每个线程只会有一个MessageQueue对象。</li>
-<li><font color=red>Looper</font>:Looper是每个线程中的MessageQueue的管家，调用Looper的loop（）方法后，就会进入到一个无限循环中，每当发现MessageQueue中存在一条消息，就会将它取出，并传递到Handler的handleMessage（）方法。每个线程中只会有一个Looper对象。</li>
+		<ul>
+<li><font color=red>数组</font>:是有限个相同类型的变量所组成的有序集合，数组中的每一个变量被称为元素。数组是最为简单、最为常用的数据结构。
+&emsp;&emsp;数组的一个特点是，在内存中顺序存储，因此可以很好地实现逻辑上的顺序表。</li>
 </ul>
 
-<p><font color=red>异步消息处理流程</font>：<br/>
-&emsp;&emsp;首先需要在主线程中创建一个Handler对象，并重写handleMessage()方法。然后当子线程中需要更新UI操作时，就创建一个Message对象，并通过Handler将这条消息发送出去。之后这条消息会被添加到MessageQueue的队列中等待被处理，而Looper则会一直尝试从MessageQueue中取出待处理消息，通过Handler的dispatchMessage()方法的回调，最后分发回Handler的handleMessage()方法中。由于Handler是在主线程中创建的，所以此时handleMessage()方法中的代码也会在主线程中运行，就可以在这里进行UI操作了。</p>
+<blockquote>
+<p>内存是由一个个连续的内存单元组成的，每一个内存单元都有自己的地址。在这些内存单元中，有些被其他数据占用了，有些是空闲的。</p>
+</blockquote>
 
-<h2 id="toc_0">注意：</h2>
+<p>&emsp;&emsp;数组中的每一个元素，都存储在小小的内存单元中，并且元素之间紧密排列，既不能打乱元素的存储顺序，也不能跳过某个存储单元进行存储。</p>
+
+<h3 id="toc_0">数组的基本操作</h3>
 
 <ul>
-<li>不能在子线程中创建Handler；</li>
-<li>不能在子线程中更新UI；</li>
-<li>Handeler的作用：(1).在非UI线程中完成耗时操作，在UI线程中去更新UI；(2).可以在主线程中发送延时消息；</li>
-<li>只能在UI线程中去更新UI原因:(1).解决多线程并发问题；(2).提高界面更新的性能问题；(3).架构设计的简单；</li>
+<li><font color=red>读取元素</font>:由于数组在内存中顺序存储，所以只要给出一个数组下标，就可以读取到对应的数组元素。数组的下标必须在数组的长度范围之内，否则会出现数组越界。像这种根据下标读取元素的方式叫作随机读取。</li>
+<li><font color=red>更新元素</font>:要把数组中某一个元素的值替换为一个新值，直接利用数组下标，就可以把新值赋给该元素。</li>
+<li><font color=red>插入元素</font>:插入数组元素的操作存在三种情况：尾部插入、中间插入、超范围插入；数组的实际元素数量有可能小于数组的长度。<br/>
+&emsp;&emsp;尾部插入：是最简单的情况，直接把插入的元素放在数组尾部的空闲位置即可，等同于更新元素的操作；<br/>
+&emsp;&emsp;中间插入：由于数组的每一个元素都有其固定下标，所以不得不先把插入位置及后面的元素向后移动，腾出地方，再把要插入的元素放到对应的数组位置上。<br/>
+&emsp;&emsp;超范围插入：涉及到数组的扩容，就是创建一个新的数组，长度是就数组的两倍，再把旧数组中的元素统统复制过去，就实现了数组的扩容。
+<font color=red>删除元素</font>:数组的删除操作和插入操作的过程相反，如果删除的元素位于数组中间，其后的元素都需要向前挪动一位，如果删除的元素在尾部，直接删除就好了。<br/>
+&emsp;&emsp;<i>如果对数组元素没有顺序要求， 那么直接把最后一个元素复制到要删除的元素的位置，然后再删除最后一个元素。</i></li>
 </ul>
+
+<h3 id="toc_1">数组的优势与劣势</h3>
+
+<p>&emsp;&emsp;数组拥有非常高效的随机访问能力，只要给出下标，就可以用常量时间找到对应元素。有一种高效查找元素的算法叫做二分查找，就是利用了数组的这个优势。<br/>
+&emsp;&emsp;由于数组元素连续紧密地存储在内存中，插入、删除元素都会导致大量元素被迫移动，影响效率。</p>
+
+<blockquote>
+<p>总的来说，数组适合读操作多、写操作少的场景。</p>
+</blockquote>
 
 
 		</div>

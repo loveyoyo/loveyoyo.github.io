@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  for - Kang
+  Handler消息机制 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -570,74 +570,197 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>for</h1>
+<h1>Handler消息机制</h1>
 
-<h2 id="toc_0">二级标题</h2>
+<p>&emsp;&emsp;<strong>安卓系统设计要求UI的更新只能在主线程中进行更新，但是我们需要将耗时操作放在子线程中以免ANR的发生，就需要我们把子线程的数据传递到主线程中，Hanlder消息机制就是安卓系统实现该情景设计的。但是，Handler不仅仅能将子线程的数据传递给主线程，还能实现任意两个线程之间的数据传递。</strong> </p>
 
-<h3 id="toc_1">三级标题</h3>
+<h2 id="toc_0">Handler消息机制使用的类</h2>
 
-<h4 id="toc_2">四级标题</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">类</th>
+<th>描述</th>
+</tr>
+</thead>
 
-<h5 id="toc_3">五级标题</h5>
+<tbody>
+<tr>
+<td style="text-align: center">Handler</td>
+<td>发送和接受消息</td>
+</tr>
+<tr>
+<td style="text-align: center">Message</td>
+<td>消息的载体</td>
+</tr>
+<tr>
+<td style="text-align: center">MessageQueue</td>
+<td>消息传输的通道</td>
+</tr>
+<tr>
+<td style="text-align: center">Looper</td>
+<td>维护通道</td>
+</tr>
+</tbody>
+</table>
 
-<h6 id="toc_4">六级标题</h6>
+<h2 id="toc_1">Handler类主要用到的方法</h2>
 
-<p><strong>这是加粗文本</strong><br/>
-<strong>这是加粗文本</strong><br/>
-<em>这是斜体文本</em><br/>
-<u>这是下划线文本</u><br/>
-这行文本会换行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">方法</th>
+<th>描述</th>
+</tr>
+</thead>
 
-<ul>
-<li>这是第一行无序列表<br/></li>
-<li>这是第二行无序列表</li>
-<li><p>这是第三行无序列表<br/>
-终止了无序列表</p></li>
-</ul>
+<tbody>
+<tr>
+<td style="text-align: center">obtainMessage()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">obtainMessage(int)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">obtainMessage(int,Object)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">obtainMessage(int,int,int)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">obtainMessage(int,int,int,Object)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">post(Runnnable)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">postAtTime(Runnable,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">postAtTime(Runnable,Object,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">postDelayed(Runnable,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">postDelayed(Runnable,Object,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">postAtFrontOfQueue(Runnable)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendMessage(Message)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendEmptyMessage(int)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendEmptyMessageDelayed(int,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendEmptyMessageAtTime(int,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendMessageDelayed(Message,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendMessageAtTime(int,long)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">sendMessageAtFrontOfQueue(Message)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">getLooper()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-<ol>
-<li>这是第一行有序列表</li>
-<li>这是第二行有序列表</li>
-<li><p>这是有序列表</p></li>
-</ol>
+<h2 id="toc_2">Message类主要的方法和变量</h2>
 
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 未做任务</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 已做任务</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">变量</th>
+<th>描述</th>
+</tr>
+</thead>
 
-<blockquote>
-<p>这是区块</p>
-</blockquote>
-<addr>
-<p>function fancyAlert(arg) {<br/>
-  if(arg) {<br/>
-    $.facebox({div:&#39;#foo&#39;})<br/>
-  }<br/>
-} <br/>
-<code>code</code></p>
+<tbody>
+<tr>
+<td style="text-align: center">what</td>
+<td>int型变量</td>
+</tr>
+<tr>
+<td style="text-align: center">arg1</td>
+<td>int型变量</td>
+</tr>
+<tr>
+<td style="text-align: center">arg2</td>
+<td>int型变量</td>
+</tr>
+<tr>
+<td style="text-align: center">obj</td>
+<td>Object类型</td>
+</tr>
+</tbody>
+</table>
 
-<pre class="line-numbers"><code class="language-function">  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
+<h2 id="toc_3">MessageQueue</h2>
 
-}
-</code></pre>
+<p>&emsp;&emsp;不怎么在代码中用到；</p>
 
-<p>`function fancyAlert(arg) {<br/>
-  if(arg) {<br/>
-    $.facebox({div:&#39;#foo&#39;})<br/>
-  }</p>
+<h2 id="toc_4">Looper</h2>
 
-<p>}`</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">方法</th>
+<th>描述</th>
+</tr>
+</thead>
 
-<pre class="line-numbers"><code class="language-text">function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-
-}
-</code></pre>
+<tbody>
+<tr>
+<td style="text-align: center">prepare()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">prepare(boolean)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">prepareMainLooper()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">getMainLooper()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">loop()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
 </div>
@@ -649,15 +772,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15584071613702.html"  title="Previous Post: react-navigation">&laquo; react-navigation</a>
+	        <a href="15686328305080.html"  title="Previous Post: 设置代码信息模版">&laquo; 设置代码信息模版</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15601389773513.html" 
-	        title="Next Post: ScrollView和HorizontalView">ScrollView和HorizontalView &raquo;</a>
+	        <a href="15680295419393.html" 
+	        title="Next Post: 报错问题">报错问题 &raquo;</a>
 	    
 	</div>
   </div>
@@ -670,7 +793,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15583472660662.html';
+		var currentURL = '15681720095770.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
