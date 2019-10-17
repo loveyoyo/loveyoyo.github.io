@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  GreenDao - Kang
+  ADB命令 - Kang
   
   </title>
  <meta name="description" content="个人文章">
@@ -578,8 +578,93 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>GreenDao</h1>
+<h1>ADB命令</h1>
 
+<p>&emsp;&emsp;adb工具即Android Debug Bridge（安卓调试桥）tools.它就是一个命令行窗口，用于通过电脑端与模拟器或者真实设备交互。</p>
+
+<h2 id="toc_0">分类命令</h2>
+
+<h3 id="toc_1">ADB Debugging</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">adb devices</td>
+<td>主要用于打印当前连接的所有模拟器或者设备</td>
+</tr>
+<tr>
+<td style="text-align: center">adb forward</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">adb kill-server</td>
+<td>终止adb进程</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_2">Wireless</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">adb connect</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">adb usb</td>
+<td>设置设备以USB形式连接PC</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_3">Package Manager</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">adb install com.kang.xxx</td>
+<td>直接安装应用</td>
+</tr>
+<tr>
+<td style="text-align: center">adb install -r com.kang.xxx</td>
+<td>替代存在的应用，不会删除应用数据，用于更新应用特别方便</td>
+</tr>
+<tr>
+<td style="text-align: center">adb uninstall com.kang.xxx</td>
+<td>直接删除应用和所有数据</td>
+</tr>
+<tr>
+<td style="text-align: center">adb uninstall -k com.kang.xxx</td>
+<td>删除应用，但会保留应用数据和缓存数据</td>
+</tr>
+<tr>
+<td style="text-align: center">adb shell pm list packages</td>
+<td>打印设备下面的所有应用包名</td>
+</tr>
+</tbody>
+</table>
 
 
 </div>
@@ -591,15 +676,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15632683205618.html"  title="Previous Post: SqlBright">&laquo; SqlBright</a>
+	        <a href="15706865946961.html"  title="Previous Post: AAPT命令">&laquo; AAPT命令</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15632683056692.html" 
-	        title="Next Post: Fresco">Fresco &raquo;</a>
+	        <a href="15686842332295.html" 
+	        title="Next Post: 待看的东西">待看的东西 &raquo;</a>
 	    
 	</div>
   </div>
@@ -612,7 +697,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15632683120036.html';
+		var currentURL = '15706865755803.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');

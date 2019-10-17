@@ -47,6 +47,10 @@
         <li><label>Android Studio技巧</label></li>
 
           
+            <li><a title="AAPT命令" href="15706865946961.html">AAPT命令</a></li>
+          
+            <li><a title="ADB命令" href="15706865755803.html">ADB命令</a></li>
+          
             <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
           
             <li><a title="报错问题" href="15680295419393.html">报错问题</a></li>
@@ -327,6 +331,10 @@
 
                     
                       <li class="side-title"><span>Android Studio技巧</span></li>
+                        
+                          <li><a title="AAPT命令" href="15706865946961.html">AAPT命令</a></li>
+                        
+                          <li><a title="ADB命令" href="15706865755803.html">ADB命令</a></li>
                         
                           <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
                         
@@ -727,6 +735,10 @@
 <td style="text-align: center">git diff --staged</td>
 <td style="text-align: center">同git diff --cached</td>
 </tr>
+<tr>
+<td style="text-align: center">git diff localXxx（要查看的某个文件的路径）</td>
+<td style="text-align: center">查看某个文件的修改内容</td>
+</tr>
 </tbody>
 </table>
 
@@ -826,12 +838,20 @@
 <td>查看本地和远程的分支，远程分支以remotes/开头</td>
 </tr>
 <tr>
+<td style="text-align: center">git branch --all</td>
+<td>同git branch -a命令一样</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch -m localOldXxx（旧的分支名称） localNewXxx（新的分支名称）</td>
+<td>修改本地分支名称，</td>
+</tr>
+<tr>
 <td style="text-align: center">git branch localXxx（分支名字）</td>
 <td>创建新分支，分支名字就是localXxx</td>
 </tr>
 <tr>
 <td style="text-align: center">git checkout localXxx(分支名字)</td>
-<td>切换到分支localXxx</td>
+<td>从当前分支切换到分支localXxx</td>
 </tr>
 <tr>
 <td style="text-align: center">git checkout -b localXxx(分支名字)</td>
@@ -847,7 +867,11 @@
 </tr>
 <tr>
 <td style="text-align: center">git branch -vv</td>
-<td>查看</td>
+<td>查看本地分支和远程分支的关联关系</td>
+</tr>
+<tr>
+<td style="text-align: center">git branch --set-upstream-to=origin/remoteXxx（远程分支） localXxx(本地分支)</td>
+<td>本地分支关联远程分支</td>
 </tr>
 <tr>
 <td style="text-align: center">git checkout -- localFileXxx(本地文件路径)</td>
@@ -901,11 +925,19 @@
 <tbody>
 <tr>
 <td style="text-align: center">git log</td>
-<td>显示一个分支中提交的更改记录</td>
+<td>查看本地当前分支中提交的记录</td>
+</tr>
+<tr>
+<td style="text-align: center">git log remotes/origin/remoteXxx（要查看的远程仓库的分支）</td>
+<td>查看远程仓库某个分支的提交记录</td>
 </tr>
 <tr>
 <td style="text-align: center">git log --oneline</td>
 <td>查看历史记录的简洁版本</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --pretty=oneline localXxx(本地某个文件的路径) git show commitIdXxx(提交的commitId) localXxx(本地某个文件的路径)</td>
+<td>查看某个文件的修改</td>
 </tr>
 <tr>
 <td style="text-align: center">git log --graph</td>
