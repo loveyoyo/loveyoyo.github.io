@@ -594,7 +594,49 @@
  <div class="markdown-body">
 <h1>Activity</h1>
 
-<h2 id="toc_0">Activity启动模式</h2>
+<h2 id="toc_0">Activity生命周期</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">生命周期方法</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">onCreate()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">onStart()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">onResume()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">onPause()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">onStop()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">onRestart()</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center">onDestroy()</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_1">Activity启动模式</h2>
 
 <p>&emsp;&emsp;<strong>启动模式一共四种：standard、singleTop、singleTask、singleInstance，可以在AndroidManifest.xml中通过给<activity>标签指定android:launchMode属性来选择启动模式。</strong></p>
 
@@ -605,7 +647,56 @@
 <li><font color=red>singleInstance</font>:指定为singleInstance模式的活动会启用一个新的返回栈来管理这个活动（其实如果singleTask模式指定了不同的taskAffinity，也会启动一个新的返回栈）。假设我们的程序中有一个活动是允许其他程序调用的，那我们要实现其他程序和我们的程序都可以共享这个活动的实例。前三种启动模式肯定是做不到的，因为每个应用程序都会有自己的返回栈，同一个活动在不同的返回栈中入栈时必然是创建了新的实例。而使用singleInstance模式就可以解决这个问题，在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。</li>
 </ul>
 
-<h2 id="toc_1">注意事项</h2>
+<h2 id="toc_2">控制Activity的生命周期</h2>
+
+<ul>
+<li><font color=red>强制执行单任务模式</font>:</li>
+<li><font color=red>强制手机屏幕方向</font>:<br/>
+&emsp;&emsp;几乎所有的Android设备都带有加速度计，这使得该设备可以判断方向，当设备的屏幕在横向和纵向模式之间切换时，系统默认的动作是相应地旋转应用程序的视图。 <br/>
+&emsp;&emsp;默认情况下，当手机屏幕方向改变时，Activity将被结束然后再重新启动，也就是会执行onPause()--onStop()--onDestroy()--onCreate()--onStart()--onResume()这几个方法，会使该应用丢失当前的状态。<br/>
+&emsp;&emsp;对于屏幕改变方向的问题，Android提供了两种解决方案，一种是在改变方向之前保存用户的状态，然后再重启该Activity时恢复先前的用户状态。另一种方法是强制屏幕方向，禁止旋转切换应用程序的视图。<br/>
+&emsp;&emsp;这里介绍第二种方法：在AndroidManifest.xml中事先指定某个Activity的固定视图方法以达到目的，如下：</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">Activity视图模式</th>
+<th>方法</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">纵向模式</td>
+<td>android:screenOrientation=&quot;portrait&quot;</td>
+</tr>
+<tr>
+<td style="text-align: center">横向模式</td>
+<td>android:screenOrientation=&quot;landscape&quot;</td>
+</tr>
+</tbody>
+</table>
+
+<p>&emsp;&emsp;不过只是设置了Activity的视图模式，在旋转手机屏幕后，视图始终保持设定好的视图模式，但是Activity还是会经历onPause()--onStop()--onDestroy()方法，还是没有解决Activity状态丢失的问题。也就是说，设置Android:screenOrientation属性只能使得应用程序始终保持指定的方向，并不能防止Activity的重新启动。要实现Activity在屏幕方向改变时不被重启，还需要在AndroidManifest.xml中设置android:configChanges属性告诉系统对应用程序方向的改变进行处理而不是重启应用程序。代码如下：</p>
+
+<pre class="line-numbers"><code class="language-java">android:configChanges=&quot;orientation|keyboardHidden&quot;
+</code></pre>
+
+<p>设置好上述属性之后，当屏幕方向改变或硬键盘滑出时，Android将不会重启Activity，而是调用onConfigurationChange()方法对事件进行处理。</p>
+
+<pre class="line-numbers"><code class="language-java">@Override
+public void onConfigurationChanged(Configuration newConfig){
+    super.onConfigurationChanged(newConfig);
+    
+}
+</code></pre>
+
+<ul>
+<li><font color=red>保存和恢复Activity的信息</font>:</li>
+</ul>
+
+<h2 id="toc_3">注意事项</h2>
 
 <ul>
 <li>startActivity（）方法最终调用的是startActivityForResult()方法，只是startActivity()的实现是startActivityForResult()方法内部的请求码requestCode固定为-1，所以如果使用startActivityForResult()方法时，请求码写成了-1，那么就相当于调用了startActivity()方法，onActivityResult()方法不会被回调；</li>
