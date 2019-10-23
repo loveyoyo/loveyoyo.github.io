@@ -67,9 +67,11 @@
         <li><label>四大组件</label></li>
 
           
+            <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+          
             <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
           
-            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
+            <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -360,9 +362,11 @@
                     
                       <li class="side-title"><span>四大组件</span></li>
                         
+                          <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+                        
                           <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
                         
-                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
+                          <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -600,200 +604,44 @@
 
 	
 		<div class="markdown-body">
-		<h1>Handler消息机制</h1>
+		<h1>安卓事件处理</h1>
 
-		<p>&emsp;&emsp;<strong>安卓系统设计要求UI的更新只能在主线程中进行更新，但是我们需要将耗时操作放在子线程中以免ANR的发生，就需要我们把子线程的数据传递到主线程中，Hanlder消息机制就是安卓系统实现该情景设计的。但是，Handler不仅仅能将子线程的数据传递给主线程，还能实现任意两个线程之间的数据传递。</strong> </p>
+		<p>&emsp;&emsp;<strong>安卓系统提供了两种事件处理机制：基于回调的事件处理和基于监听器的事件处理。</strong><br/>
+&emsp;&emsp;对于基于回调的事件处理而言，大多数与Android设备进行的用户交互事件都有系统捕捉，然后再传递给相应的回调函数进行处理。例如，当用户按下物理按键“返回”键之后，系统就会自动调用onBackPressed()方法对这一按键事件进行处理。因此，开发者只需要重写特定组件或Activity的回调方法便可以对界面事件按自己想要的动作进行处理。<br/>
+&emsp;&emsp;对于基于监听器的事件处理而言，Android中与View和ViewGroup对象相关的用户交互组件基本都支持事件监听器，监听方法会等待某个已经注册的事件发生，然后触发系统向回调方法发送事件消息。因此，开发者只需要为Android的界面组件注册特定的事件监听器即可。例如，为某个按钮注册事件监听器setOnClickListener()，当点击按钮时，就会调用该监听器的onClick()方法对这一点击事件进行处理。</p>
 
-<h2 id="toc_0">Handler消息机制使用的类</h2>
+<h2 id="toc_0">基于回调的事件处理</h2>
 
-<table>
-<thead>
-<tr>
-<th style="text-align: center">类</th>
-<th>描述</th>
-</tr>
-</thead>
+<p>&emsp;&emsp;在Android平台中，每个View都有自己处理事件的回调方法，开发者可以通过重写View的这些回调方法对事件进行响应处理。当某个时间没有被任何一个View处理时，系统便会调用Activity中相应的回调方法。</p>
 
-<tbody>
-<tr>
-<td style="text-align: center">Handler</td>
-<td>发送和接受消息</td>
-</tr>
-<tr>
-<td style="text-align: center">Message</td>
-<td>消息的载体</td>
-</tr>
-<tr>
-<td style="text-align: center">MessageQueue</td>
-<td>消息传输的通道</td>
-</tr>
-<tr>
-<td style="text-align: center">Looper</td>
-<td>维护通道</td>
-</tr>
-</tbody>
-</table>
+<h3 id="toc_1">onKeyDown()回调方法</h3>
 
-<h2 id="toc_1">Handler类主要用到的方法</h2>
+<p>&emsp;&emsp;onKeyDown()回调方法是接口KeyEvent.Callback中的抽象方法，所有的View均实现了该接口并重写了该方法用于捕捉手机键盘被按下的事件。</p>
 
-<table>
-<thead>
-<tr>
-<th style="text-align: center">方法</th>
-<th>描述</th>
-</tr>
-</thead>
+<pre class="line-numbers"><code class="language-java">public boolean onKeyDown(int keyCode,KeyEvent event){
+    
+}
+</code></pre>
 
-<tbody>
-<tr>
-<td style="text-align: center">obtainMessage()</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">obtainMessage(int)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">obtainMessage(int,Object)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">obtainMessage(int,int,int)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">obtainMessage(int,int,int,Object)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">post(Runnnable)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">postAtTime(Runnable,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">postAtTime(Runnable,Object,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">postDelayed(Runnable,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">postDelayed(Runnable,Object,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">postAtFrontOfQueue(Runnable)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendMessage(Message)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendEmptyMessage(int)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendEmptyMessageDelayed(int,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendEmptyMessageAtTime(int,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendMessageDelayed(Message,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendMessageAtTime(int,long)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">sendMessageAtFrontOfQueue(Message)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">getLooper()</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>&emsp;&emsp;参数keyCode为被按下的键值即键盘码，手机键盘中的每个按键都会有其独特的键盘码，在应用程序通过该键盘码判断用户按下的是哪个键；参数event为按键事件封装类的对象，其中包含了触发事件的详细信息，例如事件的状态、事件的类型、事件发生的时间等。<br/>
+&emsp;&emsp;需要注意的是，onKeyDown()方法的返回值，包括其他回调方法一样，该返回值是一个boolean类型的变量，当返回true时，表示已经完整地处理了这个事件，并不希望其他的回调方法再次进行处理；当返回false时，表示并没有完全处理该事件，更希望其他回调方法继续对其进行处理，例如Activity中相应的回调方法。</p>
 
-<h2 id="toc_2">Message类主要的方法和变量</h2>
+<h3 id="toc_2">onKeyUp()回调方法</h3>
 
-<table>
-<thead>
-<tr>
-<th style="text-align: center">变量</th>
-<th>描述</th>
-</tr>
-</thead>
+<p>&emsp;&emsp;onKeyUp()回调方法也是接口KeyEvent.Callback中的抽象方法，所有View均实现了该接口并重写了该方法用于捕捉手机键盘按键抬起的事件。</p>
 
-<tbody>
-<tr>
-<td style="text-align: center">what</td>
-<td>int型变量</td>
-</tr>
-<tr>
-<td style="text-align: center">arg1</td>
-<td>int型变量</td>
-</tr>
-<tr>
-<td style="text-align: center">arg2</td>
-<td>int型变量</td>
-</tr>
-<tr>
-<td style="text-align: center">obj</td>
-<td>Object类型</td>
-</tr>
-</tbody>
-</table>
+<pre class="line-numbers"><code class="language-java">public boolean onKeyUp(int keyCode,KeyEvent event){
+    
+}
+</code></pre>
 
-<h2 id="toc_3">MessageQueue</h2>
-
-<p>&emsp;&emsp;不怎么在代码中用到；</p>
-
-<h2 id="toc_4">Looper</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">方法</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">prepare()</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">prepare(boolean)</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">prepareMainLooper()</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">getMainLooper()</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: center">loop()</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>&emsp;&emsp;该方法的两个参数同onKeyDown()方法中的参数完全一致，该方法的boolean类型返回值含义也与onKeyDown()方法中的完全相同，都是通知系统是否希望其他回调方法再次对该事件进行处理。</p>
 
 
 		</div>
+	
+
+ 
 	
 
  

@@ -67,9 +67,11 @@
         <li><label>四大组件</label></li>
 
           
+            <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+          
             <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
           
-            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
+            <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -360,9 +362,11 @@
                     
                       <li class="side-title"><span>四大组件</span></li>
                         
+                          <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+                        
                           <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
                         
-                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
+                          <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -600,75 +604,38 @@
 
 	
 		<div class="markdown-body">
-		<h1>preloaded-classes</h1>
+		<h1>安卓事件处理</h1>
 
-		<p>&emsp;&emsp;在Zygote初始化的时候，会调用到ZygoteInit.java的main（）方法，在注册了ZygoteSocket的控制通道之后，就调用preload()方法去加载一些预加载的数据。<br/>
-&emsp;&emsp;<font color=red>5.1.1源码分析</font></p>
+		<p>&emsp;&emsp;<strong>安卓系统提供了两种事件处理机制：基于回调的事件处理和基于监听器的事件处理。</strong><br/>
+&emsp;&emsp;对于基于回调的事件处理而言，大多数与Android设备进行的用户交互事件都有系统捕捉，然后再传递给相应的回调函数进行处理。例如，当用户按下物理按键“返回”键之后，系统就会自动调用onBackPressed()方法对这一按键事件进行处理。因此，开发者只需要重写特定组件或Activity的回调方法便可以对界面事件按自己想要的动作进行处理。<br/>
+&emsp;&emsp;对于基于监听器的事件处理而言，Android中与View和ViewGroup对象相关的用户交互组件基本都支持事件监听器，监听方法会等待某个已经注册的事件发生，然后触发系统向回调方法发送事件消息。因此，开发者只需要为Android的界面组件注册特定的事件监听器即可。例如，为某个按钮注册事件监听器setOnClickListener()，当点击按钮时，就会调用该监听器的onClick()方法对这一点击事件进行处理。</p>
 
-<pre class="line-numbers"><code class="language-java">public static void main(String argv[]){
-    ...
-    registerZygoteSocket(socketName);
-    ..
-    preload();
-    ...
-}
+<h2 id="toc_0">基于回调的事件处理</h2>
 
-static void preload(){
-    preloadClasses();
-    preloadResources();
-    preloadOpenGL();
-    preloadSharedLibraries();
-    WebViewFactory.prepareWebViewInZygote();
-}
+<p>&emsp;&emsp;在Android平台中，每个View都有自己处理事件的回调方法，开发者可以通过重写View的这些回调方法对事件进行响应处理。当某个时间没有被任何一个View处理时，系统便会调用Activity中相应的回调方法。</p>
 
-private static void preloadClasses(){
-    InputStream is;
-    try{
-    //预加载类的信息存储在PRELOADED_CLASSES变量中，实际值为“/system/etc/preloaded-classes”，可以在设备的这个目录下找到preloaded-classes文件;
-        is = new FileInputStream(PRELOADED_CLASSES);
-    }
-}
+<h3 id="toc_1">onKeyDown()回调方法</h3>
 
-private static void preloadResources(){
+<p>&emsp;&emsp;onKeyDown()回调方法是接口KeyEvent.Callback中的抽象方法，所有的View均实现了该接口并重写了该方法用于捕捉手机键盘被按下的事件。</p>
+
+<pre class="line-numbers"><code class="language-java">public boolean onKeyDown(int keyCode,KeyEvent event){
     
-}
-
-private static void preloadOpenGL(){
-    
-}
-
-private static void preloadSharedLibraries(){
-    System.loadLibrary(&quot;android&quot;);
-    System.loadLibrary(&quot;compiler_rt&quot;);
-    System.loadLibrary(&quot;jnigraphics&quot;);
 }
 </code></pre>
 
-<p>&emsp;&emsp;在preloaded-classes文件中，开头注释就说明了这个文件是由/framework/base/tools/preload/WritePreloadedClassFile.java类生成的，在WritePreloadedClassFile.java类中，有两个变量如下：</p>
+<p>&emsp;&emsp;参数keyCode为被按下的键值即键盘码，手机键盘中的每个按键都会有其独特的键盘码，在应用程序通过该键盘码判断用户按下的是哪个键；参数event为按键事件封装类的对象，其中包含了触发事件的详细信息，例如事件的状态、事件的类型、事件发生的时间等。<br/>
+&emsp;&emsp;需要注意的是，onKeyDown()方法的返回值，包括其他回调方法一样，该返回值是一个boolean类型的变量，当返回true时，表示已经完整地处理了这个事件，并不希望其他的回调方法再次进行处理；当返回false时，表示并没有完全处理该事件，更希望其他回调方法继续对其进行处理，例如Activity中相应的回调方法。</p>
 
-<pre class="line-numbers"><code class="language-java">//最小的类加载时间，如果大于这个，才值得被装载进preload-classes；
-static final int MIN_LOAD_TIME_MICROS = 1250;
-//最少被多少个进程所装载，如果大于这个，被装载进preload-classes；
-static final int MIN_PROCESSES = 10;
+<h3 id="toc_2">onKeyUp()回调方法</h3>
+
+<p>&emsp;&emsp;onKeyUp()回调方法也是接口KeyEvent.Callback中的抽象方法，所有View均实现了该接口并重写了该方法用于捕捉手机键盘按键抬起的事件。</p>
+
+<pre class="line-numbers"><code class="language-java">public boolean onKeyUp(int keyCode,KeyEvent event){
+    
+}
 </code></pre>
 
-<p>&emsp;&emsp;根据这两个变量判断每个类加载的时间是否大于1250微秒，是否被十个以上的进程调用，超过的就会被写到preload-classes文件中，最后由zygote预加载。<br/>
-&emsp;&emsp;<font color=blue>preloadClass()函数的执行时间比较长，这是导致Android系统启动慢的原因之一。</font></p>
-
-<p>-<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
------------------------last line for now---------------------</p>
+<p>&emsp;&emsp;该方法的两个参数同onKeyDown()方法中的参数完全一致，该方法的boolean类型返回值含义也与onKeyDown()方法中的完全相同，都是通知系统是否希望其他回调方法再次对该事件进行处理。</p>
 
 
 		</div>

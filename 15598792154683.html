@@ -67,9 +67,11 @@
         <li><label>四大组件</label></li>
 
           
+            <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+          
             <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
           
-            <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
+            <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
           
             <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
           
@@ -360,9 +362,11 @@
                     
                       <li class="side-title"><span>四大组件</span></li>
                         
+                          <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+                        
                           <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
                         
-                          <li><a title="Intent机制" href="15640232512188.html">Intent机制</a></li>
+                          <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
                         
                           <li><a title="ContentProvider" href="15603581865930.html">ContentProvider</a></li>
                         
@@ -697,7 +701,15 @@ public void onConfigurationChanged(Configuration newConfig){
 </code></pre>
 
 <ul>
-<li><font color=red>保存和恢复Activity的信息</font>:</li>
+<li><font color=red>保存和恢复Activity的信息</font>:
+&emsp;&emsp;为Activity实现这一功能的方法就是onSaveInstanceState()和onRestoreInstanceState()。当一个Activity即将被程序杀死时，可以通过重写onSaveInstanceState()方法来保存需要保存的相关信息。当重新创建该Activity后，之前onSaveInstanceState()方法保存的状态信息将通过Bundle传递给onCreate()方法，然后就可以利用onRestoreInstanceState()方法来恢复之前的状态信息了。<br/>
+&emsp;&emsp;值得注意的是，onSaveInstanceState()并不总是在Activity被销毁前都会被调用，当系统未经用户允许时销毁了该Activity，则onSaveInstanceState()方法将会被系统调用，这是系统的责任，因为它必须要提供一个机会让用户保存必要的数据。<br/>
+&emsp;&emsp;以下几种情况，系统会调用onSaveInstanceState()方法：<br/>
+1.当用户按下Home键，系统不知道用户在按下Home键之后要运行多少其他程序，自然也不知道当前Activity是否会被销毁，故系统会调用onSaveInstanceState()方法，让用户有机会保存某些非永久性的数据；<br/>
+2.长按Home键或者Menu键（具体看手机厂商的定义），选择运行其他程序；<br/>
+3.按下电源键，是手机设备处于屏保状态；<br/>
+4.屏幕方向切换，而用户并未设置configChanges属性指定系统处理该事件时，系统会销毁当前Activity，在屏幕切换后自动创建该Activity，所以onSaveInstanceState()方法一定会被执行；<br/>
+&emsp;&emsp;当然，也要注意，onSaveInstanceState()方法和onRestoreInstanceState()并不一定被成对调用；</li>
 </ul>
 
 <h2 id="toc_3">注意事项</h2>
