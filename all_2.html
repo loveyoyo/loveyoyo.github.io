@@ -89,6 +89,8 @@
         <li><label>Android组件</label></li>
 
           
+            <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+          
             <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
@@ -392,6 +394,8 @@
                     
                       <li class="side-title"><span>Android组件</span></li>
                         
+                          <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+                        
                           <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
@@ -622,9 +626,32 @@
 
 	
 		<div class="markdown-body">
-		<h1>偎</h1>
+		<h1>内存泄漏</h1>
 
-		
+		<ul>
+<li><font color=red>静态对象</font>:<br/>
+&emsp;&emsp;当一个static静态对像被调用时，这个对象的生命周期和整个app的生命周期一样长。如果，我们使用的参数Context是Activity或者Service的上下文，那么当Activity被销毁的时候，我们的静态对象仍然持有着Activity的Context，就会导致Activity对象无法被释放回收，就导致了内存泄漏；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">public class TestManager{
+    private static TestManager sTestManager;
+    //会造成内存泄漏的方法;
+    public static TestManager getInstance(Context context) {
+        if (sTestManager == null) {
+            sTestManager = new TestManager(context);
+        }
+        return sTestManager;
+    }
+    //不会造成内存泄漏的方法；
+    public static TestManager getInstanceSafe(Context context) {
+        if (sTestManager == null) {
+            sTestManager = new TestManager(context.getApplicationContext());                                               
+        }
+        return sTestManager;
+    } 
+}
+</code></pre>
+
 
 		</div>
 	

@@ -89,6 +89,8 @@
         <li><label>Android组件</label></li>
 
           
+            <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+          
             <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
@@ -392,6 +394,8 @@
                     
                       <li class="side-title"><span>Android组件</span></li>
                         
+                          <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+                        
                           <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
@@ -622,38 +626,43 @@
 
 	
 		<div class="markdown-body">
-		<h1>爬虫概述</h1>
+		<h1>爬虫--基本库的使用</h1>
 
-		<p>&emsp;&emsp;<strong>我们可以把互联网比作一张大网，而爬虫（网络爬虫）便是在网上爬行的蜘蛛。把网的节点比作一个个网页，爬虫爬到这就相当于访问了该页面，获取了其信息。可以把节点间的连线比作网页与网页之间的链接关系，这样蜘蛛通过一个节点后，可以顺着节点连线继续爬行到达下一个节点，即通过一个网页继续获取后续的网页，这样整个网的节点便可以被蜘蛛全部爬到，网站的数据就可以被抓取下来了。</strong></p>
+		<h2 id="toc_0">使用urllib</h2>
 
-<blockquote>
-<p><font color=red>简单来说，爬虫就是获取网页并提取和保存信息的自动化程序。</font></p>
-</blockquote>
+<p>&emsp;&emsp;在Python2中，有urllib和urllib2两个库来实现请求的发送。而在Python3中，已经不存在urllib2这个库了，统一为urllib。urllib库是Python内置的HTTP请求库，也就是说不需要额外安装即可使用。</p>
 
-<h2 id="toc_0">代理的基本原理</h2>
+<ul>
+<li><font color=red>urllib包含的四个模块</font></li>
+</ul>
 
-<p>&emsp;&emsp;代理实际上指的就是代理服务器，英文名叫作proxy server，它的功能是代理网络用户去取得网络信息。形象地说，它是网络信息的中转站。在我们正常请求一个网站时，是发送了请求给Web服务器，Web服务器把响应传回给我们。如果设置了代理服务器，实际上就是在本机和服务器之间搭建了一个桥，此时本机不是直接向Web服务器发起请求，而是向代理服务器发出请求，请求会发送给代理服务器，然后由代理服务器再发送给Web服务器，接着由代理服务器再把Web服务器返回的响应转发给本机。这样我们同样可以正常访问网页，但这个过程中Web服务器识别出的真实IP就不再是我们本机的IP了，就成功实现了IP伪装。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center">模块名</th>
+<th>描述</th>
+</tr>
+</thead>
 
-<h4 id="toc_1">代理的作用</h4>
-
-<ol>
-<li>突破自身IP访问限制，访问一些平时不能访问的站点；</li>
-<li>访问一些单位或团体内部资源；比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务；</li>
-<li>提高访问速度；通常代理服务器都设置一个较大的硬盘缓冲区，当有外界的信息通过时，同时也将其保存到缓冲区中，当其他用户再访问相同的信息时，则直接由缓冲区中取出信息，传给用户，以提高访问速度；</li>
-<li>隐藏真实IP；上网者也可以通过这种方法隐藏自己的IP，免受攻击。对于爬虫来说，我们用代理就是为了隐藏自身IP，防止自身的IP被封锁；</li>
-</ol>
-
-<p>-<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
-----------------last line for now----------------</p>
+<tbody>
+<tr>
+<td style="text-align: center">request</td>
+<td>是最基本的HTTP请求模块，可以用来模拟发送请求。就像在浏览器里输入网址然后回车，只需要给库方法传入URL以及额外的参数，就可以模拟实现这个过程了；</td>
+</tr>
+<tr>
+<td style="text-align: center">error</td>
+<td>异常处理模块，如果出现请求错误，我们可以捕获这些异常，然后进行重试或其他操作以保证程序不会意外终止；</td>
+</tr>
+<tr>
+<td style="text-align: center">parse</td>
+<td>一个工具模块，提供了许多URL处理方法，比如拆分、解析、合并等；</td>
+</tr>
+<tr>
+<td style="text-align: center">robotparser</td>
+<td>主要是用来识别网站的robots.txt文件，然后判断哪些网站可以爬，哪些网站不可以爬，其实用得比较少；</td>
+</tr>
+</tbody>
+</table>
 
 
 		</div>

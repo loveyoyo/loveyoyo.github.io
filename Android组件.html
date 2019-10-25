@@ -89,6 +89,8 @@
         <li><label>Android组件</label></li>
 
           
+            <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+          
             <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
           
             <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
@@ -392,6 +394,8 @@
                     
                       <li class="side-title"><span>Android组件</span></li>
                         
+                          <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+                        
                           <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
                         
                           <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
@@ -622,81 +626,9 @@
 
 	
 		<div class="markdown-body">
-		<h1>TabLayout</h1>
+		<h1>ConstraintLayout</h1>
 
-		<h3 id="toc_0">xml属性</h3>
-
-<h5 id="toc_1">设置内间距</h5>
-
-<ul>
-<li><font color=red>tabPadding</font>:设置四边的内间距；</li>
-<li><font color=red>tabPaddingStart</font>:设置左边的内间距；</li>
-<li><font color=red>tabPaddingTop</font>:设置上边的内间距；</li>
-<li><font color=red>tabPaddingEnd</font>:设置右边的内间距；</li>
-<li><font color=red>tabPaddingBottom</font>:设置底边的内间距；</li>
-</ul>
-
-<blockquote>
-<p>注意：设置了与左右相关的padding后，会使指示器的长度也跟着tab标签的宽度发生变化。</p>
-</blockquote>
-
-<h5 id="toc_2">设置文字相关</h5>
-
-<ul>
-<li><font color=red>tabTextColor</font>:tab标签的初始颜色，默认值是colors.xml中的colorAccent值；</li>
-<li><font color=red>tabSelectedTextColor</font>:tab标签被选中后的颜色；</li>
-<li><font color=red>tabTextAppearance</font>:tab标签的文字样式，相当于一个style样式。但是在这个style中设置的textColor属性会被tabTextColor属性覆盖，如果没有设置tabTextColor属性，才会显示这个style中设置的textColor属性；也就是tab标签的文字颜色是：tabTextColor&gt;textColor&gt;colorAccent(默认值)；</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">//设置tabTextAppearance属性;
-app:tabTextAppearance=&quot;@style/tab_style&quot;
-
-&lt;style name=&quot;tab_style&quot;&gt;
-    &lt;item name=&quot;android:textAllCaps&quot;&gt;false&lt;/item&gt;
-    &lt;item name=&quot;android:textSize&quot;&gt;24sp&lt;/item&gt;
-    &lt;item name=&quot;android:textColor&quot;&gt;#FFFF00&lt;/item&gt;
-&lt;/style&gt;
-</code></pre>
-
-<h5 id="toc_3">设置指示器</h5>
-
-<ul>
-<li><font color=red>tabIndicator</font>:</li>
-<li><font color=red>tabIndicatorHeight</font>:设置指示器高度；</li>
-<li><font color=red>tabIndicatorColor</font>:设置指示器颜色；</li>
-<li><font color=red>tabIndicatorGravity</font>:设置指示器垂直的位置，可取值为top（位于文本头部）、center（位于文本中间，类似于删除线效果）、bottom（位于文本底部，常用这种效果）、stretch(扩展效果，就是相当于给文本大小范围添加了背景色)，默认取值bottom；</li>
-<li><font color=red>tabIndicatorFullWidth</font>:设置指示器是否和tab标签的宽度一样长，可取值为false、true，默认值是true。设置为false，指示器的长度就是tab文本的宽度；(安卓28开始支持的属性)</li>
-<li><font color=red>tabIndicatorAnimationDuration</font>:设置指示器滑动到所选择的tab标签位置所需的时间，个人建议不需要来设置这个属性；</li>
-<li><p><font color=red>tabIconTint</font>:</p></li>
-<li><p><font color=red>tabMode</font>:设置tab标签显示模式，是否水平滑动或者充满，可取值有fixed、scrollable，默认值是fixed。如果，要显示多个tab标签，可能会因为一个页面宽度放不下，而出现拥挤在一起显示不全的效果，需要设置为scrollable。</p></li>
-<li><p><font color=red>tabGravity</font>:设置tab标签水平的位置，可取值有center、fill，默认值是center。</p></li>
-<li><p><font color=red>tabBackground</font>:设置tab标签的背景色，这里不能直接写RGB，需要是@color/xxx这样的格式；</p></li>
-<li><p><font color=red>tabContentStart</font>:设置TabLayout整体的左边的margin；</p></li>
-<li><p><font color=red></font>:</p></li>
-<li><p><font color=red></font>:</p></li>
-<li><p><font color=red></font>:</p></li>
-</ul>
-
-<h3 id="toc_4">注意事项：</h3>
-
-<ul>
-<li><font color=red>设置几个item均匀放置在页面中</font>:<br/>
-&emsp;&emsp;要实现这个效果，不可以设置app:tabGravity=&quot;center&quot;或app:tabMode=&quot;scrollable&quot;，只要这两个属性任意一个被设置了，就不会实现均匀占据页面的宽度。注意，当app:tabMode=&quot;scrollable&quot;时，app:tabGravity=&quot;&quot;不管取什么值都不会生效。</li>
-<li><font color=red>实现分割线</font>:<br/>
-&emsp;&emsp;因为TabLayout继承自HorizontalScrollView，而HorizontalScrollView嵌套了一个LinearLayout，所以可以使用这个LinearLayout来设置分割线，以此实现TabLayout的分割线。</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-java">LinearLayout linearLayout = (LinearLayout) mTablayoutActivityTl.getChildAt(0);
-linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
-linearLayout.setDividerPadding(40);
-linearLayout.setDividerDrawable(ContextCompat.getDrawable(this,R.drawable.divider_vertical));
-//R.drawable.divider_vertical文件;
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;solid android:color=&quot;#CCCCCC&quot;/&gt;
-    &lt;size android:width=&quot;1dp&quot;/&gt;
-&lt;/shape&gt;
-</code></pre>
+		<p>一个RelativeLayout的升级版；</p>
 
 
 		</div>
