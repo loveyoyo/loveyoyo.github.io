@@ -221,6 +221,8 @@
         <li><label>安卓源码</label></li>
 
           
+            <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+          
             <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
           
             <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
@@ -274,6 +276,14 @@
 
           
             <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Linux系统</label></li>
+
+          
+            <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
           
 
       
@@ -506,6 +516,8 @@
                     
                       <li class="side-title"><span>安卓源码</span></li>
                         
+                          <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+                        
                           <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
                         
                           <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
@@ -549,6 +561,12 @@
                       <li class="side-title"><span>计算机基础</span></li>
                         
                           <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Linux系统</span></li>
+                        
+                          <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
                         
 
                     
@@ -768,37 +786,86 @@
 
 <h2 id="toc_4">Looper</h2>
 
+<p>&emsp;&emsp;Looper的作用有两点，第一是为调用该类中静态函数prepare（）的线程创建一个消息队列；第二是提供静态函数loop（），使调用该函数的线程进行无限循环，并从消息队列中读取消息；<br/>
+方法|描述<br/>
+:-:|---<br/>
+prepare()|<br/>
+prepare(boolean)|<br/>
+prepareMainLooper()|<br/>
+getMainLooper()|<br/>
+loop()|</p>
+
+<h2 id="toc_5">变量的常见作用域</h2>
+
+<ul>
+<li>函数内部的变量：其作用域是该函数，即每次调用该函数时，该变量都会重新回到初始值；</li>
+<li>类内部的变量：其作用域是该类所产生的对象，即只要该对象没有被销毁，即对象内部的变量值一直保持；</li>
+<li>类内部的静态变量：其作用域是整个进程，即只要在该进程中，则该变量的值就一直保持，无论使用该类构造过多少个对象，该变量只有一个赋值，并一直保持；</li>
+</ul>
+
+<p><font color=red>不同作用域的变量类型</font>:</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align: center">方法</th>
-<th>描述</th>
+<th style="text-align: center">变量作用域类型</th>
+<th>意义</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td style="text-align: center">prepare()</td>
-<td></td>
+<td style="text-align: center">函数成员变量</td>
+<td>仅在函数内部有效</td>
 </tr>
 <tr>
-<td style="text-align: center">prepare(boolean)</td>
-<td></td>
+<td style="text-align: center">类成员变量</td>
+<td>仅在对象内部有效</td>
 </tr>
 <tr>
-<td style="text-align: center">prepareMainLooper()</td>
-<td></td>
+<td style="text-align: center">静态变量</td>
+<td>在本进程内的任何对象内保持一致</td>
 </tr>
 <tr>
-<td style="text-align: center">getMainLooper()</td>
-<td></td>
+<td style="text-align: center">线程局部存储（TLS）变量</td>
+<td>在本线程内的任何对象内保持一致</td>
 </tr>
 <tr>
-<td style="text-align: center">loop()</td>
-<td></td>
+<td style="text-align: center">跨进程通信（IPC）变量</td>
+<td>一般使用Binder进行定义，在所有进程中保持一致</td>
 </tr>
 </tbody>
 </table>
+
+<p>-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+------------------last line for now-------------------</p>
 
 
 </div>

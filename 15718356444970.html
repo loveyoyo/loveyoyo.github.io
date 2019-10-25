@@ -221,6 +221,8 @@
         <li><label>安卓源码</label></li>
 
           
+            <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+          
             <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
           
             <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
@@ -274,6 +276,14 @@
 
           
             <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Linux系统</label></li>
+
+          
+            <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
           
 
       
@@ -506,6 +516,8 @@
                     
                       <li class="side-title"><span>安卓源码</span></li>
                         
+                          <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+                        
                           <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
                         
                           <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
@@ -549,6 +561,12 @@
                       <li class="side-title"><span>计算机基础</span></li>
                         
                           <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Linux系统</span></li>
+                        
+                          <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
                         
 
                     
@@ -714,6 +732,80 @@
 </tr>
 </tbody>
 </table>
+
+<h2 id="toc_4">分支操作</h2>
+
+<p>git branch 创建分支<br/>
+git branch -b 创建并切换到新建的分支上<br/>
+git checkout 切换分支<br/>
+git branch 查看分支列表<br/>
+git branch -v 查看所有分支的最后一次操作<br/>
+git branch -vv 查看当前分支<br/>
+git branch -b 分支名 origin/分支名 创建远程分支到本地<br/>
+git branch --merged 查看别的分支和当前分支合并过的分支<br/>
+git branch --no-merged 查看未与当前分支合并的分支<br/>
+git branch -d 分支名 删除本地分支<br/>
+git branch -D 分支名 强行删除分支<br/>
+git branch origin :分支名 删除远处仓库分支<br/>
+git merge 分支名 合并分支到当前分支上</p>
+
+<h2 id="toc_5">暂存操作</h2>
+
+<p>git stash 暂存当前修改<br/>
+git stash apply 恢复最近的一次暂存<br/>
+git stash pop 恢复暂存并删除暂存记录<br/>
+git stash list 查看暂存列表<br/>
+git stash drop 暂存名(例：stash@{0}) 移除某次暂存<br/>
+git stash clear 清除暂存</p>
+
+<h2 id="toc_6">回退操作</h2>
+
+<p>git reset --hard HEAD^ 回退到上一个版本<br/>
+git reset --hard ahdhs1(commit_id) 回退到某个版本<br/>
+git checkout -- file撤销修改的文件(如果文件加入到了暂存区，则回退到暂存区的，如果文件加入到了版本库，则还原至加入版本库之后的状态)<br/>
+git reset HEAD file 撤回暂存区的文件修改到工作区</p>
+
+<h2 id="toc_7">标签操作</h2>
+
+<p>git tag 标签名 添加标签(默认对当前版本)<br/>
+git tag 标签名 commit_id 对某一提交记录打标签<br/>
+git tag -a 标签名 -m &#39;描述&#39; 创建新标签并增加备注<br/>
+git tag 列出所有标签列表<br/>
+git show 标签名 查看标签信息<br/>
+git tag -d 标签名 删除本地标签<br/>
+git push origin 标签名 推送标签到远程仓库<br/>
+git push origin --tags 推送所有标签到远程仓库<br/>
+git push origin :refs/tags/标签名 从远程仓库中删除标签</p>
+
+<h2 id="toc_8">常规操作</h2>
+
+<p>git push origin test 推送本地分支到远程仓库<br/>
+git rm -r --cached 文件/文件夹名字 取消文件被版本控制<br/>
+git reflog 获取执行过的命令<br/>
+git log --graph 查看分支合并图<br/>
+git merge --no-ff -m &#39;合并描述&#39; 分支名 不使用Fast forward方式合并，采用这种方式合并可以看到合并记录<br/>
+git check-ignore -v 文件名 查看忽略规则<br/>
+git add -f 文件名 强制将文件提交</p>
+
+<h2 id="toc_9">创建项目仓库</h2>
+
+<p>git init 初始化<br/>
+git remote add origin url 关联远程仓库<br/>
+git pull<br/>
+git fetch 获取远程仓库中所有的分支到本地</p>
+
+<h2 id="toc_10">忽略已加入到版本库中的文件</h2>
+
+<p>git update-index --assume-unchanged file 忽略单个文件<br/>
+git rm -r --cached 文件/文件夹名字 (. 忽略全部文件)</p>
+
+<h2 id="toc_11">取消忽略文件</h2>
+
+<p>git update-index --no-assume-unchanged file</p>
+
+<h2 id="toc_12">拉取、上传免密码</h2>
+
+<p>git config --global credential.helper store</p>
 
 <p>-<br/>
 -<br/>
