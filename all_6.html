@@ -67,6 +67,8 @@
         <li><label>四大组件</label></li>
 
           
+            <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+          
             <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
           
             <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
@@ -311,11 +313,7 @@
         <li><label>随想</label></li>
 
           
-            <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
-          
             <li><a title="偎" href="15637966637605.html">偎</a></li>
-          
-            <li><a title="微" href="15637963868446.html">微</a></li>
           
             <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
           
@@ -324,8 +322,6 @@
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
             <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
-            <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
           
             <li><a title="for" href="15583472660662.html">for</a></li>
           
@@ -375,6 +371,8 @@
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
                         
                           <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
                         
@@ -590,11 +588,7 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
-                          <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
-                        
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
-                        
-                          <li><a title="微" href="15637963868446.html">微</a></li>
                         
                           <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
                         
@@ -603,8 +597,6 @@
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
                           <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
-                          <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
                         
                           <li><a title="for" href="15583472660662.html">for</a></li>
                         
@@ -630,11 +622,88 @@
 
 	
 		<div class="markdown-body">
-		<h1>Service</h1>
+		<h1>BroadcastReceiver</h1>
 
-		<p>&emsp;&emsp;<strong>服务（Service）是Android中实现程序后台运行的解决方案，它非常适合去执行那些不需要和用户交互而且还要求长期运行的任务。服务的运行不依赖任何用户界面，即使程序被切换到后台，或者用户打开了另外一个应用程序 ，服务仍然能够保持正常运行。</strong><br/>
-&emsp;&emsp;<strong>服务并不是运行在一个独立的进程当中，而是依赖于创建服务时所在的应用程序进程。当某个应用程序进程被杀掉时，所有依赖于该进程的服务也会停止运行。</strong><br/>
-&emsp;&emsp;<strong>服务并不会自动开启线程，所有的代码都是默认运行在主线程中的。也就是说，如果我们要做耗时操作，需要在服务的内部手动创建子线程，来实现具体的业务逻辑，否则就有可能出现主线程被阻塞住的情况。</strong></p>
+		<p>&emsp;&emsp;<strong>Android中的广播主要可以分为两种类型：标准广播和有序广播。</strong></p>
+
+<ul>
+<li><font color=red>标准广播</font>:是一种完全异步执行的广播，在广播发出之后，所有的广播接收器几乎都会在同一时刻接收到这条广播消息，因此它们之间没有任何先后顺序可言。这种广播的效率会比较高，但同时也意味着它是无法被截断的。</li>
+<li><font color=red>有序广播</font>:是一种同步执行的广播，在广播发出之后，同一时刻只会有一个广播接收器能够收到这条广播消息，当这个广播接收器中的逻辑执行完毕后，广播才会继续传递。所以此时的广播接收器是有先后顺序的，优先级高的广播接收器就可以先收到广播消息，并且前面的广播接收器还可以截断正在传递的广播，这样后面的广播接收器就无法收到广播消息了。
+&emsp;&emsp;标准广播的发送方法是sendBroadcast()方法，有序广播的发送方法是sendOrderedBroadcast()方法。同时，有序广播是可以设置广播接收器的优先级的，就是使用属性priority来设置的。在有序广播中，可以使用abortBroadcast()方法来将广播截断，后面的广播接收器就无法再接收到这条广播了。</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">&lt;intent-filter android:priority=&quot;100&quot;&gt;
+    &lt;action android:name=&quot;xxx&quot;/&gt;
+&lt;/intent-filter&gt;
+</code></pre>
+
+<h2 id="toc_0">广播注册和接收</h2>
+
+<p>&emsp;&emsp;Android内置了很多系统级别的广播，可以在应用程序中通过监听这些广播来得到各种系统的状态信息。广播接收器可以自由地对自己感兴趣的广播进行注册，这样当有相应的广播发出时，广播接收器就能够收到该广播，并在内部处理相应的逻辑。<br/>
+&emsp;&emsp;注册广播的方式一般有两种，在代码中注册和在AndroidManifest.xml中注册，前者被称为动态注册，后者被称为静态注册。动态注册的广播接收器一定要取消注册，在onDestroy()方法中通过调用unregisterReceiver()方法来实现。动态注册的广播接收器可以自由地控制注册与注销，在灵活性方面有很大的优势，但是他也存在一个缺点，即必须要在程序启动之后才能接收到广播，因为注册的逻辑是写在onCreate()方法中的。要想在程序未启动的情况下就能接收到广播，需要使用静态注册的方式。<br/>
+&emsp;&emsp;创建一个广播接收器，只需要新建一个类，让它继承自BroadcastReceiver，并重写父类的onReceive()方法就行了。这样当有广播到来时，onReceive()方法就会得到执行，具体的逻辑就可以在这个方法中处理。</p>
+
+<h2 id="toc_1">本地广播</h2>
+
+<p>&emsp;&emsp;前面说的广播都是属于系统全局广播，即发出去的广播可以被其他任何应用程序接收到，并且我们也可以接受来自其他任何应用程序的广播。这样就很容易引起安全性的问题，比如说我们发送的一些携带关键性数据的广播有可能被其他的应用程序截获，或者其他的程序不停地向我们的广播接收器里发送各种垃圾广播。为了能够解决广播的安全性问题，Android引入了一套本地广播机制，使用这个机制发出的广播只能够在应用程序的内部进行传递，并且广播接收器也只能接收来自本应用程序发出的广播。<br/>
+&emsp;&emsp;本地广播主要是使用了一个LocalBroadcastManager来对广播进行管理，并提供了发送和注册广播接收器的方法。本地广播无法通过静态注册的方式来接收。其实也可以理解为：因为静态注册就是为了让程序在未启动的情况下也能收到广播，而发送本地广播时，我们的程序肯定是已经启动了，因此也完全不需要使用静态注册的功能。<br/>
+本地广播的优势：<br/>
+1.可以明确地知道正在发送的广播不会离开我们的程序，因此不必担心机密数据泄漏；<br/>
+2.其他的程序无法将广播发送到我们程序的内部，因此不需要担心会有安全漏洞的隐患；<br/>
+3.发送本地广播比发送系统全局广播更加高效；</p>
+
+<pre class="line-numbers"><code class="language-java">public class NetworkChange2Activity extends AppCompatActivity {
+
+    @BindView(R.id.networkChangeActivity_btn)
+    Button mNetworkChangeActivityBtn;
+
+    private LocalReceiver mLocalReceiver;
+    private LocalBroadcastManager mLocalBroadcastManager;
+
+    public static void toNetworkChange2Activity(Context context){
+        Intent intent = new Intent(context,NetworkChange2Activity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_network_change2);
+        ButterKnife.bind(this);
+        init();
+    }
+
+    private void init() {
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(&quot;com.example.test.LOCAL_BROADCAST&quot;);
+        mLocalReceiver = new LocalReceiver();
+        mLocalBroadcastManager.registerReceiver(mLocalReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLocalBroadcastManager.unregisterReceiver(mLocalReceiver);
+    }
+
+    @OnClick(R.id.networkChangeActivity_btn)
+    public void onViewClicked() {
+        Intent intent = new Intent(&quot;com.example.test.LOCAL_BROADCAST&quot;);
+        mLocalBroadcastManager.sendBroadcast(intent);
+    }
+
+    class LocalReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(context, &quot;收到了本地广播消息...&quot;, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    
+}
+</code></pre>
 
 
 		</div>

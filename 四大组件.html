@@ -67,6 +67,8 @@
         <li><label>四大组件</label></li>
 
           
+            <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+          
             <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
           
             <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
@@ -311,11 +313,7 @@
         <li><label>随想</label></li>
 
           
-            <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
-          
             <li><a title="偎" href="15637966637605.html">偎</a></li>
-          
-            <li><a title="微" href="15637963868446.html">微</a></li>
           
             <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
           
@@ -324,8 +322,6 @@
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
             <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
-            <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
           
             <li><a title="for" href="15583472660662.html">for</a></li>
           
@@ -375,6 +371,8 @@
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
                         
                           <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
                         
@@ -590,11 +588,7 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
-                          <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
-                        
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
-                        
-                          <li><a title="微" href="15637963868446.html">微</a></li>
                         
                           <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
                         
@@ -603,8 +597,6 @@
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
                           <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
-                          <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
                         
                           <li><a title="for" href="15583472660662.html">for</a></li>
                         
@@ -630,71 +622,18 @@
 
 	
 		<div class="markdown-body">
-		<h1>安卓事件处理</h1>
+		<h1>安卓存储方式</h1>
 
-		<p>&emsp;&emsp;<strong>安卓系统提供了两种事件处理机制：基于回调的事件处理和基于监听器的事件处理。</strong><br/>
-&emsp;&emsp;对于基于回调的事件处理而言，大多数与Android设备进行的用户交互事件都有系统捕捉，然后再传递给相应的回调函数进行处理。例如，当用户按下物理按键“返回”键之后，系统就会自动调用onBackPressed()方法对这一按键事件进行处理。因此，开发者只需要重写特定组件或Activity的回调方法便可以对界面事件按自己想要的动作进行处理。<br/>
-&emsp;&emsp;对于基于监听器的事件处理而言，Android中与View和ViewGroup对象相关的用户交互组件基本都支持事件监听器，监听方法会等待某个已经注册的事件发生，然后触发系统向回调方法发送事件消息。因此，开发者只需要为Android的界面组件注册特定的事件监听器即可。例如，为某个按钮注册事件监听器setOnClickListener()，当点击按钮时，就会调用该监听器的onClick()方法对这一点击事件进行处理。</p>
-
-<h2 id="toc_0">基于回调的事件处理</h2>
-
-<p>&emsp;&emsp;在Android平台中，每个View都有自己处理事件的回调方法，开发者可以通过重写View的这些回调方法对事件进行响应处理。当某个时间没有被任何一个View处理时，系统便会调用Activity中相应的回调方法。</p>
-
-<h3 id="toc_1">onKeyDown()回调方法</h3>
-
-<p>&emsp;&emsp;onKeyDown()回调方法是接口KeyEvent.Callback中的抽象方法，所有的View均实现了该接口并重写了该方法用于捕捉手机键盘被按下的事件。</p>
-
-<pre class="line-numbers"><code class="language-java">public boolean onKeyDown(int keyCode,KeyEvent event){
-    
-}
-</code></pre>
-
-<p>&emsp;&emsp;参数keyCode为被按下的键值即键盘码，手机键盘中的每个按键都会有其独特的键盘码，在应用程序通过该键盘码判断用户按下的是哪个键；参数event为按键事件封装类的对象，其中包含了触发事件的详细信息，例如事件的状态、事件的类型、事件发生的时间等。<br/>
-&emsp;&emsp;需要注意的是，onKeyDown()方法的返回值，包括其他回调方法一样，该返回值是一个boolean类型的变量，当返回true时，表示已经完整地处理了这个事件，并不希望其他的回调方法再次进行处理；当返回false时，表示并没有完全处理该事件，更希望其他回调方法继续对其进行处理，例如Activity中相应的回调方法。</p>
-
-<h3 id="toc_2">onKeyUp()回调方法</h3>
-
-<p>&emsp;&emsp;onKeyUp()回调方法也是接口KeyEvent.Callback中的抽象方法，所有View均实现了该接口并重写了该方法用于捕捉手机键盘按键抬起的事件。</p>
-
-<pre class="line-numbers"><code class="language-java">public boolean onKeyUp(int keyCode,KeyEvent event){
-    
-}
-</code></pre>
-
-<p>&emsp;&emsp;该方法的两个参数同onKeyDown()方法中的参数完全一致，该方法的boolean类型返回值含义也与onKeyDown()方法中的完全相同，都是通知系统是否希望其他回调方法再次对该事件进行处理。</p>
-
-<h3 id="toc_3">onTouchEvent()回调方法</h3>
-
-<p>&emsp;&emsp;onTouchEvent()方法用于处理手机屏幕的触摸事件，该方法在View类中定义，并且所有View的子类全部重写了该方法。</p>
-
-<pre class="line-numbers"><code class="language-java">public boolean onTouchEvent(MotionEvent event){
-    
-}
-</code></pre>
-
-<p>&emsp;&emsp;其中，参数event是手机屏幕触摸事件封装类的对象，该对象封装了该事件的所有信息，例如触摸的位置、触摸的类型以及触摸的时间等。该对象会在用户触摸手机屏幕时被创建。本方法的boolean类型的返回值也是用于通知系统是否希望其他回调方法再次对该事件进行处理。<br/>
-&emsp;&emsp;需要注意的是，onTouchEvent()处理的触摸事件有三种情况，分别是：<br/>
-(1).屏幕被按下：当屏幕被按下时，会调用该方法来处理此触摸事件，此时该触摸事件的动作为MotionEvent.ACTION_DOWN，可以调用MotionEvent.getAction()方法获取触摸事件的动作。<br/>
-(2).屏幕被抬起：当手指离开屏幕时，会触发调用该方法处理此触摸事件，此时该触摸事件的动作为MotionEvent.ACTION_UP。<br/>
-(3).屏幕拖动：当手指在屏幕上滑动时，会触发调用该方法处理滑动触摸事件，此时该触摸事件的动作为MotionEvent.ACTION_MOVE。</p>
-
-<h3 id="toc_4">onKeyLongPress()回调方法</h3>
-
-<h3 id="toc_5">onKeyShortcut()回调方法</h3>
-
-<h3 id="toc_6">onTrackballEvent()回调方法</h3>
-
-<h2 id="toc_7">基于监听器的事件处理</h2>
-
-<h2 id="toc_8">响应系统设置事件</h2>
-
-<p>&emsp;&emsp;在Android中，基于监听器的事件处理模型主要包含以下三类对象：<br/>
-1.事件（Event）：<br/>
-2.事件源(Event Source)：<br/>
-3.事件监听器(Event Listener)：</p>
+		<p>1.数据库<br/>
+2.sharedpreferences<br/>
+3.content provider<br/>
+4.缓存</p>
 
 
 		</div>
+	
+
+ 
 	
 
  

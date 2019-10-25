@@ -67,6 +67,8 @@
         <li><label>四大组件</label></li>
 
           
+            <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+          
             <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
           
             <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
@@ -311,11 +313,7 @@
         <li><label>随想</label></li>
 
           
-            <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
-          
             <li><a title="偎" href="15637966637605.html">偎</a></li>
-          
-            <li><a title="微" href="15637963868446.html">微</a></li>
           
             <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
           
@@ -324,8 +322,6 @@
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
             <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
-            <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
           
             <li><a title="for" href="15583472660662.html">for</a></li>
           
@@ -375,6 +371,8 @@
 
                     
                       <li class="side-title"><span>四大组件</span></li>
+                        
+                          <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
                         
                           <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
                         
@@ -590,11 +588,7 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
-                          <li><a title="个人看的节目清单" href="15638053516421.html">个人看的节目清单</a></li>
-                        
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
-                        
-                          <li><a title="微" href="15637963868446.html">微</a></li>
                         
                           <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
                         
@@ -603,8 +597,6 @@
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
                           <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
-                          <li><a title="陌上归--序" href="15595397108681.html">陌上归--序</a></li>
                         
                           <li><a title="for" href="15583472660662.html">for</a></li>
                         
@@ -630,35 +622,12 @@
 
 	
 		<div class="markdown-body">
-		<h1>JNI调用机制</h1>
+		<h1>安卓存储方式</h1>
 
-		<p>&emsp;&emsp;Java Native Interface(JNI)是Java本地接口，所谓的本地（native）一般是指C/C++语言。当使用Java进行程序设计时，一般主要有三种情况需要C语言的协助：</p>
-
-<ul>
-<li>调用驱动：由于操作系统所提供的驱动一般都是C接口，Java语言本身不具备操作这些驱动的能力；</li>
-<li>对于某些大量数据处理的模块，Java的效率可能远低于C，因此，希望使用C去完成；</li>
-<li>对于某些功能模块，可能Java和C的效率差不多，但是这些模块中已经存在已有的C代码，程序员不想再用Java重写，而只想重新利用已有的C代码；<br/>
-&emsp;&emsp;以上就是Java提出JNI概念的原因。JNI接口主要包含两种情况：第一种是从Java中访问C，第二种是从C中访问Java；</li>
-</ul>
-
-<h2 id="toc_0">从Java中访问C</h2>
-
-<p>&emsp;&emsp;Java中可以定义某个函数为native类型，对于native函数，只需要声明即可，因为该函数的实现是native的，即由相应的C去实现。Java编译器遇到native函数时，不会关心该函数的具体实现，因此，编译上不会出任何差错。<br/>
-&emsp;&emsp;程序运行时，在调用native方法之前，必须把C所生成的动态库装载进来，否则程序会因为找不到相应的native方法而出错。</p>
-
-<p>-<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
-------------------last line for now-------------------</p>
+		<p>1.数据库<br/>
+2.sharedpreferences<br/>
+3.content provider<br/>
+4.缓存</p>
 
 
 		</div>
