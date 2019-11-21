@@ -239,6 +239,8 @@
         <li><label>Git</label></li>
 
           
+            <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+          
             <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
           
             <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -317,27 +319,9 @@
           
             <li><a title="偎" href="15637966637605.html">偎</a></li>
           
-            <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-          
-            <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-          
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
-            <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
             <li><a title="for" href="15583472660662.html">for</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>陌上归</label></li>
-
-          
-            <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-          
-            <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-          
-            <li><a title="大纲" href="15613407387642.html">大纲</a></li>
           
 
       
@@ -532,6 +516,8 @@
                     
                       <li class="side-title"><span>Git</span></li>
                         
+                          <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+                        
                           <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
                         
                           <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -596,25 +582,9 @@
                         
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
                         
-                          <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-                        
-                          <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-                        
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
-                          <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
                           <li><a title="for" href="15583472660662.html">for</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>陌上归</span></li>
-                        
-                          <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-                        
-                          <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-                        
-                          <li><a title="大纲" href="15613407387642.html">大纲</a></li>
                         
 
                     
@@ -630,38 +600,9 @@
 
 	
 		<div class="markdown-body">
-		<h1>Style和Theme</h1>
+		<h1>ScrollView和HorizontalView</h1>
 
-		<h2 id="toc_0">Style和Theme的作用</h2>
-
-<ul>
-<li>style是一个包含一种或者多种格式化属性的集合，可以当作一个属性在UI元素使用，从而使该元素拥有这些属性。例如，可以定义一个style设置字体颜色、大小，然后在TextView中使用这个style，那么该TextView就会被设置成该style所定义的字体颜色和大小；</li>
-<li>theme同样是一个包含一种或者多种格式化属性的集合，和style不同的是，它只能作用于整个activity，而不是activity中的一个UI元素；</li>
-</ul>
-
-<h2 id="toc_1">Style和Theme的定义</h2>
-
-<ul>
-<li>在res/values目录下建立一个名叫sytle.xml的文件。</li>
-<li>对每一个style，给&lt;style&gt;element增加一个全局唯一的名字，也可以选择增加一个父类属性。父类属性标识了当前style继承该父类style。</li>
-<li>在&lt;style&gt;元素内部，申明一个或者多个&lt;item&gt;标签，每一个<item>定义一个属性的值。</li>
-</ul>
-
-<pre class="line-numbers"><code class="language-text">&lt;style name=&quot;textview_style&quot;&gt;
-    &lt;item name=&quot;android:layout_height&quot;&gt;48dp&lt;/item&gt;
-    &lt;item name=&quot;android:layout_width&quot;&gt;41dp&lt;/item&gt;
-    &lt;item name=&quot;android:background&quot;&gt;#30000000&lt;/item&gt;
-    &lt;item name=&quot;android:gravity&quot;&gt;center&lt;/item&gt;
-    &lt;item name=&quot;android:textColor&quot;&gt;#FFFFFF&lt;/item&gt;
-    &lt;item name=&quot;android:textSize&quot;&gt;30dp&lt;/item&gt;
-    &lt;item name=&quot;android:textStyle&quot;&gt;bold&lt;/item&gt;
-&lt;/style&gt;
-</code></pre>
-
-<ul>
-<li>theme的定义方法和style完全一样，但是使用theme必须在AndroidManifest.xml文件中的&lt;application&gt;或者&lt;activity&gt;中定义。想让整个程序都使用这个主题，写在&lt;application android:theme=&quot;&quot;&gt;中；想让程序中的某个Activity使用，写在&lt;activity android:theme=&quot;&quot;&gt;中；</li>
-</ul>
-
+		
 
 		</div>
 	

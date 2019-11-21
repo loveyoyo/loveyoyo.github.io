@@ -239,6 +239,8 @@
         <li><label>Git</label></li>
 
           
+            <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+          
             <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
           
             <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -317,27 +319,9 @@
           
             <li><a title="偎" href="15637966637605.html">偎</a></li>
           
-            <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-          
-            <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-          
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
-            <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
             <li><a title="for" href="15583472660662.html">for</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>陌上归</label></li>
-
-          
-            <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-          
-            <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-          
-            <li><a title="大纲" href="15613407387642.html">大纲</a></li>
           
 
       
@@ -532,6 +516,8 @@
                     
                       <li class="side-title"><span>Git</span></li>
                         
+                          <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+                        
                           <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
                         
                           <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -596,25 +582,9 @@
                         
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
                         
-                          <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-                        
-                          <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-                        
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
-                          <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
                           <li><a title="for" href="15583472660662.html">for</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>陌上归</span></li>
-                        
-                          <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-                        
-                          <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-                        
-                          <li><a title="大纲" href="15613407387642.html">大纲</a></li>
                         
 
                     
@@ -743,6 +713,10 @@
 <td style="text-align: center">git add .</td>
 <td style="text-align: center">添加目录下的所有未被管理的文件</td>
 </tr>
+<tr>
+<td style="text-align: center">git add -u</td>
+<td style="text-align: center">添加先前已经add过的文件的修改，不会把还未add过的文章添加到暂存区</td>
+</tr>
 </tbody>
 </table>
 
@@ -826,6 +800,14 @@
 <tr>
 <td style="text-align: center">git reset HEAD -- xxx(带有完整路径的文件)</td>
 <td>取消缓存已缓存的内容</td>
+</tr>
+<tr>
+<td style="text-align: center">git reset --hard commitIdXxx(提交的某次commitId)</td>
+<td>回退版本到某次提交</td>
+</tr>
+<tr>
+<td style="text-align: center">git reset --hard HEAD^</td>
+<td>会退版本到上一次提交</td>
 </tr>
 </tbody>
 </table>
@@ -1019,6 +1001,42 @@
 <td style="text-align: center">git log commit_idXxx</td>
 <td>查看某次commit修改的代码（commit_idXxx是某次提交后的commit_id）</td>
 </tr>
+<tr>
+<td style="text-align: center">git log --stat</td>
+<td>查看被修改文件的统计信息，添加或删除了多少行</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --stat -3</td>
+<td>查看最近三次的修改</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --stat --author=nameXxx(用户名称)</td>
+<td>查看自己的修改</td>
+</tr>
+<tr>
+<td style="text-align: center">git log --stat -2 --./localXxx(文件路径)</td>
+<td>查看某个文件最近两次的修改</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><font color=red>show</font>:显示</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令行</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">git show commitIdXxx(某次的commitId)</td>
+<td>查看某次提交的内容</td>
+</tr>
 </tbody>
 </table>
 
@@ -1095,8 +1113,8 @@
 <td>将本地分支xxx推送到远端仓库默认分支上</td>
 </tr>
 <tr>
-<td style="text-align: center">git push [alias] xxx:xxx</td>
-<td>将本地分支xxx推送到远端仓库并新建远端分支xxx（需要远端仓库分支和本地分支同名）</td>
+<td style="text-align: center">git push origin localXxx(本地分支):remoteXxx（远程分支）</td>
+<td>将本地分支localXxx推送到远端仓库并新建远端分支remoteXxx</td>
 </tr>
 <tr>
 <td style="text-align: center">git push [alias] -d xxx</td>
@@ -1230,24 +1248,7 @@ git push origin -d test
 
 <div class="row">
 <div style="padding:0px 0.93em;" class="share-comments">
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55117df11d1413c3" async="async"></script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_native_toolbox"></div>
 
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'mweb-en';
-    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 </div>
 <script type="text/javascript">

@@ -239,6 +239,8 @@
         <li><label>Git</label></li>
 
           
+            <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+          
             <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
           
             <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -317,27 +319,9 @@
           
             <li><a title="偎" href="15637966637605.html">偎</a></li>
           
-            <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-          
-            <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-          
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
-            <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
             <li><a title="for" href="15583472660662.html">for</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>陌上归</label></li>
-
-          
-            <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-          
-            <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-          
-            <li><a title="大纲" href="15613407387642.html">大纲</a></li>
           
 
       
@@ -532,6 +516,8 @@
                     
                       <li class="side-title"><span>Git</span></li>
                         
+                          <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+                        
                           <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
                         
                           <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -596,25 +582,9 @@
                         
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
                         
-                          <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-                        
-                          <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-                        
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
-                          <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
                           <li><a title="for" href="15583472660662.html">for</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>陌上归</span></li>
-                        
-                          <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-                        
-                          <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-                        
-                          <li><a title="大纲" href="15613407387642.html">大纲</a></li>
                         
 
                     
@@ -630,209 +600,15 @@
 
 	
 		<div class="markdown-body">
-		<h1>Git按照功能来分类</h1>
+		<h1>git概述</h1>
 
-		<h2 id="toc_0">创建本地仓库</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">命令行</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">git init</td>
-<td>创建本地仓库</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_1">设置</h2>
-
-<h3 id="toc_2">姓名和邮箱</h3>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">命令行</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">git config --global user.name &quot;yourXxxName&quot;</td>
-<td>配置用户姓名</td>
-</tr>
-<tr>
-<td style="text-align: center">git config --global user.email &quot;yourXxxEmail&quot;</td>
-<td>配置用户邮箱</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_3">设置行尾首选项</h3>
-
-<p>&emsp;&emsp;由于不同平台换行符不同，在不同系统之间传递文件时可能会因此产生问题；</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">平台</th>
-<th style="text-align: center">命令行</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">Unix/Mac</td>
-<td style="text-align: center">git config --global core.autocrlf input<br/>git config --global core.safecrlf true</td>
-<td>配置Unix/Mac</td>
-</tr>
-<tr>
-<td style="text-align: center">Windows</td>
-<td style="text-align: center">git config --global core.autocrlf true<br/>git config --global core.safecrlf true</td>
-<td>配置Windows</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">命令行</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">git config --global core.safecrlf true</td>
-<td>拒绝提交包含混合换行符的文件</td>
-</tr>
-<tr>
-<td style="text-align: center">git config --global core.safecrlf false</td>
-<td>允许提交包含混合换行符的文件</td>
-</tr>
-<tr>
-<td style="text-align: center">git config --global core.safecrlf warn</td>
-<td>提交包含混合换行符的文件时给出警告</td>
-</tr>
-<tr>
-<td style="text-align: center">git config --global core.autocrlf true</td>
-<td>提交时转换为LF，检出时转换为CRLF</td>
-</tr>
-<tr>
-<td style="text-align: center">git config --global core.autocrlf false</td>
-<td>提交检出均不转换</td>
-</tr>
-<tr>
-<td style="text-align: center">git config --global core.autocrlf input</td>
-<td>提交时转换为LF，检出时不转换</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_4">分支操作</h2>
-
-<p>git branch 创建分支<br/>
-git branch -b 创建并切换到新建的分支上<br/>
-git checkout 切换分支<br/>
-git branch 查看分支列表<br/>
-git branch -v 查看所有分支的最后一次操作<br/>
-git branch -vv 查看当前分支<br/>
-git branch -b 分支名 origin/分支名 创建远程分支到本地<br/>
-git branch --merged 查看别的分支和当前分支合并过的分支<br/>
-git branch --no-merged 查看未与当前分支合并的分支<br/>
-git branch -d 分支名 删除本地分支<br/>
-git branch -D 分支名 强行删除分支<br/>
-git branch origin :分支名 删除远处仓库分支<br/>
-git merge 分支名 合并分支到当前分支上</p>
-
-<h2 id="toc_5">暂存操作</h2>
-
-<p>git stash 暂存当前修改<br/>
-git stash apply 恢复最近的一次暂存<br/>
-git stash pop 恢复暂存并删除暂存记录<br/>
-git stash list 查看暂存列表<br/>
-git stash drop 暂存名(例：stash@{0}) 移除某次暂存<br/>
-git stash clear 清除暂存</p>
-
-<h2 id="toc_6">回退操作</h2>
-
-<p>git reset --hard HEAD^ 回退到上一个版本<br/>
-git reset --hard ahdhs1(commit_id) 回退到某个版本<br/>
-git checkout -- file撤销修改的文件(如果文件加入到了暂存区，则回退到暂存区的，如果文件加入到了版本库，则还原至加入版本库之后的状态)<br/>
-git reset HEAD file 撤回暂存区的文件修改到工作区</p>
-
-<h2 id="toc_7">标签操作</h2>
-
-<p>git tag 标签名 添加标签(默认对当前版本)<br/>
-git tag 标签名 commit_id 对某一提交记录打标签<br/>
-git tag -a 标签名 -m &#39;描述&#39; 创建新标签并增加备注<br/>
-git tag 列出所有标签列表<br/>
-git show 标签名 查看标签信息<br/>
-git tag -d 标签名 删除本地标签<br/>
-git push origin 标签名 推送标签到远程仓库<br/>
-git push origin --tags 推送所有标签到远程仓库<br/>
-git push origin :refs/tags/标签名 从远程仓库中删除标签</p>
-
-<h2 id="toc_8">常规操作</h2>
-
-<p>git push origin test 推送本地分支到远程仓库<br/>
-git rm -r --cached 文件/文件夹名字 取消文件被版本控制<br/>
-git reflog 获取执行过的命令<br/>
-git log --graph 查看分支合并图<br/>
-git merge --no-ff -m &#39;合并描述&#39; 分支名 不使用Fast forward方式合并，采用这种方式合并可以看到合并记录<br/>
-git check-ignore -v 文件名 查看忽略规则<br/>
-git add -f 文件名 强制将文件提交</p>
-
-<h2 id="toc_9">创建项目仓库</h2>
-
-<p>git init 初始化<br/>
-git remote add origin url 关联远程仓库<br/>
-git pull<br/>
-git fetch 获取远程仓库中所有的分支到本地</p>
-
-<h2 id="toc_10">忽略已加入到版本库中的文件</h2>
-
-<p>git update-index --assume-unchanged file 忽略单个文件<br/>
-git rm -r --cached 文件/文件夹名字 (. 忽略全部文件)</p>
-
-<h2 id="toc_11">取消忽略文件</h2>
-
-<p>git update-index --no-assume-unchanged file</p>
-
-<h2 id="toc_12">拉取、上传免密码</h2>
-
-<p>git config --global credential.helper store</p>
-
-<p>-<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
----------------------last line for now---------------------</p>
+		<p>&emsp;&emsp;在git内部系统中，一共有三个区域。一个是工作区，也就是用户能看到文件夹下的文件改动；另一个是staged area，是指git认为在下次提交（commit）时应该包含的内容；第三个是已经提交的区域，该区域是指工作目录下的.git目录下的内容，.git目录由git自动创建；</p>
 
 
 		</div>
+	
+
+ 
 	
 
  

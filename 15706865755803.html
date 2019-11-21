@@ -239,6 +239,8 @@
         <li><label>Git</label></li>
 
           
+            <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+          
             <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
           
             <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -317,27 +319,9 @@
           
             <li><a title="偎" href="15637966637605.html">偎</a></li>
           
-            <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-          
-            <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-          
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
-            <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-          
             <li><a title="for" href="15583472660662.html">for</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>陌上归</label></li>
-
-          
-            <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-          
-            <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-          
-            <li><a title="大纲" href="15613407387642.html">大纲</a></li>
           
 
       
@@ -532,6 +516,8 @@
                     
                       <li class="side-title"><span>Git</span></li>
                         
+                          <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+                        
                           <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
                         
                           <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
@@ -596,25 +582,9 @@
                         
                           <li><a title="偎" href="15637966637605.html">偎</a></li>
                         
-                          <li><a title="你说我说" href="15625528494476.html">你说我说</a></li>
-                        
-                          <li><a title="青黄" href="15609363144124.html">青黄</a></li>
-                        
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
-                          <li><a title="年年岁岁 碎碎念念" href="15600901474068.html">年年岁岁 碎碎念念</a></li>
-                        
                           <li><a title="for" href="15583472660662.html">for</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>陌上归</span></li>
-                        
-                          <li><a title="第一章" href="15720057708584.html">第一章</a></li>
-                        
-                          <li><a title="待看的东西" href="15686842332295.html">待看的东西</a></li>
-                        
-                          <li><a title="大纲" href="15613407387642.html">大纲</a></li>
                         
 
                     
@@ -628,7 +598,14 @@
  <div class="markdown-body">
 <h1>ADB命令</h1>
 
-<p>&emsp;&emsp;adb工具即Android Debug Bridge（安卓调试桥）tools.它就是一个命令行窗口，用于通过电脑端与模拟器或者真实设备交互。</p>
+<p>&emsp;&emsp;adb工具即Android Debug Bridge（安卓调试桥）tools，是Android的调试工具。通过ADB的连接，可以在Shell中方便地通过DDMS(Dalvik Debug Monitor Service,Dalvik调试监控服务)来调试Android程序。ADB的工作方式是监听Socket TCP 5554端口，当运行Android Studio时，ADB进程就会自动运行。ADB是一个客户端-服务器端程序，客户端是开发者的主机，服务器端是连接的Android设备。它就是一个命令行窗口，用于通过电脑端与模拟器或者真实设备交互。<br/>
+&emsp;&emsp;ADB的主要功能有：</p>
+
+<ol>
+<li>在Shell中操作设备，如MonkeyTest、启动或关闭手机等；</li>
+<li>在计算机和模拟器或真实设备之间传输文件，如上传或下载文件；</li>
+<li>在模拟器或真实设备中安装或卸载本地应用的APK包；</li>
+</ol>
 
 <h2 id="toc_0">分类命令</h2>
 
@@ -714,6 +691,57 @@
 </tbody>
 </table>
 
+<h3 id="toc_4">ADB使用shell的命令</h3>
+
+<p>&emsp;&emsp;使用adb shell命令，进入到shell命令中；</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">命令</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">cd pathXxx</td>
+<td>切换到pathXxx文件路径下</td>
+</tr>
+<tr>
+<td style="text-align: center">cd ..</td>
+<td>退回到上一级文件路径下</td>
+</tr>
+<tr>
+<td style="text-align: center">ls</td>
+<td>查看目前所在路径下的文件，仅罗列出当前文件名或目录名</td>
+</tr>
+<tr>
+<td style="text-align: center">ll</td>
+<td>是命令ls -l的别名，罗列出当前文件或目录的详细信息，含有时间、读写权限、大小等信息</td>
+</tr>
+<tr>
+<td style="text-align: center">rm -rf pathXxx</td>
+<td>删除某个文件</td>
+</tr>
+<tr>
+<td style="text-align: center">rm -rf pathXxx/</td>
+<td>删除某个文件夹</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_5">ADB使用出现的问题</h2>
+
+<ol>
+<li><font color=red>使用adb devices命令显示offline</font>:<br/>
+&emsp;&emsp;解决方法一：输入命令adb kill-server，按enter键执行，然后再输入adb start-server执行，接下来输入adb devices就正常了；</br><br/>
+&emsp;&emsp;解决方法二：对usb线进行重新插拔；</br><br/>
+&emsp;&emsp;解决方法三：重启设备；</li>
+<li><font color=red>使用adb push命令提示Read-only file system</font>:<br/>
+&emsp;&emsp;解决方法：先执行adb root命令，然后再执行adb remount命令；</li>
+</ol>
+
 
 </div>
 
@@ -740,24 +768,7 @@
 
 <div class="row">
 <div style="padding:0px 0.93em;" class="share-comments">
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55117df11d1413c3" async="async"></script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_native_toolbox"></div>
 
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'mweb-en';
-    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 </div>
 <script type="text/javascript">
