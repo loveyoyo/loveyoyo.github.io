@@ -44,8 +44,10 @@
       <li><a href="index.html">Home</a></li>
       
         <li class="divider"></li>
-        <li><label>Android Studio技巧</label></li>
+        <li><label>Android Studio开发调试</label></li>
 
+          
+            <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
           
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
@@ -64,7 +66,7 @@
 
       
         <li class="divider"></li>
-        <li><label>四大组件</label></li>
+        <li><label>四大组件和其他基本文件</label></li>
 
           
             <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
@@ -82,6 +84,8 @@
             <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
           
             <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+          
+            <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
           
 
       
@@ -149,6 +153,8 @@
         <li><label>Android其他</label></li>
 
           
+            <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+          
             <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
           
             <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
@@ -164,8 +170,6 @@
             <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
           
             <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
-          
-            <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
           
             <li><a title="动画" href="15591315255964.html">动画</a></li>
           
@@ -340,7 +344,9 @@
                   <ul id="side-nav" class="side-nav">
 
                     
-                      <li class="side-title"><span>Android Studio技巧</span></li>
+                      <li class="side-title"><span>Android Studio开发调试</span></li>
+                        
+                          <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
                         
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
@@ -358,7 +364,7 @@
                         
 
                     
-                      <li class="side-title"><span>四大组件</span></li>
+                      <li class="side-title"><span>四大组件和其他基本文件</span></li>
                         
                           <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
                         
@@ -375,6 +381,8 @@
                           <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
                         
                           <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+                        
+                          <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
                         
 
                     
@@ -434,6 +442,8 @@
                     
                       <li class="side-title"><span>Android其他</span></li>
                         
+                          <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+                        
                           <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
                         
                           <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
@@ -449,8 +459,6 @@
                           <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
                         
                           <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
-                        
-                          <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
                         
                           <li><a title="动画" href="15591315255964.html">动画</a></li>
                         
@@ -600,44 +608,9 @@
 
 	
 		<div class="markdown-body">
-		<h1>爬虫--基本库的使用</h1>
+		<h1></h1>
 
-		<h2 id="toc_0">使用urllib</h2>
-
-<p>&emsp;&emsp;在Python2中，有urllib和urllib2两个库来实现请求的发送。而在Python3中，已经不存在urllib2这个库了，统一为urllib。urllib库是Python内置的HTTP请求库，也就是说不需要额外安装即可使用。</p>
-
-<ul>
-<li><font color=red>urllib包含的四个模块</font></li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: center">模块名</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td style="text-align: center">request</td>
-<td>是最基本的HTTP请求模块，可以用来模拟发送请求。就像在浏览器里输入网址然后回车，只需要给库方法传入URL以及额外的参数，就可以模拟实现这个过程了；</td>
-</tr>
-<tr>
-<td style="text-align: center">error</td>
-<td>异常处理模块，如果出现请求错误，我们可以捕获这些异常，然后进行重试或其他操作以保证程序不会意外终止；</td>
-</tr>
-<tr>
-<td style="text-align: center">parse</td>
-<td>一个工具模块，提供了许多URL处理方法，比如拆分、解析、合并等；</td>
-</tr>
-<tr>
-<td style="text-align: center">robotparser</td>
-<td>主要是用来识别网站的robots.txt文件，然后判断哪些网站可以爬，哪些网站不可以爬，其实用得比较少；</td>
-</tr>
-</tbody>
-</table>
-
+		
 
 		</div>
 	

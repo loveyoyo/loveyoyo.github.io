@@ -44,8 +44,10 @@
       <li><a href="index.html">Home</a></li>
       
         <li class="divider"></li>
-        <li><label>Android Studio技巧</label></li>
+        <li><label>Android Studio开发调试</label></li>
 
+          
+            <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
           
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
@@ -64,7 +66,7 @@
 
       
         <li class="divider"></li>
-        <li><label>四大组件</label></li>
+        <li><label>四大组件和其他基本文件</label></li>
 
           
             <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
@@ -82,6 +84,8 @@
             <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
           
             <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+          
+            <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
           
 
       
@@ -149,6 +153,8 @@
         <li><label>Android其他</label></li>
 
           
+            <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+          
             <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
           
             <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
@@ -164,8 +170,6 @@
             <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
           
             <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
-          
-            <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
           
             <li><a title="动画" href="15591315255964.html">动画</a></li>
           
@@ -340,7 +344,9 @@
                   <ul id="side-nav" class="side-nav">
 
                     
-                      <li class="side-title"><span>Android Studio技巧</span></li>
+                      <li class="side-title"><span>Android Studio开发调试</span></li>
+                        
+                          <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
                         
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
@@ -358,7 +364,7 @@
                         
 
                     
-                      <li class="side-title"><span>四大组件</span></li>
+                      <li class="side-title"><span>四大组件和其他基本文件</span></li>
                         
                           <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
                         
@@ -375,6 +381,8 @@
                           <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
                         
                           <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+                        
+                          <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
                         
 
                     
@@ -434,6 +442,8 @@
                     
                       <li class="side-title"><span>Android其他</span></li>
                         
+                          <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+                        
                           <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
                         
                           <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
@@ -449,8 +459,6 @@
                           <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
                         
                           <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
-                        
-                          <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
                         
                           <li><a title="动画" href="15591315255964.html">动画</a></li>
                         
@@ -600,31 +608,28 @@
 
 	
 		<div class="markdown-body">
-		<h1>内存泄漏</h1>
+		<h1>Handler消息机制</h1>
 
-		<ul>
-<li><font color=red>静态对象</font>:<br/>
-&emsp;&emsp;当一个static静态对像被调用时，这个对象的生命周期和整个app的生命周期一样长。如果，我们使用的参数Context是Activity或者Service的上下文，那么当Activity被销毁的时候，我们的静态对象仍然持有着Activity的Context，就会导致Activity对象无法被释放回收，就导致了内存泄漏；</li>
+		<p>&emsp;&emsp;<strong>Handler消息机制主要是Handler、Message、MessageQueue、Looper这四个类配合使用实现的。</strong></p>
+
+<ul>
+<li><font color=red>Message</font>:Message是在线程之间传递的消息，它可以在内部携带少量的信息，用于在不同线程之间交换数据。Message可以使用what字段、arg1字段和arg2字段来携带（int）整型数据，还可以使用obj字段携带一个Object对象。</li>
+<li><font color=red>Handler</font>:主要用于发送和接收到消息进行处理。发送消息一般是使用Handler的sendMessage()等几个方法来发送，而发出去的消息经过一系列的处理后，最终会传递到Handler的handleMessage()方法中。</li>
+<li><font color=red>MessageQueue</font>:MessageQueue是消息队列的意思，它主要是用于存放所有通过Handler发送的消息。这部分消息会一直存在于消息队列中，等待被处理。每个线程只会有一个MessageQueue对象。</li>
+<li><font color=red>Looper</font>:Looper是每个线程中的MessageQueue的管家，调用Looper的loop（）方法后，就会进入到一个无限循环中，每当发现MessageQueue中存在一条消息，就会将它取出，并传递到Handler的handleMessage（）方法。每个线程中只会有一个Looper对象。</li>
 </ul>
 
-<pre class="line-numbers"><code class="language-java">public class TestManager{
-    private static TestManager sTestManager;
-    //会造成内存泄漏的方法;
-    public static TestManager getInstance(Context context) {
-        if (sTestManager == null) {
-            sTestManager = new TestManager(context);
-        }
-        return sTestManager;
-    }
-    //不会造成内存泄漏的方法；
-    public static TestManager getInstanceSafe(Context context) {
-        if (sTestManager == null) {
-            sTestManager = new TestManager(context.getApplicationContext());                                               
-        }
-        return sTestManager;
-    } 
-}
-</code></pre>
+<p><font color=red>异步消息处理流程</font>：<br/>
+&emsp;&emsp;首先需要在主线程中创建一个Handler对象，并重写handleMessage()方法。然后当子线程中需要更新UI操作时，就创建一个Message对象，并通过Handler将这条消息发送出去。之后这条消息会被添加到MessageQueue的队列中等待被处理，而Looper则会一直尝试从MessageQueue中取出待处理消息，通过Handler的dispatchMessage()方法的回调，最后分发回Handler的handleMessage()方法中。由于Handler是在主线程中创建的，所以此时handleMessage()方法中的代码也会在主线程中运行，就可以在这里进行UI操作了。</p>
+
+<h2 id="toc_0">注意：</h2>
+
+<ul>
+<li>不能在子线程中创建Handler；</li>
+<li>不能在子线程中更新UI；</li>
+<li>Handeler的作用：(1).在非UI线程中完成耗时操作，在UI线程中去更新UI；(2).可以在主线程中发送延时消息；</li>
+<li>只能在UI线程中去更新UI原因:(1).解决多线程并发问题；(2).提高界面更新的性能问题；(3).架构设计的简单；</li>
+</ul>
 
 
 		</div>
