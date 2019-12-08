@@ -47,6 +47,10 @@
         <li><label>Android Studio开发调试</label></li>
 
           
+            <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
+          
+            <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
+          
             <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
           
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
@@ -226,6 +230,18 @@
 
       
         <li class="divider"></li>
+        <li><label>Android内核剖析</label></li>
+
+          
+            <li><a title="Framework概述" href="15747509659838.html">Framework概述</a></li>
+          
+            <li><a title="Binder" href="15747333089774.html">Binder</a></li>
+          
+            <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>安卓源码</label></li>
 
           
@@ -321,8 +337,6 @@
         <li><label>随想</label></li>
 
           
-            <li><a title="偎" href="15637966637605.html">偎</a></li>
-          
             <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
           
             <li><a title="for" href="15583472660662.html">for</a></li>
@@ -345,6 +359,10 @@
 
                     
                       <li class="side-title"><span>Android Studio开发调试</span></li>
+                        
+                          <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
+                        
+                          <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
                         
                           <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
                         
@@ -510,6 +528,16 @@
                         
 
                     
+                      <li class="side-title"><span>Android内核剖析</span></li>
+                        
+                          <li><a title="Framework概述" href="15747509659838.html">Framework概述</a></li>
+                        
+                          <li><a title="Binder" href="15747333089774.html">Binder</a></li>
+                        
+                          <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
                       <li class="side-title"><span>安卓源码</span></li>
                         
                           <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
@@ -588,8 +616,6 @@
                     
                       <li class="side-title"><span>随想</span></li>
                         
-                          <li><a title="偎" href="15637966637605.html">偎</a></li>
-                        
                           <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
                         
                           <li><a title="for" href="15583472660662.html">for</a></li>
@@ -608,17 +634,14 @@
 
 	
 		<div class="markdown-body">
-		<h1>异步消息处理线程</h1>
+		<h1>Android Studio使用的插件</h1>
 
-		<p>&emsp;&emsp;对于普通线程而言，执行完run（）方法内的代码后线程就结束了。而异步消息处理线程是指：线程启动后会进入一个无限循环体之中，每循环一次，从其内部的消息队列中取出一个消息，并回调相应的消息处理函数，执行完一个消息后则继续循环。如果消息队列为空，线程会暂停，直到消息队列中有新的消息。<br/>
-&emsp;&emsp;异步消息处理线程的本质仍然是一个线程，只不过这种线程的执行代码被设置为上述所讲的逻辑而已。一般而言，当同时有以下两种需求时使用异步消息处理线程：</p>
-
-<ul>
-<li>任务需要常驻。比如用于处理用户交互的任务；</li>
-<li>任务需要根据外部传递的消息做不同的操作；</li>
+		<ul>
+<li><p><font color=red>GsonFormat</font>:<br/>
+&emsp;&emsp;GsonFormat是一个可以快速将json字符串转换成一个Java Bean，免去我们根据json字符串手写对应Java Bean的过程。使用方法：快捷键Alt+S也可以使用Alt+Insert选择GsonFormat。</p></li>
+<li><p><font color=red>Android ButterKnife Zelezny</font>:<br/>
+&emsp;&emsp;配合ButterKnife实现注解，从此不用写findViewById。在Activity，Fragment，Adapter中选中布局xml的资源id自动生成butterknife注解。</p></li>
 </ul>
-
-<p><img src="../asset/img/avatar.jpeg" alt=""/></p>
 
 
 		</div>
