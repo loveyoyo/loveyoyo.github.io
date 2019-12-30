@@ -47,6 +47,8 @@
         <li><label>Android Studio开发调试</label></li>
 
           
+            <li><a title="使用ADB命令查看数据库数据" href="15776895359955.html">使用ADB命令查看数据库数据</a></li>
+          
             <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
           
             <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
@@ -256,6 +258,14 @@
 
       
         <li class="divider"></li>
+        <li><label>Framework</label></li>
+
+          
+            <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
+          
+
+      
+        <li class="divider"></li>
         <li><label>Git</label></li>
 
           
@@ -359,6 +369,8 @@
 
                     
                       <li class="side-title"><span>Android Studio开发调试</span></li>
+                        
+                          <li><a title="使用ADB命令查看数据库数据" href="15776895359955.html">使用ADB命令查看数据库数据</a></li>
                         
                           <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
                         
@@ -550,6 +562,12 @@
                         
 
                     
+                      <li class="side-title"><span>Framework</span></li>
+                        
+                          <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
+                        
+
+                    
                       <li class="side-title"><span>Git</span></li>
                         
                           <li><a title="git概述" href="15720062741897.html">git概述</a></li>
@@ -634,14 +652,25 @@
 
 	
 		<div class="markdown-body">
-		<h1>Android Studio使用的插件</h1>
+		<h1>使用ADB命令查看数据库数据</h1>
 
-		<ul>
-<li><p><font color=red>GsonFormat</font>:<br/>
-&emsp;&emsp;GsonFormat是一个可以快速将json字符串转换成一个Java Bean，免去我们根据json字符串手写对应Java Bean的过程。使用方法：快捷键Alt+S也可以使用Alt+Insert选择GsonFormat。</p></li>
-<li><p><font color=red>Android ButterKnife Zelezny</font>:<br/>
-&emsp;&emsp;配合ButterKnife实现注解，从此不用写findViewById。在Activity，Fragment，Adapter中选中布局xml的资源id自动生成butterknife注解。</p></li>
-</ul>
+		<p>&emsp;&emsp;在开发过程中，我们可能会用到Sqlite数据库作为本地存储，也就需要查看本地数据库中的数据是否是正常的。我们可以在Android studio中找到相应的包名下面的数据库文件，右键选择&quot;Save As&quot;导出到电脑上，然后使用数据库查看到处的数据库文件。但是我们也可以直接使用usb连接设备，使用adb命令来查看数据库文件。<br/>
+&emsp;&emsp;首先，先确认下设备中是否有sqlite3文件，可以在system/xbin目录下查看，是否有sqlite3这个文件；如果有这个文件，则表示可以继续下面的步骤。</p>
+
+<h2 id="toc_0">操作步骤</h2>
+
+<ol>
+<li>在命令行中输入adb shell，进入到shell命令中；</li>
+<li>使用cd data/data进入到目录文件中；</li>
+<li>可以使用ls命令，来查看应用列表，找到自己要查看的应用；</li>
+<li>使用cd com.xxx.xxx（要查看的应用包名）命令，进入到该应用的文件夹下；</li>
+<li>使用ls命令，可以查看到有databases文件夹；</li>
+<li>使用cd databases进入到该目录下；</li>
+<li>使用ls命令可以看到databases该目录下的数据库文件；</li>
+<li>使用sqlite3 xxx.db(数据库文件，可能文件会没有后缀.db)，进入到sqlite命令中；</li>
+<li>在sqlite命令行中输入.table命令，查看数据库中的表；</li>
+<li>然后便可以执行sql命令了，如select * from xxx(数据表);这个命令查看xxx表中的所有数据；</li>
+</ol>
 
 
 		</div>
