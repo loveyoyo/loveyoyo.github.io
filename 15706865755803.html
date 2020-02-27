@@ -251,6 +251,8 @@
         <li><label>Framework</label></li>
 
           
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
             <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
           
             <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -266,6 +268,16 @@
             <li><a title="Binder" href="15747333089774.html">Binder</a></li>
           
             <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
           
 
       
@@ -578,6 +590,8 @@
                     
                       <li class="side-title"><span>Framework</span></li>
                         
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
                           <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
                         
                           <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -591,6 +605,14 @@
                           <li><a title="Binder" href="15747333089774.html">Binder</a></li>
                         
                           <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
                         
 
                     
@@ -689,6 +711,42 @@
 
  <div class="markdown-body">
 <h1>ADB命令</h1>
+
+<ul>
+<li>
+<a href="#toc_0">分类命令</a>
+<ul>
+<li>
+<a href="#toc_1">ADB Debugging</a>
+</li>
+<li>
+<a href="#toc_2">Wireless</a>
+</li>
+<li>
+<a href="#toc_3">Package Manager</a>
+</li>
+<li>
+<a href="#toc_4">ADB使用shell的命令</a>
+<ul>
+<li>
+<ul>
+<li>
+<a href="#toc_5">am和pm命令:</a>
+</li>
+<li>
+<a href="#toc_6">其他adb shell模式下的命令:</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_7">ADB使用出现的问题</a>
+</li>
+</ul>
+
 
 <p>&emsp;&emsp;adb工具即Android Debug Bridge（安卓调试桥）tools，是Android的调试工具。通过ADB的连接，可以在Shell中方便地通过DDMS(Dalvik Debug Monitor Service,Dalvik调试监控服务)来调试Android程序。ADB的工作方式是监听Socket TCP 5554端口，当运行Android Studio时，ADB进程就会自动运行。ADB是一个客户端-服务器端程序，客户端是开发者的主机，服务器端是连接的Android设备。它就是一个命令行窗口，用于通过电脑端与模拟器或者真实设备交互。<br/>
 &emsp;&emsp;ADB的主要功能有：</p>
@@ -867,7 +925,7 @@
 </tbody>
 </table>
 
-<h5 id="toc_5"><font color=red>am和pm命令</font>:</h5>
+<h5 id="toc_5">am和pm命令:</h5>
 
 <p>&emsp;&emsp;am和pm命令必须先使用adb shell命令切换到shell模式下才能使用；<br/>
 &emsp;&emsp;am全称activity manager，可以使用am去模拟系统的行为，例如去启动一个activity、强制停止进程等；<br/>
@@ -940,7 +998,7 @@ pm的命令格式是：pm <command></p>
 </tbody>
 </table>
 
-<h5 id="toc_6"><font color=red>其他adb shell模式下的命令</font>:</h5>
+<h5 id="toc_6">其他adb shell模式下的命令:</h5>
 
 <table>
 <thead>
@@ -1011,25 +1069,15 @@ pm的命令格式是：pm <command></p>
 </table>
 
 <pre class="line-numbers"><code class="language-java">&quot;-s&quot;选项 : 设置输出日志的标签, 只显示该标签的日志;
-
 &quot;-f&quot;选项 : 将日志输出到文件, 默认输出到标准输出流中, -f 参数执行不成功;
-
 &quot;-r&quot;选项 : 按照每千字节输出日志, 需要 -f 参数, 不过这个命令没有执行成功;
-
 &quot;-n&quot;选项 : 设置日志输出的最大数目, 需要 -r 参数, 这个执行 感觉 跟 adb logcat 效果一样;
-
 &quot;-v&quot;选项 : 设置日志的输出格式, 注意只能设置一项;
-
 &quot;-c&quot;选项 : 清空所有的日志缓存信息;
-
 &quot;-d&quot;选项 : 将缓存的日志输出到屏幕上, 并且不会阻塞;
-
 &quot;-t&quot;选项 : 输出最近的几行日志, 输出完退出, 不阻塞;
-
 &quot;-g&quot;选项 : 查看日志缓冲区信息;
-
 &quot;-b&quot;选项 : 加载一个日志缓冲区, 默认是 main, 下面详解;
-
 &quot;-B&quot;选项 : 以二进制形式输出日志;
 </code></pre>
 
@@ -1044,6 +1092,11 @@ pm的命令格式是：pm <command></p>
 &emsp;&emsp;解决方法：先执行adb root命令，然后再执行adb remount命令；</p></li>
 <li><p><font color=red>使用adb push命令将文件推到设备中时，可能会出现文件没有完整地推到设备中</font>:<br/>
 &emsp;&emsp;将文件推到设备中以后，需要使用ll命令查看一下推到设备中的文件的大小，确认是否和推送之前的文件大小一致；</p></li>
+<li><p><font color=red>删除system/app目录下的文件夹</font>:<br/>
+（1）在命令行中先执行命令adb remount；<br/>
+（2）执行adb shell进入到shell模式中；<br/>
+（3）使用cd system/app进入到app目录下；<br/>
+（4）使用rm -rf fileXxx/(要删除的文件夹)命令删除指定的文件夹；</p></li>
 </ol>
 
 

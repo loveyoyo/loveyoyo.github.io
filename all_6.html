@@ -251,6 +251,8 @@
         <li><label>Framework</label></li>
 
           
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
             <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
           
             <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -266,6 +268,16 @@
             <li><a title="Binder" href="15747333089774.html">Binder</a></li>
           
             <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
           
 
       
@@ -578,6 +590,8 @@
                     
                       <li class="side-title"><span>Framework</span></li>
                         
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
                           <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
                         
                           <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -591,6 +605,14 @@
                           <li><a title="Binder" href="15747333089774.html">Binder</a></li>
                         
                           <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
                         
 
                     
@@ -692,9 +714,62 @@
 
 	
 		<div class="markdown-body">
-		<h1>SwipeRefreshLayout</h1>
+		<h1>常用工具类和方法</h1>
 
-		
+		<h2 id="toc_0">单位换算</h2>
+
+<p>(1).sp转换为px：</p>
+
+<pre class="line-numbers"><code class="language-java">public static float sp2px(Context context, float spValue) {
+    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    return  spValue * fontScale;
+}
+
+public static int sp2px(Context context, float spValue) {
+    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    return  (int)(spValue * fontScale + 0.5);
+}
+</code></pre>
+
+<p>(2).px转换为sp：</p>
+
+<pre class="line-numbers"><code class="language-java">public static int px2sp(Context context, float pxValue) {
+    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    return (int) (pxValue / fontScale + 0.5f);
+}
+
+public static float px2sp(Context context, float pxValue) {
+    float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+    return pxValue / fontScale;
+}
+</code></pre>
+
+<p>(3).dp转换为px：</p>
+
+<pre class="line-numbers"><code class="language-java">public static int dp2px(Context context, float dpValue) {
+    float scale = context.getResources().getDisplayMetrics().density;
+    return (int) (dpValue * scale + 0.5f);
+}
+
+public static float dp2px(Context context, float dpValue) {
+    float scale = context.getResources().getDisplayMetrics().density;
+    return dpValue * scale;
+}
+</code></pre>
+
+<p>(4).px转换为dp：</p>
+
+<pre class="line-numbers"><code class="language-java">public static int px2dp(Context context, float pxValue) {
+    float scale = context.getResources().getDisplayMetrics().density;
+    return (int) (pxValue / scale + 0.5f);
+}
+    
+public static float px2dp(Context context, float pxValue) {
+    float scale = context.getResources().getDisplayMetrics().density;
+    return pxValue / scale;
+}
+</code></pre>
+
 
 		</div>
 	

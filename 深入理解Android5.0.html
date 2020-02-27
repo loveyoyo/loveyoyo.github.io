@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  爬虫--基本库的使用 - KangLu
+  深入理解Android5.0 - KangLu
   
   </title>
  <meta name="description" content="个人文章">
@@ -709,84 +709,80 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
-<h1>爬虫--基本库的使用</h1>
+ 
 
-<h2 id="toc_0">使用urllib</h2>
 
-<p>&emsp;&emsp;在Python2中，有urllib和urllib2两个库来实现请求的发送。而在Python3中，已经不存在urllib2这个库了，统一为urllib。urllib库是Python内置的HTTP请求库，也就是说不需要额外安装即可使用。</p>
+	
+		<div class="markdown-body">
+		<h1>3. 连接Android和Linux内核的桥梁--Android的Bionic</h1>
 
-<ul>
-<li><font color=red>urllib包含的四个模块</font></li>
+		<ul>
+<li>
+<a href="#toc_0">3.1 Bionic简介</a>
+</li>
+<li>
+<a href="#toc_1">3.2 Bionic C库中的系统调用</a>
+</li>
+<li>
+<a href="#toc_2">3.3 Bionic中的内存管理函数</a>
+</li>
+<li>
+<a href="#toc_3">3.4 管道</a>
+</li>
+<li>
+<a href="#toc_4">3.5 Bionic中的线程管理函数</a>
+</li>
+<li>
+<a href="#toc_5">3.6 Futex同步机制</a>
+</li>
+<li>
+<a href="#toc_6">3.7 Android的Log模块</a>
+</li>
+<li>
+<a href="#toc_7">3.8 可执行文件格式分析</a>
+</li>
+<li>
+<a href="#toc_8">3.9 Bionic中Linker模块</a>
+</li>
+<li>
+<a href="#toc_9">3.10 调试器--Ptrace和Hook API</a>
+</li>
 </ul>
 
-<table>
-<thead>
-<tr>
-<th style="text-align: center">模块名</th>
-<th>描述</th>
-</tr>
-</thead>
 
-<tbody>
-<tr>
-<td style="text-align: center">request</td>
-<td>是最基本的HTTP请求模块，可以用来模拟发送请求。就像在浏览器里输入网址然后回车，只需要给库方法传入URL以及额外的参数，就可以模拟实现这个过程了；</td>
-</tr>
-<tr>
-<td style="text-align: center">error</td>
-<td>异常处理模块，如果出现请求错误，我们可以捕获这些异常，然后进行重试或其他操作以保证程序不会意外终止；</td>
-</tr>
-<tr>
-<td style="text-align: center">parse</td>
-<td>一个工具模块，提供了许多URL处理方法，比如拆分、解析、合并等；</td>
-</tr>
-<tr>
-<td style="text-align: center">robotparser</td>
-<td>主要是用来识别网站的robots.txt文件，然后判断哪些网站可以爬，哪些网站不可以爬，其实用得比较少；</td>
-</tr>
-</tbody>
-</table>
+<p><strong>&emsp;&emsp;Bionic库是Android的基础库之一，也是连接Android和Linux内核的桥梁。Bionic中包含了很多基本功能，这些功能大部分源于Linux，但是和标准的Linux之间有很多细微的差别。同时，Bionic中增加了一些新的模块，服务于Android的上层代码。</strong></p>
+
+<h2 id="toc_0">3.1 Bionic简介</h2>
+
+<p>&emsp;&emsp;Bionic包含了系统中最基本的lib库，以及Android特有的链接器linker。</p>
+
+<h2 id="toc_1">3.2 Bionic C库中的系统调用</h2>
+
+<h2 id="toc_2">3.3 Bionic中的内存管理函数</h2>
+
+<h2 id="toc_3">3.4 管道</h2>
+
+<h2 id="toc_4">3.5 Bionic中的线程管理函数</h2>
+
+<h2 id="toc_5">3.6 Futex同步机制</h2>
+
+<h2 id="toc_6">3.7 Android的Log模块</h2>
+
+<h2 id="toc_7">3.8 可执行文件格式分析</h2>
+
+<h2 id="toc_8">3.9 Bionic中Linker模块</h2>
+
+<h2 id="toc_9">3.10 调试器--Ptrace和Hook API</h2>
 
 
-</div>
+		</div>
+	
 
-<br /><br />
-<hr />
+ 
+	
 
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
-		
-	        <a href="15681720095770.html"  title="Previous Post: Handler消息机制">&laquo; Handler消息机制</a>
-	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="15660114926379.html" 
-	        title="Next Post: 爬虫概述">爬虫概述 &raquo;</a>
-	    
-	</div>
-  </div>
-</div>
-
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
-
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '15660531164999.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
+  
+  
 </div></div>
 
 

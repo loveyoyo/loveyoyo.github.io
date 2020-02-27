@@ -251,6 +251,8 @@
         <li><label>Framework</label></li>
 
           
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
             <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
           
             <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -266,6 +268,16 @@
             <li><a title="Binder" href="15747333089774.html">Binder</a></li>
           
             <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
           
 
       
@@ -578,6 +590,8 @@
                     
                       <li class="side-title"><span>Framework</span></li>
                         
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
                           <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
                         
                           <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -591,6 +605,14 @@
                           <li><a title="Binder" href="15747333089774.html">Binder</a></li>
                         
                           <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
                         
 
                     
@@ -692,9 +714,54 @@
 
 	
 		<div class="markdown-body">
-		<h1>Spinner</h1>
+		<h1>设置代码信息模版</h1>
 
-		
+		<h2 id="toc_0">Windows系统的Android Studio中设置</h2>
+
+<ol>
+<li>依次点击 File -- Settings --Editor -- Live Templates；</li>
+<li>点击绿色的加号按钮，选择Live Template；</li>
+<li>在Abbreviation框中输入你喜欢的缩写，就是以后你在代码中输入你写的这个缩写，就会生成你现在设置的代码模版；在Description框中输入你对这个模版的描述，不写也可以；在Template text框中输入你要写的代码模版；举例如下面的代码引用：</li>
+<li>此时在 Template text框的下面会提示 No applicable contexts yet.Define，点击Define，选择你的这个代码模版要应用的那些类型的代码环境；</li>
+<li>举例中使用了\(date\)，是想要让模版本身能自动输入当时的时间，需要在Edit variables中设置该函数，点击Edit variables，在Expression框中选择date（）这个函数，点击OK就可以了；</li>
+</ol>
+
+<pre class="line-numbers"><code class="language-java">/**
+ * @Author:Kanglu
+ * @Date:$date$
+ * @Description:
+ */
+</code></pre>
+
+<h2 id="toc_1">Mac系统的Android Studio中设置</h2>
+
+<ol>
+<li>依次点击 Android Studio -- Preferences -- Editor -- Live Templates；</li>
+<li>点击加号按钮，选择Live Template；</li>
+<li>接下来的操作和Windows系统中的一样，就不再赘述；</li>
+</ol>
+
+<pre class="line-numbers"><code class="language-java">/**
+ * Created by Kanglu on $date$
+ */
+</code></pre>
+
+<p>-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-----------------------last line for now-----------------------</p>
+
 
 		</div>
 	

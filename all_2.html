@@ -251,6 +251,8 @@
         <li><label>Framework</label></li>
 
           
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
             <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
           
             <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -266,6 +268,16 @@
             <li><a title="Binder" href="15747333089774.html">Binder</a></li>
           
             <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
           
 
       
@@ -578,6 +590,8 @@
                     
                       <li class="side-title"><span>Framework</span></li>
                         
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
                           <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
                         
                           <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -591,6 +605,14 @@
                           <li><a title="Binder" href="15747333089774.html">Binder</a></li>
                         
                           <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
                         
 
                     
@@ -692,38 +714,68 @@
 
 	
 		<div class="markdown-body">
-		<h1>爬虫概述</h1>
+		<h1>安卓事件处理</h1>
 
-		<p>&emsp;&emsp;<strong>我们可以把互联网比作一张大网，而爬虫（网络爬虫）便是在网上爬行的蜘蛛。把网的节点比作一个个网页，爬虫爬到这就相当于访问了该页面，获取了其信息。可以把节点间的连线比作网页与网页之间的链接关系，这样蜘蛛通过一个节点后，可以顺着节点连线继续爬行到达下一个节点，即通过一个网页继续获取后续的网页，这样整个网的节点便可以被蜘蛛全部爬到，网站的数据就可以被抓取下来了。</strong></p>
+		<p>&emsp;&emsp;<strong>安卓系统提供了两种事件处理机制：基于回调的事件处理和基于监听器的事件处理。</strong><br/>
+&emsp;&emsp;对于基于回调的事件处理而言，大多数与Android设备进行的用户交互事件都有系统捕捉，然后再传递给相应的回调函数进行处理。例如，当用户按下物理按键“返回”键之后，系统就会自动调用onBackPressed()方法对这一按键事件进行处理。因此，开发者只需要重写特定组件或Activity的回调方法便可以对界面事件按自己想要的动作进行处理。<br/>
+&emsp;&emsp;对于基于监听器的事件处理而言，Android中与View和ViewGroup对象相关的用户交互组件基本都支持事件监听器，监听方法会等待某个已经注册的事件发生，然后触发系统向回调方法发送事件消息。因此，开发者只需要为Android的界面组件注册特定的事件监听器即可。例如，为某个按钮注册事件监听器setOnClickListener()，当点击按钮时，就会调用该监听器的onClick()方法对这一点击事件进行处理。</p>
 
-<blockquote>
-<p><font color=red>简单来说，爬虫就是获取网页并提取和保存信息的自动化程序。</font></p>
-</blockquote>
+<h2 id="toc_0">基于回调的事件处理</h2>
 
-<h2 id="toc_0">代理的基本原理</h2>
+<p>&emsp;&emsp;在Android平台中，每个View都有自己处理事件的回调方法，开发者可以通过重写View的这些回调方法对事件进行响应处理。当某个时间没有被任何一个View处理时，系统便会调用Activity中相应的回调方法。</p>
 
-<p>&emsp;&emsp;代理实际上指的就是代理服务器，英文名叫作proxy server，它的功能是代理网络用户去取得网络信息。形象地说，它是网络信息的中转站。在我们正常请求一个网站时，是发送了请求给Web服务器，Web服务器把响应传回给我们。如果设置了代理服务器，实际上就是在本机和服务器之间搭建了一个桥，此时本机不是直接向Web服务器发起请求，而是向代理服务器发出请求，请求会发送给代理服务器，然后由代理服务器再发送给Web服务器，接着由代理服务器再把Web服务器返回的响应转发给本机。这样我们同样可以正常访问网页，但这个过程中Web服务器识别出的真实IP就不再是我们本机的IP了，就成功实现了IP伪装。</p>
+<h3 id="toc_1">onKeyDown()回调方法</h3>
 
-<h4 id="toc_1">代理的作用</h4>
+<p>&emsp;&emsp;onKeyDown()回调方法是接口KeyEvent.Callback中的抽象方法，所有的View均实现了该接口并重写了该方法用于捕捉手机键盘被按下的事件。</p>
 
-<ol>
-<li>突破自身IP访问限制，访问一些平时不能访问的站点；</li>
-<li>访问一些单位或团体内部资源；比如使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务；</li>
-<li>提高访问速度；通常代理服务器都设置一个较大的硬盘缓冲区，当有外界的信息通过时，同时也将其保存到缓冲区中，当其他用户再访问相同的信息时，则直接由缓冲区中取出信息，传给用户，以提高访问速度；</li>
-<li>隐藏真实IP；上网者也可以通过这种方法隐藏自己的IP，免受攻击。对于爬虫来说，我们用代理就是为了隐藏自身IP，防止自身的IP被封锁；</li>
-</ol>
+<pre class="line-numbers"><code class="language-java">public boolean onKeyDown(int keyCode,KeyEvent event){
+    
+}
+</code></pre>
 
-<p>-<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
--<br/>
-----------------last line for now----------------</p>
+<p>&emsp;&emsp;参数keyCode为被按下的键值即键盘码，手机键盘中的每个按键都会有其独特的键盘码，在应用程序通过该键盘码判断用户按下的是哪个键；参数event为按键事件封装类的对象，其中包含了触发事件的详细信息，例如事件的状态、事件的类型、事件发生的时间等。<br/>
+&emsp;&emsp;需要注意的是，onKeyDown()方法的返回值，包括其他回调方法一样，该返回值是一个boolean类型的变量，当返回true时，表示已经完整地处理了这个事件，并不希望其他的回调方法再次进行处理；当返回false时，表示并没有完全处理该事件，更希望其他回调方法继续对其进行处理，例如Activity中相应的回调方法。</p>
+
+<h3 id="toc_2">onKeyUp()回调方法</h3>
+
+<p>&emsp;&emsp;onKeyUp()回调方法也是接口KeyEvent.Callback中的抽象方法，所有View均实现了该接口并重写了该方法用于捕捉手机键盘按键抬起的事件。</p>
+
+<pre class="line-numbers"><code class="language-java">public boolean onKeyUp(int keyCode,KeyEvent event){
+    
+}
+</code></pre>
+
+<p>&emsp;&emsp;该方法的两个参数同onKeyDown()方法中的参数完全一致，该方法的boolean类型返回值含义也与onKeyDown()方法中的完全相同，都是通知系统是否希望其他回调方法再次对该事件进行处理。</p>
+
+<h3 id="toc_3">onTouchEvent()回调方法</h3>
+
+<p>&emsp;&emsp;onTouchEvent()方法用于处理手机屏幕的触摸事件，该方法在View类中定义，并且所有View的子类全部重写了该方法。</p>
+
+<pre class="line-numbers"><code class="language-java">public boolean onTouchEvent(MotionEvent event){
+    
+}
+</code></pre>
+
+<p>&emsp;&emsp;其中，参数event是手机屏幕触摸事件封装类的对象，该对象封装了该事件的所有信息，例如触摸的位置、触摸的类型以及触摸的时间等。该对象会在用户触摸手机屏幕时被创建。本方法的boolean类型的返回值也是用于通知系统是否希望其他回调方法再次对该事件进行处理。<br/>
+&emsp;&emsp;需要注意的是，onTouchEvent()处理的触摸事件有三种情况，分别是：<br/>
+(1).屏幕被按下：当屏幕被按下时，会调用该方法来处理此触摸事件，此时该触摸事件的动作为MotionEvent.ACTION_DOWN，可以调用MotionEvent.getAction()方法获取触摸事件的动作。<br/>
+(2).屏幕被抬起：当手指离开屏幕时，会触发调用该方法处理此触摸事件，此时该触摸事件的动作为MotionEvent.ACTION_UP。<br/>
+(3).屏幕拖动：当手指在屏幕上滑动时，会触发调用该方法处理滑动触摸事件，此时该触摸事件的动作为MotionEvent.ACTION_MOVE。</p>
+
+<h3 id="toc_4">onKeyLongPress()回调方法</h3>
+
+<h3 id="toc_5">onKeyShortcut()回调方法</h3>
+
+<h3 id="toc_6">onTrackballEvent()回调方法</h3>
+
+<h2 id="toc_7">基于监听器的事件处理</h2>
+
+<h2 id="toc_8">响应系统设置事件</h2>
+
+<p>&emsp;&emsp;在Android中，基于监听器的事件处理模型主要包含以下三类对象：<br/>
+1.事件（Event）：<br/>
+2.事件源(Event Source)：<br/>
+3.事件监听器(Event Listener)：</p>
 
 
 		</div>

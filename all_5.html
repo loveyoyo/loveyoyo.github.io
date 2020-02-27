@@ -251,6 +251,8 @@
         <li><label>Framework</label></li>
 
           
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
             <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
           
             <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -266,6 +268,16 @@
             <li><a title="Binder" href="15747333089774.html">Binder</a></li>
           
             <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
           
 
       
@@ -578,6 +590,8 @@
                     
                       <li class="side-title"><span>Framework</span></li>
                         
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
                           <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
                         
                           <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -591,6 +605,14 @@
                           <li><a title="Binder" href="15747333089774.html">Binder</a></li>
                         
                           <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
                         
 
                     
@@ -692,36 +714,9 @@
 
 	
 		<div class="markdown-body">
-		<h1>ScrollView组件</h1>
+		<h1>OkHttp</h1>
 
-		<h2 id="toc_0">属性：</h2>
-
-<p>ScrollView组件除了具有View组件的所有属性，还有如下自己独有的属性。</p>
-
-<ul>
-<li><font color=red>contentContainerStyle</font>:用来定义ScrollView组件的容器样式；</li>
-<li><font color=red>horizontal</font>:取值为：false和true。为true时，ScrollView的所有子组件将会水平排列；为false时，ScrollView组件的所有子组件将垂直排列。默认值是false。</li>
-<li><font color=red>KeyboardDismissMode</font>:取值为：none、interactive、on-drag.它决定了ScrollView组件中过某个子组件调出软键盘后，是否允许通过拉软键盘这个手势让软键盘消失。none是不允许；on-drag表示在手势开始时，软键盘会消失；interactive表示键盘消失的动画会与手势进展交互对应，如果用户向上回拉。软键盘不会消失。android操作系统只支持none取值。</li>
-<li><font color=red>keyboardShouldPersistTaps</font>:取值为：true和false。当为false时，在文本输入框外触按屏幕将会使软键盘消失。默认值时false。</li>
-<li><font color=red>onContentSizeChange</font>:是一个回调函数。当ScrollView组件的容器View宽、高被改变时，这个回调函数将被执行。</li>
-<li><font color=red>onScroll</font>:是一个回调函数。当ScrollView组件被滑动时，每一帧的画面改变都会触发一次此函数。可以通过设置scrollEventThrottle属性来控制回调的频率。</li>
-<li><font color=red>pagingEnable</font>:取值为：true和false。默认值是false。当为true时，ScrollView组件中显示的内容在滑过整数倍的ScrollView宽、高时会停止滑动。这个特性可用来实现水平方向整页滑动。</li>
-<li><font color=red>removeClippedSubviews</font>:取值为：true和false。默认值是true。当为true时，React Native框架通过使不在屏幕范围内的子View暂不处理计算而提高滑动效果体验。</li>
-<li><font color=red>contentContainerStyle</font>:</li>
-</ul>
-
-<h2 id="toc_1">RefreshControl组件：</h2>
-
-<p>RefreshControl是专门为ScrollView组件服务的组件。当ScrollView被拉到顶部（y：0）时，如果给ScrollView的refreshControl属性赋值一个RefreshControl组件，则会显示这个RefreshControl组件。开发者通常用它从网络获取最新数据，并在获取到最新数据后让RefreshControl组件消失。<br/>
-RefreshControl支持View组件的所有属性，这意味着开发者可以按View组件的样式设置它的样式。</p>
-
-<h3 id="toc_2">属性：</h3>
-
-<ul>
-<li><font color=red>onRefresh</font>:是回调函数，当ScrollView拉到顶部时，这个函数会被执行。</li>
-<li><font color=red>refreshing</font>:取值为：false和true。用来设置当前是否应当显示RefreshControl组件。</li>
-</ul>
-
+		
 
 		</div>
 	

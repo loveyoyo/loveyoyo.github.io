@@ -251,6 +251,8 @@
         <li><label>Framework</label></li>
 
           
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
             <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
           
             <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -266,6 +268,16 @@
             <li><a title="Binder" href="15747333089774.html">Binder</a></li>
           
             <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
           
 
       
@@ -578,6 +590,8 @@
                     
                       <li class="side-title"><span>Framework</span></li>
                         
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
                           <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
                         
                           <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
@@ -591,6 +605,14 @@
                           <li><a title="Binder" href="15747333089774.html">Binder</a></li>
                         
                           <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
                         
 
                     
@@ -689,6 +711,33 @@
 
  <div class="markdown-body">
 <h1>Android的编译环境--Build系统</h1>
+
+<ul>
+<li>
+<a href="#toc_0">Android Build系统核心</a>
+</li>
+<li>
+<a href="#toc_1">产品的Image文件</a>
+<ul>
+<li>
+<a href="#toc_2">boot.img</a>
+</li>
+<li>
+<a href="#toc_3">ramdisk.img</a>
+</li>
+<li>
+<a href="#toc_4">system.img</a>
+</li>
+<li>
+<a href="#toc_5">userdata.img</a>
+</li>
+<li>
+<a href="#toc_6">recover.img</a>
+</li>
+</ul>
+</li>
+</ul>
+
 
 <p>&emsp;&emsp;Android的Build系统是基于GNU Make和Shell构建的一套编译环境。<br/>
 &emsp;&emsp;从大的方面讲，Android的Build系统可以分成三大块：第一块是位于build/core目录下的文件，这是Android Build系统的框架和核心；第二块是位于device目录下的文件，存放的是具体产品的配置文件；第三块是各模块的编译文件：Android.mk，位于模块的源文件目录下。</p>
