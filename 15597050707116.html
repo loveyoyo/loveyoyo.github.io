@@ -47,6 +47,10 @@
         <li><label>Android Studio开发调试</label></li>
 
           
+            <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+          
+            <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
             <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -74,6 +78,12 @@
         <li class="divider"></li>
         <li><label>四大组件和其他基本文件</label></li>
 
+          
+            <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+          
+            <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+          
+            <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
           
             <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
           
@@ -379,6 +389,8 @@
         <li><label>Java</label></li>
 
           
+            <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+          
             <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
           
             <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -399,11 +411,13 @@
         <li><label>数据结构和算法</label></li>
 
           
-            <li><a title="链表" href="15644786995373.html">链表</a></li>
+            <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
           
-            <li><a title="数组" href="15644690293137.html">数组</a></li>
+            <li><a title="树" href="15881273285027.html">树</a></li>
           
-            <li><a title="基础" href="15644655646063.html">基础</a></li>
+            <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+          
+            <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
           
 
       
@@ -518,6 +532,10 @@
                     
                       <li class="side-title"><span>Android Studio开发调试</span></li>
                         
+                          <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+                        
+                          <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
                           <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -543,6 +561,12 @@
 
                     
                       <li class="side-title"><span>四大组件和其他基本文件</span></li>
+                        
+                          <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+                        
+                          <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+                        
+                          <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
                         
                           <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
                         
@@ -824,6 +848,8 @@
                     
                       <li class="side-title"><span>Java</span></li>
                         
+                          <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+                        
                           <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
                         
                           <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -840,11 +866,13 @@
                     
                       <li class="side-title"><span>数据结构和算法</span></li>
                         
-                          <li><a title="链表" href="15644786995373.html">链表</a></li>
+                          <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
                         
-                          <li><a title="数组" href="15644690293137.html">数组</a></li>
+                          <li><a title="树" href="15881273285027.html">树</a></li>
                         
-                          <li><a title="基础" href="15644655646063.html">基础</a></li>
+                          <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+                        
+                          <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
                         
 
                     
@@ -940,6 +968,66 @@
  <div class="markdown-body">
 <h1>res文件夹中的资源</h1>
 
+<ul>
+<li>
+<a href="#toc_0">res文件夹下的目录</a>
+</li>
+<li>
+<a href="#toc_1">具体资源使用</a>
+<ul>
+<li>
+<a href="#toc_2">string字符串</a>
+</li>
+<li>
+<a href="#toc_3">动画资源</a>
+</li>
+<li>
+<a href="#toc_4">颜色状态列表</a>
+</li>
+<li>
+<a href="#toc_5">Drawable</a>
+</li>
+<li>
+<a href="#toc_6">layout布局</a>
+</li>
+<li>
+<a href="#toc_7">menu菜单</a>
+</li>
+<li>
+<a href="#toc_8">style风格</a>
+</li>
+<li>
+<a href="#toc_9">font字体</a>
+</li>
+<li>
+<a href="#toc_10">布尔值</a>
+</li>
+<li>
+<a href="#toc_11">颜色</a>
+</li>
+<li>
+<a href="#toc_12">尺寸</a>
+</li>
+<li>
+<a href="#toc_13">id</a>
+</li>
+<li>
+<a href="#toc_14">整数</a>
+</li>
+<li>
+<a href="#toc_15">整数数组</a>
+</li>
+<li>
+<a href="#toc_16">键入数组</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_17">注意事项</a>
+</li>
+</ul>
+
+
 <h2 id="toc_0">res文件夹下的目录</h2>
 
 <ul>
@@ -968,7 +1056,7 @@
 
 <h2 id="toc_1">具体资源使用</h2>
 
-<h4 id="toc_2">string字符串</h4>
+<h3 id="toc_2">string字符串</h3>
 
 <p>字符串引用资源时，可以使用R.string（字符串）、R.array（字符串数组）、R.plurals（复数）类；<br/>
 引用资源使用方法：</p>
@@ -1009,18 +1097,18 @@ String afterString = String.format(rawString,&quot;无人生还&quot;,&quot;阿�
 mTextViewActivityTv5.setText(afterString);
 </code></pre>
 
-<h4 id="toc_3">动画资源</h4>
+<h3 id="toc_3">动画资源</h3>
 
 <p>属性动画引用res/animator,从R.animator类中访问，不过也可以引用R.anim类；<br/>
 补间动画引用res/anim，从R.anim类中访问；<br/>
 帧动画引用res/drawable,从R.drawable类中访问；</p>
 
-<h4 id="toc_4">颜色状态列表</h4>
+<h3 id="toc_4">颜色状态列表</h3>
 
 <p>引用res/color，从R.color类中访问；定义基于View状态更改的颜色资源。<br/>
 在这里生成的drawable类型的xml文件，根标签是&lt;selector&gt;，但是这里面的&lt;item&gt;中的drawable引用只能是使用十六进制颜色值或者使用@color引用res/values/colors中的颜色资源；如果&lt;item&gt;中的drawable引用的是图片或者其他的@drawable类型的资源，那么需要把这个xml文件放在res/drawable下，而不是res/color下面；</p>
 
-<h4 id="toc_5">Drawable</h4>
+<h3 id="toc_5">Drawable</h3>
 
 <p>引用res/drawable，从R.drawable类中访问；<br/>
 Drawable的类型如下：<br/>
@@ -1035,23 +1123,23 @@ Drawable的类型如下：<br/>
 (9).<font color=red>GradientDrawable</font>:<br/>
 (10).<font color=red>AnimationDrawable</font>:</p>
 
-<h4 id="toc_6">layout布局</h4>
+<h3 id="toc_6">layout布局</h3>
 
 <p>引用res/layout，从R.layout类中访问；</p>
 
-<h4 id="toc_7">menu菜单</h4>
+<h3 id="toc_7">menu菜单</h3>
 
 <p>引用res/menu，从R.menu类中访问；</p>
 
-<h4 id="toc_8">style风格</h4>
+<h3 id="toc_8">style风格</h3>
 
 <p>引用res/values/styles.xml，从R.style类中访问；</p>
 
-<h4 id="toc_9">font字体</h4>
+<h3 id="toc_9">font字体</h3>
 
 <p>引用res/font，从R.font类中访问；</p>
 
-<h4 id="toc_10">布尔值</h4>
+<h3 id="toc_10">布尔值</h3>
 
 <p>引用res/values/bools.xml,带有布尔值的XML资源；<br/>
 使用方法：</p>
@@ -1064,7 +1152,7 @@ Drawable的类型如下：<br/>
 boolean isRight = getResources().getBoolean(R.boolean.screen_small);
 </code></pre>
 
-<h4 id="toc_11">颜色</h4>
+<h3 id="toc_11">颜色</h3>
 
 <p>引用res/values/colors.xml,从R.color类中访问；带有颜色值（十六进制颜色）的xml资源；<br/>
 使用方法：</p>
@@ -1077,7 +1165,7 @@ boolean isRight = getResources().getBoolean(R.boolean.screen_small);
 int color = getResources().getColor(R.color.opaque_red);
 </code></pre>
 
-<h4 id="toc_12">尺寸</h4>
+<h3 id="toc_12">尺寸</h3>
 
 <p>引用res/values/dimens.xml，从R.dimen类中访问，带有维度值（带有度量单位）的xml资源；<br/>
 使用方法：</p>
@@ -1092,7 +1180,7 @@ int color = getResources().getColor(R.color.opaque_red);
 float fontSize = getResources().getDimension(R.dimen.font_size);
 </code></pre>
 
-<h4 id="toc_13">id</h4>
+<h3 id="toc_13">id</h3>
 
 <p>引用res/values/ids.xml，从R.id类中访问，为应用程序资源和组件提供唯一标识符；<br/>
 使用方法：</p>
@@ -1106,7 +1194,7 @@ float fontSize = getResources().getDimension(R.dimen.font_size);
     style=&quot;@style/button_style&quot; /&gt;
 </code></pre>
 
-<h4 id="toc_14">整数</h4>
+<h3 id="toc_14">整数</h3>
 
 <p>引用res/values/integers.xml，从R.integer类中访问,包含整数值的XML资源；<br/>
 使用方法：</p>
@@ -1119,7 +1207,7 @@ float fontSize = getResources().getDimension(R.dimen.font_size);
 int maxSpeed = getResources().getInteger(R.integer.max_speed);
 </code></pre>
 
-<h4 id="toc_15">整数数组</h4>
+<h3 id="toc_15">整数数组</h3>
 
 <p>引用res/values/integers.xml，从R.array类中访问,提供整数数组的XML资源；<br/>
 使用方法：</p>
@@ -1136,7 +1224,7 @@ int maxSpeed = getResources().getInteger(R.integer.max_speed);
 int[] bits = getResources().getIntArray(R.array.bits);
 </code></pre>
 
-<h4 id="toc_16">键入数组</h4>
+<h3 id="toc_16">键入数组</h3>
 
 <p>引用res/values/arrays.xml，从R.array类中访问,提供TypedArray（可用于drawable数组）的XML资源；<br/>
 使用方法：</p>

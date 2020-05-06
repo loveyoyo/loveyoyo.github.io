@@ -47,6 +47,10 @@
         <li><label>Android Studio开发调试</label></li>
 
           
+            <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+          
+            <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
             <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -74,6 +78,12 @@
         <li class="divider"></li>
         <li><label>四大组件和其他基本文件</label></li>
 
+          
+            <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+          
+            <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+          
+            <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
           
             <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
           
@@ -379,6 +389,8 @@
         <li><label>Java</label></li>
 
           
+            <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+          
             <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
           
             <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -399,11 +411,13 @@
         <li><label>数据结构和算法</label></li>
 
           
-            <li><a title="链表" href="15644786995373.html">链表</a></li>
+            <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
           
-            <li><a title="数组" href="15644690293137.html">数组</a></li>
+            <li><a title="树" href="15881273285027.html">树</a></li>
           
-            <li><a title="基础" href="15644655646063.html">基础</a></li>
+            <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+          
+            <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
           
 
       
@@ -518,6 +532,10 @@
                     
                       <li class="side-title"><span>Android Studio开发调试</span></li>
                         
+                          <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+                        
+                          <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
                           <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -543,6 +561,12 @@
 
                     
                       <li class="side-title"><span>四大组件和其他基本文件</span></li>
+                        
+                          <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+                        
+                          <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+                        
+                          <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
                         
                           <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
                         
@@ -824,6 +848,8 @@
                     
                       <li class="side-title"><span>Java</span></li>
                         
+                          <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+                        
                           <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
                         
                           <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -840,11 +866,13 @@
                     
                       <li class="side-title"><span>数据结构和算法</span></li>
                         
-                          <li><a title="链表" href="15644786995373.html">链表</a></li>
+                          <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
                         
-                          <li><a title="数组" href="15644690293137.html">数组</a></li>
+                          <li><a title="树" href="15881273285027.html">树</a></li>
                         
-                          <li><a title="基础" href="15644655646063.html">基础</a></li>
+                          <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+                        
+                          <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
                         
 
                     
@@ -942,28 +970,58 @@
 
 	
 		<div class="markdown-body">
-		<h1>MeasureSpec</h1>
+		<h1>Java的四种引用变量</h1>
 
-		<p>变量：</p>
+		<p>&emsp;&emsp;在Java中是由JVM负责内存的分配和回收，这是它的优点，同时也是它的缺点（不够灵活，垃圾回收对于编程者来说是不可控）。<br/>
+&emsp;&emsp;在JDK1.2之前，如果一个对象不被任何变量引用，则程序无法再次使用这个对象，这个对象最终会被GC(垃圾回收)。但是如果之后可能还会用到这个对象，就只能去新建一个了，这其实就降低了JVM性能，没有达到最大的优化策略。<br/>
+&emsp;&emsp;从JDK1.2开始，提供了四种类型的引用：强引用、软引用、弱引用、虚引用。主要的目的如下：</p>
+
+<ol>
+<li>可以在代码中决定某些对象的生命周期；</li>
+<li>优化JVM的垃圾回收机制；</li>
+</ol>
+
+<h2 id="toc_0">强引用</h2>
+
+<p>&emsp;&emsp;强引用是最普遍的引用，如果一个对象具有强引用，垃圾回收器不会回收该对象，当内存空间不足时，JVM宁愿抛出OutOfMemoryError异常；只有当这个对象没有被引用时，才有可能会被回收。</p>
+
+<h2 id="toc_1">软引用</h2>
+
+<p>&emsp;&emsp;软引用用java.lang.ref.SoftReference类来表示。<br/>
+&emsp;&emsp;如果一个对象只具有软引用，则有如下特性：</p>
 
 <ul>
-<li>MODE_SHIFT:</li>
-<li>MODE_SIZE:</li>
-<li>UNSPECIFIED:</li>
-<li>EXACTLY:</li>
-<li>AT_MOST:</li>
+<li>当内存空间足够，垃圾回收器就不会回收它；</li>
+<li>当内存空间不足了，就会回收该对象。JVM会优先回收长时间闲置不用的软引用的对象，对那些刚刚构建的或者刚刚使用过的软引用对象会尽可能保留；</li>
+<li>如果回收完还没有足够的内存，才会抛出内存溢出异常。只要垃圾回收器没有回收它，该对象就可以被程序使用；<br/>
+&emsp;&emsp;软引用是用来描述一些有用但并不是必需的对象，适合用来实现缓存，内存空间充足的时候将数据缓存在内存中，如果空间不足了就将其回收掉。</li>
 </ul>
 
-<p>方法：<br/>
-makeSafeMeasureSpec(int size,int mode)<br/>
-makeSafeMeasureSpec(int size,int mode)<br/>
-getMode(int measureSpec)<br/>
-getSize(int measureSpec)<br/>
-adjust(int measureSpec,int delta)<br/>
-toString(int measureSpec)</p>
+<p>&emsp;&emsp;SoftReference对象是用来保存软引用，但它同时也是一个Java对象。当软引用对象被回收之后，SoftReference对象的get（）方法返回null，但SoftReference对象本身并不是null，而此时SoftReference对象已经不再具有存在的价值，需要一个适当的清除机制，避免大量SoftReference对象带来的内存泄漏。<br/>
+&emsp;&emsp;在SoftReference所对应的软引用的对象被垃圾回收时,JVM会先将SoftReference对象添加到ReferenceQueue这个队列中。当我们调用ReferenceQueue的poll（）方法，如果这个队列中不是空队列，那么将返回并移除前面添加的那个Reference对象。</p>
+
+<h2 id="toc_2">弱引用</h2>
+
+<p>&emsp;&emsp;弱引用用WeakReference类来表示；<br/>
+&emsp;&emsp;弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期，它只能生存到下一次垃圾收集发生之前。当垃圾回收器扫描到只具有弱引用的对象时，无论当前内存空间是否足够，都会回收它。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。<br/>
+&emsp;&emsp;弱引用也可以和一个引用队列联合使用。<br/>
+&emsp;&emsp;使用场景：一个对象只是偶尔使用，希望在使用时能随时获取，但也不想影响对该对象的垃圾收集，则可以考虑使用弱引用来指向该对象。</p>
+
+<h2 id="toc_3">虚引用</h2>
+
+<p>&emsp;&emsp;虚引用用PhantomReference类来表示。<br/>
+&emsp;&emsp;与其他三种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收。<br/>
+&emsp;&emsp;虚引用主要用来跟踪对象被垃圾回收的活动。虚引用与软引用和弱引用 的一个区别在于：虚引用必须和引用队列联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之关联的引用队列中。</p>
+
+<blockquote>
+<p>在实际程序设计中一般很少使用弱引用和虚引用，使用软引用的情况较多。这是因为软引用可以加速JVM对垃圾内存的回收速度，可以维护系统的运行安全，防止内存溢出等问题的产生。</p>
+</blockquote>
 
 
 		</div>
+	
+
+ 
 	
 
  

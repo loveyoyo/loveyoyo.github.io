@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  数组 - KangLu
+  数据结构基础 - KangLu
   
   </title>
  <meta name="description" content="个人文章">
@@ -47,6 +47,10 @@
         <li><label>Android Studio开发调试</label></li>
 
           
+            <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+          
+            <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
             <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -74,6 +78,12 @@
         <li class="divider"></li>
         <li><label>四大组件和其他基本文件</label></li>
 
+          
+            <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+          
+            <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+          
+            <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
           
             <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
           
@@ -379,6 +389,8 @@
         <li><label>Java</label></li>
 
           
+            <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+          
             <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
           
             <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -399,11 +411,13 @@
         <li><label>数据结构和算法</label></li>
 
           
-            <li><a title="链表" href="15644786995373.html">链表</a></li>
+            <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
           
-            <li><a title="数组" href="15644690293137.html">数组</a></li>
+            <li><a title="树" href="15881273285027.html">树</a></li>
           
-            <li><a title="基础" href="15644655646063.html">基础</a></li>
+            <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+          
+            <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
           
 
       
@@ -518,6 +532,10 @@
                     
                       <li class="side-title"><span>Android Studio开发调试</span></li>
                         
+                          <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+                        
+                          <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
                           <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -543,6 +561,12 @@
 
                     
                       <li class="side-title"><span>四大组件和其他基本文件</span></li>
+                        
+                          <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+                        
+                          <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+                        
+                          <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
                         
                           <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
                         
@@ -824,6 +848,8 @@
                     
                       <li class="side-title"><span>Java</span></li>
                         
+                          <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+                        
                           <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
                         
                           <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -840,11 +866,13 @@
                     
                       <li class="side-title"><span>数据结构和算法</span></li>
                         
-                          <li><a title="链表" href="15644786995373.html">链表</a></li>
+                          <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
                         
-                          <li><a title="数组" href="15644690293137.html">数组</a></li>
+                          <li><a title="树" href="15881273285027.html">树</a></li>
                         
-                          <li><a title="基础" href="15644655646063.html">基础</a></li>
+                          <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+                        
+                          <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
                         
 
                     
@@ -938,12 +966,61 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>数组</h1>
+<h1>数据结构基础</h1>
 
 <ul>
-<li><font color=red>数组</font>:是有限个相同类型的变量所组成的有序集合，数组中的每一个变量被称为元素。数组是最为简单、最为常用的数据结构。
-&emsp;&emsp;数组的一个特点是，在内存中顺序存储，因此可以很好地实现逻辑上的顺序表。</li>
+<li>
+<a href="#toc_0">数组</a>
+<ul>
+<li>
+<a href="#toc_1">数组的基本操作</a>
+</li>
+<li>
+<a href="#toc_2">数组的优势与劣势</a>
+</li>
 </ul>
+</li>
+<li>
+<a href="#toc_3">链表</a>
+<ul>
+<li>
+<a href="#toc_4">链表的基本操作</a>
+</li>
+<li>
+<a href="#toc_5">数组和链表的区别</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_6">栈</a>
+<ul>
+<li>
+<a href="#toc_7">栈的基本操作</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_8">队列</a>
+<ul>
+<li>
+<a href="#toc_9">队列的基本操作</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_10">散列表（哈希表）</a>
+<ul>
+<li>
+<a href="#toc_11">散列表的基本操作</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2 id="toc_0">数组</h2>
+
+<p>&emsp;&emsp;数组是有限个相同类型的变量所组成的有序集合，数组中的每一个变量被称为元素。数组是最为简单、最为常用的数据结构。数组中的每一个元素有自己的下标，只不过这个下标从0开始，一直到数组长度-1。数组的一个特点是，在内存中顺序存储，因此可以很好地实现逻辑上的顺序表。</p>
 
 <blockquote>
 <p>内存是由一个个连续的内存单元组成的，每一个内存单元都有自己的地址。在这些内存单元中，有些被其他数据占用了，有些是空闲的。</p>
@@ -951,7 +1028,7 @@
 
 <p>&emsp;&emsp;数组中的每一个元素，都存储在小小的内存单元中，并且元素之间紧密排列，既不能打乱元素的存储顺序，也不能跳过某个存储单元进行存储。</p>
 
-<h3 id="toc_0">数组的基本操作</h3>
+<h3 id="toc_1">数组的基本操作</h3>
 
 <ul>
 <li><font color=red>读取元素</font>:由于数组在内存中顺序存储，所以只要给出一个数组下标，就可以读取到对应的数组元素。数组的下标必须在数组的长度范围之内，否则会出现数组越界。像这种根据下标读取元素的方式叫作随机读取。</li>
@@ -961,10 +1038,11 @@
 &emsp;&emsp;中间插入：由于数组的每一个元素都有其固定下标，所以不得不先把插入位置及后面的元素向后移动，腾出地方，再把要插入的元素放到对应的数组位置上。<br/>
 &emsp;&emsp;超范围插入：涉及到数组的扩容，就是创建一个新的数组，长度是就数组的两倍，再把旧数组中的元素统统复制过去，就实现了数组的扩容。
 <font color=red>删除元素</font>:数组的删除操作和插入操作的过程相反，如果删除的元素位于数组中间，其后的元素都需要向前挪动一位，如果删除的元素在尾部，直接删除就好了。<br/>
-&emsp;&emsp;<i>如果对数组元素没有顺序要求， 那么直接把最后一个元素复制到要删除的元素的位置，然后再删除最后一个元素。</i></li>
+&emsp;&emsp;<i>如果对数组元素没有顺序要求， 那么直接把最后一个元素复制到要删除的元素的位置，然后再删除最后一个元素。</i><br/>
+&emsp;&emsp;对于数组的插入和删除，时间复杂度都是O(n)。</li>
 </ul>
 
-<h3 id="toc_1">数组的优势与劣势</h3>
+<h3 id="toc_2">数组的优势与劣势</h3>
 
 <p>&emsp;&emsp;数组拥有非常高效的随机访问能力，只要给出下标，就可以用常量时间找到对应元素。有一种高效查找元素的算法叫做二分查找，就是利用了数组的这个优势。<br/>
 &emsp;&emsp;由于数组元素连续紧密地存储在内存中，插入、删除元素都会导致大量元素被迫移动，影响效率。</p>
@@ -972,6 +1050,108 @@
 <blockquote>
 <p>总的来说，数组适合读操作多、写操作少的场景。</p>
 </blockquote>
+
+<h2 id="toc_3">链表</h2>
+
+<p>&emsp;&emsp;链表是一种在物理上非连续、非顺序的数据结构，由若干节点所组成。<br/>
+&emsp;&emsp;单向链表的每一个节点又包含两部分，一部分是存放数据的变量data，另一部分是指向下一个节点的指针next。链表的第一个节点被称为头节点，最后一个节点被称为尾节点，尾节点的next指针指向空。与数组按照下标来随机寻找元素不同，对于链表的其中一个节点A，我们只能根据节点A的next指针来找到该节点的下一个节点B，再根据节点B的next指针找到下一个节点C。<br/>
+&emsp;&emsp;要想让每个节点都能回溯到它的前置节点，我们使用双向链表。双向链表的每一个节点除了拥有data和next指针，还拥有指向前置节点的prev指针。链表采用见缝插针的方式，链表的每一个节点分布在内存的不同位置，依靠next指针关联起来。这样可以灵活有效地利用零散的碎片空间。</p>
+
+<h3 id="toc_4">链表的基本操作</h3>
+
+<ul>
+<li><font color=red>查找节点</font>:在查找元素时，链表不像数组那样可以通过下标快速进行定位，只能从头节点开始向后一个一个节点逐一查找。链表中的数据只能按照顺序进行访问，最坏的时间复杂度是O(n)。</li>
+<li><font color=red>更新节点</font>:如果不考虑查找节点的过程，链表的更新过程会像数组那样简单，直接把旧数据替换成新数据即可。</li>
+<li><font color=red>插入节点</font>:与数组类似，链表插入节点时，同样分为三种情况：
+&emsp;&emsp;尾部插入：把最后一个节点的next指向新插入的节点即可；<br/>
+&emsp;&emsp;头部插入：把新节点的next指针指向原先的头节点，把新节点变为链表的头节点；<br/>
+&emsp;&emsp;中间插入：把插入位置的前置节点的next指针指向插入的新节点，将新节点的next指针指向前置节点的next指针原先所指向的节点；<br/>
+&emsp;&emsp;只要内存空间允许，能够插入链表的元素是无穷的，不需要像数组那样考虑扩容的问题；</li>
+<li><font color=red>删除元素</font>:链表的删除操作同样分为三类情况：
+&emsp;&emsp;尾部删除：把倒数第二个节点的next指针指向空即可；<br/>
+&emsp;&emsp;头部删除：把链表的头节点设为原先头节点的next指针即可；<br/>
+&emsp;&emsp;中间删除：把要删除节点的前置节点的next指针，指向要删除元素的下一个节点即可；</li>
+</ul>
+
+<h3 id="toc_5">数组和链表的区别</h3>
+
+<p>&emsp;&emsp;数组和链表都属于线性的数据结构。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: center">类型</th>
+<th style="text-align: center">查找</th>
+<th style="text-align: center">更新</th>
+<th style="text-align: center">插入</th>
+<th style="text-align: center">删除</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: center">数组</td>
+<td style="text-align: center">O(1)</td>
+<td style="text-align: center">O(1)</td>
+<td style="text-align: center">O(n)</td>
+<td style="text-align: center">O(n)</td>
+</tr>
+<tr>
+<td style="text-align: center">链表</td>
+<td style="text-align: center">O(n)</td>
+<td style="text-align: center">O(1)</td>
+<td style="text-align: center">O(1)</td>
+<td style="text-align: center">O(1)</td>
+</tr>
+</tbody>
+</table>
+
+<p>&emsp;&emsp;数组的优势在于能够快速定位元素，对于读操作多、写操作少的场景来说，用数组更合适一些。链表的优势在于能够灵活地进行插入和删除操作，如果需要在尾部频繁插入、删除元素，用链表更合适一些。</p>
+
+<h2 id="toc_6">栈</h2>
+
+<p>&emsp;&emsp;栈（stack）是一种线性数据结构，栈中的元素只能先入后出。最早进入的元素存放的位置叫作栈底，最后进入的元素存放的位置叫作栈顶。栈这种数据结构既可以用数组来实现，也可以用链表来实现。</p>
+
+<h3 id="toc_7">栈的基本操作</h3>
+
+<p>&emsp;&emsp;栈的基本操作就是出栈和入栈。</p>
+
+<ul>
+<li>入栈：入栈操作就是把新元素放入栈中，只允许从栈顶一侧放入元素，新元素的位置将会成为新的栈顶。</li>
+<li>出栈：出栈操作就是把元素从栈中弹出，只有栈顶元素才允许出栈 ，出栈元素的前一个元素将会成为新的栈顶。</li>
+</ul>
+
+<h2 id="toc_8">队列</h2>
+
+<p>&emsp;&emsp;队列（queue）是一种线性数据结构，不同于栈的先入后出，队列中的元素只能先入先出。队列的出口端叫作队头，队列的入口端叫作队尾。与栈类似，队列这种数据结构既可以用数组来实现，也可以用链表来实现。用数组实现时，为了入队操作的方便，把队尾位置规定为最后入队元素的下一个位置。</p>
+
+<h3 id="toc_9">队列的基本操作</h3>
+
+<p>&emsp;&emsp;对于链表实现的队列，队列的入队和出队操作和栈是大同小异的。对于数组实现的方式来说，队列的入队和出队是有一些不同的。</p>
+
+<ul>
+<li>入队：入队（enqueue）就是把新元素放入队列中，只允许在队尾的位置放入元素，新元素的下一个位置将会成为队尾。</li>
+<li>出队：出队（dequeue）操作就是把元素移出队列，只允许在队头一侧移出元素，出队元素的后一个元素将会成为新的队头。</li>
+</ul>
+
+<p>&emsp;&emsp;用数组实现的队列可以采用循环队列的方式来维持队列容量的恒定。利用已出队元素留下的空间，让队尾指针重新指回数组的首位。这样一来，整个队列的元素就循环起来了，在物理存储上，队尾的位置也可以在队头之前。当再有元素入队是，将其放入数组的首位，队尾指针继续后移即可。一直到（队尾下标 + 1） % 数组长度 = 队头下标时，代表此队列真的已经满了。需要注意的是，队尾指针指向的位置永远空出1位，所以队列最大容量比数组长度小1.</p>
+
+<h2 id="toc_10">散列表（哈希表）</h2>
+
+<p>&emsp;&emsp;散列表这种数据结构提供了键（Key）和值（Value）的映射关系。只要给出一个key，就可以高效查找到它所匹配的value，时间复杂度接近于O(1)。<br/>
+&emsp;&emsp;散列表的本质是一个数组。通过哈希函数，把key和数组下标进行转换。</p>
+
+<h3 id="toc_11">散列表的基本操作</h3>
+
+<ul>
+<li>写操作：写操作就是在散列表中插入新的键值对（在JDK中叫作Entry）。第一步是通过哈希函数，把key转化成数组下标；第二步是如果数组下标对应的位置没有元素，就把元素填充到数组下标对应的位置。但是，由于数组的长度是有限的，当插入的元素越来越多时，不同的key通过哈希函数获得的下标有可能是相同的，这就是哈希冲突。解决哈希冲突的方法主要有两种：一种是开放寻址，一种是链表法。开放寻址的原理就是当一个key通过哈希函数获得对应的数组下标已被占用时，我们可以寻找另一个空档位置。比如，向后移一位，如果这个位置还是被占用了，就继续后移，知道找到空档位置。在遇到哈希冲突时，寻址方式有很多种，不一定就是简单地寻找当前元素的后一个元素。在Java中，ThreadLocal所使用的就是开放寻址法。链表法在Java集合类HashMap中使用。HashMap数组的每一个元素不仅是一个Entry对象，还是一个链表的头节点。每一个Entry对象通过next指针指向它的下一个Entry节点。当新来的Entry映射到与之冲突的数组位置时，只需要插入到对应的链表中即可。</li>
+<li>读操作：读操作就是通过给定的key，在散列表中查找对应的value。以HashMap举例，第一步时通过哈希函数，把key转化成数组下标；第二步时找到数组下标对应的元素，如果没有找到，由于数组的每个元素都与一个链表对应，我们可以顺着链表慢慢往下找，看看能否找到与key相匹配的节点。</li>
+<li>扩容：散列表是基于数组实现的，那么散列表也要涉及扩容的问题。当经过多次元素插入，散列表达到一定饱和度时，key映射位置发生冲突的概率会逐渐提高，这样一来，大量元素拥挤到相同的数组下标位置，形成很长的链表，对后续插入操作和查询操作的性能都有很大影响。这时，散列表就需要进行扩容。扩容并不是简单的把散列表的长度扩大，而是需要如下两个步骤：
+<ol>
+<li>扩容，创建一个新的Entry空数组，长度是原数组的两倍；</li>
+<li>重新Hash，遍历原Entry数组，把所有的Entry重新Hash到新数组中。因为长度扩大以后，Hash的规则也随之改变；</li>
+</ol></li>
+</ul>
 
 
 </div>
@@ -983,15 +1163,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15644786995373.html"  title="Previous Post: 链表">&laquo; 链表</a>
+	        <a href="15603581707523.html"  title="Previous Post: BroadcastReceiver">&laquo; BroadcastReceiver</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15644655646063.html" 
-	        title="Next Post: 基础">基础 &raquo;</a>
+	        <a href="15713661513977.html" 
+	        title="Next Post: 安卓源码目录结构分析">安卓源码目录结构分析 &raquo;</a>
 	    
 	</div>
   </div>

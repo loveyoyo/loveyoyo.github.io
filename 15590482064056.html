@@ -47,6 +47,10 @@
         <li><label>Android Studio开发调试</label></li>
 
           
+            <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+          
+            <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+          
             <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
           
             <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -74,6 +78,12 @@
         <li class="divider"></li>
         <li><label>四大组件和其他基本文件</label></li>
 
+          
+            <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+          
+            <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+          
+            <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
           
             <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
           
@@ -379,6 +389,8 @@
         <li><label>Java</label></li>
 
           
+            <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+          
             <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
           
             <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -399,11 +411,13 @@
         <li><label>数据结构和算法</label></li>
 
           
-            <li><a title="链表" href="15644786995373.html">链表</a></li>
+            <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
           
-            <li><a title="数组" href="15644690293137.html">数组</a></li>
+            <li><a title="树" href="15881273285027.html">树</a></li>
           
-            <li><a title="基础" href="15644655646063.html">基础</a></li>
+            <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+          
+            <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
           
 
       
@@ -518,6 +532,10 @@
                     
                       <li class="side-title"><span>Android Studio开发调试</span></li>
                         
+                          <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+                        
+                          <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+                        
                           <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
                         
                           <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
@@ -543,6 +561,12 @@
 
                     
                       <li class="side-title"><span>四大组件和其他基本文件</span></li>
+                        
+                          <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+                        
+                          <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+                        
+                          <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
                         
                           <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
                         
@@ -824,6 +848,8 @@
                     
                       <li class="side-title"><span>Java</span></li>
                         
+                          <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+                        
                           <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
                         
                           <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
@@ -840,11 +866,13 @@
                     
                       <li class="side-title"><span>数据结构和算法</span></li>
                         
-                          <li><a title="链表" href="15644786995373.html">链表</a></li>
+                          <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
                         
-                          <li><a title="数组" href="15644690293137.html">数组</a></li>
+                          <li><a title="树" href="15881273285027.html">树</a></li>
                         
-                          <li><a title="基础" href="15644655646063.html">基础</a></li>
+                          <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+                        
+                          <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
                         
 
                     
@@ -940,6 +968,19 @@
  <div class="markdown-body">
 <h1>ListView</h1>
 
+<ul>
+<li>
+<a href="#toc_0">ListView的常用属性</a>
+</li>
+<li>
+<a href="#toc_1">ListView常用的适配器</a>
+</li>
+<li>
+<a href="#toc_2">ListView常用的场景</a>
+</li>
+</ul>
+
+
 <h2 id="toc_0">ListView的常用属性</h2>
 
 <ul>
@@ -955,7 +996,11 @@
 &emsp;&emsp;对ListView来说，它只能垂直滚动，将scrollbars设置成horizontal或者none效果都是一样的，也就是不会出现滚动条。所以如果不希望ListView显示滚动条，就将scrollbars设置成none。此外，如果scrollbars设置成none，那么其他的滚动条相关的配置都不会有效果。</li>
 </ul>
 
-<h2 id="toc_1">ListView常用的场景</h2>
+<h2 id="toc_1">ListView常用的适配器</h2>
+
+<p>&emsp;&emsp;ListView配合使用的适配器有多个类型，但是我们一般使用BaseAdapter这个适配器。</p>
+
+<h2 id="toc_2">ListView常用的场景</h2>
 
 <ul>
 <li>(1).<font color=red>设置自定义的快速滚动条</font>:在application的theme中添加以下两行代码：<br/></li>
