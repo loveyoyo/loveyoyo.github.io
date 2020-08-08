@@ -1,0 +1,1637 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  View树的绘制流程 - KangLu
+  
+  </title>
+ <meta name="description" content="个人文章">
+ <link href="atom.xml" rel="alternate" title="KangLu" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">KangLu</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; KangLu</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android Studio开发调试</label></li>
+
+          
+            <li><a title="使用tcpdump抓包" href="15966325912957.html">使用tcpdump抓包</a></li>
+          
+            <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
+          
+            <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+          
+            <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
+          
+            <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+          
+            <li><a title="Android Device Monitor工具" href="15955778686384.html">Android Device Monitor工具</a></li>
+          
+            <li><a title="Android Studio使用viewbinding" href="15927964749535.html">Android Studio使用viewbinding</a></li>
+          
+            <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
+          
+            <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
+          
+            <li><a title="ADB命令" href="15706865755803.html">ADB命令</a></li>
+          
+            <li><a title="使用ADB命令查看数据库数据·" href="15776895359955.html">使用ADB命令查看数据库数据·</a></li>
+          
+            <li><a title="AAPT命令" href="15706865946961.html">AAPT命令</a></li>
+          
+            <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
+          
+            <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
+          
+            <li><a title="Android将library打包成jar包或者aar文件" href="15777599008991.html">Android将library打包成jar包或者aar文件</a></li>
+          
+            <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>四大组件和其他基本文件</label></li>
+
+          
+            <li><a title="自定义View" href="15966352005041.html">自定义View</a></li>
+          
+            <li><a title="AIDL" href="15965603616547.html">AIDL</a></li>
+          
+            <li><a title="View树的绘制流程" href="15961852523240.html">View树的绘制流程</a></li>
+          
+            <li><a title="Activity的组成结构" href="15961826101444.html">Activity的组成结构</a></li>
+          
+            <li><a title="Android数据存储" href="15925546637258.html">Android数据存储</a></li>
+          
+            <li><a title="Activity的启动流程" href="15913608813328.html">Activity的启动流程</a></li>
+          
+            <li><a title="安卓系统架构" href="15900311156878.html">安卓系统架构</a></li>
+          
+            <li><a title="多线程" href="15895247341993.html">多线程</a></li>
+          
+            <li><a title="View体系" href="15892159078168.html">View体系</a></li>
+          
+            <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+          
+            <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
+          
+            <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
+          
+            <li><a title="Gradle知识" href="15873151730996.html">Gradle知识</a></li>
+          
+            <li><a title="Android触摸事件传递机制" href="15862769966851.html">Android触摸事件传递机制</a></li>
+          
+            <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
+          
+            <li><a title="Android简介" href="15834044312131.html">Android简介</a></li>
+          
+            <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+          
+            <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+          
+            <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
+          
+            <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+          
+            <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
+          
+            <li><a title="ContentProvider--内容提供者" href="15603581865930.html">ContentProvider--内容提供者</a></li>
+          
+            <li><a title="Service--服务" href="15603581806506.html">Service--服务</a></li>
+          
+            <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
+          
+            <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android组件</label></li>
+
+          
+            <li><a title="FloatingActionButton" href="15873151238128.html">FloatingActionButton</a></li>
+          
+            <li><a title="NavigationView" href="15873151137838.html">NavigationView</a></li>
+          
+            <li><a title="BottomSheetBehavior" href="15873151109302.html">BottomSheetBehavior</a></li>
+          
+            <li><a title="TabLayout" href="15873151075682.html">TabLayout</a></li>
+          
+            <li><a title="CollaspingToolbarLayout" href="15873150961844.html">CollaspingToolbarLayout</a></li>
+          
+            <li><a title="CoordinatorLayout" href="15873150855710.html">CoordinatorLayout</a></li>
+          
+            <li><a title="TextInputLayout" href="15873150854952.html">TextInputLayout</a></li>
+          
+            <li><a title="Snackbar" href="15873150711511.html">Snackbar</a></li>
+          
+            <li><a title="View（视图）" href="15587797736951.html">View（视图）</a></li>
+          
+            <li><a title="自定义控件ViewGroup" href="15832331927256.html">自定义控件ViewGroup</a></li>
+          
+            <li><a title="自定义控件View" href="15832331764359.html">自定义控件View</a></li>
+          
+            <li><a title="TextView" href="15584534943886.html">TextView</a></li>
+          
+            <li><a title="EditText" href="15587752872990.html">EditText</a></li>
+          
+            <li><a title="ImageView" href="15590447462728.html">ImageView</a></li>
+          
+            <li><a title="Button" href="15590305484634.html">Button</a></li>
+          
+            <li><a title="Toast" href="15832318775043.html">Toast</a></li>
+          
+            <li><a title="Spinner" href="15601388608282.html">Spinner</a></li>
+          
+            <li><a title="CheckBox和RadioButton" href="15601388701602.html">CheckBox和RadioButton</a></li>
+          
+            <li><a title="ProgressBar" href="15601389345357.html">ProgressBar</a></li>
+          
+            <li><a title="SeekBar" href="15832322241074.html">SeekBar</a></li>
+          
+            <li><a title="RatingBar" href="15832323147149.html">RatingBar</a></li>
+          
+            <li><a title="时间相关的控件" href="15832327057402.html">时间相关的控件</a></li>
+          
+            <li><a title="WebView" href="15601389648936.html">WebView</a></li>
+          
+            <li><a title="ListView" href="15590482064056.html">ListView</a></li>
+          
+            <li><a title="RecyclerView" href="15601389530971.html">RecyclerView</a></li>
+          
+            <li><a title="ScrollView和HorizontalView" href="15601389773513.html">ScrollView和HorizontalView</a></li>
+          
+            <li><a title="ViewPager" href="15601389699132.html">ViewPager</a></li>
+          
+            <li><a title="Fragment" href="15830020373441.html">Fragment</a></li>
+          
+            <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
+          
+            <li><a title="WheelView" href="15832330644393.html">WheelView</a></li>
+          
+            <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
+          
+            <li><a title="三大布局根控件" href="15832328030131.html">三大布局根控件</a></li>
+          
+            <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+          
+            <li><a title="序" href="15584059143309.html">序</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>安卓消息机制</label></li>
+
+          
+            <li><a title="Thread" href="15941454444849.html">Thread</a></li>
+          
+            <li><a title="ThreadLocal类" href="15915526996179.html">ThreadLocal类</a></li>
+          
+            <li><a title="Message类" href="15915526938269.html">Message类</a></li>
+          
+            <li><a title="MessageQueue类" href="15915526852831.html">MessageQueue类</a></li>
+          
+            <li><a title="Handler类" href="15915526788145.html">Handler类</a></li>
+          
+            <li><a title="Looper类" href="15915526673284.html">Looper类</a></li>
+          
+            <li><a title="Android的消息机制--Handler消息机制" href="15887553843774.html">Android的消息机制--Handler消息机制</a></li>
+          
+            <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>网络请求相关</label></li>
+
+          
+            <li><a title="HttpClient和HttpURLConnection" href="15897672365492.html">HttpClient和HttpURLConnection</a></li>
+          
+            <li><a title="网络相关" href="15616048657421.html">网络相关</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android功能</label></li>
+
+          
+            <li><a title="插件化" href="15832337513162.html">插件化</a></li>
+          
+            <li><a title="热修复" href="15832337461818.html">热修复</a></li>
+          
+            <li><a title="文件上传、下载、断点续传" href="15832337021510.html">文件上传、下载、断点续传</a></li>
+          
+            <li><a title="json/xml数据解析" href="15832336723066.html">json/xml数据解析</a></li>
+          
+            <li><a title="屏幕适配" href="15832335578226.html">屏幕适配</a></li>
+          
+            <li><a title="状态栏" href="15832335450787.html">状态栏</a></li>
+          
+            <li><a title="换肤" href="15832335396541.html">换肤</a></li>
+          
+            <li><a title="事件处理" href="15832335313602.html">事件处理</a></li>
+          
+            <li><a title="手势关闭" href="15832335221530.html">手势关闭</a></li>
+          
+            <li><a title="导航菜单" href="15832335120230.html">导航菜单</a></li>
+          
+            <li><a title="图表" href="15832335046878.html">图表</a></li>
+          
+            <li><a title="数据库" href="15832334917388.html">数据库</a></li>
+          
+            <li><a title="新手引导" href="15832334714220.html">新手引导</a></li>
+          
+            <li><a title="二维码和条形码" href="15832334567005.html">二维码和条形码</a></li>
+          
+            <li><a title="轮播图" href="15832334294029.html">轮播图</a></li>
+          
+            <li><a title="音视频" href="15832332927437.html">音视频</a></li>
+          
+            <li><a title="日志保存到本地" href="15832038130305.html">日志保存到本地</a></li>
+          
+            <li><a title="安卓系统设置" href="15794224269421.html">安卓系统设置</a></li>
+          
+            <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
+          
+            <li><a title="拍照和读取本地相册" href="15603979455589.html">拍照和读取本地相册</a></li>
+          
+            <li><a title="控制系统硬件功能" href="15603585084416.html">控制系统硬件功能</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android资源文件</label></li>
+
+          
+            <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+          
+            <li><a title="Android 布局优化" href="15900636437169.html">Android 布局优化</a></li>
+          
+            <li><a title="Drawable文件" href="15832339330725.html">Drawable文件</a></li>
+          
+            <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+          
+            <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
+          
+            <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
+          
+            <li><a title="画图" href="15627251763320.html">画图</a></li>
+          
+            <li><a title="反编译" href="15626395593984.html">反编译</a></li>
+          
+            <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
+          
+            <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
+          
+            <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
+          
+            <li><a title="动画" href="15591315255964.html">动画</a></li>
+          
+            <li><a title="Style和Theme" href="15591171572096.html">Style和Theme</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>安卓多媒体开发</label></li>
+
+          
+            <li><a title="AudioManager" href="15960319990767.html">AudioManager</a></li>
+          
+            <li><a title="Android WebView和JavaScript的交互" href="15874899350106.html">Android WebView和JavaScript的交互</a></li>
+          
+            <li><a title="音视频相关" href="15635278413412.html">音视频相关</a></li>
+          
+            <li><a title="相机相关" href="15635278316611.html">相机相关</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>第三方库</label></li>
+
+          
+            <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+          
+            <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+          
+            <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+          
+            <li><a title="支付" href="15632684444086.html">支付</a></li>
+          
+            <li><a title="推送" href="15632684365504.html">推送</a></li>
+          
+            <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+          
+            <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+          
+            <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+          
+            <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+          
+            <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+          
+            <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+          
+            <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+          
+            <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+          
+            <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+          
+            <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+          
+            <li><a title="OkHttp3" href="15632682616090.html">OkHttp3</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android系统相关</label></li>
+
+          
+            <li><a title="setContentView()" href="15954049156461.html">setContentView()</a></li>
+          
+            <li><a title="AsyncTask.java" href="15953888428518.html">AsyncTask.java</a></li>
+          
+            <li><a title="" href="15953376606635.html"></a></li>
+          
+            <li><a title="ListView设置Adapter和更新数据源码分析--观察者模式" href="15951954419377.html">ListView设置Adapter和更新数据源码分析--观察者模式</a></li>
+          
+            <li><a title="PackageManagerService.java" href="15948481287731.html">PackageManagerService.java</a></li>
+          
+            <li><a title="SystemServer.java" href="15948434761291.html">SystemServer.java</a></li>
+          
+            <li><a title="Android系统启动过程" href="15946404844407.html">Android系统启动过程</a></li>
+          
+            <li><a title="Context" href="15936928417691.html">Context</a></li>
+          
+            <li><a title="ComponentCallbacks和ComponentCallbacks2" href="15959378334016.html">ComponentCallbacks和ComponentCallbacks2</a></li>
+          
+            <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>安卓源码</label></li>
+
+          
+            <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+          
+            <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
+          
+            <li><a title="preloaded-classes" href="15717452568747.html">preloaded-classes</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Framework</label></li>
+
+          
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
+            <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
+          
+            <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android内核剖析</label></li>
+
+          
+            <li><a title="Framework概述" href="15747509659838.html">Framework概述</a></li>
+          
+            <li><a title="Binder" href="15747333089774.html">Binder</a></li>
+          
+            <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android5.0</label></li>
+
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Git</label></li>
+
+          
+            <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+          
+            <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
+          
+            <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="杂记" href="15948431328032.html">杂记</a></li>
+          
+            <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+          
+            <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
+          
+            <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>设计模式</label></li>
+
+          
+            <li><a title="代理模式" href="15900263250197.html">代理模式</a></li>
+          
+            <li><a title="建造者模式" href="15897849590411.html">建造者模式</a></li>
+          
+            <li><a title="工厂方法模式" href="15897849469753.html">工厂方法模式</a></li>
+          
+            <li><a title="简单工厂模式" href="15897849322436.html">简单工厂模式</a></li>
+          
+            <li><a title="单例模式" href="15897847467736.html">单例模式</a></li>
+          
+            <li><a title="简单工厂模式(Simple Factory)" href="15784035954571.html">简单工厂模式(Simple Factory)</a></li>
+          
+            <li><a title="设计模式概述" href="15783889880973.html">设计模式概述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>数据结构和算法</label></li>
+
+          
+            <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
+          
+            <li><a title="树" href="15881273285027.html">树</a></li>
+          
+            <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+          
+            <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>网络爬虫</label></li>
+
+          
+            <li><a title="爬虫--基本库的使用" href="15660531164999.html">爬虫--基本库的使用</a></li>
+          
+            <li><a title="爬虫概述" href="15660114926379.html">爬虫概述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>计算机网络</label></li>
+
+          
+            <li><a title="图解HTTP--第九章--基于http的功能追加协议" href="15855764881285.html">图解HTTP--第九章--基于http的功能追加协议</a></li>
+          
+            <li><a title="图解HTTP--第八章--确认访问用户身份的认证" href="15855764130446.html">图解HTTP--第八章--确认访问用户身份的认证</a></li>
+          
+            <li><a title="图解HTTP--第七章--确保web安全的https" href="15855763389947.html">图解HTTP--第七章--确保web安全的https</a></li>
+          
+            <li><a title="图解HTTP--第六章--http首部" href="15855761102550.html">图解HTTP--第六章--http首部</a></li>
+          
+            <li><a title="图解HTTP--第五章--与HTTP协作的Web服务器" href="15855728450260.html">图解HTTP--第五章--与HTTP协作的Web服务器</a></li>
+          
+            <li><a title="图解HTTP--第四章--返回结果的http状态码" href="15855701437164.html">图解HTTP--第四章--返回结果的http状态码</a></li>
+          
+            <li><a title="图解HTTP--第三章--HTTP报文内的HTTP信息" href="15853911594446.html">图解HTTP--第三章--HTTP报文内的HTTP信息</a></li>
+          
+            <li><a title="图解HTTP--第二章--简单的HTTP协议" href="15853261274339.html">图解HTTP--第二章--简单的HTTP协议</a></li>
+          
+            <li><a title="与HTTP关系密切的协议:IP、TCP和DNS" href="15852895411848.html">与HTTP关系密切的协议:IP、TCP和DNS</a></li>
+          
+            <li><a title="TCP/IP" href="15852402680558.html">TCP/IP</a></li>
+          
+            <li><a title="HTTP和HTTPS" href="15850526868228.html">HTTP和HTTPS</a></li>
+          
+            <li><a title="计算机网络第五版--第二章" href="15849271154228.html">计算机网络第五版--第二章</a></li>
+          
+            <li><a title="计算机网络第五版--第一章" href="15846863033375.html">计算机网络第五版--第一章</a></li>
+          
+            <li><a title="ping命令" href="15832390905461.html">ping命令</a></li>
+          
+            <li><a title="基础" href="15650980568729.html">基础</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>计算机基础</label></li>
+
+          
+            <li><a title="简单常识" href="15955796448880.html">简单常识</a></li>
+          
+            <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+          
+            <li><a title="Java语言中注意事项" href="15906748975501.html">Java语言中注意事项</a></li>
+          
+            <li><a title="术语" href="15831479672487.html">术语</a></li>
+          
+            <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Linux系统</label></li>
+
+          
+            <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React-Native</label></li>
+
+          
+            <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
+          
+            <li><a title="组件的生命周期" href="15621446974979.html">组件的生命周期</a></li>
+          
+            <li><a title="TextInput组件" href="15621338635960.html">TextInput组件</a></li>
+          
+            <li><a title="遇到的问题" href="15620469922995.html">遇到的问题</a></li>
+          
+            <li><a title="组件" href="15617091937336.html">组件</a></li>
+          
+            <li><a title="React-Native零碎" href="15616187358724.html">React-Native零碎</a></li>
+          
+            <li><a title="react-navigation" href="15584071613702.html">react-navigation</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>随想</label></li>
+
+          
+            <li><a title="需要后续查看的东西" href="15893692089911.html">需要后续查看的东西</a></li>
+          
+            <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
+          
+            <li><a title="for" href="15583472660662.html">for</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android Studio开发调试</span></li>
+                        
+                          <li><a title="使用tcpdump抓包" href="15966325912957.html">使用tcpdump抓包</a></li>
+                        
+                          <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
+                        
+                          <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+                        
+                          <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
+                        
+                          <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+                        
+                          <li><a title="Android Device Monitor工具" href="15955778686384.html">Android Device Monitor工具</a></li>
+                        
+                          <li><a title="Android Studio使用viewbinding" href="15927964749535.html">Android Studio使用viewbinding</a></li>
+                        
+                          <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
+                        
+                          <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
+                        
+                          <li><a title="ADB命令" href="15706865755803.html">ADB命令</a></li>
+                        
+                          <li><a title="使用ADB命令查看数据库数据·" href="15776895359955.html">使用ADB命令查看数据库数据·</a></li>
+                        
+                          <li><a title="AAPT命令" href="15706865946961.html">AAPT命令</a></li>
+                        
+                          <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
+                        
+                          <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
+                        
+                          <li><a title="Android将library打包成jar包或者aar文件" href="15777599008991.html">Android将library打包成jar包或者aar文件</a></li>
+                        
+                          <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>四大组件和其他基本文件</span></li>
+                        
+                          <li><a title="自定义View" href="15966352005041.html">自定义View</a></li>
+                        
+                          <li><a title="AIDL" href="15965603616547.html">AIDL</a></li>
+                        
+                          <li><a title="View树的绘制流程" href="15961852523240.html">View树的绘制流程</a></li>
+                        
+                          <li><a title="Activity的组成结构" href="15961826101444.html">Activity的组成结构</a></li>
+                        
+                          <li><a title="Android数据存储" href="15925546637258.html">Android数据存储</a></li>
+                        
+                          <li><a title="Activity的启动流程" href="15913608813328.html">Activity的启动流程</a></li>
+                        
+                          <li><a title="安卓系统架构" href="15900311156878.html">安卓系统架构</a></li>
+                        
+                          <li><a title="多线程" href="15895247341993.html">多线程</a></li>
+                        
+                          <li><a title="View体系" href="15892159078168.html">View体系</a></li>
+                        
+                          <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+                        
+                          <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
+                        
+                          <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
+                        
+                          <li><a title="Gradle知识" href="15873151730996.html">Gradle知识</a></li>
+                        
+                          <li><a title="Android触摸事件传递机制" href="15862769966851.html">Android触摸事件传递机制</a></li>
+                        
+                          <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
+                        
+                          <li><a title="Android简介" href="15834044312131.html">Android简介</a></li>
+                        
+                          <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+                        
+                          <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+                        
+                          <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
+                        
+                          <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+                        
+                          <li><a title="Intent机制和Bundle" href="15640232512188.html">Intent机制和Bundle</a></li>
+                        
+                          <li><a title="ContentProvider--内容提供者" href="15603581865930.html">ContentProvider--内容提供者</a></li>
+                        
+                          <li><a title="Service--服务" href="15603581806506.html">Service--服务</a></li>
+                        
+                          <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
+                        
+                          <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="FloatingActionButton" href="15873151238128.html">FloatingActionButton</a></li>
+                        
+                          <li><a title="NavigationView" href="15873151137838.html">NavigationView</a></li>
+                        
+                          <li><a title="BottomSheetBehavior" href="15873151109302.html">BottomSheetBehavior</a></li>
+                        
+                          <li><a title="TabLayout" href="15873151075682.html">TabLayout</a></li>
+                        
+                          <li><a title="CollaspingToolbarLayout" href="15873150961844.html">CollaspingToolbarLayout</a></li>
+                        
+                          <li><a title="CoordinatorLayout" href="15873150855710.html">CoordinatorLayout</a></li>
+                        
+                          <li><a title="TextInputLayout" href="15873150854952.html">TextInputLayout</a></li>
+                        
+                          <li><a title="Snackbar" href="15873150711511.html">Snackbar</a></li>
+                        
+                          <li><a title="View（视图）" href="15587797736951.html">View（视图）</a></li>
+                        
+                          <li><a title="自定义控件ViewGroup" href="15832331927256.html">自定义控件ViewGroup</a></li>
+                        
+                          <li><a title="自定义控件View" href="15832331764359.html">自定义控件View</a></li>
+                        
+                          <li><a title="TextView" href="15584534943886.html">TextView</a></li>
+                        
+                          <li><a title="EditText" href="15587752872990.html">EditText</a></li>
+                        
+                          <li><a title="ImageView" href="15590447462728.html">ImageView</a></li>
+                        
+                          <li><a title="Button" href="15590305484634.html">Button</a></li>
+                        
+                          <li><a title="Toast" href="15832318775043.html">Toast</a></li>
+                        
+                          <li><a title="Spinner" href="15601388608282.html">Spinner</a></li>
+                        
+                          <li><a title="CheckBox和RadioButton" href="15601388701602.html">CheckBox和RadioButton</a></li>
+                        
+                          <li><a title="ProgressBar" href="15601389345357.html">ProgressBar</a></li>
+                        
+                          <li><a title="SeekBar" href="15832322241074.html">SeekBar</a></li>
+                        
+                          <li><a title="RatingBar" href="15832323147149.html">RatingBar</a></li>
+                        
+                          <li><a title="时间相关的控件" href="15832327057402.html">时间相关的控件</a></li>
+                        
+                          <li><a title="WebView" href="15601389648936.html">WebView</a></li>
+                        
+                          <li><a title="ListView" href="15590482064056.html">ListView</a></li>
+                        
+                          <li><a title="RecyclerView" href="15601389530971.html">RecyclerView</a></li>
+                        
+                          <li><a title="ScrollView和HorizontalView" href="15601389773513.html">ScrollView和HorizontalView</a></li>
+                        
+                          <li><a title="ViewPager" href="15601389699132.html">ViewPager</a></li>
+                        
+                          <li><a title="Fragment" href="15830020373441.html">Fragment</a></li>
+                        
+                          <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
+                        
+                          <li><a title="WheelView" href="15832330644393.html">WheelView</a></li>
+                        
+                          <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
+                        
+                          <li><a title="三大布局根控件" href="15832328030131.html">三大布局根控件</a></li>
+                        
+                          <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+                        
+                          <li><a title="序" href="15584059143309.html">序</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>安卓消息机制</span></li>
+                        
+                          <li><a title="Thread" href="15941454444849.html">Thread</a></li>
+                        
+                          <li><a title="ThreadLocal类" href="15915526996179.html">ThreadLocal类</a></li>
+                        
+                          <li><a title="Message类" href="15915526938269.html">Message类</a></li>
+                        
+                          <li><a title="MessageQueue类" href="15915526852831.html">MessageQueue类</a></li>
+                        
+                          <li><a title="Handler类" href="15915526788145.html">Handler类</a></li>
+                        
+                          <li><a title="Looper类" href="15915526673284.html">Looper类</a></li>
+                        
+                          <li><a title="Android的消息机制--Handler消息机制" href="15887553843774.html">Android的消息机制--Handler消息机制</a></li>
+                        
+                          <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>网络请求相关</span></li>
+                        
+                          <li><a title="HttpClient和HttpURLConnection" href="15897672365492.html">HttpClient和HttpURLConnection</a></li>
+                        
+                          <li><a title="网络相关" href="15616048657421.html">网络相关</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android功能</span></li>
+                        
+                          <li><a title="插件化" href="15832337513162.html">插件化</a></li>
+                        
+                          <li><a title="热修复" href="15832337461818.html">热修复</a></li>
+                        
+                          <li><a title="文件上传、下载、断点续传" href="15832337021510.html">文件上传、下载、断点续传</a></li>
+                        
+                          <li><a title="json/xml数据解析" href="15832336723066.html">json/xml数据解析</a></li>
+                        
+                          <li><a title="屏幕适配" href="15832335578226.html">屏幕适配</a></li>
+                        
+                          <li><a title="状态栏" href="15832335450787.html">状态栏</a></li>
+                        
+                          <li><a title="换肤" href="15832335396541.html">换肤</a></li>
+                        
+                          <li><a title="事件处理" href="15832335313602.html">事件处理</a></li>
+                        
+                          <li><a title="手势关闭" href="15832335221530.html">手势关闭</a></li>
+                        
+                          <li><a title="导航菜单" href="15832335120230.html">导航菜单</a></li>
+                        
+                          <li><a title="图表" href="15832335046878.html">图表</a></li>
+                        
+                          <li><a title="数据库" href="15832334917388.html">数据库</a></li>
+                        
+                          <li><a title="新手引导" href="15832334714220.html">新手引导</a></li>
+                        
+                          <li><a title="二维码和条形码" href="15832334567005.html">二维码和条形码</a></li>
+                        
+                          <li><a title="轮播图" href="15832334294029.html">轮播图</a></li>
+                        
+                          <li><a title="音视频" href="15832332927437.html">音视频</a></li>
+                        
+                          <li><a title="日志保存到本地" href="15832038130305.html">日志保存到本地</a></li>
+                        
+                          <li><a title="安卓系统设置" href="15794224269421.html">安卓系统设置</a></li>
+                        
+                          <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
+                        
+                          <li><a title="拍照和读取本地相册" href="15603979455589.html">拍照和读取本地相册</a></li>
+                        
+                          <li><a title="控制系统硬件功能" href="15603585084416.html">控制系统硬件功能</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android资源文件</span></li>
+                        
+                          <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+                        
+                          <li><a title="Android 布局优化" href="15900636437169.html">Android 布局优化</a></li>
+                        
+                          <li><a title="Drawable文件" href="15832339330725.html">Drawable文件</a></li>
+                        
+                          <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+                        
+                          <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
+                        
+                          <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
+                        
+                          <li><a title="画图" href="15627251763320.html">画图</a></li>
+                        
+                          <li><a title="反编译" href="15626395593984.html">反编译</a></li>
+                        
+                          <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
+                        
+                          <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
+                        
+                          <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
+                        
+                          <li><a title="动画" href="15591315255964.html">动画</a></li>
+                        
+                          <li><a title="Style和Theme" href="15591171572096.html">Style和Theme</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>安卓多媒体开发</span></li>
+                        
+                          <li><a title="AudioManager" href="15960319990767.html">AudioManager</a></li>
+                        
+                          <li><a title="Android WebView和JavaScript的交互" href="15874899350106.html">Android WebView和JavaScript的交互</a></li>
+                        
+                          <li><a title="音视频相关" href="15635278413412.html">音视频相关</a></li>
+                        
+                          <li><a title="相机相关" href="15635278316611.html">相机相关</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>第三方库</span></li>
+                        
+                          <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+                        
+                          <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+                        
+                          <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+                        
+                          <li><a title="支付" href="15632684444086.html">支付</a></li>
+                        
+                          <li><a title="推送" href="15632684365504.html">推送</a></li>
+                        
+                          <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+                        
+                          <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+                        
+                          <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+                        
+                          <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+                        
+                          <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+                        
+                          <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+                        
+                          <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+                        
+                          <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+                        
+                          <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+                        
+                          <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+                        
+                          <li><a title="OkHttp3" href="15632682616090.html">OkHttp3</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android系统相关</span></li>
+                        
+                          <li><a title="setContentView()" href="15954049156461.html">setContentView()</a></li>
+                        
+                          <li><a title="AsyncTask.java" href="15953888428518.html">AsyncTask.java</a></li>
+                        
+                          <li><a title="" href="15953376606635.html"></a></li>
+                        
+                          <li><a title="ListView设置Adapter和更新数据源码分析--观察者模式" href="15951954419377.html">ListView设置Adapter和更新数据源码分析--观察者模式</a></li>
+                        
+                          <li><a title="PackageManagerService.java" href="15948481287731.html">PackageManagerService.java</a></li>
+                        
+                          <li><a title="SystemServer.java" href="15948434761291.html">SystemServer.java</a></li>
+                        
+                          <li><a title="Android系统启动过程" href="15946404844407.html">Android系统启动过程</a></li>
+                        
+                          <li><a title="Context" href="15936928417691.html">Context</a></li>
+                        
+                          <li><a title="ComponentCallbacks和ComponentCallbacks2" href="15959378334016.html">ComponentCallbacks和ComponentCallbacks2</a></li>
+                        
+                          <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>安卓源码</span></li>
+                        
+                          <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+                        
+                          <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
+                        
+                          <li><a title="preloaded-classes" href="15717452568747.html">preloaded-classes</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Framework</span></li>
+                        
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
+                          <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
+                        
+                          <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android内核剖析</span></li>
+                        
+                          <li><a title="Framework概述" href="15747509659838.html">Framework概述</a></li>
+                        
+                          <li><a title="Binder" href="15747333089774.html">Binder</a></li>
+                        
+                          <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android5.0</span></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Git</span></li>
+                        
+                          <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+                        
+                          <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
+                        
+                          <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="杂记" href="15948431328032.html">杂记</a></li>
+                        
+                          <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+                        
+                          <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
+                        
+                          <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>设计模式</span></li>
+                        
+                          <li><a title="代理模式" href="15900263250197.html">代理模式</a></li>
+                        
+                          <li><a title="建造者模式" href="15897849590411.html">建造者模式</a></li>
+                        
+                          <li><a title="工厂方法模式" href="15897849469753.html">工厂方法模式</a></li>
+                        
+                          <li><a title="简单工厂模式" href="15897849322436.html">简单工厂模式</a></li>
+                        
+                          <li><a title="单例模式" href="15897847467736.html">单例模式</a></li>
+                        
+                          <li><a title="简单工厂模式(Simple Factory)" href="15784035954571.html">简单工厂模式(Simple Factory)</a></li>
+                        
+                          <li><a title="设计模式概述" href="15783889880973.html">设计模式概述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>数据结构和算法</span></li>
+                        
+                          <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
+                        
+                          <li><a title="树" href="15881273285027.html">树</a></li>
+                        
+                          <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+                        
+                          <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>网络爬虫</span></li>
+                        
+                          <li><a title="爬虫--基本库的使用" href="15660531164999.html">爬虫--基本库的使用</a></li>
+                        
+                          <li><a title="爬虫概述" href="15660114926379.html">爬虫概述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>计算机网络</span></li>
+                        
+                          <li><a title="图解HTTP--第九章--基于http的功能追加协议" href="15855764881285.html">图解HTTP--第九章--基于http的功能追加协议</a></li>
+                        
+                          <li><a title="图解HTTP--第八章--确认访问用户身份的认证" href="15855764130446.html">图解HTTP--第八章--确认访问用户身份的认证</a></li>
+                        
+                          <li><a title="图解HTTP--第七章--确保web安全的https" href="15855763389947.html">图解HTTP--第七章--确保web安全的https</a></li>
+                        
+                          <li><a title="图解HTTP--第六章--http首部" href="15855761102550.html">图解HTTP--第六章--http首部</a></li>
+                        
+                          <li><a title="图解HTTP--第五章--与HTTP协作的Web服务器" href="15855728450260.html">图解HTTP--第五章--与HTTP协作的Web服务器</a></li>
+                        
+                          <li><a title="图解HTTP--第四章--返回结果的http状态码" href="15855701437164.html">图解HTTP--第四章--返回结果的http状态码</a></li>
+                        
+                          <li><a title="图解HTTP--第三章--HTTP报文内的HTTP信息" href="15853911594446.html">图解HTTP--第三章--HTTP报文内的HTTP信息</a></li>
+                        
+                          <li><a title="图解HTTP--第二章--简单的HTTP协议" href="15853261274339.html">图解HTTP--第二章--简单的HTTP协议</a></li>
+                        
+                          <li><a title="与HTTP关系密切的协议:IP、TCP和DNS" href="15852895411848.html">与HTTP关系密切的协议:IP、TCP和DNS</a></li>
+                        
+                          <li><a title="TCP/IP" href="15852402680558.html">TCP/IP</a></li>
+                        
+                          <li><a title="HTTP和HTTPS" href="15850526868228.html">HTTP和HTTPS</a></li>
+                        
+                          <li><a title="计算机网络第五版--第二章" href="15849271154228.html">计算机网络第五版--第二章</a></li>
+                        
+                          <li><a title="计算机网络第五版--第一章" href="15846863033375.html">计算机网络第五版--第一章</a></li>
+                        
+                          <li><a title="ping命令" href="15832390905461.html">ping命令</a></li>
+                        
+                          <li><a title="基础" href="15650980568729.html">基础</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>计算机基础</span></li>
+                        
+                          <li><a title="简单常识" href="15955796448880.html">简单常识</a></li>
+                        
+                          <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+                        
+                          <li><a title="Java语言中注意事项" href="15906748975501.html">Java语言中注意事项</a></li>
+                        
+                          <li><a title="术语" href="15831479672487.html">术语</a></li>
+                        
+                          <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Linux系统</span></li>
+                        
+                          <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React-Native</span></li>
+                        
+                          <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
+                        
+                          <li><a title="组件的生命周期" href="15621446974979.html">组件的生命周期</a></li>
+                        
+                          <li><a title="TextInput组件" href="15621338635960.html">TextInput组件</a></li>
+                        
+                          <li><a title="遇到的问题" href="15620469922995.html">遇到的问题</a></li>
+                        
+                          <li><a title="组件" href="15617091937336.html">组件</a></li>
+                        
+                          <li><a title="React-Native零碎" href="15616187358724.html">React-Native零碎</a></li>
+                        
+                          <li><a title="react-navigation" href="15584071613702.html">react-navigation</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>随想</span></li>
+                        
+                          <li><a title="需要后续查看的东西" href="15893692089911.html">需要后续查看的东西</a></li>
+                        
+                          <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
+                        
+                          <li><a title="for" href="15583472660662.html">for</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>View树的绘制流程</h1>
+
+<ul>
+<li>
+<a href="#toc_0">performTraversals()</a>
+<ul>
+<li>
+<a href="#toc_1">performMeasure()--测量组件的大小</a>
+</li>
+<li>
+<a href="#toc_2">performLayout()--确定子组件的位置</a>
+</li>
+<li>
+<a href="#toc_3">绘制组件</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p><font color=red><em>参考Android 8.0源码</em></font><br/>
+&emsp;&emsp;这里先表明一下，ViewRootImpl类是在WindowManagerGlobal.java类中初始化的。是在WindowManagerGlobal.java类的addView()方法中进行初始化的，然后调用ViewRootImpl的setView()方法。以下是ViewRootImpl.java类中的调用关系：</p>
+
+<pre class="line-numbers"><code class="language-java">public void setView(View view, WindowManager.LayoutParams attrs, View panelParentView) {
+    //---;
+    requestLayout();
+    //---;
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">public void requestLayout() {
+    //---;
+    scheduleTraversals();
+    //---;
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">void scheduleTraversals() {
+    //---;
+    mChoreographer.postCallback(Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
+    //---;
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">final class TraversalRunnable implements Runnable {
+    @Override
+    public void run() {
+        doTraversal();
+    }
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">void doTraversal() {
+    //---;
+    performTraversals();
+    //---;
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">private void performTraversals() {
+    //---;
+}
+</code></pre>
+
+<h2 id="toc_0">performTraversals()</h2>
+
+<p>&emsp;&emsp;ViewRootImpl负责Activity整个GUI的绘制，而绘制是从ViewRootImpl的performTraversals()方法开始的。</p>
+
+<p>&emsp;&emsp;performTravsals()方法中关键的三个方法如下：</p>
+
+<pre class="line-numbers"><code class="language-java">//1576-2361;
+private void performTraversals() {
+    //代码省略;
+    //2155,2181;
+    performMeasure(childWidthMeasureSpec,childHeightMeasureSped);
+    //代码省略;
+    //2200;
+    performLayout(lp,mWidth,mHeight);
+    //代码省略;
+    //2347;
+    performDraw();
+    //省略代码;
+}
+</code></pre>
+
+<p>&emsp;&emsp;performMeasure()方法测量组件的大小，performLayout()方法用于子组件的定位（放在窗口的什么地方），而performDraw()方法自然就是将组件的外观绘制出来了。</p>
+
+<h3 id="toc_1">performMeasure()--测量组件的大小</h3>
+
+<p>&emsp;&emsp;performMeasure()方法负责组件自身尺寸的测量。在layout布局文件中，每一个组件都必须设置layout_width和layout_height属性，属性值有三种可选模式：wrap_content、match_parent和数值，performMeasure()方法根据设置的模式计算出组件的宽度和高度。事实上，大多数情况下，模式为match_parent和数值的时候是不需要计算的，传过来的就是父容器自己计算好的尺寸或是一个指定的精确值，只有当模式为wrap_content的时候才需要根据内容进行尺寸的测量。</p>
+
+<pre class="line-numbers"><code class="language-java">//2404-2414;
+private void performMeasure(int childWidthMeasureSpec, int childHeightMeasureSpec) {
+    if (mView == null) {
+        return;
+    }
+    Trace.traceBegin(Trace.TRACE_TAG_VIEW, &quot;measure&quot;);
+    try {
+        mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+    } finally {
+        Trace.traceEnd(Trace.TRACE_TAG_VIEW);
+    }
+}
+</code></pre>
+
+<p>&emsp;&emsp;对象mView是View树的根视图，代码中调用了mView的measure()方法。</p>
+
+<pre class="line-numbers"><code class="language-java">//View.java中的measure()方法;
+//21961-22024;
+public final void measure(int widthMeasureSpec, int heightMeasureSpec) {
+    //省略代码;
+    onMeasure(widthMeasureSpec, heightMeasureSpec);
+    //省略代码;
+}
+</code></pre>
+
+<p>&emsp;&emsp;onMeasure()方法是为组件尺寸的测量预留的功能接口，当然也定义了默认的实现，默认的实现并没有太多意义，在绝大部分情况下，我们需要重写onMeasure()方法。</p>
+
+<p>&emsp;&emsp;如果测量的是容器的尺寸，而容器的尺寸又依赖于子组件的大小，所以必须先测量容器中子组件的大小，不然，测量出来的宽度和高度永远为0。</p>
+
+<pre class="line-numbers"><code class="language-java">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">protected final void setMeasuredDimension(int measuredWidth, int measuredHeight) {
+    boolean optical = isLayoutModeOptical(this);
+    if (optical != isLayoutModeOptical(mParent)) {
+        Insets insets = getOpticalInsets();
+        int opticalWidth  = insets.left + insets.right;
+        int opticalHeight = insets.top  + insets.bottom;
+        measuredWidth  += optical ? opticalWidth  : -opticalWidth;
+        measuredHeight += optical ? opticalHeight : -opticalHeight;
+    }
+    setMeasuredDimensionRaw(measuredWidth, measuredHeight);
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">private void setMeasuredDimensionRaw(int measuredWidth, int measuredHeight) {
+    mMeasuredWidth = measuredWidth;
+    mMeasuredHeight = measuredHeight;
+    mPrivateFlags |= PFLAG_MEASURED_DIMENSION_SET;
+}
+</code></pre>
+
+<h3 id="toc_2">performLayout()--确定子组件的位置</h3>
+
+<p>&emsp;&emsp;performLayout()方法用于确定子组件的位置，所以该方法只针对于ViewGroup容器类。作为容器必须为容器中的子View精确定义位置和大小。</p>
+
+<pre class="line-numbers"><code class="language-java">//2467-2542;
+private void performLayout(WindowManager.LayoutParams lp, int desiredWindowWidth,int desiredWindowHeight) {
+    //代码省略;
+    host.layout(0, 0,host.getMeasuredWidth(),host.getMeasuredHeight());
+    //代码省略;
+    getRunQueue().post(new Runnable() {
+        @Override
+        public void run() {
+            int numValidRequests = finalRequesters.size();
+            for (int i = 0; i &lt; numValidRequests; ++i) {
+                final View view = finalRequesters.get(i);
+                Log.w(&quot;View&quot;, &quot;requestLayout() improperly called by &quot; + view + &quot; during second layout pass: posting in next frame&quot;);
+                view.requestLayout();
+            }
+        }
+    });
+}
+</code></pre>
+
+<p>&emsp;&emsp;代码中的host是View树中的根视图（DecorView），也就是最外层容器，容器的位置安排在左上角（0，0），其大小默认会填满mContentParent容器。layout（）方法的代码如下（在View.java类中）：</p>
+
+<pre class="line-numbers"><code class="language-java">//19571-19616;
+public void layout(int l, int t, int r, int b) {
+    if ((mPrivateFlags3 &amp; PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT) != 0) {
+            onMeasure(mOldWidthMeasureSpec, mOldHeightMeasureSpec);
+            mPrivateFlags3 &amp;= ~PFLAG3_MEASURE_NEEDED_BEFORE_LAYOUT;
+        }
+    int oldL = mLeft;
+    int oldT = mTop;
+    int oldB = mBottom;
+    int oldR = mRight;
+    boolean changed = isLayoutModeOptical(mParent) ?
+            setOpticalFrame(l, t, r, b) : setFrame(l, t, r, b);
+    if (changed || (mPrivateFlags &amp; PFLAG_LAYOUT_REQUIRED) == PFLAG_LAYOUT_REQUIRED) {
+        onLayout(changed, l, t, r, b);
+        if (shouldDrawRoundScrollbar()) {
+            if(mRoundScrollbarRenderer == null) {
+                mRoundScrollbarRenderer = new RoundScrollbarRenderer(this);
+            }
+        } else {
+            mRoundScrollbarRenderer = null;
+        }
+        mPrivateFlags &amp;= ~PFLAG_LAYOUT_REQUIRED;
+        ListenerInfo li = mListenerInfo;
+        if (li != null &amp;&amp; li.mOnLayoutChangeListeners != null) {
+            ArrayList&lt;OnLayoutChangeListener&gt; listenersCopy =
+(ArrayList&lt;OnLayoutChangeListener&gt;)li.mOnLayoutChangeListeners.clone();
+            int numListeners = listenersCopy.size();
+            for (int i = 0; i &lt; numListeners; ++i) {
+                listenersCopy.get(i).onLayoutChange(this, l, t, r, b, oldL, oldT, oldR, oldB);
+            }
+        }
+    }
+    mPrivateFlags &amp;= ~PFLAG_FORCE_LAYOUT;
+    mPrivateFlags3 |= PFLAG3_IS_LAID_OUT;
+    if ((mPrivateFlags3 &amp; PFLAG3_NOTIFY_AUTOFILL_ENTER_ON_LAYOUT) != 0) {
+        mPrivateFlags3 &amp;= ~PFLAG3_NOTIFY_AUTOFILL_ENTER_ON_LAYOUT;
+        notifyEnterOrExitForAutoFillIfNeeded(true);
+    }
+}
+</code></pre>
+
+<p>&emsp;&emsp;在layout（）方法中，在定位之前如果需要重新测量组件的大小，则先调用onMeasure()方法，接下来执行setOptioncalFrame()或setFrame()方法确定自身的位置与大小（setOptioncalFrame()方法最终也是调用setFrame()方法的），此时只是保存了相关的值，与具体的绘制无关。随后，onLayout()方法被调用，该方法是空方法，代码如下：</p>
+
+<pre class="line-numbers"><code class="language-java">protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+}
+</code></pre>
+
+<p>&emsp;&emsp;onLayout()方法在这里的作用是当前组件为容器时，负责定位容器中的子组件，这其实是一个递归的过程，如果子组件也是一个容器，该容器依然要负责它的子组件的定位，依此类推，直到所有的组件都定位完成为止。也就是说，从最顶层的DecorView开始定位，像多米诺骨牌一样。从上往下驱动，最后每一个组件都放到了它应该出现的位置上。onLayout()方法和onMeasure()方法一样，是为开发人员预留的功能扩展接口，自定义容器时，该方法必须重写。</p>
+
+<h3 id="toc_3">绘制组件</h3>
+
+<p>&emsp;&emsp;performDraw()方法执行组件的绘制功能，组件绘制是一个十分复杂的过程，不仅仅绘制组件本身，还要绘制背景、滚动条，好消息是每个组件只需要负责自身的绘制，而且一般来说，容器组件不需要绘制，ViewGroup已经做了大量的工作。</p>
+
+<pre class="line-numbers"><code class="language-java">//2781-2841;
+private void performDraw() {
+    //代码省略;
+    final boolean fullRedrawNeeded = mFullRedrawNeeded;
+    mFullRedrawNeeded = false;
+    mIsDrawing = true;
+    Trace.traceBegin(Trace.TRACE_TAG_VIEW, &quot;draw&quot;);
+    try {
+        draw(fullRedrawNeeded);
+    } finally {
+        mIsDrawing = false;
+        Trace.traceEnd(Trace.TRACE_TAG_VIEW);
+    }
+    //代码省略;
+}
+</code></pre>
+
+<p>&emsp;&emsp;在performDraw()方法中调用了draw()方法：</p>
+
+<pre class="line-numbers"><code class="language-java">//2843-3017;
+private void draw(boolean fullRedrawNeeded) {
+    //代码省略;
+    if (!drawSoftware(surface, mAttachInfo, xOffset, yOffset, scalingRequired, dirty)) {
+        return;
+    }
+    //代码省略;
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">//3022-3117;
+private boolean drawSoftware(Surface surface, AttachInfo attachInfo, int xoff, int yoff,boolean scalingRequired, Rect dirty) {
+    final Canvas canvas;
+    
+    final int left = dirty.left;
+    final int top = dirty.top;
+    final int right = dirty.right;
+    final int bottom = dirty.bottom;
+    canvas = mSurface.lockCanvas(dirty);
+    
+    if (!canvas.isOpaque() || yoff != 0 || xoff != 0) {
+        canvas.drawColor(0, PorterDuff.Mode.CLEAR);
+    }
+    
+    mView.draw(canvas);
+    
+    surface.unlockCanvasAndPost(canvas);
+}
+</code></pre>
+
+<p>&emsp;&emsp;在drawSoftware()中，出现了Canvas。绘制组件是通过Canvas类完成的，该类定义了若干个绘制图形的方法，通过Paint类配置绘制参数，便能绘制出各种图案效果。为了提高绘图的性能，使用了Surface技术，Surface提供了一套双缓存机制，能大大加快绘图效率，而我们绘图时需要的是Canvas对象也是Surface创建的。</p>
+
+<p>&emsp;&emsp;drawSoftware（）方法中调用了mView的draw()方法，mView是Activity界面中View树的根（DecorView），也是一个容器（具体来说是一个FrameLayout布局容器），所以直接来看FrameLayout类的draw（）方法，但是FrameLayout中没有重写draw（）方法，ViewGroup中也没有重写draw()方法，要到View类中去查看draw()方法。</p>
+
+<pre class="line-numbers"><code class="language-java">//19088-19295;
+public void draw(Canvas canvas) {
+    if(!dirtyOpaque){
+        drawBackground(canvas);
+    }
+    
+    if(!dirtyOpaque){
+        onDraw(canvas);
+    }
+    dispatchDraw(canvas);
+    
+    onDrawForeground(canvas);
+}
+</code></pre>
+
+<ul>
+<li><p>drawBackground(canvas):绘制背景；<br/>
+&emsp;&emsp;在该方法中，使用了mBackground，是一个Drawable对象，直接绘制在Canvas上，并且与组件要绘制的内容互不干扰。</p></li>
+<li><p>onDraw():绘制自己；View只是组件的抽象定义，并不知道自己什么样子，所以，View定义了onDraw()这样一个空方法，和onMeasure()、onLayout()一样，onDraw()方法同样是预留给子类扩展的功能接口，用于绘制组件自身。组件的外观由该方法来决定。</p></li>
+<li><p>dispatchDraw(canvas):绘制子视图；<br/>
+&emsp;&emsp;dispatchDraw()方法也是一个空方法，该方法服务于容器组件，容器中的子组件必须通过实现dispatchDraw()方法进行绘制，所以，View类虽然没有实现该方法但它的子类ViewGroup实现了该方法。</p></li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">//3927-4058;
+protected void dispatchDraw(Canvas canvas) {
+
+    final int childrenCount = mChildrenCount;
+    final View[] children = mChildren;
+    int flags = mGroupFlags;
+        
+    for (int i = 0; i &lt; childrenCount; i++) {
+        final View child = children[i];
+        if ((child.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE) {
+            final LayoutParams params = child.getLayoutParams();
+            attachLayoutAnimationParameters(child, params, i, childrenCount);
+            bindLayoutAnimation(child);
+        }
+    }
+            
+    for (int i = 0; i &lt; childrenCount; i++) {
+        while (transientIndex &gt;= 0 &amp;&amp; mTransientIndices.get(transientIndex) == i) {
+            final View transientChild = mTransientViews.get(transientIndex);
+            if ((transientChild.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE ||
+                    transientChild.getAnimation() != null) {
+                more |= drawChild(canvas, transientChild, drawingTime);
+            }
+            transientIndex++;
+            if (transientIndex &gt;= transientCount) {
+                transientIndex = -1;
+            }
+        }
+        final int childIndex = getAndVerifyPreorderedIndex(childrenCount, i, customOrder);
+        final View child = getAndVerifyPreorderedView(preorderedList, children, childIndex);
+        if ((child.mViewFlags &amp; VISIBILITY_MASK) == VISIBLE || child.getAnimation() != null) {
+            more |= drawChild(canvas, child, drawingTime);
+        }
+    }
+}
+</code></pre>
+
+<p>&emsp;&emsp;在dispatchDraw()方法中，循环遍历每一个组件，并调用drawChild()方法绘制子组件，而子组件又调用View的draw()方法绘制自己；</p>
+
+<pre class="line-numbers"><code class="language-java">protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
+    return child.draw(canvas, this, drawingTime);
+}
+</code></pre>
+
+<p>&emsp;&emsp;组件的绘制也是一个递归过程，说到底Activity的UI界面的根一定是容器，根容器绘制结束后开始绘制子组件，子组件如果是容器继续往下递归绘制，否则将子组件绘制出来，直到所有组件正确绘制为止。</p>
+
+<ul>
+<li>onDrawForeground(canvas):绘制前景，其中有绘制进度条；</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-java">private void drawBackground(Canvas canvas) {
+    
+    setBackgroundBounds();
+    
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">protected void dispatchDraw(Canvas canvas) {
+    
+}
+</code></pre>
+
+<pre class="line-numbers"><code class="language-java">public void onDrawForeground(Canvas canvas) {
+    
+    onDrawScrollBars(canvas);
+    
+}
+</code></pre>
+
+<p>&emsp;&emsp;总体来说，UI界面的绘制从开始到结束要经历几个过程：</p>
+
+<ul>
+<li>测量大小，调用onMeasure()方法；</li>
+<li>组件定位，回调onLayout()方法；</li>
+<li>组件绘制，回调onDraw()方法；</li>
+</ul>
+
+<p>-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+----------------------last line for now-----------------------</p>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15965603616547.html"  title="Previous Post: AIDL">&laquo; AIDL</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15961826101444.html" 
+	        title="Next Post: Activity的组成结构">Activity的组成结构 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15961852523240.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
