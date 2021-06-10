@@ -1,0 +1,3929 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  App的启动过程 - KangLu
+  
+  </title>
+ <meta name="description" content="个人文章">
+ <link href="atom.xml" rel="alternate" title="KangLu" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">KangLu</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; KangLu</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android Studio开发调试</label></li>
+
+          
+            <li><a title="jks和keystore的区别" href="16213263578694.html">jks和keystore的区别</a></li>
+          
+            <li><a title="UI Automator Viewer的使用" href="16139851951679.html">UI Automator Viewer的使用</a></li>
+          
+            <li><a title="查看Android Studio中使用的依赖库" href="16137935397183.html">查看Android Studio中使用的依赖库</a></li>
+          
+            <li><a title="查看签名文件内容" href="16062676480386.html">查看签名文件内容</a></li>
+          
+            <li><a title="使用TraceView" href="16001927395196.html">使用TraceView</a></li>
+          
+            <li><a title="Android Studio的Structure工具窗口" href="15979290265055.html">Android Studio的Structure工具窗口</a></li>
+          
+            <li><a title="使用tcpdump抓包" href="15966325912957.html">使用tcpdump抓包</a></li>
+          
+            <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
+          
+            <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+          
+            <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
+          
+            <li><a title="Gradle知识" href="15873151730996.html">Gradle知识</a></li>
+          
+            <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+          
+            <li><a title="Android Device Monitor工具" href="15955778686384.html">Android Device Monitor工具</a></li>
+          
+            <li><a title="Android Studio使用viewbinding" href="15927964749535.html">Android Studio使用viewbinding</a></li>
+          
+            <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
+          
+            <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
+          
+            <li><a title="ADB命令" href="15706865755803.html">ADB命令</a></li>
+          
+            <li><a title="使用ADB命令查看数据库数据·" href="15776895359955.html">使用ADB命令查看数据库数据·</a></li>
+          
+            <li><a title="AAPT命令" href="15706865946961.html">AAPT命令</a></li>
+          
+            <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
+          
+            <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
+          
+            <li><a title="Android将library打包成jar包或者aar文件" href="15777599008991.html">Android将library打包成jar包或者aar文件</a></li>
+          
+            <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>四大组件及其相关类</label></li>
+
+          
+            <li><a title="Deep Links -- 深度链接" href="16208955206090.html">Deep Links -- 深度链接</a></li>
+          
+            <li><a title="Activity的状态保存和恢复" href="15994232717477.html">Activity的状态保存和恢复</a></li>
+          
+            <li><a title="View的滑动冲突" href="15991357742601.html">View的滑动冲突</a></li>
+          
+            <li><a title="View的滑动" href="15988921451098.html">View的滑动</a></li>
+          
+            <li><a title="Android的KeyEvent按键触摸事件传递机制" href="15984305843879.html">Android的KeyEvent按键触摸事件传递机制</a></li>
+          
+            <li><a title="自定义View和自定义ViewGroup中主要方法的执行顺序" href="15979224400729.html">自定义View和自定义ViewGroup中主要方法的执行顺序</a></li>
+          
+            <li><a title="自定义容器" href="15975164203980.html">自定义容器</a></li>
+          
+            <li><a title="自定义View" href="15966352005041.html">自定义View</a></li>
+          
+            <li><a title="AIDL" href="15965603616547.html">AIDL</a></li>
+          
+            <li><a title="View树的绘制流程" href="15961852523240.html">View树的绘制流程</a></li>
+          
+            <li><a title="Activity的组成结构" href="15961826101444.html">Activity的组成结构</a></li>
+          
+            <li><a title="Android数据存储" href="15925546637258.html">Android数据存储</a></li>
+          
+            <li><a title="Activity的启动流程" href="15913608813328.html">Activity的启动流程</a></li>
+          
+            <li><a title="安卓系统架构" href="15900311156878.html">安卓系统架构</a></li>
+          
+            <li><a title="多线程" href="15895247341993.html">多线程</a></li>
+          
+            <li><a title="View体系" href="15892159078168.html">View体系</a></li>
+          
+            <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+          
+            <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
+          
+            <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
+          
+            <li><a title="Android的MotionEvent事件传递机制" href="15862769966851.html">Android的MotionEvent事件传递机制</a></li>
+          
+            <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
+          
+            <li><a title="Android简介" href="15834044312131.html">Android简介</a></li>
+          
+            <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+          
+            <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+          
+            <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
+          
+            <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+          
+            <li><a title="Intent" href="15640232512188.html">Intent</a></li>
+          
+            <li><a title="ContentProvider--内容提供者" href="15603581865930.html">ContentProvider--内容提供者</a></li>
+          
+            <li><a title="Service--服务" href="15603581806506.html">Service--服务</a></li>
+          
+            <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android组件</label></li>
+
+          
+            <li><a title="Adapter及其子类" href="15987345244709.html">Adapter及其子类</a></li>
+          
+            <li><a title="FloatingActionButton" href="15873151238128.html">FloatingActionButton</a></li>
+          
+            <li><a title="NavigationView" href="15873151137838.html">NavigationView</a></li>
+          
+            <li><a title="BottomSheetBehavior" href="15873151109302.html">BottomSheetBehavior</a></li>
+          
+            <li><a title="TabLayout" href="15873151075682.html">TabLayout</a></li>
+          
+            <li><a title="CollaspingToolbarLayout" href="15873150961844.html">CollaspingToolbarLayout</a></li>
+          
+            <li><a title="CoordinatorLayout" href="15873150855710.html">CoordinatorLayout</a></li>
+          
+            <li><a title="TextInputLayout" href="15873150854952.html">TextInputLayout</a></li>
+          
+            <li><a title="Snackbar" href="15873150711511.html">Snackbar</a></li>
+          
+            <li><a title="View（视图）" href="15587797736951.html">View（视图）</a></li>
+          
+            <li><a title="TextView" href="15584534943886.html">TextView</a></li>
+          
+            <li><a title="EditText" href="15587752872990.html">EditText</a></li>
+          
+            <li><a title="ImageView" href="15590447462728.html">ImageView</a></li>
+          
+            <li><a title="Button" href="15590305484634.html">Button</a></li>
+          
+            <li><a title="Toast" href="15832318775043.html">Toast</a></li>
+          
+            <li><a title="Spinner" href="15601388608282.html">Spinner</a></li>
+          
+            <li><a title="CheckBox和RadioButton" href="15601388701602.html">CheckBox和RadioButton</a></li>
+          
+            <li><a title="ProgressBar" href="15601389345357.html">ProgressBar</a></li>
+          
+            <li><a title="SeekBar" href="15832322241074.html">SeekBar</a></li>
+          
+            <li><a title="RatingBar" href="15832323147149.html">RatingBar</a></li>
+          
+            <li><a title="时间相关的控件" href="15832327057402.html">时间相关的控件</a></li>
+          
+            <li><a title="WebView" href="15601389648936.html">WebView</a></li>
+          
+            <li><a title="ListView" href="15590482064056.html">ListView</a></li>
+          
+            <li><a title="RecyclerView" href="15601389530971.html">RecyclerView</a></li>
+          
+            <li><a title="ScrollView和HorizontalView" href="15601389773513.html">ScrollView和HorizontalView</a></li>
+          
+            <li><a title="ViewPager" href="15601389699132.html">ViewPager</a></li>
+          
+            <li><a title="Fragment" href="15830020373441.html">Fragment</a></li>
+          
+            <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
+          
+            <li><a title="WheelView" href="15832330644393.html">WheelView</a></li>
+          
+            <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
+          
+            <li><a title="三大布局根控件" href="15832328030131.html">三大布局根控件</a></li>
+          
+            <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+          
+            <li><a title="序" href="15584059143309.html">序</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>消息机制与存储</label></li>
+
+          
+            <li><a title="Thread" href="15941454444849.html">Thread</a></li>
+          
+            <li><a title="ThreadLocal类" href="15915526996179.html">ThreadLocal类</a></li>
+          
+            <li><a title="Message类" href="15915526938269.html">Message类</a></li>
+          
+            <li><a title="MessageQueue类" href="15915526852831.html">MessageQueue类</a></li>
+          
+            <li><a title="Handler类" href="15915526788145.html">Handler类</a></li>
+          
+            <li><a title="Looper类" href="15915526673284.html">Looper类</a></li>
+          
+            <li><a title="Android的消息机制--Handler消息机制" href="15887553843774.html">Android的消息机制--Handler消息机制</a></li>
+          
+            <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>网络请求相关</label></li>
+
+          
+            <li><a title="Android 9.0 http网络请求问题" href="16204446832298.html">Android 9.0 http网络请求问题</a></li>
+          
+            <li><a title="PC端浏览器使用Http协议缓存" href="16032827867874.html">PC端浏览器使用Http协议缓存</a></li>
+          
+            <li><a title="HttpClient和HttpURLConnection" href="15897672365492.html">HttpClient和HttpURLConnection</a></li>
+          
+            <li><a title="网络相关" href="15616048657421.html">网络相关</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android功能</label></li>
+
+          
+            <li><a title="触摸事件" href="16221687313432.html">触摸事件</a></li>
+          
+            <li><a title="心跳包机制" href="16039934816197.html">心跳包机制</a></li>
+          
+            <li><a title="断点续传" href="16039920085823.html">断点续传</a></li>
+          
+            <li><a title="插件化" href="15832337513162.html">插件化</a></li>
+          
+            <li><a title="热修复" href="15832337461818.html">热修复</a></li>
+          
+            <li><a title="文件上传、下载、断点续传" href="15832337021510.html">文件上传、下载、断点续传</a></li>
+          
+            <li><a title="json/xml数据解析" href="15832336723066.html">json/xml数据解析</a></li>
+          
+            <li><a title="屏幕适配" href="15832335578226.html">屏幕适配</a></li>
+          
+            <li><a title="状态栏" href="15832335450787.html">状态栏</a></li>
+          
+            <li><a title="换肤" href="15832335396541.html">换肤</a></li>
+          
+            <li><a title="手势关闭" href="15832335221530.html">手势关闭</a></li>
+          
+            <li><a title="导航菜单" href="15832335120230.html">导航菜单</a></li>
+          
+            <li><a title="图表" href="15832335046878.html">图表</a></li>
+          
+            <li><a title="数据库" href="15832334917388.html">数据库</a></li>
+          
+            <li><a title="新手引导" href="15832334714220.html">新手引导</a></li>
+          
+            <li><a title="二维码和条形码" href="15832334567005.html">二维码和条形码</a></li>
+          
+            <li><a title="轮播图" href="15832334294029.html">轮播图</a></li>
+          
+            <li><a title="音视频" href="15832332927437.html">音视频</a></li>
+          
+            <li><a title="日志" href="15832038130305.html">日志</a></li>
+          
+            <li><a title="安卓系统设置" href="15794224269421.html">安卓系统设置</a></li>
+          
+            <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
+          
+            <li><a title="拍照和读取本地相册" href="15603979455589.html">拍照和读取本地相册</a></li>
+          
+            <li><a title="控制系统硬件功能" href="15603585084416.html">控制系统硬件功能</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android资源文件</label></li>
+
+          
+            <li><a title="特殊符号" href="16124972972718.html">特殊符号</a></li>
+          
+            <li><a title="推送机制" href="16012297259440.html">推送机制</a></li>
+          
+            <li><a title="Android插件框架机制" href="16012289364746.html">Android插件框架机制</a></li>
+          
+            <li><a title="64K方法数限制原理与解决方案" href="16012264048970.html">64K方法数限制原理与解决方案</a></li>
+          
+            <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+          
+            <li><a title="Android 布局优化" href="15900636437169.html">Android 布局优化</a></li>
+          
+            <li><a title="Drawable文件" href="15832339330725.html">Drawable文件</a></li>
+          
+            <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+          
+            <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
+          
+            <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
+          
+            <li><a title="画图" href="15627251763320.html">画图</a></li>
+          
+            <li><a title="反编译" href="15626395593984.html">反编译</a></li>
+          
+            <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
+          
+            <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
+          
+            <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
+          
+            <li><a title="动画" href="15591315255964.html">动画</a></li>
+          
+            <li><a title="Style和Theme" href="15591171572096.html">Style和Theme</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>安卓多媒体、图像</label></li>
+
+          
+            <li><a title="音频传输" href="16188902074852.html">音频传输</a></li>
+          
+            <li><a title="音频格式对比" href="16060934492693.html">音频格式对比</a></li>
+          
+            <li><a title="音频" href="16058388262225.html">音频</a></li>
+          
+            <li><a title="图片压缩" href="16032147433526.html">图片压缩</a></li>
+          
+            <li><a title="位图运算" href="15978627842395.html">位图运算</a></li>
+          
+            <li><a title="阴影和渐变" href="15978578322849.html">阴影和渐变</a></li>
+          
+            <li><a title="双缓存技术" href="15978446413433.html">双缓存技术</a></li>
+          
+            <li><a title="Canvas的clipXxx()方法" href="15977771825588.html">Canvas的clipXxx()方法</a></li>
+          
+            <li><a title="Canvas的坐标转换" href="15977752461748.html">Canvas的坐标转换</a></li>
+          
+            <li><a title="View的invalidate()方法" href="15977739560419.html">View的invalidate()方法</a></li>
+          
+            <li><a title="Canvas类和Paint类" href="15976921344218.html">Canvas类和Paint类</a></li>
+          
+            <li><a title="Bitmap类和BitmapDrawable类" href="15976898855375.html">Bitmap类和BitmapDrawable类</a></li>
+          
+            <li><a title="Rect类和RectF类" href="15976691326047.html">Rect类和RectF类</a></li>
+          
+            <li><a title="Point类和PointF类" href="15976663490288.html">Point类和PointF类</a></li>
+          
+            <li><a title="AudioManager" href="15960319990767.html">AudioManager</a></li>
+          
+            <li><a title="Android WebView和JavaScript的交互" href="15874899350106.html">Android WebView和JavaScript的交互</a></li>
+          
+            <li><a title="音视频相关" href="15635278413412.html">音视频相关</a></li>
+          
+            <li><a title="相机相关" href="15635278316611.html">相机相关</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Jetpack</label></li>
+
+          
+            <li><a title="Jetpack" href="16231186943622.html">Jetpack</a></li>
+          
+            <li><a title="Lifecycle" href="16178717142947.html">Lifecycle</a></li>
+          
+            <li><a title="Navigation" href="16207856239934.html">Navigation</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>第三方库</label></li>
+
+          
+            <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+          
+            <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+          
+            <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+          
+            <li><a title="支付" href="15632684444086.html">支付</a></li>
+          
+            <li><a title="推送" href="15632684365504.html">推送</a></li>
+          
+            <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+          
+            <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+          
+            <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+          
+            <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+          
+            <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+          
+            <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+          
+            <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+          
+            <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+          
+            <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+          
+            <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+          
+            <li><a title="OkHttp3" href="15632682616090.html">OkHttp3</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android系统相关</label></li>
+
+          
+            <li><a title="AMS" href="16202952165241.html">AMS</a></li>
+          
+            <li><a title="安卓热修复" href="16041750280944.html">安卓热修复</a></li>
+          
+            <li><a title="安卓性能优化" href="16041742389517.html">安卓性能优化</a></li>
+          
+            <li><a title="线程池" href="16037158072749.html">线程池</a></li>
+          
+            <li><a title="App的启动过程" href="16036390477812.html">App的启动过程</a></li>
+          
+            <li><a title="APK启动过程" href="16007836387351.html">APK启动过程</a></li>
+          
+            <li><a title="apk文件以及打包流程" href="16006415583476.html">apk文件以及打包流程</a></li>
+          
+            <li><a title="ANR以及解决方法以及捕获未捕获的异常" href="16002456845586.html">ANR以及解决方法以及捕获未捕获的异常</a></li>
+          
+            <li><a title="内存溢出和解决方法" href="16001927297660.html">内存溢出和解决方法</a></li>
+          
+            <li><a title="APK安装过程" href="15997078103768.html">APK安装过程</a></li>
+          
+            <li><a title="Scroller" href="15988136317147.html">Scroller</a></li>
+          
+            <li><a title="VelocityTracker类" href="15988105105264.html">VelocityTracker类</a></li>
+          
+            <li><a title="MotionEvent屏幕触摸事件分发流程" href="15983458791697.html">MotionEvent屏幕触摸事件分发流程</a></li>
+          
+            <li><a title="KeyEvent按键点击事件处理流程" href="15982890451497.html">KeyEvent按键点击事件处理流程</a></li>
+          
+            <li><a title="Binder" href="15982033025648.html">Binder</a></li>
+          
+            <li><a title="TelephonyManager.java" href="15970492312259.html">TelephonyManager.java</a></li>
+          
+            <li><a title="setContentView()" href="15954049156461.html">setContentView()</a></li>
+          
+            <li><a title="AsyncTask.java" href="15953888428518.html">AsyncTask.java</a></li>
+          
+            <li><a title="ListView设置Adapter和更新数据源码分析--观察者模式" href="15951954419377.html">ListView设置Adapter和更新数据源码分析--观察者模式</a></li>
+          
+            <li><a title="PackageManagerService.java" href="15948481287731.html">PackageManagerService.java</a></li>
+          
+            <li><a title="SystemServer.java" href="15948434761291.html">SystemServer.java</a></li>
+          
+            <li><a title="Android系统启动过程" href="15946404844407.html">Android系统启动过程</a></li>
+          
+            <li><a title="Context" href="15936928417691.html">Context</a></li>
+          
+            <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+          
+            <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>安卓源码</label></li>
+
+          
+            <li><a title="SystemClock类" href="16067889519707.html">SystemClock类</a></li>
+          
+            <li><a title="onUserInteraction()与onUserLeaveHint()" href="16003048093058.html">onUserInteraction()与onUserLeaveHint()</a></li>
+          
+            <li><a title="HandlerThread" href="16002981223383.html">HandlerThread</a></li>
+          
+            <li><a title="IntentService" href="16002980534244.html">IntentService</a></li>
+          
+            <li><a title="Scroller" href="15988136317147.html">Scroller</a></li>
+          
+            <li><a title="GestureDetector" href="15988119621841.html">GestureDetector</a></li>
+          
+            <li><a title="VelocityTracker类" href="15988105105264.html">VelocityTracker类</a></li>
+          
+            <li><a title="TelephonyManager.java" href="15970492312259.html">TelephonyManager.java</a></li>
+          
+            <li><a title="PackageManagerService.java" href="15948481287731.html">PackageManagerService.java</a></li>
+          
+            <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+          
+            <li><a title="ComponentCallbacks和ComponentCallbacks2" href="15959378334016.html">ComponentCallbacks和ComponentCallbacks2</a></li>
+          
+            <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
+          
+            <li><a title="preloaded-classes" href="15717452568747.html">preloaded-classes</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Framework</label></li>
+
+          
+            <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+          
+            <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
+          
+            <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android内核剖析</label></li>
+
+          
+            <li><a title="Framework概述" href="15747509659838.html">Framework概述</a></li>
+          
+            <li><a title="Binder" href="15747333089774.html">Binder</a></li>
+          
+            <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>深入理解Android</label></li>
+
+          
+            <li><a title="深入理解PackageManagerService" href="16008487631075.html">深入理解PackageManagerService</a></li>
+          
+            <li><a title="深入理解Surface系统" href="16007635680752.html">深入理解Surface系统</a></li>
+          
+            <li><a title="深入理解WindowManagerService" href="16007630337829.html">深入理解WindowManagerService</a></li>
+          
+            <li><a title="深入理解Android输入系统" href="16006883092534.html">深入理解Android输入系统</a></li>
+          
+            <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+          
+            <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Android开发工具</label></li>
+
+          
+            <li><a title="GPU呈现模式分析" href="16203574480848.html">GPU呈现模式分析</a></li>
+          
+            <li><a title="Android不透明度对应的16进制值" href="16109381219800.html">Android不透明度对应的16进制值</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>架构</label></li>
+
+          
+            <li><a title="Android组件化架构" href="16212169719717.html">Android组件化架构</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Kotlin</label></li>
+
+          
+            <li><a title="Kotlin修饰符" href="16220176873496.html">Kotlin修饰符</a></li>
+          
+            <li><a title="Kotlin配置" href="16215019403387.html">Kotlin配置</a></li>
+          
+            <li><a title="Any和Object" href="16202922452879.html">Any和Object</a></li>
+          
+            <li><a title="注意事项" href="16054946011494.html">注意事项</a></li>
+          
+            <li><a title="函数" href="16050787660502.html">函数</a></li>
+          
+            <li><a title="集合框架" href="16050764808062.html">集合框架</a></li>
+          
+            <li><a title="区间" href="16050753339197.html">区间</a></li>
+          
+            <li><a title="数组" href="16050733875473.html">数组</a></li>
+          
+            <li><a title="基本类型数据" href="16050663211604.html">基本类型数据</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Git</label></li>
+
+          
+            <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+          
+            <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
+          
+            <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="Java线程池" href="16041633383721.html">Java线程池</a></li>
+          
+            <li><a title="Java线程" href="16041627017647.html">Java线程</a></li>
+          
+            <li><a title="Java深拷贝和浅拷贝" href="16041605743704.html">Java深拷贝和浅拷贝</a></li>
+          
+            <li><a title="Java异常" href="16041603866147.html">Java异常</a></li>
+          
+            <li><a title="RandomAccessFile" href="16041602871100.html">RandomAccessFile</a></li>
+          
+            <li><a title="Java IO" href="16041584305867.html">Java IO</a></li>
+          
+            <li><a title="LinkedHashMap" href="16041410387995.html">LinkedHashMap</a></li>
+          
+            <li><a title="TreeMap" href="16041410169042.html">TreeMap</a></li>
+          
+            <li><a title="HashMap" href="16041393802858.html">HashMap</a></li>
+          
+            <li><a title="LinkedList" href="16041386256783.html">LinkedList</a></li>
+          
+            <li><a title="ArrayList" href="16041374199121.html">ArrayList</a></li>
+          
+            <li><a title="Java集合类" href="16041330974013.html">Java集合类</a></li>
+          
+            <li><a title="杂记" href="15948431328032.html">杂记</a></li>
+          
+            <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+          
+            <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
+          
+            <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>设计模式</label></li>
+
+          
+            <li><a title="设计模式概述" href="15783889880973.html">设计模式概述</a></li>
+          
+            <li><a title="UML(统一建模语言)" href="16230361480088.html">UML(统一建模语言)</a></li>
+          
+            <li><a title="单例模式" href="15897847467736.html">单例模式</a></li>
+          
+            <li><a title="代理模式" href="15900263250197.html">代理模式</a></li>
+          
+            <li><a title="建造者模式" href="15897849590411.html">建造者模式</a></li>
+          
+            <li><a title="工厂方法模式" href="15897849469753.html">工厂方法模式</a></li>
+          
+            <li><a title="简单工厂模式" href="15897849322436.html">简单工厂模式</a></li>
+          
+            <li><a title="简单工厂模式(Simple Factory)" href="15784035954571.html">简单工厂模式(Simple Factory)</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>数据结构和算法</label></li>
+
+          
+            <li><a title="List及其子类" href="16038826600526.html">List及其子类</a></li>
+          
+            <li><a title="面试中的算法" href="15970860318982.html">面试中的算法</a></li>
+          
+            <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
+          
+            <li><a title="树" href="15881273285027.html">树</a></li>
+          
+            <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+          
+            <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>网络爬虫</label></li>
+
+          
+            <li><a title="爬虫--基本库的使用" href="15660531164999.html">爬虫--基本库的使用</a></li>
+          
+            <li><a title="爬虫概述" href="15660114926379.html">爬虫概述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>计算机网络</label></li>
+
+          
+            <li><a title="图解HTTP--第一章--了解Web及网络基础" href="16023212652925.html">图解HTTP--第一章--了解Web及网络基础</a></li>
+          
+            <li><a title="图解HTTP--第九章--基于http的功能追加协议" href="15855764881285.html">图解HTTP--第九章--基于http的功能追加协议</a></li>
+          
+            <li><a title="图解HTTP--第八章--确认访问用户身份的认证" href="15855764130446.html">图解HTTP--第八章--确认访问用户身份的认证</a></li>
+          
+            <li><a title="图解HTTP--第七章--确保web安全的https" href="15855763389947.html">图解HTTP--第七章--确保web安全的https</a></li>
+          
+            <li><a title="图解HTTP--第六章--http首部" href="15855761102550.html">图解HTTP--第六章--http首部</a></li>
+          
+            <li><a title="图解HTTP--第五章--与HTTP协作的Web服务器" href="15855728450260.html">图解HTTP--第五章--与HTTP协作的Web服务器</a></li>
+          
+            <li><a title="图解HTTP--第四章--返回结果的http状态码" href="15855701437164.html">图解HTTP--第四章--返回结果的http状态码</a></li>
+          
+            <li><a title="图解HTTP--第三章--HTTP报文内的HTTP信息" href="15853911594446.html">图解HTTP--第三章--HTTP报文内的HTTP信息</a></li>
+          
+            <li><a title="图解HTTP--第二章--简单的HTTP协议" href="15853261274339.html">图解HTTP--第二章--简单的HTTP协议</a></li>
+          
+            <li><a title="TCP/IP" href="15852402680558.html">TCP/IP</a></li>
+          
+            <li><a title="HTTP和HTTPS" href="15850526868228.html">HTTP和HTTPS</a></li>
+          
+            <li><a title="计算机网络第五版--第二章" href="15849271154228.html">计算机网络第五版--第二章</a></li>
+          
+            <li><a title="计算机网络第五版--第一章" href="15846863033375.html">计算机网络第五版--第一章</a></li>
+          
+            <li><a title="ping命令" href="15832390905461.html">ping命令</a></li>
+          
+            <li><a title="基础" href="15650980568729.html">基础</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>计算机基础</label></li>
+
+          
+            <li><a title="简单常识" href="15955796448880.html">简单常识</a></li>
+          
+            <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+          
+            <li><a title="Java语言中注意事项" href="15906748975501.html">Java语言中注意事项</a></li>
+          
+            <li><a title="术语" href="15831479672487.html">术语</a></li>
+          
+            <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Linux系统</label></li>
+
+          
+            <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React-Native</label></li>
+
+          
+            <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
+          
+            <li><a title="组件的生命周期" href="15621446974979.html">组件的生命周期</a></li>
+          
+            <li><a title="TextInput组件" href="15621338635960.html">TextInput组件</a></li>
+          
+            <li><a title="遇到的问题" href="15620469922995.html">遇到的问题</a></li>
+          
+            <li><a title="组件" href="15617091937336.html">组件</a></li>
+          
+            <li><a title="React-Native零碎" href="15616187358724.html">React-Native零碎</a></li>
+          
+            <li><a title="react-navigation" href="15584071613702.html">react-navigation</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>随想</label></li>
+
+          
+            <li><a title="整理的体系" href="16031941250957.html">整理的体系</a></li>
+          
+            <li><a title="需要后续查看的东西" href="15893692089911.html">需要后续查看的东西</a></li>
+          
+            <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
+          
+            <li><a title="for" href="15583472660662.html">for</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android Studio开发调试</span></li>
+                        
+                          <li><a title="jks和keystore的区别" href="16213263578694.html">jks和keystore的区别</a></li>
+                        
+                          <li><a title="UI Automator Viewer的使用" href="16139851951679.html">UI Automator Viewer的使用</a></li>
+                        
+                          <li><a title="查看Android Studio中使用的依赖库" href="16137935397183.html">查看Android Studio中使用的依赖库</a></li>
+                        
+                          <li><a title="查看签名文件内容" href="16062676480386.html">查看签名文件内容</a></li>
+                        
+                          <li><a title="使用TraceView" href="16001927395196.html">使用TraceView</a></li>
+                        
+                          <li><a title="Android Studio的Structure工具窗口" href="15979290265055.html">Android Studio的Structure工具窗口</a></li>
+                        
+                          <li><a title="使用tcpdump抓包" href="15966325912957.html">使用tcpdump抓包</a></li>
+                        
+                          <li><a title="Android Studio使用小技巧" href="15586135036171.html">Android Studio使用小技巧</a></li>
+                        
+                          <li><a title="编码习惯" href="15881280991297.html">编码习惯</a></li>
+                        
+                          <li><a title="Android Studio使用的插件" href="15747689633391.html">Android Studio使用的插件</a></li>
+                        
+                          <li><a title="Gradle知识" href="15873151730996.html">Gradle知识</a></li>
+                        
+                          <li><a title="APK文件结构以及优化APK的大小" href="15876077941240.html">APK文件结构以及优化APK的大小</a></li>
+                        
+                          <li><a title="Android Device Monitor工具" href="15955778686384.html">Android Device Monitor工具</a></li>
+                        
+                          <li><a title="Android Studio使用viewbinding" href="15927964749535.html">Android Studio使用viewbinding</a></li>
+                        
+                          <li><a title="Android Studio报的错误" href="15747589164365.html">Android Studio报的错误</a></li>
+                        
+                          <li><a title="设置代码信息模版" href="15686328305080.html">设置代码信息模版</a></li>
+                        
+                          <li><a title="ADB命令" href="15706865755803.html">ADB命令</a></li>
+                        
+                          <li><a title="使用ADB命令查看数据库数据·" href="15776895359955.html">使用ADB命令查看数据库数据·</a></li>
+                        
+                          <li><a title="AAPT命令" href="15706865946961.html">AAPT命令</a></li>
+                        
+                          <li><a title="SecureCRT工具使用" href="15744200819532.html">SecureCRT工具使用</a></li>
+                        
+                          <li><a title="Gradle和Gradle插件之间的版本关联" href="15663700347276.html">Gradle和Gradle插件之间的版本关联</a></li>
+                        
+                          <li><a title="Android将library打包成jar包或者aar文件" href="15777599008991.html">Android将library打包成jar包或者aar文件</a></li>
+                        
+                          <li><a title="build.gradle文件" href="15638732552597.html">build.gradle文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>四大组件及其相关类</span></li>
+                        
+                          <li><a title="Deep Links -- 深度链接" href="16208955206090.html">Deep Links -- 深度链接</a></li>
+                        
+                          <li><a title="Activity的状态保存和恢复" href="15994232717477.html">Activity的状态保存和恢复</a></li>
+                        
+                          <li><a title="View的滑动冲突" href="15991357742601.html">View的滑动冲突</a></li>
+                        
+                          <li><a title="View的滑动" href="15988921451098.html">View的滑动</a></li>
+                        
+                          <li><a title="Android的KeyEvent按键触摸事件传递机制" href="15984305843879.html">Android的KeyEvent按键触摸事件传递机制</a></li>
+                        
+                          <li><a title="自定义View和自定义ViewGroup中主要方法的执行顺序" href="15979224400729.html">自定义View和自定义ViewGroup中主要方法的执行顺序</a></li>
+                        
+                          <li><a title="自定义容器" href="15975164203980.html">自定义容器</a></li>
+                        
+                          <li><a title="自定义View" href="15966352005041.html">自定义View</a></li>
+                        
+                          <li><a title="AIDL" href="15965603616547.html">AIDL</a></li>
+                        
+                          <li><a title="View树的绘制流程" href="15961852523240.html">View树的绘制流程</a></li>
+                        
+                          <li><a title="Activity的组成结构" href="15961826101444.html">Activity的组成结构</a></li>
+                        
+                          <li><a title="Android数据存储" href="15925546637258.html">Android数据存储</a></li>
+                        
+                          <li><a title="Activity的启动流程" href="15913608813328.html">Activity的启动流程</a></li>
+                        
+                          <li><a title="安卓系统架构" href="15900311156878.html">安卓系统架构</a></li>
+                        
+                          <li><a title="多线程" href="15895247341993.html">多线程</a></li>
+                        
+                          <li><a title="View体系" href="15892159078168.html">View体系</a></li>
+                        
+                          <li><a title="四大组件的工作过程" href="15881609494140.html">四大组件的工作过程</a></li>
+                        
+                          <li><a title="Android IPC机制" href="15876457912729.html">Android IPC机制</a></li>
+                        
+                          <li><a title="Android数据序列化" href="15874843676808.html">Android数据序列化</a></li>
+                        
+                          <li><a title="Android的MotionEvent事件传递机制" href="15862769966851.html">Android的MotionEvent事件传递机制</a></li>
+                        
+                          <li><a title="SharedPreferences" href="15601718627780.html">SharedPreferences</a></li>
+                        
+                          <li><a title="Android简介" href="15834044312131.html">Android简介</a></li>
+                        
+                          <li><a title="Activity" href="15598792154683.html">Activity</a></li>
+                        
+                          <li><a title="安卓存储方式" href="15720050214610.html">安卓存储方式</a></li>
+                        
+                          <li><a title="Binder机制" href="15719000904205.html">Binder机制</a></li>
+                        
+                          <li><a title="安卓事件处理" href="15717946812357.html">安卓事件处理</a></li>
+                        
+                          <li><a title="Intent" href="15640232512188.html">Intent</a></li>
+                        
+                          <li><a title="ContentProvider--内容提供者" href="15603581865930.html">ContentProvider--内容提供者</a></li>
+                        
+                          <li><a title="Service--服务" href="15603581806506.html">Service--服务</a></li>
+                        
+                          <li><a title="BroadcastReceiver" href="15603581707523.html">BroadcastReceiver</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android组件</span></li>
+                        
+                          <li><a title="Adapter及其子类" href="15987345244709.html">Adapter及其子类</a></li>
+                        
+                          <li><a title="FloatingActionButton" href="15873151238128.html">FloatingActionButton</a></li>
+                        
+                          <li><a title="NavigationView" href="15873151137838.html">NavigationView</a></li>
+                        
+                          <li><a title="BottomSheetBehavior" href="15873151109302.html">BottomSheetBehavior</a></li>
+                        
+                          <li><a title="TabLayout" href="15873151075682.html">TabLayout</a></li>
+                        
+                          <li><a title="CollaspingToolbarLayout" href="15873150961844.html">CollaspingToolbarLayout</a></li>
+                        
+                          <li><a title="CoordinatorLayout" href="15873150855710.html">CoordinatorLayout</a></li>
+                        
+                          <li><a title="TextInputLayout" href="15873150854952.html">TextInputLayout</a></li>
+                        
+                          <li><a title="Snackbar" href="15873150711511.html">Snackbar</a></li>
+                        
+                          <li><a title="View（视图）" href="15587797736951.html">View（视图）</a></li>
+                        
+                          <li><a title="TextView" href="15584534943886.html">TextView</a></li>
+                        
+                          <li><a title="EditText" href="15587752872990.html">EditText</a></li>
+                        
+                          <li><a title="ImageView" href="15590447462728.html">ImageView</a></li>
+                        
+                          <li><a title="Button" href="15590305484634.html">Button</a></li>
+                        
+                          <li><a title="Toast" href="15832318775043.html">Toast</a></li>
+                        
+                          <li><a title="Spinner" href="15601388608282.html">Spinner</a></li>
+                        
+                          <li><a title="CheckBox和RadioButton" href="15601388701602.html">CheckBox和RadioButton</a></li>
+                        
+                          <li><a title="ProgressBar" href="15601389345357.html">ProgressBar</a></li>
+                        
+                          <li><a title="SeekBar" href="15832322241074.html">SeekBar</a></li>
+                        
+                          <li><a title="RatingBar" href="15832323147149.html">RatingBar</a></li>
+                        
+                          <li><a title="时间相关的控件" href="15832327057402.html">时间相关的控件</a></li>
+                        
+                          <li><a title="WebView" href="15601389648936.html">WebView</a></li>
+                        
+                          <li><a title="ListView" href="15590482064056.html">ListView</a></li>
+                        
+                          <li><a title="RecyclerView" href="15601389530971.html">RecyclerView</a></li>
+                        
+                          <li><a title="ScrollView和HorizontalView" href="15601389773513.html">ScrollView和HorizontalView</a></li>
+                        
+                          <li><a title="ViewPager" href="15601389699132.html">ViewPager</a></li>
+                        
+                          <li><a title="Fragment" href="15830020373441.html">Fragment</a></li>
+                        
+                          <li><a title="TabLayout" href="15639475255226.html">TabLayout</a></li>
+                        
+                          <li><a title="WheelView" href="15832330644393.html">WheelView</a></li>
+                        
+                          <li><a title="SwipeRefreshLayout" href="15607374213373.html">SwipeRefreshLayout</a></li>
+                        
+                          <li><a title="三大布局根控件" href="15832328030131.html">三大布局根控件</a></li>
+                        
+                          <li><a title="ConstraintLayout" href="15720053521924.html">ConstraintLayout</a></li>
+                        
+                          <li><a title="序" href="15584059143309.html">序</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>消息机制与存储</span></li>
+                        
+                          <li><a title="Thread" href="15941454444849.html">Thread</a></li>
+                        
+                          <li><a title="ThreadLocal类" href="15915526996179.html">ThreadLocal类</a></li>
+                        
+                          <li><a title="Message类" href="15915526938269.html">Message类</a></li>
+                        
+                          <li><a title="MessageQueue类" href="15915526852831.html">MessageQueue类</a></li>
+                        
+                          <li><a title="Handler类" href="15915526788145.html">Handler类</a></li>
+                        
+                          <li><a title="Looper类" href="15915526673284.html">Looper类</a></li>
+                        
+                          <li><a title="Android的消息机制--Handler消息机制" href="15887553843774.html">Android的消息机制--Handler消息机制</a></li>
+                        
+                          <li><a title="Handler消息机制" href="15681720095770.html">Handler消息机制</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>网络请求相关</span></li>
+                        
+                          <li><a title="Android 9.0 http网络请求问题" href="16204446832298.html">Android 9.0 http网络请求问题</a></li>
+                        
+                          <li><a title="PC端浏览器使用Http协议缓存" href="16032827867874.html">PC端浏览器使用Http协议缓存</a></li>
+                        
+                          <li><a title="HttpClient和HttpURLConnection" href="15897672365492.html">HttpClient和HttpURLConnection</a></li>
+                        
+                          <li><a title="网络相关" href="15616048657421.html">网络相关</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android功能</span></li>
+                        
+                          <li><a title="触摸事件" href="16221687313432.html">触摸事件</a></li>
+                        
+                          <li><a title="心跳包机制" href="16039934816197.html">心跳包机制</a></li>
+                        
+                          <li><a title="断点续传" href="16039920085823.html">断点续传</a></li>
+                        
+                          <li><a title="插件化" href="15832337513162.html">插件化</a></li>
+                        
+                          <li><a title="热修复" href="15832337461818.html">热修复</a></li>
+                        
+                          <li><a title="文件上传、下载、断点续传" href="15832337021510.html">文件上传、下载、断点续传</a></li>
+                        
+                          <li><a title="json/xml数据解析" href="15832336723066.html">json/xml数据解析</a></li>
+                        
+                          <li><a title="屏幕适配" href="15832335578226.html">屏幕适配</a></li>
+                        
+                          <li><a title="状态栏" href="15832335450787.html">状态栏</a></li>
+                        
+                          <li><a title="换肤" href="15832335396541.html">换肤</a></li>
+                        
+                          <li><a title="手势关闭" href="15832335221530.html">手势关闭</a></li>
+                        
+                          <li><a title="导航菜单" href="15832335120230.html">导航菜单</a></li>
+                        
+                          <li><a title="图表" href="15832335046878.html">图表</a></li>
+                        
+                          <li><a title="数据库" href="15832334917388.html">数据库</a></li>
+                        
+                          <li><a title="新手引导" href="15832334714220.html">新手引导</a></li>
+                        
+                          <li><a title="二维码和条形码" href="15832334567005.html">二维码和条形码</a></li>
+                        
+                          <li><a title="轮播图" href="15832334294029.html">轮播图</a></li>
+                        
+                          <li><a title="音视频" href="15832332927437.html">音视频</a></li>
+                        
+                          <li><a title="日志" href="15832038130305.html">日志</a></li>
+                        
+                          <li><a title="安卓系统设置" href="15794224269421.html">安卓系统设置</a></li>
+                        
+                          <li><a title="常用工具类和方法" href="15609277381914.html">常用工具类和方法</a></li>
+                        
+                          <li><a title="拍照和读取本地相册" href="15603979455589.html">拍照和读取本地相册</a></li>
+                        
+                          <li><a title="控制系统硬件功能" href="15603585084416.html">控制系统硬件功能</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android资源文件</span></li>
+                        
+                          <li><a title="特殊符号" href="16124972972718.html">特殊符号</a></li>
+                        
+                          <li><a title="推送机制" href="16012297259440.html">推送机制</a></li>
+                        
+                          <li><a title="Android插件框架机制" href="16012289364746.html">Android插件框架机制</a></li>
+                        
+                          <li><a title="64K方法数限制原理与解决方案" href="16012264048970.html">64K方法数限制原理与解决方案</a></li>
+                        
+                          <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+                        
+                          <li><a title="Android 布局优化" href="15900636437169.html">Android 布局优化</a></li>
+                        
+                          <li><a title="Drawable文件" href="15832339330725.html">Drawable文件</a></li>
+                        
+                          <li><a title="异步消息处理线程" href="15744242463129.html">异步消息处理线程</a></li>
+                        
+                          <li><a title="Handler消息机制" href="15640230934557.html">Handler消息机制</a></li>
+                        
+                          <li><a title="内存泄漏" href="15638690144641.html">内存泄漏</a></li>
+                        
+                          <li><a title="画图" href="15627251763320.html">画图</a></li>
+                        
+                          <li><a title="反编译" href="15626395593984.html">反编译</a></li>
+                        
+                          <li><a title="assets资源" href="15608221314548.html">assets资源</a></li>
+                        
+                          <li><a title="Permissions权限" href="15597992631758.html">Permissions权限</a></li>
+                        
+                          <li><a title="res文件夹中的资源" href="15597050707116.html">res文件夹中的资源</a></li>
+                        
+                          <li><a title="动画" href="15591315255964.html">动画</a></li>
+                        
+                          <li><a title="Style和Theme" href="15591171572096.html">Style和Theme</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>安卓多媒体、图像</span></li>
+                        
+                          <li><a title="音频传输" href="16188902074852.html">音频传输</a></li>
+                        
+                          <li><a title="音频格式对比" href="16060934492693.html">音频格式对比</a></li>
+                        
+                          <li><a title="音频" href="16058388262225.html">音频</a></li>
+                        
+                          <li><a title="图片压缩" href="16032147433526.html">图片压缩</a></li>
+                        
+                          <li><a title="位图运算" href="15978627842395.html">位图运算</a></li>
+                        
+                          <li><a title="阴影和渐变" href="15978578322849.html">阴影和渐变</a></li>
+                        
+                          <li><a title="双缓存技术" href="15978446413433.html">双缓存技术</a></li>
+                        
+                          <li><a title="Canvas的clipXxx()方法" href="15977771825588.html">Canvas的clipXxx()方法</a></li>
+                        
+                          <li><a title="Canvas的坐标转换" href="15977752461748.html">Canvas的坐标转换</a></li>
+                        
+                          <li><a title="View的invalidate()方法" href="15977739560419.html">View的invalidate()方法</a></li>
+                        
+                          <li><a title="Canvas类和Paint类" href="15976921344218.html">Canvas类和Paint类</a></li>
+                        
+                          <li><a title="Bitmap类和BitmapDrawable类" href="15976898855375.html">Bitmap类和BitmapDrawable类</a></li>
+                        
+                          <li><a title="Rect类和RectF类" href="15976691326047.html">Rect类和RectF类</a></li>
+                        
+                          <li><a title="Point类和PointF类" href="15976663490288.html">Point类和PointF类</a></li>
+                        
+                          <li><a title="AudioManager" href="15960319990767.html">AudioManager</a></li>
+                        
+                          <li><a title="Android WebView和JavaScript的交互" href="15874899350106.html">Android WebView和JavaScript的交互</a></li>
+                        
+                          <li><a title="音视频相关" href="15635278413412.html">音视频相关</a></li>
+                        
+                          <li><a title="相机相关" href="15635278316611.html">相机相关</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Jetpack</span></li>
+                        
+                          <li><a title="Jetpack" href="16231186943622.html">Jetpack</a></li>
+                        
+                          <li><a title="Lifecycle" href="16178717142947.html">Lifecycle</a></li>
+                        
+                          <li><a title="Navigation" href="16207856239934.html">Navigation</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>第三方库</span></li>
+                        
+                          <li><a title="Stetho" href="15632684758267.html">Stetho</a></li>
+                        
+                          <li><a title="LeakCanary" href="15632684640367.html">LeakCanary</a></li>
+                        
+                          <li><a title="Gson" href="15632684493835.html">Gson</a></li>
+                        
+                          <li><a title="支付" href="15632684444086.html">支付</a></li>
+                        
+                          <li><a title="推送" href="15632684365504.html">推送</a></li>
+                        
+                          <li><a title="二维码条形码库" href="15632683396317.html">二维码条形码库</a></li>
+                        
+                          <li><a title="RxJava" href="15632683277748.html">RxJava</a></li>
+                        
+                          <li><a title="SqlBright" href="15632683205618.html">SqlBright</a></li>
+                        
+                          <li><a title="GreenDao" href="15632683120036.html">GreenDao</a></li>
+                        
+                          <li><a title="Fresco" href="15632683056692.html">Fresco</a></li>
+                        
+                          <li><a title="Picasso" href="15632683006333.html">Picasso</a></li>
+                        
+                          <li><a title="Glide" href="15632682942973.html">Glide</a></li>
+                        
+                          <li><a title="ButterKnife" href="15632682824135.html">ButterKnife</a></li>
+                        
+                          <li><a title="EventBus" href="15632682766122.html">EventBus</a></li>
+                        
+                          <li><a title="Retrofit" href="15632682688049.html">Retrofit</a></li>
+                        
+                          <li><a title="OkHttp3" href="15632682616090.html">OkHttp3</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android系统相关</span></li>
+                        
+                          <li><a title="AMS" href="16202952165241.html">AMS</a></li>
+                        
+                          <li><a title="安卓热修复" href="16041750280944.html">安卓热修复</a></li>
+                        
+                          <li><a title="安卓性能优化" href="16041742389517.html">安卓性能优化</a></li>
+                        
+                          <li><a title="线程池" href="16037158072749.html">线程池</a></li>
+                        
+                          <li><a title="App的启动过程" href="16036390477812.html">App的启动过程</a></li>
+                        
+                          <li><a title="APK启动过程" href="16007836387351.html">APK启动过程</a></li>
+                        
+                          <li><a title="apk文件以及打包流程" href="16006415583476.html">apk文件以及打包流程</a></li>
+                        
+                          <li><a title="ANR以及解决方法以及捕获未捕获的异常" href="16002456845586.html">ANR以及解决方法以及捕获未捕获的异常</a></li>
+                        
+                          <li><a title="内存溢出和解决方法" href="16001927297660.html">内存溢出和解决方法</a></li>
+                        
+                          <li><a title="APK安装过程" href="15997078103768.html">APK安装过程</a></li>
+                        
+                          <li><a title="Scroller" href="15988136317147.html">Scroller</a></li>
+                        
+                          <li><a title="VelocityTracker类" href="15988105105264.html">VelocityTracker类</a></li>
+                        
+                          <li><a title="MotionEvent屏幕触摸事件分发流程" href="15983458791697.html">MotionEvent屏幕触摸事件分发流程</a></li>
+                        
+                          <li><a title="KeyEvent按键点击事件处理流程" href="15982890451497.html">KeyEvent按键点击事件处理流程</a></li>
+                        
+                          <li><a title="Binder" href="15982033025648.html">Binder</a></li>
+                        
+                          <li><a title="TelephonyManager.java" href="15970492312259.html">TelephonyManager.java</a></li>
+                        
+                          <li><a title="setContentView()" href="15954049156461.html">setContentView()</a></li>
+                        
+                          <li><a title="AsyncTask.java" href="15953888428518.html">AsyncTask.java</a></li>
+                        
+                          <li><a title="ListView设置Adapter和更新数据源码分析--观察者模式" href="15951954419377.html">ListView设置Adapter和更新数据源码分析--观察者模式</a></li>
+                        
+                          <li><a title="PackageManagerService.java" href="15948481287731.html">PackageManagerService.java</a></li>
+                        
+                          <li><a title="SystemServer.java" href="15948434761291.html">SystemServer.java</a></li>
+                        
+                          <li><a title="Android系统启动过程" href="15946404844407.html">Android系统启动过程</a></li>
+                        
+                          <li><a title="Context" href="15936928417691.html">Context</a></li>
+                        
+                          <li><a title="Window和WindowManager" href="15882183325715.html">Window和WindowManager</a></li>
+                        
+                          <li><a title="Manifest清单文件" href="15596519462062.html">Manifest清单文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>安卓源码</span></li>
+                        
+                          <li><a title="SystemClock类" href="16067889519707.html">SystemClock类</a></li>
+                        
+                          <li><a title="onUserInteraction()与onUserLeaveHint()" href="16003048093058.html">onUserInteraction()与onUserLeaveHint()</a></li>
+                        
+                          <li><a title="HandlerThread" href="16002981223383.html">HandlerThread</a></li>
+                        
+                          <li><a title="IntentService" href="16002980534244.html">IntentService</a></li>
+                        
+                          <li><a title="Scroller" href="15988136317147.html">Scroller</a></li>
+                        
+                          <li><a title="GestureDetector" href="15988119621841.html">GestureDetector</a></li>
+                        
+                          <li><a title="VelocityTracker类" href="15988105105264.html">VelocityTracker类</a></li>
+                        
+                          <li><a title="TelephonyManager.java" href="15970492312259.html">TelephonyManager.java</a></li>
+                        
+                          <li><a title="PackageManagerService.java" href="15948481287731.html">PackageManagerService.java</a></li>
+                        
+                          <li><a title="JNI调用机制" href="15719841747032.html">JNI调用机制</a></li>
+                        
+                          <li><a title="ComponentCallbacks和ComponentCallbacks2" href="15959378334016.html">ComponentCallbacks和ComponentCallbacks2</a></li>
+                        
+                          <li><a title="安卓源码目录结构分析" href="15713661513977.html">安卓源码目录结构分析</a></li>
+                        
+                          <li><a title="preloaded-classes" href="15717452568747.html">preloaded-classes</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Framework</span></li>
+                        
+                          <li><a title="连接Android和Linux内核的桥梁——Android的Bionic" href="15796625335119.html">连接Android和Linux内核的桥梁——Android的Bionic</a></li>
+                        
+                          <li><a title="Android的编译环境--Build系统" href="15791618199796.html">Android的编译环境--Build系统</a></li>
+                        
+                          <li><a title="Android.mk文件" href="15773673300273.html">Android.mk文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android内核剖析</span></li>
+                        
+                          <li><a title="Framework概述" href="15747509659838.html">Framework概述</a></li>
+                        
+                          <li><a title="Binder" href="15747333089774.html">Binder</a></li>
+                        
+                          <li><a title="Framework的启动过程" href="15747331308712.html">Framework的启动过程</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>深入理解Android</span></li>
+                        
+                          <li><a title="深入理解PackageManagerService" href="16008487631075.html">深入理解PackageManagerService</a></li>
+                        
+                          <li><a title="深入理解Surface系统" href="16007635680752.html">深入理解Surface系统</a></li>
+                        
+                          <li><a title="深入理解WindowManagerService" href="16007630337829.html">深入理解WindowManagerService</a></li>
+                        
+                          <li><a title="深入理解Android输入系统" href="16006883092534.html">深入理解Android输入系统</a></li>
+                        
+                          <li><a title="3. 连接Android和Linux内核的桥梁--Android的Bionic" href="15826096876760.html">3. 连接Android和Linux内核的桥梁--Android的Bionic</a></li>
+                        
+                          <li><a title="2.Android的编译环境--Build系统" href="15825987090516.html">2.Android的编译环境--Build系统</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Android开发工具</span></li>
+                        
+                          <li><a title="GPU呈现模式分析" href="16203574480848.html">GPU呈现模式分析</a></li>
+                        
+                          <li><a title="Android不透明度对应的16进制值" href="16109381219800.html">Android不透明度对应的16进制值</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>架构</span></li>
+                        
+                          <li><a title="Android组件化架构" href="16212169719717.html">Android组件化架构</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Kotlin</span></li>
+                        
+                          <li><a title="Kotlin修饰符" href="16220176873496.html">Kotlin修饰符</a></li>
+                        
+                          <li><a title="Kotlin配置" href="16215019403387.html">Kotlin配置</a></li>
+                        
+                          <li><a title="Any和Object" href="16202922452879.html">Any和Object</a></li>
+                        
+                          <li><a title="注意事项" href="16054946011494.html">注意事项</a></li>
+                        
+                          <li><a title="函数" href="16050787660502.html">函数</a></li>
+                        
+                          <li><a title="集合框架" href="16050764808062.html">集合框架</a></li>
+                        
+                          <li><a title="区间" href="16050753339197.html">区间</a></li>
+                        
+                          <li><a title="数组" href="16050733875473.html">数组</a></li>
+                        
+                          <li><a title="基本类型数据" href="16050663211604.html">基本类型数据</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Git</span></li>
+                        
+                          <li><a title="git概述" href="15720062741897.html">git概述</a></li>
+                        
+                          <li><a title="Git按照功能来分类" href="15718356444970.html">Git按照功能来分类</a></li>
+                        
+                          <li><a title="Git常见用法" href="15607376634694.html">Git常见用法</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="Java线程池" href="16041633383721.html">Java线程池</a></li>
+                        
+                          <li><a title="Java线程" href="16041627017647.html">Java线程</a></li>
+                        
+                          <li><a title="Java深拷贝和浅拷贝" href="16041605743704.html">Java深拷贝和浅拷贝</a></li>
+                        
+                          <li><a title="Java异常" href="16041603866147.html">Java异常</a></li>
+                        
+                          <li><a title="RandomAccessFile" href="16041602871100.html">RandomAccessFile</a></li>
+                        
+                          <li><a title="Java IO" href="16041584305867.html">Java IO</a></li>
+                        
+                          <li><a title="LinkedHashMap" href="16041410387995.html">LinkedHashMap</a></li>
+                        
+                          <li><a title="TreeMap" href="16041410169042.html">TreeMap</a></li>
+                        
+                          <li><a title="HashMap" href="16041393802858.html">HashMap</a></li>
+                        
+                          <li><a title="LinkedList" href="16041386256783.html">LinkedList</a></li>
+                        
+                          <li><a title="ArrayList" href="16041374199121.html">ArrayList</a></li>
+                        
+                          <li><a title="Java集合类" href="16041330974013.html">Java集合类</a></li>
+                        
+                          <li><a title="杂记" href="15948431328032.html">杂记</a></li>
+                        
+                          <li><a title="Java的四种引用变量" href="15877076691357.html">Java的四种引用变量</a></li>
+                        
+                          <li><a title="MeasureSpec" href="15864726816307.html">MeasureSpec</a></li>
+                        
+                          <li><a title="Java小知识点" href="15777569350023.html">Java小知识点</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>设计模式</span></li>
+                        
+                          <li><a title="设计模式概述" href="15783889880973.html">设计模式概述</a></li>
+                        
+                          <li><a title="UML(统一建模语言)" href="16230361480088.html">UML(统一建模语言)</a></li>
+                        
+                          <li><a title="单例模式" href="15897847467736.html">单例模式</a></li>
+                        
+                          <li><a title="代理模式" href="15900263250197.html">代理模式</a></li>
+                        
+                          <li><a title="建造者模式" href="15897849590411.html">建造者模式</a></li>
+                        
+                          <li><a title="工厂方法模式" href="15897849469753.html">工厂方法模式</a></li>
+                        
+                          <li><a title="简单工厂模式" href="15897849322436.html">简单工厂模式</a></li>
+                        
+                          <li><a title="简单工厂模式(Simple Factory)" href="15784035954571.html">简单工厂模式(Simple Factory)</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>数据结构和算法</span></li>
+                        
+                          <li><a title="List及其子类" href="16038826600526.html">List及其子类</a></li>
+                        
+                          <li><a title="面试中的算法" href="15970860318982.html">面试中的算法</a></li>
+                        
+                          <li><a title="排序算法" href="15881272462871.html">排序算法</a></li>
+                        
+                          <li><a title="树" href="15881273285027.html">树</a></li>
+                        
+                          <li><a title="数据结构基础" href="15644690293137.html">数据结构基础</a></li>
+                        
+                          <li><a title="算法概述" href="15644655646063.html">算法概述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>网络爬虫</span></li>
+                        
+                          <li><a title="爬虫--基本库的使用" href="15660531164999.html">爬虫--基本库的使用</a></li>
+                        
+                          <li><a title="爬虫概述" href="15660114926379.html">爬虫概述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>计算机网络</span></li>
+                        
+                          <li><a title="图解HTTP--第一章--了解Web及网络基础" href="16023212652925.html">图解HTTP--第一章--了解Web及网络基础</a></li>
+                        
+                          <li><a title="图解HTTP--第九章--基于http的功能追加协议" href="15855764881285.html">图解HTTP--第九章--基于http的功能追加协议</a></li>
+                        
+                          <li><a title="图解HTTP--第八章--确认访问用户身份的认证" href="15855764130446.html">图解HTTP--第八章--确认访问用户身份的认证</a></li>
+                        
+                          <li><a title="图解HTTP--第七章--确保web安全的https" href="15855763389947.html">图解HTTP--第七章--确保web安全的https</a></li>
+                        
+                          <li><a title="图解HTTP--第六章--http首部" href="15855761102550.html">图解HTTP--第六章--http首部</a></li>
+                        
+                          <li><a title="图解HTTP--第五章--与HTTP协作的Web服务器" href="15855728450260.html">图解HTTP--第五章--与HTTP协作的Web服务器</a></li>
+                        
+                          <li><a title="图解HTTP--第四章--返回结果的http状态码" href="15855701437164.html">图解HTTP--第四章--返回结果的http状态码</a></li>
+                        
+                          <li><a title="图解HTTP--第三章--HTTP报文内的HTTP信息" href="15853911594446.html">图解HTTP--第三章--HTTP报文内的HTTP信息</a></li>
+                        
+                          <li><a title="图解HTTP--第二章--简单的HTTP协议" href="15853261274339.html">图解HTTP--第二章--简单的HTTP协议</a></li>
+                        
+                          <li><a title="TCP/IP" href="15852402680558.html">TCP/IP</a></li>
+                        
+                          <li><a title="HTTP和HTTPS" href="15850526868228.html">HTTP和HTTPS</a></li>
+                        
+                          <li><a title="计算机网络第五版--第二章" href="15849271154228.html">计算机网络第五版--第二章</a></li>
+                        
+                          <li><a title="计算机网络第五版--第一章" href="15846863033375.html">计算机网络第五版--第一章</a></li>
+                        
+                          <li><a title="ping命令" href="15832390905461.html">ping命令</a></li>
+                        
+                          <li><a title="基础" href="15650980568729.html">基础</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>计算机基础</span></li>
+                        
+                          <li><a title="简单常识" href="15955796448880.html">简单常识</a></li>
+                        
+                          <li><a title="地图基础知识" href="15953376818758.html">地图基础知识</a></li>
+                        
+                          <li><a title="Java语言中注意事项" href="15906748975501.html">Java语言中注意事项</a></li>
+                        
+                          <li><a title="术语" href="15831479672487.html">术语</a></li>
+                        
+                          <li><a title="HTTP基本原理" href="15659232055748.html">HTTP基本原理</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Linux系统</span></li>
+                        
+                          <li><a title="基础简述" href="15719238641803.html">基础简述</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React-Native</span></li>
+                        
+                          <li><a title="ScrollView组件" href="15622306484069.html">ScrollView组件</a></li>
+                        
+                          <li><a title="组件的生命周期" href="15621446974979.html">组件的生命周期</a></li>
+                        
+                          <li><a title="TextInput组件" href="15621338635960.html">TextInput组件</a></li>
+                        
+                          <li><a title="遇到的问题" href="15620469922995.html">遇到的问题</a></li>
+                        
+                          <li><a title="组件" href="15617091937336.html">组件</a></li>
+                        
+                          <li><a title="React-Native零碎" href="15616187358724.html">React-Native零碎</a></li>
+                        
+                          <li><a title="react-navigation" href="15584071613702.html">react-navigation</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>随想</span></li>
+                        
+                          <li><a title="整理的体系" href="16031941250957.html">整理的体系</a></li>
+                        
+                          <li><a title="需要后续查看的东西" href="15893692089911.html">需要后续查看的东西</a></li>
+                        
+                          <li><a title="to be a free man" href="15605804886383.html">to be a free man</a></li>
+                        
+                          <li><a title="for" href="15583472660662.html">for</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>App的启动过程</h1>
+
+<ul>
+<li>
+<a href="#toc_0">流程概述</a>
+<ul>
+<li>
+<a href="#toc_1">Launcher应用</a>
+<ul>
+<li>
+<a href="#toc_2">1. Launcher.java</a>
+</li>
+<li>
+<a href="#toc_3">2. ItemClickHandler.java</a>
+</li>
+<li>
+<a href="#toc_4">3. Launcher.java</a>
+</li>
+<li>
+<a href="#toc_5">4. BaseDraggingActivity</a>
+</li>
+<li>
+<a href="#toc_6">5. Activity</a>
+</li>
+<li>
+<a href="#toc_7">6. Instrumentation</a>
+</li>
+<li>
+<a href="#toc_8">7. ActivityTaskManager</a>
+</li>
+<li>
+<a href="#toc_9">8. ActivityTaskManagerService</a>
+</li>
+<li>
+<a href="#toc_10">9. ActivityStartController</a>
+</li>
+<li>
+<a href="#toc_11">10. ActivityStarter</a>
+</li>
+<li>
+<a href="#toc_12">11. RootActivityContainer</a>
+</li>
+<li>
+<a href="#toc_13">12. ActivityStack</a>
+</li>
+<li>
+<a href="#toc_14">13. ClientLifecycleManager</a>
+</li>
+<li>
+<a href="#toc_15">14. ClientTransaction</a>
+</li>
+<li>
+<a href="#toc_16">15. ActivityThread</a>
+</li>
+<li>
+<a href="#toc_17">16. ClientTransactionHandler</a>
+</li>
+<li>
+<a href="#toc_18">17. ActivityThread/H</a>
+</li>
+<li>
+<a href="#toc_19">18. TransactionExecutor</a>
+</li>
+<li>
+<a href="#toc_20">19. PauseActivityItem</a>
+</li>
+<li>
+<a href="#toc_21">20. ActivityThread</a>
+</li>
+<li>
+<a href="#toc_22">21. Instrumentation</a>
+</li>
+<li>
+<a href="#toc_23">22. Activity</a>
+</li>
+<li>
+<a href="#toc_24">23. ActivityStackSupervisor</a>
+</li>
+<li>
+<a href="#toc_25">24. ActivityTaskManagerService</a>
+</li>
+<li>
+<a href="#toc_26">25. ActivityManagerInternal</a>
+</li>
+<li>
+<a href="#toc_27">26. ActivityManagerService</a>
+</li>
+<li>
+<a href="#toc_28">27. ProcessList</a>
+</li>
+<li>
+<a href="#toc_29">28. Process</a>
+</li>
+<li>
+<a href="#toc_30">29. ZygoteProcess</a>
+</li>
+<li>
+<a href="#toc_31">30. ActivityThread</a>
+</li>
+<li>
+<a href="#toc_32">31. ActivityManagerService</a>
+</li>
+<li>
+<a href="#toc_33">32. ActivityTaskManagerInternal</a>
+</li>
+<li>
+<a href="#toc_34">33. ActivityTaskManagerService/LocalService</a>
+</li>
+<li>
+<a href="#toc_35">34. RootActivityContainer</a>
+</li>
+<li>
+<a href="#toc_36">35. ActivityStackSupervisor</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_37">总结</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>参考资料</strong></p>
+
+<pre class="line-numbers"><code class="language-java">https://blog.csdn.net/zzw0221/article/details/106716620
+</code></pre>
+
+<p><strong>源码文件</strong></p>
+
+<pre class="line-numbers"><code class="language-java">\packages\apps\launcher3\src\com\android\launcher3\Launcher.java
+\packages\apps\launcher3\src\com\android\launcher3\touch\ItemClickHandler.java
+
+</code></pre>
+
+<h2 id="toc_0">流程概述</h2>
+
+<p>&emsp;&emsp;当点击桌面的应用图标，就会启动一个应用。从桌面上点击app图标到app启动，以下是这部分的代码执行流程。<br/>
+&emsp;&emsp;安卓设备的桌面本身就是一个app，我们一般称之为Launcher。不过由于 Android 是开源的，很多手机厂商都做了相关的修改，甚至重新做一个新的启动页。<br/>
+&emsp;&emsp;当我们点击桌面的应用图标开始，就是Launcher应用中的一次点击事件。</p>
+
+<h3 id="toc_1">Launcher应用</h3>
+
+<p>&emsp;&emsp;在Launcher.java中的createShortcut(ViewGroup parent, WorkspaceItemInfo info)方法中设置的app图标点击事件，点击事件具体调用是在ItemClickHandler.java中。</p>
+
+<h4 id="toc_2">1. Launcher.java</h4>
+
+<pre class="line-numbers"><code class="language-java">public class Launcher extends BaseDraggingActivity implements LauncherExterns,
+        LauncherModel.Callbacks, LauncherProviderChangeListener, UserEventDelegate,
+        InvariantDeviceProfile.OnIDPChangeListener {
+    
+    View createShortcut(WorkspaceItemInfo info) {
+        return createShortcut((ViewGroup) mWorkspace.getChildAt(mWorkspace.getCurrentPage()), info);
+    }
+    
+    public View createShortcut(ViewGroup parent, WorkspaceItemInfo info) {
+        BubbleTextView favorite = (BubbleTextView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.app_icon, parent, false);
+        favorite.applyFromWorkspaceItem(info);
+        favorite.setOnClickListener(ItemClickHandler.INSTANCE);
+        favorite.setOnFocusChangeListener(mFocusHandler);
+        return favorite;
+    }
+            
+}
+</code></pre>
+
+<h4 id="toc_3">2. ItemClickHandler.java</h4>
+
+<pre class="line-numbers"><code class="language-java">public static final OnClickListener INSTANCE = getInstance(null);
+    //....
+    
+    public static final OnClickListener getInstance(String sourceContainer) {
+        return v -&gt; onClick(v, sourceContainer);
+    }
+
+    private static void onClick(View v, String sourceContainer) {
+        if (TestProtocol.sDebugTracing) {
+            android.util.Log.d(TestProtocol.NO_START_TAG,
+                    &quot;onClick 1&quot;);
+        }
+        // Make sure that rogue clicks don&#39;t get through while allapps is launching, or after the
+        // view has detached (it&#39;s possible for this to happen if the view is removed mid touch).
+        if (v.getWindowToken() == null) {
+            if (TestProtocol.sDebugTracing) {
+                android.util.Log.d(TestProtocol.NO_START_TAG,
+                        &quot;onClick 2&quot;);
+            }
+            return;
+        }
+
+        Launcher launcher = Launcher.getLauncher(v.getContext());
+        if (!launcher.getWorkspace().isFinishedSwitchingState()) {
+            if (TestProtocol.sDebugTracing) {
+                android.util.Log.d(TestProtocol.NO_START_TAG,
+                        &quot;onClick 3&quot;);
+            }
+            return;
+        }
+
+        Object tag = v.getTag();
+        if (tag instanceof WorkspaceItemInfo) {
+            onClickAppShortcut(v, (WorkspaceItemInfo) tag, launcher, sourceContainer);
+        } else if (tag instanceof FolderInfo) {
+            if (v instanceof FolderIcon) {
+                onClickFolderIcon(v);
+            }
+        } else if (tag instanceof AppInfo) {
+            if (TestProtocol.sDebugTracing) {
+                android.util.Log.d(TestProtocol.NO_START_TAG,
+                        &quot;onClick 4&quot;);
+            }
+            //关键代码；
+            startAppShortcutOrInfoActivity(v, (AppInfo) tag, launcher,
+                    sourceContainer == null ? CONTAINER_ALL_APPS: sourceContainer);
+        } else if (tag instanceof LauncherAppWidgetInfo) {
+            if (v instanceof PendingAppWidgetHostView) {
+                onClickPendingWidget((PendingAppWidgetHostView) v, launcher);
+            }
+        }
+    }
+    
+    private static void startAppShortcutOrInfoActivity(View v, ItemInfo item, Launcher launcher,
+            @Nullable String sourceContainer) {
+        if (TestProtocol.sDebugTracing) {
+            android.util.Log.d(TestProtocol.NO_START_TAG,
+                    &quot;startAppShortcutOrInfoActivity&quot;);
+        }
+        Intent intent;
+        if (item instanceof PromiseAppInfo) {
+            PromiseAppInfo promiseAppInfo = (PromiseAppInfo) item;
+            intent = promiseAppInfo.getMarketIntent(launcher);
+        } else {
+            intent = item.getIntent();
+        }
+        if (intent == null) {
+            throw new IllegalArgumentException(&quot;Input must have a valid intent&quot;);
+        }
+        if (item instanceof WorkspaceItemInfo) {
+            WorkspaceItemInfo si = (WorkspaceItemInfo) item;
+            if (si.hasStatusFlag(WorkspaceItemInfo.FLAG_SUPPORTS_WEB_UI)
+                    &amp;&amp; Intent.ACTION_VIEW.equals(intent.getAction())) {
+                // make a copy of the intent that has the package set to null
+                // we do this because the platform sometimes disables instant
+                // apps temporarily (triggered by the user) and fallbacks to the
+                // web ui. This only works though if the package isn&#39;t set
+                intent = new Intent(intent);
+                intent.setPackage(null);
+            }
+        }
+        if (v != null &amp;&amp; launcher.getAppTransitionManager().supportsAdaptiveIconAnimation()) {
+            // Preload the icon to reduce latency b/w swapping the floating view with the original.
+            FloatingIconView.fetchIcon(launcher, v, item, true /* isOpening */);
+        }
+        //关键代码；
+        launcher.startActivitySafely(v, intent, item, sourceContainer);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;在这里，执行的是tag instanceof AppInfo这个条件，执行的是startAppShortcutOrInfoActivity(v, (AppInfo) tag, launcher,sourceContainer == null ? CONTAINER_ALL_APPS: sourceContainer)方法。然后又是调用了launcher.startActivitySafely(v, intent, item, sourceContainer)，代码执行又回到了Luancher.java中了。</p>
+
+<h4 id="toc_4">3. Launcher.java</h4>
+
+<pre class="line-numbers"><code class="language-java">public class Launcher extends BaseDraggingActivity implements LauncherExterns,
+        LauncherModel.Callbacks, LauncherProviderChangeListener, UserEventDelegate,
+        InvariantDeviceProfile.OnIDPChangeListener {
+    //...
+    f (TestProtocol.sDebugTracing) {
+            android.util.Log.d(TestProtocol.NO_START_TAG,
+                    &quot;startActivitySafely outer&quot;);
+        }
+
+        if (!hasBeenResumed()) {
+            // Workaround an issue where the WM launch animation is clobbered when finishing the
+            // recents animation into launcher. Defer launching the activity until Launcher is
+            // next resumed.
+            addOnResumeCallback(() -&gt; startActivitySafely(v, intent, item, sourceContainer));
+            UiFactory.clearSwipeSharedState(true /* finishAnimation */);
+            return true;
+        }
+        //关键代码；
+        boolean success = super.startActivitySafely(v, intent, item, sourceContainer);
+        if (success &amp;&amp; v instanceof BubbleTextView) {
+            // This is set to the view that launched the activity that navigated the user away
+            // from launcher. Since there is no callback for when the activity has finished
+            // launching, enable the press state and keep this reference to reset the press
+            // state when we return to launcher.
+            BubbleTextView btv = (BubbleTextView) v;
+            btv.setStayPressed(true);
+            addOnResumeCallback(btv);
+        }
+        return success;
+    //...        
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用了super.startActivitySafely(v, intent, item, sourceContainer)，是调用了父类的方法，Launcher的父类是BaseDraggingActivity。</p>
+
+<h4 id="toc_5">4. BaseDraggingActivity</h4>
+
+<pre class="line-numbers"><code class="language-java">public abstract class BaseDraggingActivity extends BaseActivity
+        implements WallpaperColorInfo.OnChangeListener {
+    //...
+    public boolean startActivitySafely(View v, Intent intent, @Nullable ItemInfo item,
+            @Nullable String sourceContainer) {
+        if (TestProtocol.sDebugTracing) {
+            android.util.Log.d(TestProtocol.NO_START_TAG,
+                    &quot;startActivitySafely 1&quot;);
+        }
+        if (mIsSafeModeEnabled &amp;&amp; !Utilities.isSystemApp(this, intent)) {
+            Toast.makeText(this, R.string.safemode_shortcut_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        Bundle optsBundle = (v != null) ? getActivityLaunchOptionsAsBundle(v) : null;
+        UserHandle user = item == null ? null : item.user;
+
+        // Prepare intent
+        //注释（1）;
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (v != null) {
+            intent.setSourceBounds(getViewBounds(v));
+        }
+        try {
+            boolean isShortcut = (item instanceof WorkspaceItemInfo)
+                    &amp;&amp; (item.itemType == Favorites.ITEM_TYPE_SHORTCUT
+                    || item.itemType == Favorites.ITEM_TYPE_DEEP_SHORTCUT)
+                    &amp;&amp; !((WorkspaceItemInfo) item).isPromise();
+            if (isShortcut) {
+                // Shortcuts need some special checks due to legacy reasons.
+                startShortcutIntentSafely(intent, optsBundle, item, sourceContainer);
+            } else if (user == null || user.equals(Process.myUserHandle())) {
+                // Could be launching some bookkeeping activity
+                if (TestProtocol.sDebugTracing) {
+                    android.util.Log.d(TestProtocol.NO_START_TAG,
+                            &quot;startActivitySafely 2&quot;);
+                }
+                //关键代码，注释（2）；
+                startActivity(intent, optsBundle);
+                AppLaunchTracker.INSTANCE.get(this).onStartApp(intent.getComponent(),
+                        Process.myUserHandle(), sourceContainer);
+            } else {
+                LauncherAppsCompat.getInstance(this).startActivityForProfile(
+                        intent.getComponent(), user, intent.getSourceBounds(), optsBundle);
+                AppLaunchTracker.INSTANCE.get(this).onStartApp(intent.getComponent(), user,
+                        sourceContainer);
+            }
+            getUserEventDispatcher().logAppLaunch(v, intent);
+            getStatsLogManager().logAppLaunch(v, intent);
+            return true;
+        } catch (ActivityNotFoundException|SecurityException e) {
+            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            Log.e(TAG, &quot;Unable to launch. tag=&quot; + item + &quot; intent=&quot; + intent, e);
+        }
+        return false;
+    }
+    //...        
+}
+</code></pre>
+
+<p>&emsp;&emsp;注释1:在一个新的Task中启动Activity；<br/>
+&emsp;&emsp;注释2:根据startActivity(intent, optsBundle)方法往父类查看，发现在BaseActivity中没有该方法，继续往上追踪，最终调用的是Activity的startActivity(Intent intent, @Nullable Bundle options)方法；Launcher的继承关系如下：</p>
+
+<p>|-- Activity(framework\base\core\java\android\app\Activity)<br/>
+|-- -- BaseActivity<br/>
+|-- -- -- BaseDraggingActivity<br/>
+|-- -- -- -- Launcher</p>
+
+<h4 id="toc_6">5. Activity</h4>
+
+<pre class="line-numbers"><code class="language-java">public class Activity extends ContextThemeWrapper
+        implements LayoutInflater.Factory2,
+        Window.Callback, KeyEvent.Callback,
+        OnCreateContextMenuListener, ComponentCallbacks2,
+        Window.OnWindowDismissedCallback, WindowControllerCallback,
+        AutofillManager.AutofillClient, ContentCaptureManager.ContentCaptureClient {
+    //...
+    @Override
+    public void startActivity(Intent intent, @Nullable Bundle options) {
+        if (options != null) {
+            startActivityForResult(intent, -1, options);
+        } else {
+            // Note we want to go through this call for compatibility with
+            // applications that may have overridden the method.
+            startActivityForResult(intent, -1);
+        }
+    }
+    
+    public void startActivityForResult(@RequiresPermission Intent intent, int requestCode) {
+        startActivityForResult(intent, requestCode, null);
+    }
+    
+    public void startActivityForResult(@RequiresPermission Intent intent, int requestCode,
+            @Nullable Bundle options) {
+        if (mParent == null) {
+            options = transferSpringboardActivityOptions(options);
+            //关键代码；
+            Instrumentation.ActivityResult ar = mInstrumentation.execStartActivity(
+                    this, mMainThread.getApplicationThread(), mToken, this,
+                    intent, requestCode, options);
+            if (ar != null) {
+                mMainThread.sendActivityResult(
+                    mToken, mEmbeddedID, requestCode, ar.getResultCode(),
+                    ar.getResultData());
+            }
+            if (requestCode &gt;= 0) {
+                // If this start is requesting a result, we can avoid making
+                // the activity visible until the result is received.  Setting
+                // this code during onCreate(Bundle savedInstanceState) or onResume() will keep the
+                // activity hidden during this time, to avoid flickering.
+                // This can only be done when a result is requested because
+                // that guarantees we will get information back when the
+                // activity is finished, no matter what happens to it.
+                mStartedActivity = true;
+            }
+
+            cancelInputsAndStartExitTransition(options);
+            // TODO Consider clearing/flushing other event sources and events for child windows.
+        } else {
+            if (options != null) {
+                mParent.startActivityFromChild(this, intent, requestCode, options);
+            } else {
+                // Note we want to go through this method for compatibility with
+                // existing applications that may have overridden it.
+                mParent.startActivityFromChild(this, intent, requestCode);
+            }
+        }
+    }
+    //...        
+}
+</code></pre>
+
+<p>&emsp;&emsp;startActivityForResult(intent, -1)方法调用的是startActivityForResult(intent, requestCode, null)，所以最终还是执行的startActivityForResult(@RequiresPermission Intent intent, int requestCode,@Nullable Bundle options)方法。因为 Launcher 启动应用并不需要应用给予回复，所以 这里 requestCode 为 -1。<br/>
+&emsp;&emsp;最终调用了 Instrumentation 的 execStartActivity(this,mMainThread.getApplicationThread(), mToken, this,intent, requestCode, options) 方法。</p>
+
+<h4 id="toc_7">6. Instrumentation</h4>
+
+<p><strong>代码位于(framework\base\core\java\android\app)</strong><br/>
+&emsp;&emsp;Instrumentation 是 Android 系统中启动 Activity 的一个实际操作类，它用来监控应用程序和系统的交互。</p>
+
+<pre class="line-numbers"><code class="language-java">public class Instrumentation {
+    //...
+    @UnsupportedAppUsage
+    public ActivityResult execStartActivity(
+            Context who, IBinder contextThread, IBinder token, Activity target,
+            Intent intent, int requestCode, Bundle options) {
+        IApplicationThread whoThread = (IApplicationThread) contextThread;
+        Uri referrer = target != null ? target.onProvideReferrer() : null;
+        if (referrer != null) {
+            intent.putExtra(Intent.EXTRA_REFERRER, referrer);
+        }
+        if (mActivityMonitors != null) {
+            synchronized (mSync) {
+                final int N = mActivityMonitors.size();
+                for (int i=0; i&lt;N; i++) {
+                    final ActivityMonitor am = mActivityMonitors.get(i);
+                    ActivityResult result = null;
+                    if (am.ignoreMatchingSpecificIntents()) {
+                        result = am.onStartActivity(intent);
+                    }
+                    if (result != null) {
+                        am.mHits++;
+                        return result;
+                    } else if (am.match(who, null, intent)) {
+                        am.mHits++;
+                        if (am.isBlocking()) {
+                            return requestCode &gt;= 0 ? am.getResult() : null;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        try {
+            intent.migrateExtraStreamToClipData();
+            intent.prepareToLeaveProcess(who);
+            //关键代码；
+            int result = ActivityTaskManager.getService()
+                .startActivity(whoThread, who.getBasePackageName(), intent,
+                        intent.resolveTypeIfNeeded(who.getContentResolver()),
+                        token, target != null ? target.mEmbeddedID : null,
+                        requestCode, 0, null, options);
+            checkStartActivityResult(result, intent);
+        } catch (RemoteException e) {
+            throw new RuntimeException(&quot;Failure from system&quot;, e);
+        }
+        return null;
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用ActivityTaskManager.getService().startActivity(whoThread, who.getBasePackageName(), intent,intent.resolveTypeIfNeeded(who.getContentResolver()),token, target != null ? target.mEmbeddedID : null,requestCode, 0, null, options)方法，那我们就先看看ActivityTaskManager类。</p>
+
+<h4 id="toc_8">7. ActivityTaskManager</h4>
+
+<p><strong>代码位于：(framework\base\core\java\android\app)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">@TestApi
+@SystemService(Context.ACTIVITY_TASK_SERVICE)
+public class ActivityTaskManager {
+    //...
+    public static IActivityTaskManager getService() {
+        //关键代码；
+        return IActivityTaskManagerSingleton.get();
+    }
+    
+    @UnsupportedAppUsage(trackingBug = 129726065)
+    private static final Singleton&lt;IActivityTaskManager&gt; IActivityTaskManagerSingleton =
+            new Singleton&lt;IActivityTaskManager&gt;() {
+                @Override
+                protected IActivityTaskManager create() {
+                    final IBinder b = ServiceManager.getService(Context.ACTIVITY_TASK_SERVICE);
+                    return IActivityTaskManager.Stub.asInterface(b);
+                }
+            };
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;在这里是使用的AIDL调用，此处是AIDL的client端。Server端是ActivityTaskManagerService。Instrumentation 中 execStartActivity  方法实际调用的是 ActivityTaskManagerService 中的 startActivity 方法。Instrumentation 中 execStartActivity  方法实际调用的是 ActivityTaskManagerService 中的 startActivity 方法。</p>
+
+<h4 id="toc_9">8. ActivityTaskManagerService</h4>
+
+<p><strong>代码位于：(framework\base\services\core\java\com\android\server\wm)</strong><br/>
+<strong>IActivityTaskManager代码：（frameworks\base\core\java\android\app\IActivityTaskManager.aidl）</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
+    //...
+    @Override
+    public final int startActivity(IApplicationThread caller, String callingPackage,
+            Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, Bundle bOptions) {
+        return startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
+                resultWho, requestCode, startFlags, profilerInfo, bOptions,
+                UserHandle.getCallingUserId());
+    }
+    
+    @Override
+    public int startActivityAsUser(IApplicationThread caller, String callingPackage,
+            Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, Bundle bOptions, int userId) {
+        return startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
+                resultWho, requestCode, startFlags, profilerInfo, bOptions, userId,
+                true /*validateIncomingUser*/);
+    }
+    
+    int startActivityAsUser(IApplicationThread caller, String callingPackage,
+            Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, Bundle bOptions, int userId,
+            boolean validateIncomingUser) {
+        enforceNotIsolatedCaller(&quot;startActivityAsUser&quot;);
+
+        userId = getActivityStartController().checkTargetUser(userId, validateIncomingUser,
+                Binder.getCallingPid(), Binder.getCallingUid(), &quot;startActivityAsUser&quot;);
+
+        // TODO: Switch to user app stacks here.
+        //关键代码；
+        return getActivityStartController().obtainStarter(intent, &quot;startActivityAsUser&quot;)
+                .setCaller(caller)
+                .setCallingPackage(callingPackage)
+                .setResolvedType(resolvedType)
+                .setResultTo(resultTo)
+                .setResultWho(resultWho)
+                .setRequestCode(requestCode)
+                .setStartFlags(startFlags)
+                .setProfilerInfo(profilerInfo)
+                .setActivityOptions(bOptions)
+                .setMayWait(userId)
+                .execute();
+    }
+    
+    ActivityStartController getActivityStartController() {
+        return mActivityStartController;
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用getActivityStartController()获取ActivityStartController的实例，然后调用obtainStarter()方法。</p>
+
+<h4 id="toc_10">9. ActivityStartController</h4>
+
+<p>**代码位置：(framework\base\services\core\java\com\android\server\wm) **</p>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityStartController {
+    //...
+    ActivityStarter obtainStarter(Intent intent, String reason) {
+        return mFactory.obtain().setIntent(intent).setReason(reason);
+    }
+    
+    ActivityStartController(ActivityTaskManagerService service) {
+        this(service, service.mStackSupervisor,
+                new DefaultFactory(service, service.mStackSupervisor,
+                    new ActivityStartInterceptor(service, service.mStackSupervisor)));
+    }
+    
+    @VisibleForTesting
+    ActivityStartController(ActivityTaskManagerService service, ActivityStackSupervisor supervisor,Factory factory) {
+        mService = service;
+        mSupervisor = supervisor;
+        mHandler = new StartHandler(mService.mH.getLooper());
+        mFactory = factory;
+        mFactory.setController(this);
+        mPendingRemoteAnimationRegistry = new PendingRemoteAnimationRegistry(service,
+                service.mH);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;在obtainStarter()方法返回的是ActivityStarter对象，这里使用了工厂模式。mFactory是在ActivityStartController的构造方法中以参数的方式传递进来的，并且可以看到是DefaultFactory类实现的，而DefaultFactory是ActivityStarter的一个内部类。ActivityStartController的初始化是在ActivityTaskManagerService的initialize()方法中。</p>
+
+<pre class="line-numbers"><code class="language-java">//ActivityTaskManagerService类
+public void initialize(IntentFirewall intentFirewall, PendingIntentController intentController,
+            Looper looper) {
+        mH = new H(looper);
+        mUiHandler = new UiHandler();
+        mIntentFirewall = intentFirewall;
+        final File systemDir = SystemServiceManager.ensureSystemDir();
+        mAppWarnings = new AppWarnings(this, mUiContext, mH, mUiHandler, systemDir);
+        mCompatModePackages = new CompatModePackages(this, systemDir, mH);
+        mPendingIntentController = intentController;
+
+        mTempConfig.setToDefaults();
+        mTempConfig.setLocales(LocaleList.getDefault());
+        mConfigurationSeq = mTempConfig.seq = 1;
+        mStackSupervisor = createStackSupervisor();
+        mRootActivityContainer = new RootActivityContainer(this);
+        mRootActivityContainer.onConfigurationChanged(mTempConfig);
+
+        mTaskChangeNotificationController =
+                new TaskChangeNotificationController(mGlobalLock, mStackSupervisor, mH);
+        mLockTaskController = new LockTaskController(mContext, mStackSupervisor, mH);
+        //关键代码；
+        mActivityStartController = new ActivityStartController(this);
+        mRecentTasks = createRecentTasks();
+        mStackSupervisor.setRecentTasks(mRecentTasks);
+        mVrController = new VrController(mGlobalLock);
+        mKeyguardController = mStackSupervisor.getKeyguardController();
+    }
+</code></pre>
+
+<h4 id="toc_11">10. ActivityStarter</h4>
+
+<p><strong>代码位置：(framework\base\services\core\java\com\android\server\wm)</strong> </p>
+
+<pre class="line-numbers"><code class="language-java">class ActivityStarter {
+    //...
+    interface Factory {
+        void setController(ActivityStartController controller);
+
+        ActivityStarter obtain();
+
+        void recycle(ActivityStarter starter);
+    }
+    
+    static class DefaultFactory implements Factory {
+        //...
+        @Override
+        public ActivityStarter obtain() {
+            ActivityStarter starter = mStarterPool.acquire();
+
+            if (starter == null) {
+                starter = new ActivityStarter(mController, mService, mSupervisor, mInterceptor);
+            }
+
+            return starter;
+        }
+        //...
+    }
+    
+    ActivityStarter setIntent(Intent intent) {
+        mRequest.intent = intent;
+        return this;
+    }
+    
+    ActivityStarter setReason(String reason) {
+        mRequest.reason = reason;
+        return this;
+    }
+    
+    int execute() {
+        try {
+            // TODO(b/64750076): Look into passing request directly to these methods to allow
+            // for transactional diffs and preprocessing.
+            if (mRequest.mayWait) {
+                return startActivityMayWait(mRequest.caller, mRequest.callingUid,
+                        mRequest.callingPackage, mRequest.realCallingPid, mRequest.realCallingUid,
+                        mRequest.intent, mRequest.resolvedType,
+                        mRequest.voiceSession, mRequest.voiceInteractor, mRequest.resultTo,
+                        mRequest.resultWho, mRequest.requestCode, mRequest.startFlags,
+                        mRequest.profilerInfo, mRequest.waitResult, mRequest.globalConfig,
+                        mRequest.activityOptions, mRequest.ignoreTargetSecurity, mRequest.userId,
+                        mRequest.inTask, mRequest.reason,
+                        mRequest.allowPendingRemoteAnimationRegistryLookup,
+                        mRequest.originatingPendingIntent, mRequest.allowBackgroundActivityStart);
+            } else {
+                return startActivity(mRequest.caller, mRequest.intent, mRequest.ephemeralIntent,
+                        mRequest.resolvedType, mRequest.activityInfo, mRequest.resolveInfo,
+                        mRequest.voiceSession, mRequest.voiceInteractor, mRequest.resultTo,
+                        mRequest.resultWho, mRequest.requestCode, mRequest.callingPid,
+                        mRequest.callingUid, mRequest.callingPackage, mRequest.realCallingPid,
+                        mRequest.realCallingUid, mRequest.startFlags, mRequest.activityOptions,
+                        mRequest.ignoreTargetSecurity, mRequest.componentSpecified,
+                        mRequest.outActivity, mRequest.inTask, mRequest.reason,
+                        mRequest.allowPendingRemoteAnimationRegistryLookup,
+                        mRequest.originatingPendingIntent, mRequest.allowBackgroundActivityStart);
+            }
+        } finally {
+            onExecutionComplete();
+        }
+    }
+    
+    private int startActivityMayWait(IApplicationThread caller, int callingUid,
+            String callingPackage, int requestRealCallingPid, int requestRealCallingUid,
+            Intent intent, String resolvedType, IVoiceInteractionSession voiceSession,
+            IVoiceInteractor voiceInteractor, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, WaitResult outResult,
+            Configuration globalConfig, SafeActivityOptions options, boolean ignoreTargetSecurity,
+            int userId, TaskRecord inTask, String reason,
+            boolean allowPendingRemoteAnimationRegistryLookup,
+            PendingIntentRecord originatingPendingIntent, boolean allowBackgroundActivityStart) {
+            //...
+            final ActivityRecord[] outRecord = new ActivityRecord[1];
+            //关键代码；
+            int res = startActivity(caller, intent, ephemeralIntent, resolvedType, aInfo, rInfo,voiceSession, voiceInteractor, resultTo, resultWho, requestCode, callingPid,callingUid, callingPackage, realCallingPid, realCallingUid, startFlags, options,ignoreTargetSecurity, componentSpecified, outRecord, inTask, reason,allowPendingRemoteAnimationRegistryLookup, originatingPendingIntent,allowBackgroundActivityStart);
+
+            Binder.restoreCallingIdentity(origId);
+            //...
+            return res;
+        }
+    }
+    
+    private int startActivity(IApplicationThread caller, Intent intent, Intent ephemeralIntent,
+            String resolvedType, ActivityInfo aInfo, ResolveInfo rInfo,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            IBinder resultTo, String resultWho, int requestCode, int callingPid, int callingUid,
+            String callingPackage, int realCallingPid, int realCallingUid, int startFlags,
+            SafeActivityOptions options, boolean ignoreTargetSecurity, boolean componentSpecified,
+            ActivityRecord[] outActivity, TaskRecord inTask, String reason,
+            boolean allowPendingRemoteAnimationRegistryLookup,
+            PendingIntentRecord originatingPendingIntent, boolean allowBackgroundActivityStart) {
+
+        if (TextUtils.isEmpty(reason)) {
+            throw new IllegalArgumentException(&quot;Need to specify a reason.&quot;);
+        }
+        mLastStartReason = reason;
+        mLastStartActivityTimeMs = System.currentTimeMillis();
+        mLastStartActivityRecord[0] = null;
+
+        mLastStartActivityResult = startActivity(caller, intent, ephemeralIntent, resolvedType,
+                aInfo, rInfo, voiceSession, voiceInteractor, resultTo, resultWho, requestCode,
+                callingPid, callingUid, callingPackage, realCallingPid, realCallingUid, startFlags,
+                options, ignoreTargetSecurity, componentSpecified, mLastStartActivityRecord,
+                inTask, allowPendingRemoteAnimationRegistryLookup, originatingPendingIntent,
+                allowBackgroundActivityStart);
+
+        if (outActivity != null) {
+            // mLastStartActivityRecord[0] is set in the call to startActivity above.
+            outActivity[0] = mLastStartActivityRecord[0];
+        }
+
+        return getExternalResult(mLastStartActivityResult);
+    }
+    
+    private int startActivity(IApplicationThread caller, Intent intent, Intent ephemeralIntent,
+            String resolvedType, ActivityInfo aInfo, ResolveInfo rInfo,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            IBinder resultTo, String resultWho, int requestCode, int callingPid, int callingUid,String callingPackage, int realCallingPid, int realCallingUid, int startFlags,SafeActivityOptions options,boolean ignoreTargetSecurity, boolean componentSpecified, ActivityRecord[] outActivity,TaskRecord inTask, boolean allowPendingRemoteAnimationRegistryLookup,PendingIntentRecord originatingPendingIntent, boolean allowBackgroundActivityStart) {
+            //...
+            final int res = startActivity(r, sourceRecord, voiceSession, voiceInteractor, startFlags,true /* doResume */, checkedOptions, inTask, outActivity, restrictedBgActivity);
+        mSupervisor.getActivityMetricsLogger().notifyActivityLaunched(res, outActivity[0]);
+        return res;
+    }
+    
+    private int startActivity(final ActivityRecord r, ActivityRecord sourceRecord,
+                IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+                int startFlags, boolean doResume, ActivityOptions options, TaskRecord inTask,
+                ActivityRecord[] outActivity, boolean restrictedBgActivity) {
+        int result = START_CANCELED;
+        final ActivityStack startedActivityStack;
+        try {
+            mService.mWindowManager.deferSurfaceLayout();
+            //关键代码；
+            result = startActivityUnchecked(r, sourceRecord, voiceSession, voiceInteractor,
+                    startFlags, doResume, options, inTask, outActivity, restrictedBgActivity);
+        } finally {
+            final ActivityStack currentStack = r.getActivityStack();
+            startedActivityStack = currentStack != null ? currentStack : mTargetStack;
+
+            if (ActivityManager.isStartResultSuccessful(result)) {
+                if (startedActivityStack != null) {
+                    // If there is no state change (e.g. a resumed activity is reparented to
+                    // top of another display) to trigger a visibility/configuration checking,
+                    // we have to update the configuration for changing to different display.
+                    final ActivityRecord currentTop =
+                            startedActivityStack.topRunningActivityLocked();
+                    if (currentTop != null &amp;&amp; currentTop.shouldUpdateConfigForDisplayChanged()) {
+                        mRootActivityContainer.ensureVisibilityAndConfig(
+                                currentTop, currentTop.getDisplayId(),
+                                true /* markFrozenIfConfigChanged */, false /* deferResume */);
+                    }
+                }
+            } else {
+                // If we are not able to proceed, disassociate the activity from the task.
+                // Leaving an activity in an incomplete state can lead to issues, such as
+                // performing operations without a window container.
+                final ActivityStack stack = mStartActivity.getActivityStack();
+                if (stack != null) {
+                    stack.finishActivityLocked(mStartActivity, RESULT_CANCELED,
+                            null /* intentResultData */, &quot;startActivity&quot;, true /* oomAdj */);
+                }
+
+                // Stack should also be detached from display and be removed if it&#39;s empty.
+                if (startedActivityStack != null &amp;&amp; startedActivityStack.isAttached()
+                        &amp;&amp; startedActivityStack.numActivities() == 0
+                        &amp;&amp; !startedActivityStack.isActivityTypeHome()) {
+                    startedActivityStack.remove();
+                }
+            }
+            mService.mWindowManager.continueSurfaceLayout();
+        }
+
+        postStartActivityProcessing(r, result, startedActivityStack);
+
+        return result;
+    }
+    
+    private int startActivityUnchecked(final ActivityRecord r, ActivityRecord sourceRecord,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            int startFlags, boolean doResume, ActivityOptions options, TaskRecord inTask,
+            ActivityRecord[] outActivity, boolean restrictedBgActivity) {
+        //...
+        TargetStack.startActivityLocked(mStartActivity, topFocused, newTask, mKeepCurTransition,
+                mOptions);
+        if (mDoResume) {
+            final ActivityRecord topTaskActivity =
+                    mStartActivity.getTaskRecord().topRunningActivityLocked();
+            if (!mTargetStack.isFocusable()
+                    || (topTaskActivity != null &amp;&amp; topTaskActivity.mTaskOverlay
+                    &amp;&amp; mStartActivity != topTaskActivity)) {
+                mTargetStack.ensureActivitiesVisibleLocked(mStartActivity, 0, !PRESERVE_WINDOWS);
+                mTargetStack.getDisplay().mDisplayContent.executeAppTransition();
+            } else {
+                if (mTargetStack.isFocusable()
+                        &amp;&amp; !mRootActivityContainer.isTopDisplayFocusedStack(mTargetStack)) {
+                    mTargetStack.moveToFront(&quot;startActivityUnchecked&quot;);
+                }
+                //关键代码；
+                mRootActivityContainer.resumeFocusedStacksTopActivities(
+                        mTargetStack, mStartActivity, mOptions);
+            }
+        } else if (mStartActivity != null) {
+            mSupervisor.mRecentTasks.add(mStartActivity.getTaskRecord());
+        }
+        mRootActivityContainer.updateUserStack(mStartActivity.mUserId, mTargetStack);
+
+        mSupervisor.handleNonResizableTaskIfNeeded(mStartActivity.getTaskRecord(),
+                preferredWindowingMode, mPreferredDisplayId, mTargetStack);
+
+        return START_SUCCESS;        
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;在ActivityTaskManagerService中，最终调用的是execute()方法。因为之前有执行了setMayWait()方法，在execute()方法中，调用的是startActivityMayWait()方法。接下来调用一系列的startActivity()方法。最终在startActivityUnchecked()方法，调用RootActivityContainer的resumeFocusedStacksTopActivity()方法。</p>
+
+<h4 id="toc_12">11. RootActivityContainer</h4>
+
+<p><strong>代码位置：(framework\base\services\core\java\com\android\server\wm)</strong><br/>
+&emsp;&emsp;RootActivityContainer是10.0新引入的类，从类的注释可以看出这个类是暂时用来分担 ActivityStackSupervisor 的部分职责的。</p>
+
+<pre class="line-numbers"><code class="language-java">class RootActivityContainer extends ConfigurationContainer
+        implements DisplayManager.DisplayListener {
+    //...
+    boolean resumeFocusedStacksTopActivities(
+            ActivityStack targetStack, ActivityRecord target, ActivityOptions targetOptions) {
+
+        if (!mStackSupervisor.readyToResume()) {
+            return false;
+        }
+
+        boolean result = false;
+        if (targetStack != null &amp;&amp; (targetStack.isTopStackOnDisplay()||getTopDisplayFocusedStack() == targetStack)) {
+            //关键代码；
+            result = targetStack.resumeTopActivityUncheckedLocked(target, targetOptions);
+        }
+        //...
+        return result;
+    }
+    //...        
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用ActivityStack的resumeTopActivityUncheckedLocked()方法。</p>
+
+<h4 id="toc_13">12. ActivityStack</h4>
+
+<p>**代码位置：(framework\base\services\core\java\com\android\server\wm) **</p>
+
+<pre class="line-numbers"><code class="language-java">class ActivityStack extends ConfigurationContainer {
+    //...
+    @GuardedBy(&quot;mService&quot;)
+    boolean resumeTopActivityUncheckedLocked(ActivityRecord prev, ActivityOptions options) {
+        if (mInResumeTopActivity) {
+            // Don&#39;t even start recursing.
+            return false;
+        }
+
+        boolean result = false;
+        try {
+            // Protect against recursion.
+            mInResumeTopActivity = true;
+            //关键代码；
+            result = resumeTopActivityInnerLocked(prev, options);
+            // {@link ActivityStackSupervisor#checkReadyForSleepLocked} is skipped.
+            final ActivityRecord next = topRunningActivityLocked(true /* focusableOnly */);
+            if (next == null || !next.canTurnScreenOn()) {
+                checkReadyForSleep();
+            }
+        } finally {
+            mInResumeTopActivity = false;
+        }
+
+        return result;
+    }
+    
+    @GuardedBy(&quot;mService&quot;)
+    private boolean resumeTopActivityInnerLocked(ActivityRecord prev, ActivityOptions options) {
+    boolean pausing = getDisplay().pauseBackStacks(userLeaving, next, false);
+        //注释1；
+        if (mResumedActivity != null) {
+            if (DEBUG_STATES) Slog.d(TAG_STATES,&quot;resumeTopActivityLocked: Pausing &quot; + mResumedActivity);
+            //关键代码；
+            pausing |= startPausingLocked(userLeaving, false, next, false);
+        }
+ 
+        //...
+        if (next.attachedToProcess()) {
+            //...
+            //注释2；
+            //关键代码；
+            mStackSupervisor.startSpecificActivityLocked(next, true, false);
+            return true;
+        }
+            // From this point on, if something goes wrong there is no way
+            // to recover the activity.
+            try {
+                next.completeResumeLocked();
+            } catch (Exception e) {
+                // If any exception gets thrown, toss away this
+                // activity and try the next one.
+                Slog.w(TAG, &quot;Exception thrown during resume of &quot; + next, e);
+                requestFinishActivityLocked(next.appToken, Activity.RESULT_CANCELED, null,
+                        &quot;resume-exception&quot;, true);
+                return true;
+            }
+        } else {
+            // Whoops, need to restart this activity!
+            if (!next.hasBeenLaunched) {
+                next.hasBeenLaunched = true;
+            } else {
+                if (SHOW_APP_STARTING_PREVIEW) {
+                    next.showStartingWindow(null /* prev */, false /* newTask */,
+                            false /* taskSwich */);
+                }
+                if (DEBUG_SWITCH) Slog.v(TAG_SWITCH, &quot;Restarting: &quot; + next);
+            }
+            if (DEBUG_STATES) Slog.d(TAG_STATES, &quot;resumeTopActivityLocked: Restarting &quot; + next);
+            //注释3；
+            //关键代码；
+            mStackSupervisor.startSpecificActivityLocked(next, true, true); 
+        }
+    }
+    
+    final boolean startPausingLocked(boolean userLeaving, boolean uiSleeping,
+            ActivityRecord resuming, boolean pauseImmediately) {
+          //...
+          if (prev.attachedToProcess()) {
+            if (DEBUG_PAUSE) Slog.v(TAG_PAUSE, &quot;Enqueueing pending pause: &quot; + prev);
+            try {
+                EventLogTags.writeAmPauseActivity(prev.mUserId, System.identityHashCode(prev),
+                        prev.shortComponentName, &quot;userLeaving=&quot; + userLeaving);
+                //关键代码；
+                mService.getLifecycleManager().scheduleTransaction(prev.app.getThread(),
+prev.appToken, PauseActivityItem.obtain(prev.finishing, userLeaving,prev.configChangeFlags, pauseImmediately));
+            } catch (Exception e) {
+                // Ignore exception, if process died other code will cleanup.
+                Slog.w(TAG, &quot;Exception thrown during pause&quot;, e);
+                mPausingActivity = null;
+                mLastPausedActivity = null;
+                mLastNoHistoryActivity = null;
+            }
+        } else {
+            mPausingActivity = null;
+            mLastPausedActivity = null;
+            mLastNoHistoryActivity = null;
+        }
+        //...  
+    }
+    
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;注释1:判断是否有Activity处于Resume状态，有的话会调用startPausingLocked()方法让Activity执行Pausing过程。接着才会调用注释2和注释3中的ActivityStackSupervisor 中 的 startSpecificActivityLocked()方法。<br/>
+&emsp;&emsp;在startPausingLocked()中，执行了mService.getLifecycleManager().scheduleTransaction()，这里的mService是ActivityTaskManagerService。getLifecycleManager方法获取到的是ClientLifecycleManager。</p>
+
+<h4 id="toc_14">13. ClientLifecycleManager</h4>
+
+<p>**代码位置： (framework\base\services\core\java\com\android\server\wm) **</p>
+
+<pre class="line-numbers"><code class="language-java">class ClientLifecycleManager {
+    void scheduleTransaction(ClientTransaction transaction) throws RemoteException {
+        final IApplicationThread client = transaction.getClient();
+        //关键代码；
+        transaction.schedule();
+        if (!(client instanceof Binder)) {
+            // If client is not an instance of Binder - it&#39;s a remote call and at this point it is
+            // safe to recycle the object. All objects used for local calls will be recycled after
+            // the transaction is executed on client in ActivityThread.
+            transaction.recycle();
+        }
+    }
+    
+    void scheduleTransaction(@NonNull IApplicationThread client,
+            @NonNull ClientTransactionItem callback) throws RemoteException {
+        final ClientTransaction clientTransaction = transactionWithCallback(client,
+                null /* activityToken */, callback);
+        scheduleTransaction(clientTransaction);
+    }
+    
+    void scheduleTransaction(@NonNull IApplicationThread client, @NonNull IBinder activityToken,
+            @NonNull ActivityLifecycleItem stateRequest) throws RemoteException {
+        final ClientTransaction clientTransaction = transactionWithState(client, activityToken,
+                stateRequest);
+        scheduleTransaction(clientTransaction);
+    }
+    
+    void scheduleTransaction(@NonNull IApplicationThread client, @NonNull IBinder activityToken,
+            @NonNull ClientTransactionItem callback) throws RemoteException {
+        final ClientTransaction clientTransaction = transactionWithCallback(client, activityToken,
+                callback);
+        scheduleTransaction(clientTransaction);
+    }
+    
+}
+</code></pre>
+
+<p>&emsp;&emsp;最后调用的是scheduleTransaction(ClientTransaction transaction)方法，通过 ClientTransaction  的 getClient 方法获取到 client 对象，client 是 IApplicationThread 类型，在 ClientTransaction 的静态方法 obtain 中进行初始化。执行了transaction.schedule()，我们重点关注的就是这个方法。</p>
+
+<h4 id="toc_15">14. ClientTransaction</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\app\servertransaction)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public class ClientTransaction implements Parcelable, ObjectPoolItem {
+    //...
+    public IApplicationThread getClient() {
+        return mClient;
+    }
+    
+    public static ClientTransaction obtain(IApplicationThread client, IBinder activityToken) {
+        ClientTransaction instance = ObjectPool.obtain(ClientTransaction.class);
+        if (instance == null) {
+            instance = new ClientTransaction();
+        }
+        instance.mClient = client;
+        instance.mActivityToken = activityToken;
+
+        return instance;
+    }
+    
+    public void schedule() throws RemoteException {
+        mClient.scheduleTransaction(this);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;mClient是IApplicationThread，实际实现是在ActivityThread中的内部类ApplicationThread。</p>
+
+<h4 id="toc_16">15. ActivityThread</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\app)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public final class ActivityThread extends ClientTransactionHandler {
+    //...
+    private class ApplicationThread extends IApplicationThread.Stub {
+        //...
+        @Override
+        public void scheduleTransaction(ClientTransaction transaction) throws RemoteException {
+            //关键代码；
+            ActivityThread.this.scheduleTransaction(transaction);
+        }
+        //...
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;scheduleTransaction()方法在ActivityThread类中不存在，在父类ClientTransactionHandler中。</p>
+
+<h4 id="toc_17">16. ClientTransactionHandler</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\app)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public abstract class ClientTransactionHandler {
+    //...
+    void scheduleTransaction(ClientTransaction transaction) {
+        transaction.preExecute(this);
+        sendMessage(ActivityThread.H.EXECUTE_TRANSACTION, transaction);
+    }
+    
+    abstract void sendMessage(int what, Object obj);
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;sendMessage()方法在子类ActivityThread中实现。</p>
+
+<h4 id="toc_18">17. ActivityThread/H</h4>
+
+<pre class="line-numbers"><code class="language-java">public final class ActivityThread extends ClientTransactionHandler {
+    //...
+    void sendMessage(int what, Object obj) {
+        sendMessage(what, obj, 0, 0, false);
+    }
+
+    private void sendMessage(int what, Object obj, int arg1) {
+        sendMessage(what, obj, arg1, 0, false);
+    }
+
+    private void sendMessage(int what, Object obj, int arg1, int arg2) {
+        sendMessage(what, obj, arg1, arg2, false);
+    }
+
+    private void sendMessage(int what, Object obj, int arg1, int arg2, boolean async) {
+        if (DEBUG_MESSAGES) {
+            Slog.v(TAG,
+                    &quot;SCHEDULE &quot; + what + &quot; &quot; + mH.codeToString(what) + &quot;: &quot; + arg1 + &quot; / &quot; + obj);
+        }
+        Message msg = Message.obtain();
+        msg.what = what;
+        msg.obj = obj;
+        msg.arg1 = arg1;
+        msg.arg2 = arg2;
+        if (async) {
+            msg.setAsynchronous(true);
+        }
+        mH.sendMessage(msg);
+    }
+    
+    class H extends Handler {
+        //...
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case EXECUTE_TRANSACTION:
+                    final ClientTransaction transaction = (ClientTransaction) msg.obj;
+                    mTransactionExecutor.execute(transaction);
+                    if (isSystem()) {
+                        transaction.recycle();
+                    }
+                    break;
+            }
+        }
+        //...
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用了 TransactionExecutor 的方法 execute(transaction)。</p>
+
+<h4 id="toc_19">18. TransactionExecutor</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\app\servertransaction)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public class TransactionExecutor {
+    //...
+    public void execute(ClientTransaction transaction) {
+        if (DEBUG_RESOLVER) Slog.d(TAG, tId(transaction) + &quot;Start resolving transaction&quot;);
+
+        final IBinder token = transaction.getActivityToken();
+        if (token != null) {
+            final Map&lt;IBinder, ClientTransactionItem&gt; activitiesToBeDestroyed =
+                    mTransactionHandler.getActivitiesToBeDestroyed();
+            final ClientTransactionItem destroyItem = activitiesToBeDestroyed.get(token);
+            if (destroyItem != null) {
+                if (transaction.getLifecycleStateRequest() == destroyItem) {
+                    // It is going to execute the transaction that will destroy activity with the
+                    // token, so the corresponding to-be-destroyed record can be removed.
+                    activitiesToBeDestroyed.remove(token);
+                }
+                if (mTransactionHandler.getActivityClient(token) == null) {
+                    // The activity has not been created but has been requested to destroy, so all
+                    // transactions for the token are just like being cancelled.
+                    Slog.w(TAG, tId(transaction) + &quot;Skip pre-destroyed transaction:\n&quot;
+                            + transactionToString(transaction, mTransactionHandler));
+                    return;
+                }
+            }
+        }
+
+        if (DEBUG_RESOLVER) Slog.d(TAG, transactionToString(transaction, mTransactionHandler));
+
+        executeCallbacks(transaction);
+        //关键代码；
+        executeLifecycleState(transaction);
+        mPendingActions.clear();
+        if (DEBUG_RESOLVER) Slog.d(TAG, tId(transaction) + &quot;End resolving transaction&quot;);
+    }
+    
+    private void executeLifecycleState(ClientTransaction transaction) {
+        //关键代码；
+        final ActivityLifecycleItem lifecycleItem = transaction.getLifecycleStateRequest();
+        if (lifecycleItem == null) {
+            // No lifecycle request, return early.
+            return;
+        }
+
+        final IBinder token = transaction.getActivityToken();
+        final ActivityClientRecord r = mTransactionHandler.getActivityClient(token);
+        if (DEBUG_RESOLVER) {
+            Slog.d(TAG, tId(transaction) + &quot;Resolving lifecycle state: &quot;
+                    + lifecycleItem + &quot; for activity: &quot;
+                    + getShortActivityName(token, mTransactionHandler));
+        }
+
+        if (r == null) {
+            // Ignore requests for non-existent client records for now.
+            return;
+        }
+
+        // Cycle to the state right before the final requested state.
+        cycleToPath(r, lifecycleItem.getTargetState(), true /* excludeLastState */, transaction);
+
+        // Execute the final transition with proper parameters.
+        //关键代码；
+        lifecycleItem.execute(mTransactionHandler, token, mPendingActions);
+        lifecycleItem.postExecute(mTransactionHandler, token, mPendingActions);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;返回一个 ActivityLifecycleItem  类型的对象，而 ActivityLifecycleItem 是一个抽象类，必然要有实现类，通过全局搜索存在三个实现类：PauseActivityItem，ResumeActivityItem，StopActivityItem，由于这里是要让 Activity 进入 Pause 状态，所以这里是 PauseActivityItem。</p>
+
+<h4 id="toc_20">19. PauseActivityItem</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\app\servertransaction)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public class PauseActivityItem extends ActivityLifecycleItem {
+    //...
+    @Override
+    public void execute(ClientTransactionHandler client, IBinder token,
+            PendingTransactionActions pendingActions) {
+        Trace.traceBegin(TRACE_TAG_ACTIVITY_MANAGER, &quot;activityPause&quot;);
+        client.handlePauseActivity(token, mFinished, mUserLeaving, mConfigChanges, pendingActions,
+                &quot;PAUSE_ACTIVITY_ITEM&quot;);
+        Trace.traceEnd(TRACE_TAG_ACTIVITY_MANAGER);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用了handlePauseActivity()方法，但这个方法在ClientTransactionHandler中只是一个抽象方法，具体实现是在ActivityThread中。</p>
+
+<h4 id="toc_21">20. ActivityThread</h4>
+
+<pre class="line-numbers"><code class="language-java">public final class ActivityThread extends ClientTransactionHandler {
+    //...
+    @Override
+    public void handlePauseActivity(IBinder token, boolean finished, boolean userLeaving,
+            int configChanges, PendingTransactionActions pendingActions, String reason) {
+        ActivityClientRecord r = mActivities.get(token);
+        if (r != null) {
+            if (userLeaving) {
+                performUserLeavingActivity(r);
+            }
+
+            r.activity.mConfigChangeFlags |= configChanges;
+            //关键代码；
+            performPauseActivity(r, finished, reason, pendingActions);
+
+            // Make sure any pending writes are now committed.
+            if (r.isPreHoneycomb()) {
+                QueuedWork.waitToFinish();
+            }
+            mSomeActivitiesChanged = true;
+        }
+    }
+    
+    private Bundle performPauseActivity(ActivityClientRecord r, boolean finished, String reason,
+            PendingTransactionActions pendingActions) {
+        if (r.paused) {
+            if (r.activity.mFinished) {
+                // If we are finishing, we won&#39;t call onResume() in certain cases.
+                // So here we likewise don&#39;t want to call onPause() if the activity
+                // isn&#39;t resumed.
+                return null;
+            }
+            RuntimeException e = new RuntimeException(
+                    &quot;Performing pause of activity that is not resumed: &quot;
+                    + r.intent.getComponent().toShortString());
+            Slog.e(TAG, e.getMessage(), e);
+        }
+        if (finished) {
+            r.activity.mFinished = true;
+        }
+
+        // Pre-Honeycomb apps always save their state before pausing
+        final boolean shouldSaveState = !r.activity.mFinished &amp;&amp; r.isPreHoneycomb();
+        if (shouldSaveState) {
+            callActivityOnSaveInstanceState(r);
+        }
+
+        performPauseActivityIfNeeded(r, reason);
+
+        // Notify any outstanding on paused listeners
+        ArrayList&lt;OnActivityPausedListener&gt; listeners;
+        synchronized (mOnPauseListeners) {
+            listeners = mOnPauseListeners.remove(r.activity);
+        }
+        int size = (listeners != null ? listeners.size() : 0);
+        for (int i = 0; i &lt; size; i++) {
+            listeners.get(i).onPaused(r.activity);
+        }
+
+        final Bundle oldState = pendingActions != null ? pendingActions.getOldState() : null;
+        if (oldState != null) {
+            if (r.isPreHoneycomb()) {
+                r.state = oldState;
+            }
+        }
+
+        return shouldSaveState ? r.state : null;
+    }
+    
+    private void performPauseActivityIfNeeded(ActivityClientRecord r, String reason) {
+        if (r.paused) {
+            // You are already paused silly...
+            return;
+        }
+
+        // Always reporting top resumed position loss when pausing an activity. If necessary, it
+        // will be restored in performResumeActivity().
+        reportTopResumedActivityChanged(r, false /* onTop */, &quot;pausing&quot;);
+
+        try {
+            r.activity.mCalled = false;
+            //关键代码；
+            mInstrumentation.callActivityOnPause(r.activity);
+            if (!r.activity.mCalled) {
+                throw new SuperNotCalledException(&quot;Activity &quot; + safeToComponentShortString(r.intent)
+                        + &quot; did not call through to super.onPause()&quot;);
+            }
+        } catch (SuperNotCalledException e) {
+            throw e;
+        } catch (Exception e) {
+            if (!mInstrumentation.onException(r.activity, e)) {
+                throw new RuntimeException(&quot;Unable to pause activity &quot;
+                        + safeToComponentShortString(r.intent) + &quot;: &quot; + e.toString(), e);
+            }
+        }
+        r.setState(ON_PAUSE);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;最终调用的是Instrumentation的callActivityOnPause()方法。</p>
+
+<h4 id="toc_22">21. Instrumentation</h4>
+
+<pre class="line-numbers"><code class="language-java">public class Instrumentation{
+    //...
+    public void callActivityOnPause(Activity activity) {
+        activity.performPause();
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;回到了Activity的performPause()方法。</p>
+
+<h4 id="toc_23">22. Activity</h4>
+
+<pre class="line-numbers"><code class="language-java">public class Activity extends ContextThemeWrapper
+        implements LayoutInflater.Factory2,
+        Window.Callback, KeyEvent.Callback,
+        OnCreateContextMenuListener, ComponentCallbacks2,
+        Window.OnWindowDismissedCallback, WindowControllerCallback,
+        AutofillManager.AutofillClient, ContentCaptureManager.ContentCaptureClient {
+    //...
+    final void performPause() {
+        dispatchActivityPrePaused();
+        mDoReportFullyDrawn = false;
+        mFragments.dispatchPause();
+        mCalled = false;
+        //关键代码；
+        onPause();
+        writeEventLog(LOG_AM_ON_PAUSE_CALLED, &quot;performPause&quot;);
+        mResumed = false;
+        if (!mCalled &amp;&amp; getApplicationInfo().targetSdkVersion
+                &gt;= android.os.Build.VERSION_CODES.GINGERBREAD) {
+            throw new SuperNotCalledException(
+                    &quot;Activity &quot; + mComponent.toShortString() +
+                    &quot; did not call through to super.onPause()&quot;);
+        }
+        dispatchActivityPostPaused();
+    }
+    //...   
+}
+</code></pre>
+
+<p>&emsp;&emsp;这里，我们可以看到onPause()方法，也就是我们平时会用到的Activity的一个生命周期方法onPause()。</p>
+
+<h4 id="toc_24">23. ActivityStackSupervisor</h4>
+
+<p><strong>代码位置：</strong><br/>
+&emsp;&emsp;在ActivityStack中，我们分析代码出现了分支，会先将Activity切换为onPause()状态，然后再去启动Activity。<br/>
+&emsp;&emsp;也就是我们接下来要分析的startSpecificActivityLocked()方法。</p>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityStackSupervisor implements RecentTasks.Callbacks {
+    //...
+    void startSpecificActivityLocked(ActivityRecord r, boolean andResume, boolean checkConfig) {
+        // Is this activity&#39;s application already running?
+        final WindowProcessController wpc =
+                mService.getProcessController(r.processName, r.info.applicationInfo.uid);
+
+        boolean knownToBeDead = false;
+        //注释1；
+        if (wpc != null &amp;&amp; wpc.hasThread()) {
+            try {
+                //注释2；
+                realStartActivityLocked(r, wpc, andResume, checkConfig);
+                return;
+            } catch (RemoteException e) {
+                Slog.w(TAG, &quot;Exception when starting activity &quot;
+                        + r.intent.getComponent().flattenToShortString(), e);
+            }
+
+            // If a dead object exception was thrown -- fall through to
+            // restart the application.
+            knownToBeDead = true;
+        }
+        if (getKeyguardController().isKeyguardLocked()) {
+            r.notifyUnknownVisibilityLaunched();
+        }
+
+        try {
+            if (Trace.isTagEnabled(TRACE_TAG_ACTIVITY_MANAGER)) {
+                Trace.traceBegin(TRACE_TAG_ACTIVITY_MANAGER, &quot;dispatchingStartProcess:&quot;
+                        + r.processName);
+            }
+            // Post message to start process to avoid possible deadlock of calling into AMS with the
+            // ATMS lock held.
+            //注释3；
+            final Message msg = PooledLambda.obtainMessage(
+                    ActivityManagerInternal::startProcess, mService.mAmInternal, r.processName,
+                    r.info.applicationInfo, knownToBeDead, &quot;activity&quot;, r.intent.getComponent());
+            mService.mH.sendMessage(msg);
+        } finally {
+            Trace.traceEnd(TRACE_TAG_ACTIVITY_MANAGER);
+        }
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;注释1:判断 App 进程是否存在，并且已经启动，如果存在而且已经启动，则调用方法 realStartActivityLocked()。<br/>
+&emsp;&emsp;注释3:如果 App 进程不存在，从注释可以看出通过 sendMessage 启动新的进程。因为这里的是从 Launcher 启动 App，所以进程必然不存在，这里追如果创建进程。<br/>
+&emsp;&emsp;这里的 mService 是 ActivityTaskManagerService，它的内部和 ActivityThread 一样也存在一个 H 类，只是它比 ActivityThread 简单很多。</p>
+
+<h4 id="toc_25">24. ActivityTaskManagerService</h4>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
+    //...
+    final class H extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case REPORT_TIME_TRACKER_MSG: {
+                    AppTimeTracker tracker = (AppTimeTracker) msg.obj;
+                    tracker.deliverResult(mContext);
+                } break;
+            }
+        }
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;但是在ActivityTaskManagerService不是启动进程的地方。而是在ActivityManagerInternal::startProcess中。 </p>
+
+<h4 id="toc_26">25. ActivityManagerInternal</h4>
+
+<p><strong>代码位置：(frameworks\base\core\java\android\app)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public abstract class ActivityManagerInternal {
+    //...
+    public abstract void startProcess(String processName, ApplicationInfo info,boolean knownToBeDead, String hostingType, ComponentName hostingName);
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;关于ActivityManagerInternal 类，在它的内部也有方法 startProcess()，只不过此类为抽象类，方法也为抽象方法。在庞大的 ActivityManagerService 类中存在一个内部类 LocalService，它的父类就是ActivityManagerInternal。</p>
+
+<h4 id="toc_27">26. ActivityManagerService</h4>
+
+<p><strong>代码位置：(framework\base\services\core\java\com\android\server\am)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityManagerService extends IActivityManager.Stub
+        implements Watchdog.Monitor, BatteryStatsImpl.BatteryCallback {
+    //...
+    @VisibleForTesting
+    public final class LocalService extends ActivityManagerInternal {
+        //...
+        @Override
+        public void startProcess(String processName, ApplicationInfo info,
+                boolean knownToBeDead, String hostingType, ComponentName hostingName) {
+            try {
+                if (Trace.isTagEnabled(Trace.TRACE_TAG_ACTIVITY_MANAGER)) {
+                    Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;startProcess:&quot;
+                            + processName);
+                }
+                synchronized (ActivityManagerService.this) {
+                    //关键代码；
+                    startProcessLocked(processName, info, knownToBeDead, 0 /* intentFlags */,
+                            new HostingRecord(hostingType, hostingName),
+                            false /* allowWhileBooting */, false /* isolated */,
+                            true /* keepIfLarge */);
+                }
+            } finally {
+                Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+            }
+        }
+        //...
+    }
+    
+    @GuardedBy(&quot;this&quot;)
+    final ProcessRecord startProcessLocked(String processName,
+            ApplicationInfo info, boolean knownToBeDead, int intentFlags,
+            HostingRecord hostingRecord, boolean allowWhileBooting,
+            boolean isolated, boolean keepIfLarge) {
+        //关键代码；
+        return mProcessList.startProcessLocked(processName, info, knownToBeDead, intentFlags,
+                hostingRecord, allowWhileBooting, isolated, 0 /* isolatedUid */, keepIfLarge,
+                null /* ABI override */, null /* entryPoint */, null /* entryPointArgs */,
+                null /* crashHandler */);
+    }
+    //...        
+}
+</code></pre>
+
+<h4 id="toc_28">27. ProcessList</h4>
+
+<p><strong>代码位置：(framework\base\services\core\java\com\android\server\am)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public final class ProcessList {
+    //...
+    @GuardedBy(&quot;mService&quot;)
+    boolean startProcessLocked(ProcessRecord app, HostingRecord hostingRecord,
+            boolean disableHiddenApiChecks, boolean mountExtStorageFull,
+            String abiOverride) {
+        //...
+        return startProcessLocked(hostingRecord, entryPoint, app, uid, gids,runtimeFlags, mountExternal, seInfo, requiredAbi, instructionSet, invokeWith,startTime);
+        //...        
+    }
+    
+    @GuardedBy(&quot;mService&quot;)
+    boolean startProcessLocked(HostingRecord hostingRecord,String entryPoint,ProcessRecord app, int uid, int[] gids, int runtimeFlags, int mountExternal,String seInfo, String requiredAbi, String instructionSet, String invokeWith,long startTime) {
+        //...
+        if (mService.mConstants.FLAG_PROCESS_START_ASYNC) {
+            if (DEBUG_PROCESSES) Slog.i(TAG_PROCESSES,
+                    &quot;Posting procStart msg for &quot; + app.toShortString());
+            mService.mProcStartHandler.post(() -&gt; {
+                try {
+                    //关键代码；
+                    final Process.ProcessStartResult startResult = startProcess(app.hostingRecord,
+                            entryPoint, app, app.startUid, gids, runtimeFlags, mountExternal,
+                            app.seInfo, requiredAbi, instructionSet, invokeWith, app.startTime);
+                    synchronized (mService) {
+                        handleProcessStartedLocked(app, startResult, startSeq);
+                    }
+                } catch (RuntimeException e) {
+                    synchronized (mService) {
+                        Slog.e(ActivityManagerService.TAG, &quot;Failure starting process &quot;
+                                + app.processName, e);
+                        mPendingStarts.remove(startSeq);
+                        app.pendingStart = false;
+                        mService.forceStopPackageLocked(app.info.packageName,
+                                UserHandle.getAppId(app.uid),
+                                false, false, true, false, false, app.userId, &quot;start failure&quot;);
+                    }
+                }
+            });
+            return true;
+        } else {
+            try {
+                //关键代码；
+                final Process.ProcessStartResult startResult = startProcess(hostingRecord,
+                        entryPoint, app,
+                        uid, gids, runtimeFlags, mountExternal, seInfo, requiredAbi, instructionSet,
+                        invokeWith, startTime);
+                handleProcessStartedLocked(app, startResult.pid, startResult.usingWrapper,
+                        startSeq, false);
+            } catch (RuntimeException e) {
+                Slog.e(ActivityManagerService.TAG, &quot;Failure starting process &quot;
+                        + app.processName, e);
+                app.pendingStart = false;
+                mService.forceStopPackageLocked(app.info.packageName, UserHandle.getAppId(app.uid),
+                        false, false, true, false, false, app.userId, &quot;start failure&quot;);
+            }
+            return app.pid &gt; 0;
+        }
+        //...    
+    }
+    
+    private Process.ProcessStartResult startProcess(HostingRecord hostingRecord, String entryPoint,
+            ProcessRecord app, int uid, int[] gids, int runtimeFlags, int mountExternal,
+            String seInfo, String requiredAbi, String instructionSet, String invokeWith,
+            long startTime) {
+        try {
+            Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;Start proc: &quot; +
+                    app.processName);
+            checkSlow(startTime, &quot;startProcess: asking zygote to start proc&quot;);
+            final Process.ProcessStartResult startResult;
+            if (hostingRecord.usesWebviewZygote()) {
+                startResult = startWebView(entryPoint,
+                        app.processName, uid, uid, gids, runtimeFlags, mountExternal,
+                        app.info.targetSdkVersion, seInfo, requiredAbi, instructionSet,
+                        app.info.dataDir, null, app.info.packageName,
+                        new String[] {PROC_START_SEQ_IDENT + app.startSeq});
+            } else if (hostingRecord.usesAppZygote()) {
+                final AppZygote appZygote = createAppZygoteForProcessIfNeeded(app);
+
+                startResult = appZygote.getProcess().start(entryPoint,
+                        app.processName, uid, uid, gids, runtimeFlags, mountExternal,
+                        app.info.targetSdkVersion, seInfo, requiredAbi, instructionSet,
+                        app.info.dataDir, null, app.info.packageName,
+                        /*useUsapPool=*/ false,
+                        new String[] {PROC_START_SEQ_IDENT + app.startSeq});
+            } else {
+                //关键代码；
+                startResult = Process.start(entryPoint,
+                        app.processName, uid, uid, gids, runtimeFlags, mountExternal,
+                        app.info.targetSdkVersion, seInfo, requiredAbi, instructionSet,
+                        app.info.dataDir, invokeWith, app.info.packageName,
+                        new String[] {PROC_START_SEQ_IDENT + app.startSeq});
+            }
+            checkSlow(startTime, &quot;startProcess: returned from zygote!&quot;);
+            return startResult;
+        } finally {
+            Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+        }
+    }
+    //...
+}
+</code></pre>
+
+<h4 id="toc_29">28. Process</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\os)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">public class Process {
+    //...
+    public static ProcessStartResult start(@NonNull final String processClass,
+                                           @Nullable final String niceName,
+                                           int uid, int gid, @Nullable int[] gids,
+                                           int runtimeFlags,
+                                           int mountExternal,
+                                           int targetSdkVersion,
+                                           @Nullable String seInfo,
+                                           @NonNull String abi,
+                                           @Nullable String instructionSet,
+                                           @Nullable String appDataDir,
+                                           @Nullable String invokeWith,
+                                           @Nullable String packageName,
+                                           @Nullable String[] zygoteArgs) {
+        return ZYGOTE_PROCESS.start(processClass, niceName, uid, gid, gids,
+                    runtimeFlags, mountExternal, targetSdkVersion, seInfo,
+                    abi, instructionSet, appDataDir, invokeWith, packageName,
+                    /*useUsapPool=*/ true, zygoteArgs);
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用了ZygoteProcess的start()方法。</p>
+
+<h4 id="toc_30">29. ZygoteProcess</h4>
+
+<p><strong>代码位置：(framework\base\core\java\android\os)</strong></p>
+
+<pre class="line-numbers"><code class="language-java">class ZygoteStartFailedEx extends Exception {
+    //...
+    public final Process.ProcessStartResult start(@NonNull final String processClass,
+                                                  final String niceName,
+                                                  int uid, int gid, @Nullable int[] gids,
+                                                  int runtimeFlags, int mountExternal,
+                                                  int targetSdkVersion,
+                                                  @Nullable String seInfo,
+                                                  @NonNull String abi,
+                                                  @Nullable String instructionSet,
+                                                  @Nullable String appDataDir,
+                                                  @Nullable String invokeWith,
+                                                  @Nullable String packageName,
+                                                  boolean useUsapPool,
+                                                  @Nullable String[] zygoteArgs) {
+        // TODO (chriswailes): Is there a better place to check this value?
+        if (fetchUsapPoolEnabledPropWithMinInterval()) {
+            informZygotesOfUsapPoolStatus();
+        }
+
+        try {
+            return startViaZygote(processClass, niceName, uid, gid, gids,
+                    runtimeFlags, mountExternal, targetSdkVersion, seInfo,
+                    abi, instructionSet, appDataDir, invokeWith, /*startChildZygote=*/ false,
+                    packageName, useUsapPool, zygoteArgs);
+        } catch (ZygoteStartFailedEx ex) {
+            Log.e(LOG_TAG,
+                    &quot;Starting VM process through Zygote failed&quot;);
+            throw new RuntimeException(
+                    &quot;Starting VM process through Zygote failed&quot;, ex);
+        }
+    }
+    
+    private Process.ProcessStartResult startViaZygote(@NonNull final String processClass,
+                                                      @Nullable final String niceName,
+                                                      final int uid, final int gid,
+                                                      @Nullable final int[] gids,
+                                                      int runtimeFlags, int mountExternal,
+                                                      int targetSdkVersion,
+                                                      @Nullable String seInfo,
+                                                      @NonNull String abi,
+                                                      @Nullable String instructionSet,
+                                                      @Nullable String appDataDir,
+                                                      @Nullable String invokeWith,
+                                                      boolean startChildZygote,
+                                                      @Nullable String packageName,
+                                                      boolean useUsapPool,
+                                                      @Nullable String[] extraArgs)
+                                                      throws ZygoteStartFailedEx {
+        ArrayList&lt;String&gt; argsForZygote = new ArrayList&lt;&gt;();
+
+        // --runtime-args, --setuid=, --setgid=,
+        // and --setgroups= must go first
+        argsForZygote.add(&quot;--runtime-args&quot;);
+        argsForZygote.add(&quot;--setuid=&quot; + uid);
+        argsForZygote.add(&quot;--setgid=&quot; + gid);
+        argsForZygote.add(&quot;--runtime-flags=&quot; + runtimeFlags);
+        if (mountExternal == Zygote.MOUNT_EXTERNAL_DEFAULT) {
+            argsForZygote.add(&quot;--mount-external-default&quot;);
+        } else if (mountExternal == Zygote.MOUNT_EXTERNAL_READ) {
+            argsForZygote.add(&quot;--mount-external-read&quot;);
+        } else if (mountExternal == Zygote.MOUNT_EXTERNAL_WRITE) {
+            argsForZygote.add(&quot;--mount-external-write&quot;);
+        } else if (mountExternal == Zygote.MOUNT_EXTERNAL_FULL) {
+            argsForZygote.add(&quot;--mount-external-full&quot;);
+        } else if (mountExternal == Zygote.MOUNT_EXTERNAL_INSTALLER) {
+            argsForZygote.add(&quot;--mount-external-installer&quot;);
+        } else if (mountExternal == Zygote.MOUNT_EXTERNAL_LEGACY) {
+            argsForZygote.add(&quot;--mount-external-legacy&quot;);
+        }
+
+        argsForZygote.add(&quot;--target-sdk-version=&quot; + targetSdkVersion);
+
+        // --setgroups is a comma-separated list
+        if (gids != null &amp;&amp; gids.length &gt; 0) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(&quot;--setgroups=&quot;);
+
+            int sz = gids.length;
+            for (int i = 0; i &lt; sz; i++) {
+                if (i != 0) {
+                    sb.append(&#39;,&#39;);
+                }
+                sb.append(gids[i]);
+            }
+
+            argsForZygote.add(sb.toString());
+        }
+
+        if (niceName != null) {
+            argsForZygote.add(&quot;--nice-name=&quot; + niceName);
+        }
+
+        if (seInfo != null) {
+            argsForZygote.add(&quot;--seinfo=&quot; + seInfo);
+        }
+
+        if (instructionSet != null) {
+            argsForZygote.add(&quot;--instruction-set=&quot; + instructionSet);
+        }
+
+        if (appDataDir != null) {
+            argsForZygote.add(&quot;--app-data-dir=&quot; + appDataDir);
+        }
+
+        if (invokeWith != null) {
+            argsForZygote.add(&quot;--invoke-with&quot;);
+            argsForZygote.add(invokeWith);
+        }
+
+        if (startChildZygote) {
+            argsForZygote.add(&quot;--start-child-zygote&quot;);
+        }
+
+        if (packageName != null) {
+            argsForZygote.add(&quot;--package-name=&quot; + packageName);
+        }
+
+        argsForZygote.add(processClass);
+
+        if (extraArgs != null) {
+            Collections.addAll(argsForZygote, extraArgs);
+        }
+
+        synchronized(mLock) {
+            return zygoteSendArgsAndGetResult(openZygoteSocketIfNeeded(abi),
+                                              useUsapPool,
+                                              argsForZygote);
+        }
+    }
+    
+    private Process.ProcessStartResult zygoteSendArgsAndGetResult(
+            ZygoteState zygoteState, boolean useUsapPool, @NonNull ArrayList&lt;String&gt; args)
+            throws ZygoteStartFailedEx {
+        for (String arg : args) {
+            if (arg.indexOf(&#39;\n&#39;) &gt;= 0) {
+                throw new ZygoteStartFailedEx(&quot;Embedded newlines not allowed&quot;);
+            } else if (arg.indexOf(&#39;\r&#39;) &gt;= 0) {
+                throw new ZygoteStartFailedEx(&quot;Embedded carriage returns not allowed&quot;);
+            }
+        }
+
+        String msgStr = args.size() + &quot;\n&quot; + String.join(&quot;\n&quot;, args) + &quot;\n&quot;;
+
+        if (useUsapPool &amp;&amp; mUsapPoolEnabled &amp;&amp; canAttemptUsap(args)) {
+            try {
+                return attemptUsapSendArgsAndGetResult(zygoteState, msgStr);
+            } catch (IOException ex) {
+                Log.e(LOG_TAG, &quot;IO Exception while communicating with USAP pool - &quot;
+                        + ex.getMessage());
+            }
+        }
+
+        return attemptZygoteSendArgsAndGetResult(zygoteState, msgStr);
+    }
+    
+    private Process.ProcessStartResult attemptZygoteSendArgsAndGetResult(
+            ZygoteState zygoteState, String msgStr) throws ZygoteStartFailedEx {
+        try {
+            final BufferedWriter zygoteWriter = zygoteState.mZygoteOutputWriter;
+            final DataInputStream zygoteInputStream = zygoteState.mZygoteInputStream;
+
+            zygoteWriter.write(msgStr);
+            zygoteWriter.flush();
+
+            Process.ProcessStartResult result = new Process.ProcessStartResult();
+            result.pid = zygoteInputStream.readInt();
+            result.usingWrapper = zygoteInputStream.readBoolean();
+
+            if (result.pid &lt; 0) {
+                throw new ZygoteStartFailedEx(&quot;fork() failed&quot;);
+            }
+
+            return result;
+        } catch (IOException ex) {
+            zygoteState.close();
+            Log.e(LOG_TAG, &quot;IO Exception while communicating with Zygote - &quot;
+                    + ex.toString());
+            throw new ZygoteStartFailedEx(ex);
+        }
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;在attemptConnectionToPrimaryZygote()方法向主 Zygote 发起连接请求。通过 socket 向 Zygote 进程发送参数列表，然后进入“阻塞等待”状态，直到 socket 服务端发送回来新创建的进程 pid。Zygote 进程源码的最后调用到了 ActivityThread.main() 方法。</p>
+
+<h4 id="toc_31">30. ActivityThread</h4>
+
+<pre class="line-numbers"><code class="language-java">public final class ActivityThread extends ClientTransactionHandler {
+    //...
+    public static void main(String[] args) {
+        //...
+        //注释1；
+        Looper.prepareMainLooper();
+        //注释2；
+        ActivityThread thread = new ActivityThread();
+        thread.attach(false, startSeq);
+
+        if (sMainThreadHandler == null) {
+            sMainThreadHandler = thread.getHandler();
+        }
+
+        if (false) {
+            Looper.myLooper().setMessageLogging(new LogPrinter(Log.DEBUG, &quot;ActivityThread&quot;));
+        }
+
+        // End of event ActivityThreadMain.
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+        Looper.loop();
+        //...
+    }
+    
+    @UnsupportedAppUsage
+    private void attach(boolean system, long startSeq) {
+        sCurrentActivityThread = this;
+        mSystemThread = system;
+        if (!system) {
+            android.ddm.DdmHandleAppName.setAppName(&quot;&lt;pre-initialized&gt;&quot;,
+                                                    UserHandle.myUserId());
+            RuntimeInit.setApplicationObject(mAppThread.asBinder());
+            //注释3；
+            final IActivityManager mgr = ActivityManager.getService();
+            try {
+                //注释4；
+                mgr.attachApplication(mAppThread, startSeq);
+            } catch (RemoteException ex) {
+                throw ex.rethrowFromSystemServer();
+            }
+            // Watch for getting close to heap limit.
+            BinderInternal.addGcWatcher(new Runnable() {
+                @Override public void run() {
+                    if (!mSomeActivitiesChanged) {
+                        return;
+                    }
+                    Runtime runtime = Runtime.getRuntime();
+                    long dalvikMax = runtime.maxMemory();
+                    long dalvikUsed = runtime.totalMemory() - runtime.freeMemory();
+                    if (dalvikUsed &gt; ((3*dalvikMax)/4)) {
+                        if (DEBUG_MEMORY_TRIM) Slog.d(TAG, &quot;Dalvik max=&quot; + (dalvikMax/1024)
+                                + &quot; total=&quot; + (runtime.totalMemory()/1024)
+                                + &quot; used=&quot; + (dalvikUsed/1024));
+                        mSomeActivitiesChanged = false;
+                        try {
+                            ActivityTaskManager.getService().releaseSomeActivities(mAppThread);
+                        } catch (RemoteException e) {
+                            throw e.rethrowFromSystemServer();
+                        }
+                    }
+                }
+            });
+        } else {
+            // Don&#39;t set application object here -- if the system crashes,
+            // we can&#39;t display an alert, we just want to die die die.
+            android.ddm.DdmHandleAppName.setAppName(&quot;system_process&quot;,
+                    UserHandle.myUserId());
+            try {
+                mInstrumentation = new Instrumentation();
+                mInstrumentation.basicInit(this);
+                ContextImpl context = ContextImpl.createAppContext(
+                        this, getSystemContext().mPackageInfo);
+                mInitialApplication = context.mPackageInfo.makeApplication(true, null);
+                mInitialApplication.onCreate();
+            } catch (Exception e) {
+                throw new RuntimeException(
+                        &quot;Unable to instantiate Application():&quot; + e.toString(), e);
+            }
+        }
+
+        ViewRootImpl.ConfigChangedCallback configChangedCallback
+                = (Configuration globalConfig) -&gt; {
+            synchronized (mResourcesManager) {
+                // We need to apply this change to the resources immediately, because upon returning
+                // the view hierarchy will be informed about it.
+                if (mResourcesManager.applyConfigurationToResourcesLocked(globalConfig,
+                        null /* compat */)) {
+                    updateLocaleListFromAppContext(mInitialApplication.getApplicationContext(),
+                            mResourcesManager.getConfiguration().getLocales());
+
+                    // This actually changed the resources! Tell everyone about it.
+                    if (mPendingConfiguration == null
+                            || mPendingConfiguration.isOtherSeqNewer(globalConfig)) {
+                        mPendingConfiguration = globalConfig;
+                        sendMessage(H.CONFIGURATION_CHANGED, globalConfig);
+                    }
+                }
+            }
+        };
+        ViewRootImpl.addConfigCallback(configChangedCallback);
+    }
+    
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;注释1:创建主线程的 Looper，主线程的 Handler 不需要创建 Looper。<br/>
+&emsp;&emsp;注释2:初始化 ActivityThread，并且 attach 到系统进程。<br/>
+&emsp;&emsp;注释3:这里 IActivityManager 类型对象是 ActivityManagerService。<br/>
+&emsp;&emsp;注释4:通过 ActivityManagerService 的 attachApplication 方法绑定一个 Application，这里的 mAppThread 是 ApplicationThread 对象。</p>
+
+<h4 id="toc_32">31. ActivityManagerService</h4>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityManagerService extends IActivityManager.Stub
+        implements Watchdog.Monitor, BatteryStatsImpl.BatteryCallback {
+    //...
+    @Override
+    public final void attachApplication(IApplicationThread thread, long startSeq) {
+        synchronized (this) {
+            int callingPid = Binder.getCallingPid();
+            final int callingUid = Binder.getCallingUid();
+            final long origId = Binder.clearCallingIdentity();
+            attachApplicationLocked(thread, callingPid, callingUid, startSeq);
+            Binder.restoreCallingIdentity(origId);
+        }
+    }
+    
+    @GuardedBy(&quot;this&quot;)
+    private final boolean attachApplicationLocked(IApplicationThread thread,int pid, int callingUid, long startSeq) {
+        //...
+        boolean badApp = false;
+        boolean didSomething = false;
+
+        // See if the top visible activity is waiting to run in this process...
+        //注释1；
+        if (normalMode) {
+            try {
+                didSomething = mAtmInternal.attachApplication(app.getWindowProcessController());
+            } catch (Exception e) {
+                Slog.wtf(TAG, &quot;Exception thrown launching activities in &quot; + app, e);
+                badApp = true;
+            }
+        }
+
+        // Find any services that should be running in this process...
+        //注释2；
+        if (!badApp) {
+            try {
+                didSomething |= mServices.attachApplicationLocked(app, processName);
+                checkTime(startTime, &quot;attachApplicationLocked: after mServices.attachApplicationLocked&quot;);
+            } catch (Exception e) {
+                Slog.wtf(TAG, &quot;Exception thrown starting services in &quot; + app, e);
+                badApp = true;
+            }
+        }
+
+        // Check if a next-broadcast receiver is in this process...
+        //注释3；
+        if (!badApp &amp;&amp; isPendingBroadcastProcessLocked(pid)) {
+            try {
+                didSomething |= sendPendingBroadcastsLocked(app);
+                checkTime(startTime, &quot;attachApplicationLocked: after sendPendingBroadcastsLocked&quot;);
+            } catch (Exception e) {
+                // If the app died trying to launch the receiver we declare it &#39;bad&#39;
+                Slog.wtf(TAG, &quot;Exception thrown dispatching broadcasts in &quot; + app, e);
+                badApp = true;
+            }
+        }
+        //...
+    }
+    //...        
+}
+</code></pre>
+
+<p>&emsp;&emsp;注释1:对于Activity的处理逻辑。调用了 ActivityTaskManagerInternal 的 attachApplication() 方法。ActivityTaskManagerInternal  在 ActivityManagerService 的构造方法中进行初始化的。<br/>
+&emsp;&emsp;注释2:对于Service的处理逻辑。<br/>
+&emsp;&emsp;注释3:对于BroadcastReceiver的处理逻辑。</p>
+
+<h4 id="toc_33">32. ActivityTaskManagerInternal</h4>
+
+<p><strong>代码位置：(framework\base\services\core\java\com\android\server\wm)</strong><br/>
+&emsp;&emsp;ActivityTaskManagerInternal 是一个抽象类，attachApplication() 也是一个抽象方法。<br/>
+&emsp;&emsp;ActivityTaskManagerInternal 的实现类是 ActivityTaskManagerService 中的内部类 LocalService 继承了此抽象方法。</p>
+
+<pre class="line-numbers"><code class="language-java">public abstract class ActivityTaskManagerInternal {
+    //...
+    public abstract boolean attachApplication(WindowProcessController wpc) throws RemoteException;
+    //...
+}
+</code></pre>
+
+<h4 id="toc_34">33. ActivityTaskManagerService/LocalService</h4>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
+    //...
+    final class LocalService extends ActivityTaskManagerInternal {
+        //...
+        @HotPath(caller = HotPath.PROCESS_CHANGE)
+        @Override
+        public boolean attachApplication(WindowProcessController wpc) throws RemoteException {
+            synchronized (mGlobalLockWithoutBoost) {
+                return mRootActivityContainer.attachApplication(wpc);
+            }
+        }
+        //...
+    }
+    //...        
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用的是RootActivityContainer的attachApplication()方法。</p>
+
+<h4 id="toc_35">34. RootActivityContainer</h4>
+
+<pre class="line-numbers"><code class="language-java">class RootActivityContainer extends ConfigurationContainer implements DisplayManager.DisplayListener {
+    //...
+    boolean attachApplication(WindowProcessController app) throws RemoteException {
+        final String processName = app.mName;
+        boolean didSomething = false;
+        for (int displayNdx = mActivityDisplays.size() - 1; displayNdx &gt;= 0; --displayNdx) {
+            final ActivityDisplay display = mActivityDisplays.get(displayNdx);
+            final ActivityStack stack = display.getFocusedStack();
+            if (stack != null) {
+                stack.getAllRunningVisibleActivitiesLocked(mTmpActivityList);
+                final ActivityRecord top = stack.topRunningActivityLocked();
+                final int size = mTmpActivityList.size();
+                for (int i = 0; i &lt; size; i++) {
+                    final ActivityRecord activity = mTmpActivityList.get(i);
+                    if (activity.app == null &amp;&amp; app.mUid == activity.info.applicationInfo.uid
+                            &amp;&amp; processName.equals(activity.processName)) {
+                        try {
+                            //关键代码；
+                            if (mStackSupervisor.realStartActivityLocked(activity, app,top == activity /* andResume */, true /* checkConfig */)) {
+                                didSomething = true;
+                            }
+                        } catch (RemoteException e) {
+                            Slog.w(TAG, &quot;Exception in new application when starting activity &quot;
+                                    + top.intent.getComponent().flattenToShortString(), e);
+                            throw e;
+                        }
+                    }
+                }
+            }
+        }
+        if (!didSomething) {
+            ensureActivitiesVisible(null, 0, false /* preserve_windows */);
+        }
+        return didSomething;
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;调用 ActivityStackSupervisor 的 realStartActivityLocked() 方法。</p>
+
+<h4 id="toc_36">35. ActivityStackSupervisor</h4>
+
+<pre class="line-numbers"><code class="language-java">public class ActivityStackSupervisor implements RecentTasks.Callbacks {
+    //...
+    boolean realStartActivityLocked(ActivityRecord r, WindowProcessController proc,
+            boolean andResume, boolean checkConfig) throws RemoteException {
+        //...
+        // Schedule transaction.
+        mService.getLifecycleManager().scheduleTransaction(clientTransaction);
+        //...        
+    }
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;mService.getLifecycleManager().scheduleTransaction，这里的 mService 是 ActivityTaskManagerService。而</p>
+
+<p>getLifecycleManager 方法获取到的是 ClientLifecycleManager。又再次回到了 ClientLifecycleManager 的 scheduleTransaction 方法了。接下来的流程在前面已经分析过了，最终都会走到 Activity 的生命周期。</p>
+
+<p>&emsp;&emsp;BubbleTextView是Launcher的应用图标控件，继承自TextView。</p>
+
+<pre class="line-numbers"><code class="language-java">public class BubbleTextView extends TextView implements ItemInfoUpdateReceiver, OnResumeCallback {
+    //...
+    
+    @Override
+    public void reapplyItemInfo(ItemInfoWithIcon info) {
+        if (getTag() == info) {
+            mIconLoadRequest = null;
+            mDisableRelayout = true;
+
+            // Optimization: Starting in N, pre-uploads the bitmap to RenderThread.
+            info.iconBitmap.prepareToDraw();
+
+            if (info instanceof AppInfo) {
+                applyFromApplicationInfo((AppInfo) info);
+            } else if (info instanceof WorkspaceItemInfo) {
+                applyFromWorkspaceItem((WorkspaceItemInfo) info);
+                mActivity.invalidateParent(info);
+            } else if (info instanceof PackageItemInfo) {
+                applyFromPackageItemInfo((PackageItemInfo) info);
+            }
+
+            mDisableRelayout = false;
+        }
+    }
+    
+    public void applyFromWorkspaceItem(WorkspaceItemInfo info) {
+        applyFromWorkspaceItem(info, false);
+    }
+    
+    public void applyFromWorkspaceItem(WorkspaceItemInfo info, boolean promiseStateChanged) {
+        applyIconAndLabel(info);
+        setTag(info);
+        if (promiseStateChanged || (info.hasPromiseIconUi())) {
+            applyPromiseState(promiseStateChanged);
+        }
+
+        applyDotState(info, false /* animate */);
+    }
+    
+    public void applyFromApplicationInfo(AppInfo info) {
+        applyIconAndLabel(info);
+
+        // We don&#39;t need to check the info since it&#39;s not a WorkspaceItemInfo
+        super.setTag(info);
+
+        // Verify high res immediately
+        verifyHighRes();
+
+        if (info instanceof PromiseAppInfo) {
+            PromiseAppInfo promiseAppInfo = (PromiseAppInfo) info;
+            applyProgressLevel(promiseAppInfo.level);
+        }
+        applyDotState(info, false /* animate */);
+    }
+    
+    public void applyFromPackageItemInfo(PackageItemInfo info) {
+        applyIconAndLabel(info);
+        // We don&#39;t need to check the info since it&#39;s not a WorkspaceItemInfo
+        super.setTag(info);
+
+        // Verify high res immediately
+        verifyHighRes();
+    }
+    
+    private void applyIconAndLabel(ItemInfoWithIcon info) {
+        FastBitmapDrawable iconDrawable = DrawableFactory.INSTANCE.get(getContext())
+                .newIcon(getContext(), info);
+        mDotParams.color = IconPalette.getMutedColor(info.iconColor, 0.54f);
+
+        setIcon(iconDrawable);
+        setText(info.title);
+        if (info.contentDescription != null) {
+            setContentDescription(info.isDisabled()
+                    ? getContext().getString(R.string.disabled_app_label, info.contentDescription)
+                    : info.contentDescription);
+        }
+    }
+    
+    //...
+}
+</code></pre>
+
+<p>&emsp;&emsp;可以发现，桌面的应用图标都是在reapplyItemInfo(ItemInfoWithIcon info)方法中设置的，那么我们追踪这个方法，是在ItemInfoUpdateReceiver接口中声明的，在IconCache.java文件中调用。<br/>
+&emsp;&emsp;其中关于桌面应用图标的数据信息，类关系如下：</p>
+
+<p>|-- ItemInfo<br/>
+|-- -- ItemInfoWithIcon<br/>
+|-- -- -- AppInfo<br/>
+|-- -- -- WorkspaceItemInfo<br/>
+|-- -- -- PackageItemInfo</p>
+
+<h3 id="toc_37">总结</h3>
+
+<p>&emsp;&emsp;</p>
+
+<p><img src="../asset/img/App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt=""/></p>
+
+<p><strong>启动流程：</strong><br/>
+1 . 点击桌面app图标，Launcher进程采用Binder IPC向system_server进程发起startActivity请求；<br/>
+2 . system_server进程接收到请求后，向zygote进程发送创建进程的请求； <br/>
+3 . zygote进程fork出新的子进程，即app进程；<br/>
+4 . app进程通过Binder IPC向system_server进程发起attachApplication请求；<br/>
+5 . system_server进程在收到请求后，进行一系列的准备工作后，再通过Binder IPC向app进程发送LAUNCH_ACTIVITY消息；<br/>
+6 . 主线程在收到Message后，通过发射机制创建目标Activity，并回调Activity.onCreate()等方法；<br/>
+7 . 进行到这里，app便正式启动，开始进入Activity生命周期，执行完onCreate()、onStart()、onResume()方法后，UI渲染结束后便可以看到app的界面了； </p>
+
+<p>-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+-<br/>
+------------------last line for now----------------</p>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="16037158072749.html"  title="Previous Post: 线程池">&laquo; 线程池</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="16032827867874.html" 
+	        title="Next Post: PC端浏览器使用Http协议缓存">PC端浏览器使用Http协议缓存 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '16036390477812.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
